@@ -1,12 +1,120 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat 🐱</title>
+
+<html lang="zh-CN"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cat 🐱</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #fff5f8;
+        color: #444;
+        text-align: center;
+    }
+
+    header {
+        background: #ffb6c9;
+        padding: 60px 20px;
+    }
+
+    header h1 {
+        font-size: 60px;
+        margin: 0;
+    }
+
+    header p {
+        font-size: 22px;
+    }
+
+    .cat {
+        font-size: 120px;
+        margin: 40px 0 20px;
+    }
+
+    .content {
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        margin: 20px 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .button {
+        display: inline-block;
+        background: #ff8fab;
+        color: white;
+        padding: 14px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    .button:hover {
+        background: #ff6f91;
+    }
+
+    footer {
+        margin-top: 40px;
+        padding: 25px;
+        background: #ffdce6;
+    }
+</style>
+
 </head>
+
 <body>
+
+<header>
     <h1>🐱 Cat</h1>
-    <p>欢迎来到我的猫咪网站！</p>
-</body>
-</html>
+    <p>欢迎来到我的猫咪世界！</p>
+</header>
+
+<div class="content">
+
+    <div class="cat">
+        🐈
+    </div>
+
+    <div class="card">
+        <h2>关于猫咪 🐾</h2>
+        <p>
+            猫咪是一种可爱、聪明又有个性的小动物。
+            它们喜欢睡觉、玩耍，也喜欢陪伴人类。
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>猫咪的一天 🌙</h2>
+        <p>
+            😴 睡觉 → 🍖 吃饭 → 🧶 玩耍 → 💤 再睡觉
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>喜欢猫咪吗？</h2>
+        <p>点击下面的按钮，和猫咪打个招呼吧！</p>
+
+        <a href="#" class="button" onclick="alert('喵！🐱')">
+            说一声「喵」
+        </a>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Cat Website 🐾
+</footer>
+
+</body> </html>
