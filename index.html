@@ -2,287 +2,614 @@
 
 <html lang="zh-CN"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>♡ My Little Cat ♡</title>
+<title>♡ Pinky Cat World ♡</title>
 
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        margin: 0;
-        font-family: "Arial", "Microsoft YaHei", sans-serif;
-        background: #fff0f6;
-        color: #704b5c;
-    }
-
-    /* 顶部 */
-    header {
-        min-height: 420px;
-        padding: 70px 20px;
-        text-align: center;
-        background: linear-gradient(135deg, #ffc1d9, #ffe4ef);
-        position: relative;
-        overflow: hidden;
-    }
-
-    header::before {
-        content: "♡  ✿  ♡  ✿  ♡";
-        position: absolute;
-        top: 25px;
-        left: 0;
-        right: 0;
-        color: white;
-        font-size: 25px;
-        letter-spacing: 15px;
-    }
-
-    header h1 {
-        margin-top: 45px;
-        margin-bottom: 10px;
-        font-size: 58px;
-        color: #ffffff;
-        text-shadow: 0 4px 10px rgba(180, 90, 120, 0.2);
-    }
-
-    header p {
-        font-size: 21px;
-        color: #9b5d78;
-    }
-
-    .big-cat {
-        font-size: 110px;
-        margin: 15px;
-        animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-12px);
-        }
-    }
-
-    /* 内容 */
-    .container {
-        max-width: 950px;
-        margin: auto;
-        padding: 45px 20px;
-    }
-
-    .title {
-        text-align: center;
-        color: #d46f98;
-        font-size: 32px;
-        margin-bottom: 30px;
-    }
-
-    .intro {
-        background: rgba(255, 255, 255, 0.85);
-        border-radius: 30px;
-        padding: 35px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(210, 110, 150, 0.12);
-        margin-bottom: 45px;
-    }
-
-    .intro h2 {
-        color: #d46f98;
-    }
-
-    .intro p {
-        line-height: 1.9;
-        font-size: 17px;
-    }
-
-    /* 猫咪照片 */
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 25px;
-    }
-
-    .photo-card {
-        background: white;
-        padding: 12px;
-        border-radius: 25px;
-        box-shadow: 0 8px 25px rgba(210, 110, 150, 0.15);
-        transition: transform 0.3s ease;
-    }
-
-    .photo-card:hover {
-        transform: translateY(-8px) rotate(1deg);
-    }
-
-    .photo-card img {
-        width: 100%;
-        height: 260px;
-        object-fit: cover;
-        border-radius: 18px;
-    }
-
-    .photo-card p {
-        text-align: center;
-        color: #c66b91;
-        font-weight: bold;
-    }
-
-    /* 小卡片 */
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        margin-top: 35px;
-    }
-
-    .card {
-        background: #fff;
-        padding: 25px;
-        border-radius: 25px;
-        text-align: center;
-        box-shadow: 0 8px 25px rgba(210, 110, 150, 0.1);
-    }
-
-    .card .emoji {
-        font-size: 45px;
-    }
-
-    .card h3 {
-        color: #d46f98;
-    }
-
-    /* 按钮 */
-    .meow-button {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 14px 30px;
-        border-radius: 50px;
-        background: #f58eb5;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        box-shadow: 0 6px 15px rgba(220, 100, 140, 0.25);
-        transition: 0.3s;
-    }
-
-    .meow-button:hover {
-        transform: scale(1.08);
-        background: #e875a3;
-    }
-
-    /* 底部 */
-    footer {
-        margin-top: 30px;
-        padding: 35px 20px;
-        text-align: center;
-        background: #ffd6e6;
-        color: #a65b78;
-    }
-
-    footer p {
-        margin: 8px;
-    }
-</style>
+<style> /* ========================= 基础设置 ========================= */ * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { font-family: "Arial", "Microsoft YaHei", sans-serif; background: radial-gradient(circle at 10% 20%, #ffe4ef 0 8%, transparent 9%), radial-gradient(circle at 90% 10%, #ffd5e6 0 7%, transparent 8%), #fff7fa; color: #684957; overflow-x: hidden; } a { text-decoration: none; color: inherit; } button { font-family: inherit; } /* ========================= 顶部导航 ========================= */ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(240, 140, 175, 0.25); padding: 15px 7%; } .nav-container { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; } .logo { font-size: 25px; font-weight: 800; color: #df6f9a; } .logo span { color: #ff9fc0; } .nav-links { display: flex; gap: 30px; list-style: none; } .nav-links a { font-weight: 600; color: #805365; transition: 0.3s; } .nav-links a:hover { color: #ed76a3; } /* ========================= Hero 首页 ========================= */ .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 130px 20px 80px; background: linear-gradient( 135deg, #ffd0e1, #fff0f6, #ffdce9 ); position: relative; overflow: hidden; } .hero-content { max-width: 850px; position: relative; z-index: 2; } .hero-small { color: #d36a91; font-weight: bold; letter-spacing: 3px; margin-bottom: 20px; } .hero h1 { font-size: clamp(50px, 9vw, 100px); color: #d85f8d; line-height: 1; margin-bottom: 25px; } .hero h1 span { color: white; text-shadow: 0 4px 15px rgba(210, 90, 130, 0.25); } .hero p { font-size: 21px; line-height: 1.8; color: #85556a; } .hero-buttons { margin-top: 35px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; } .primary-button, .secondary-button { padding: 15px 30px; border-radius: 50px; border: none; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; } .primary-button { background: #ef7eaa; color: white; box-shadow: 0 10px 25px rgba(220, 100, 145, 0.25); } .primary-button:hover { transform: translateY(-5px) scale(1.04); } .secondary-button { background: white; color: #dc6c96; } .secondary-button:hover { transform: translateY(-5px); } /* 飘浮爱心 */ .heart { position: absolute; color: rgba(255, 255, 255, 0.8); animation: floatHeart 7s infinite ease-in-out; } .heart.one { left: 8%; top: 25%; font-size: 35px; } .heart.two { right: 10%; top: 35%; font-size: 50px; animation-delay: 1s; } .heart.three { left: 18%; bottom: 15%; font-size: 25px; animation-delay: 2s; } .heart.four { right: 20%; bottom: 18%; font-size: 30px; animation-delay: 3s; } @keyframes floatHeart { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(10deg); } } /* ========================= 通用 Section ========================= */ section { padding: 100px 7%; } .section-container { max-width: 1200px; margin: auto; } .section-title { text-align: center; margin-bottom: 55px; } .section-title span { color: #ec78a4; font-size: 14px; font-weight: bold; letter-spacing: 3px; } .section-title h2 { margin-top: 10px; font-size: 42px; color: #d86592; } .section-title p { margin-top: 15px; color: #94677a; } /* ========================= 猫咪统计 ========================= */ .stats { background: white; } .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; } .stat-card { padding: 30px; text-align: center; background: #fff5f8; border-radius: 25px; transition: 0.3s; } .stat-card:hover { transform: translateY(-8px); } .stat-icon { font-size: 40px; } .stat-number { font-size: 34px; font-weight: 800; color: #df6b97; margin-top: 10px; } .stat-text { color: #8b6575; margin-top: 5px; } /* ========================= 猫咪卡片 ========================= */ .cats { background: linear-gradient( 180deg, #fff6fa, #ffeaf2 ); } .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; } .cat-card { background: white; border-radius: 30px; overflow: hidden; box-shadow: 0 15px 40px rgba(205, 100, 140, 0.12); transition: 0.4s; } .cat-card:hover { transform: translateY(-12px) rotate(1deg); } .cat-picture { height: 240px; display: flex; align-items: center; justify-content: center; font-size: 130px; background: linear-gradient( 135deg, #ffc5dc, #ffeef5 ); } .cat-info { padding: 28px; } .cat-info h3 { font-size: 25px; color: #d76692; } .cat-info p { margin-top: 10px; line-height: 1.7; } .cat-tags { margin-top: 18px; display: flex; gap: 8px; flex-wrap: wrap; } .tag { background: #ffe3ed; color: #c96289; padding: 7px 12px; border-radius: 30px; font-size: 13px; } .cat-button { width: 100%; margin-top: 20px; padding: 12px; border: none; border-radius: 15px; background: #f58db2; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; } .cat-button:hover { background: #e76e9d; } /* ========================= 猫咪日常 ========================= */ .diary { background: white; } .diary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; } .diary-card { padding: 30px; border: 2px solid #ffe0eb; border-radius: 25px; background: #fffafb; transition: 0.3s; } .diary-card:hover { border-color: #f7a0be; transform: translateY(-5px); } .diary-date { color: #e37aa1; font-size: 13px; font-weight: bold; } .diary-card h3 { margin-top: 12px; color: #cf668f; } .diary-card p { margin-top: 12px; line-height: 1.8; } /* ========================= 猫咪语音区域 ========================= */ .voice { background: linear-gradient( 135deg, #f9a5c2, #ffdbe8 ); text-align: center; } .voice-box { max-width: 750px; margin: auto; background: rgba(255,255,255,0.8); padding: 55px 30px; border-radius: 40px; box-shadow: 0 20px 50px rgba(190,80,125,0.15); } .voice-cat { font-size: 100px; animation: talking 1.2s infinite ease-in-out; } @keyframes talking { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg) scale(1.04); } } .voice-box h2 { color: #d45f8d; font-size: 35px; } .voice-box p { margin: 15px 0 25px; line-height: 1.7; } .voice-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; } .voice-button { border: none; background: #ec78a5; color: white; padding: 14px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s; } .voice-button:hover { transform: scale(1.06); } /* ========================= 猫咪小知识 ========================= */ .facts { background: #fff5f9; } .fact-box { max-width: 850px; margin: auto; text-align: center; padding: 45px; background: white; border-radius: 35px; box-shadow: 0 15px 40px rgba(210,100,145,0.1); } .fact-icon { font-size: 70px; } .fact-box h3 { color: #d56491; margin: 15px 0; font-size: 27px; } .fact-box p { line-height: 1.9; } /* ========================= 联系区域 ========================= */ .contact { background: white; } .contact-box { max-width: 750px; margin: auto; text-align: center; background: linear-gradient( 135deg, #ffe0eb, #fff5f9 ); border-radius: 35px; padding: 50px 30px; } .contact-box h2 { color: #d36390; font-size: 35px; } .contact-box p { margin: 15px 0 25px; } /* ========================= Footer ========================= */ footer { background: #d96995; color: white; text-align: center; padding: 45px 20px; } footer .footer-logo { font-size: 28px; font-weight: bold; } footer p { margin-top: 12px; opacity: 0.9; } /* ========================= 猫咪详情弹窗 ========================= */ .modal { position: fixed; inset: 0; background: rgba(100, 50, 70, 0.45); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; } .modal.active { display: flex; } .modal-content { width: 100%; max-width: 600px; background: white; border-radius: 35px; padding: 40px; text-align: center; position: relative; animation: modalIn 0.3s ease; } @keyframes modalIn { from { transform: translateY(30px) scale(0.9); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } } .close { position: absolute; right: 20px; top: 15px; border: none; background: #ffe4ee; color: #d46691; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 20px; } .modal-cat { font-size: 100px; } .modal-content h2 { color: #d36390; margin: 10px 0; } .modal-content p { line-height: 1.8; margin-top: 15px; } /* ========================= 响应式 ========================= */ @media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } .cat-grid { grid-template-columns: repeat(2, 1fr); } .diary-grid { grid-template-columns: repeat(2, 1fr); } .nav-links { gap: 15px; } } @media (max-width: 650px) { .navbar { padding: 14px 20px; } .nav-links { display: none; } section { padding: 75px 20px; } .stats-grid, .cat-grid, .diary-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 55px; } .section-title h2 { font-size: 34px; } } </style>
 
 </head>
 
 <body>
 
-<header>
-    <div class="big-cat">🐱</div>
+<!-- ========================= 导航 ========================= -->
 
-    <h1>♡ My Little Cat ♡</h1>
+<nav class="navbar">
 
-    <p>一个属于猫咪的小小甜蜜世界 🎀</p>
+<div class="nav-container">
+
+    <a href="#home" class="logo">
+        ♡ Pinky <span>Cat</span>
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#home">首页</a>
+        </li>
+
+        <li>
+            <a href="#cats">猫咪</a>
+        </li>
+
+        <li>
+            <a href="#diary">日记</a>
+        </li>
+
+        <li>
+            <a href="#voice">猫咪说话</a>
+        </li>
+
+        <li>
+            <a href="#contact">联系</a>
+        </li>
+
+    </ul>
+
+</div>
+
+</nav>
+
+<!-- ========================= 首页 ========================= -->
+
+<header class="hero" id="home">
+
+<div class="heart one">♡</div>
+<div class="heart two">♥</div>
+<div class="heart three">♡</div>
+<div class="heart four">✿</div>
+
+
+<div class="hero-content">
+
+    <div class="hero-small">
+        WELCOME TO MY LITTLE WORLD
+    </div>
+
+    <h1>
+        Pinky<br>
+        <span>Cat World 🐱</span>
+    </h1>
+
+    <p>
+        一个属于猫咪、爱心和粉色的小世界。<br>
+        在这里认识可爱的猫咪，听听它们的声音吧 ♡
+    </p>
+
+
+    <div class="hero-buttons">
+
+        <a
+            href="#cats"
+            class="primary-button">
+            🐾 探索猫咪
+        </a>
+
+        <button
+            class="secondary-button"
+            onclick="sayCat('欢迎来到我的猫咪世界！喵～')">
+            🔊 听猫咪说话
+        </button>
+
+    </div>
+
+</div>
+
 </header>
 
+<!-- ========================= 数据统计 ========================= -->
 
-<main class="container">
+<section class="stats">
 
-    <section class="intro">
-        <h2>🌷 Welcome to My Cat World 🌷</h2>
+<div class="section-container">
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">🐱</div>
+
+            <div class="stat-number">12+</div>
+
+            <div class="stat-text">
+                可爱猫咪
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">💗</div>
+
+            <div class="stat-number">∞</div>
+
+            <div class="stat-text">
+                猫咪的爱
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">🎀</div>
+
+            <div class="stat-number">24/7</div>
+
+            <div class="stat-text">
+                可爱时间
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">🐾</div>
+
+            <div class="stat-number">100%</div>
+
+            <div class="stat-text">
+                猫咪能量
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ========================= 猫咪档案 ========================= -->
+
+<section class="cats" id="cats">
+
+<div class="section-container">
+
+    <div class="section-title">
+
+        <span>MEET THE CATS</span>
+
+        <h2>🌸 猫咪档案 🌸</h2>
 
         <p>
-            欢迎来到我的猫咪小世界！<br>
-            这里有软乎乎的猫咪、甜甜的粉色，
-            还有好多好多可爱的瞬间。♡
+            点击你喜欢的猫咪，看看它们的小秘密 ♡
         </p>
 
-        <a class="meow-button"
-           href="#"
-           onclick="alert('喵喵喵！♡ 今天也要开心哦！🐱🎀')">
-            点我听猫咪说话 ♡
-        </a>
-    </section>
+    </div>
 
 
-    <h2 class="title">🎀 Cute Cat Gallery 🎀</h2>
+    <div class="cat-grid">
 
-    <section class="gallery">
 
-        <div class="photo-card">
-            <img
-                src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=800&q=80"
-                alt="可爱的猫咪">
-            <p>♡ 可爱的小猫 ♡</p>
+        <!-- 猫咪 1 -->
+
+        <article class="cat-card">
+
+            <div class="cat-picture">
+                🐱
+            </div>
+
+            <div class="cat-info">
+
+                <h3>莓莓 Strawberry</h3>
+
+                <p>
+                    一只超级爱撒娇的小猫，
+                    最喜欢粉色、草莓和午睡。
+                </p>
+
+                <div class="cat-tags">
+
+                    <span class="tag">
+                        甜甜的
+                    </span>
+
+                    <span class="tag">
+                        爱撒娇
+                    </span>
+
+                    <span class="tag">
+                        爱睡觉
+                    </span>
+
+                </div>
+
+                <button
+                    class="cat-button"
+                    onclick="openCat(
+                        '🐱',
+                        '莓莓 Strawberry',
+                        '莓莓是一只非常温柔的小猫。她每天最喜欢做的事情就是找一个舒服的小角落睡觉，然后突然跑过来向你撒娇。她最喜欢草莓味的小零食！'
+                    )">
+
+                    查看莓莓 ♡
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- 猫咪 2 -->
+
+        <article class="cat-card">
+
+            <div class="cat-picture">
+                🐈
+            </div>
+
+            <div class="cat-info">
+
+                <h3>奶糖 Milky</h3>
+
+                <p>
+                    外表高冷，实际上是一只
+                    非常黏人的小可爱。
+                </p>
+
+                <div class="cat-tags">
+
+                    <span class="tag">
+                        高冷
+                    </span>
+
+                    <span class="tag">
+                        黏人
+                    </span>
+
+                    <span class="tag">
+                        好奇
+                    </span>
+
+                </div>
+
+                <button
+                    class="cat-button"
+                    onclick="openCat(
+                        '🐈',
+                        '奶糖 Milky',
+                        '奶糖看起来总是一副高冷的样子，但是只要你坐下来，他就会偷偷跑到你旁边。最喜欢窗边晒太阳，也喜欢观察外面的世界。'
+                    )">
+
+                    查看奶糖 ♡
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <!-- 猫咪 3 -->
+
+        <article class="cat-card">
+
+            <div class="cat-picture">
+                🐈‍⬛
+            </div>
+
+            <div class="cat-info">
+
+                <h3>黑糖 Coco</h3>
+
+                <p>
+                    一只神秘又可爱的黑猫，
+                    晚上特别活跃。
+                </p>
+
+                <div class="cat-tags">
+
+                    <span class="tag">
+                        神秘
+                    </span>
+
+                    <span class="tag">
+                        活泼
+                    </span>
+
+                    <span class="tag">
+                        夜猫子
+                    </span>
+
+                </div>
+
+                <button
+                    class="cat-button"
+                    onclick="openCat(
+                        '🐈‍⬛',
+                        '黑糖 Coco',
+                        '黑糖是一只非常聪明的黑猫。白天喜欢睡觉，到了晚上就开始探索整个房间。他最喜欢玩小球和追逐影子。'
+                    )">
+
+                    查看黑糖 ♡
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ========================= 猫咪日记 ========================= -->
+
+<section class="diary" id="diary">
+
+<div class="section-container">
+
+    <div class="section-title">
+
+        <span>CAT DIARY</span>
+
+        <h2>📖 猫咪小日记</h2>
+
+        <p>
+            记录一些猫咪的小故事。
+        </p>
+
+    </div>
+
+
+    <div class="diary-grid">
+
+
+        <article class="diary-card">
+
+            <div class="diary-date">
+                SEPTEMBER 01
+            </div>
+
+            <h3>
+                🌸 今天又睡了一整天
+            </h3>
+
+            <p>
+                上午十点醒来，吃了一点东西，
+                然后继续睡觉。下午醒来以后，
+                又开始睡觉。
+            </p>
+
+        </article>
+
+
+        <article class="diary-card">
+
+            <div class="diary-date">
+                AUGUST 28
+            </div>
+
+            <h3>
+                🎀 找到了新玩具
+            </h3>
+
+            <p>
+                今天发现了一个新的毛线球。
+                玩了整整两个小时，最后把它藏到了沙发下面。
+            </p>
+
+        </article>
+
+
+        <article class="diary-card">
+
+            <div class="diary-date">
+                AUGUST 20
+            </div>
+
+            <h3>
+                💗 今天被摸摸了
+            </h3>
+
+            <p>
+                今天得到了好多好多摸摸。
+                于是决定暂时不捣乱了。
+            </p>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ========================= 猫咪说话 ========================= -->
+
+<section class="voice" id="voice">
+
+<div class="voice-box">
+
+    <div class="voice-cat">
+        🐱
+    </div>
+
+    <h2>
+        🔊 猫咪说话时间
+    </h2>
+
+    <p>
+        点击下面的按钮，让猫咪和你说话吧！
+    </p>
+
+
+    <div class="voice-buttons">
+
+        <button
+            class="voice-button"
+            onclick="sayCat('喵～你好呀！')">
+
+            🐱 你好
+
+        </button>
+
+
+        <button
+            class="voice-button"
+            onclick="sayCat('喵喵！我今天超级开心！')">
+
+            💗 开心
+
+        </button>
+
+
+        <button
+            class="voice-button"
+            onclick="sayCat('喵……我困了，我要睡觉了。')">
+
+            😴 困了
+
+        </button>
+
+
+        <button
+            class="voice-button"
+            onclick="sayCat('喵！给我一点小鱼干！')">
+
+            🐟 要零食
+
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ========================= 猫咪知识 ========================= -->
+
+<section class="facts">
+
+<div class="section-container">
+
+    <div class="section-title">
+
+        <span>DID YOU KNOW?</span>
+
+        <h2>✨ 猫咪小知识</h2>
+
+    </div>
+
+
+    <div class="fact-box">
+
+        <div class="fact-icon">
+            🐾
         </div>
 
-        <div class="photo-card">
-            <img
-                src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=800&q=80"
-                alt="漂亮的猫咪">
-            <p>🎀 Pretty Kitty 🎀</p>
-        </div>
+        <h3>
+            猫咪每天可以睡很久！
+        </h3>
 
-        <div class="photo-card">
-            <img
-                src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=800&q=80"
-                alt="睡觉的猫咪">
-            <p>🌙 睡觉觉的小猫</p>
-        </div>
+        <p>
+            猫咪通常会花很多时间休息和睡觉。
+            这是因为它们需要保存能量，
+            所以看到猫咪睡觉的时候，
+            不要觉得它们“什么都没做”哦！
+        </p>
 
-    </section>
+    </div>
 
+</div>
 
-    <h2 class="title">🌸 Cat's Little Life 🌸</h2>
+</section>
 
-    <section class="cards">
+<!-- ========================= 联系 ========================= -->
 
-        <div class="card">
-            <div class="emoji">😴</div>
-            <h3>Sleep</h3>
-            <p>每天都要睡好多好多觉。</p>
-        </div>
+<section class="contact" id="contact">
 
-        <div class="card">
-            <div class="emoji">🍓</div>
-            <h3>Snack</h3>
-            <p>小零食是一天中最幸福的事情。</p>
-        </div>
+<div class="contact-box">
 
-        <div class="card">
-            <div class="emoji">🧶</div>
-            <h3>Play</h3>
-            <p>和小玩具一起开心玩耍！</p>
-        </div>
+    <h2>
+        💌 给猫咪一个拥抱
+    </h2>
 
-        <div class="card">
-            <div class="emoji">💗</div>
-            <h3>Love</h3>
-            <p>每天都要被满满的爱包围。</p>
-        </div>
+    <p>
+        如果你也喜欢猫咪，
+        那么今天也要记得开心一点哦 ♡
+    </p>
 
-    </section>
+    <button
+        class="primary-button"
+        onclick="sayCat('谢谢你喜欢猫咪！喵～♡')">
 
-</main>
+        ♡ 对猫咪说我爱你
 
+    </button>
+
+</div>
+
+</section>
+
+<!-- ========================= Footer ========================= -->
 
 <footer>
-    <p>♡ Made with love for cats ♡</p>
-    <p>🐾 2026 My Little Cat 🎀</p>
+
+<div class="footer-logo">
+    ♡ Pinky Cat World ♡
+</div>
+
+<p>
+    Made with love, pink & cats 🎀🐱
+</p>
+
+<p>
+    © 2026 My Little Cat Website
+</p>
+
 </footer>
+
+<!-- ========================= 猫咪详情弹窗 ========================= -->
+
+<div class="modal" id="catModal">
+
+<div class="modal-content">
+
+    <button
+        class="close"
+        onclick="closeCat()">
+
+        ×
+
+    </button>
+
+    <div
+        class="modal-cat"
+        id="modalCat">
+
+        🐱
+
+    </div>
+
+    <h2 id="modalTitle">
+        猫咪
+    </h2>
+
+    <p id="modalText">
+        猫咪介绍
+    </p>
+
+    <br>
+
+    <button
+        class="primary-button"
+        onclick="sayCat('喵～很高兴认识你！')">
+
+        🔊 和我说话
+
+    </button>
+
+</div>
+
+</div>
+
+<script> /* ========================= 猫咪语音 ========================= */ function sayCat(text) { if ("speechSynthesis" in window) { window.speechSynthesis.cancel(); const voice = new SpeechSynthesisUtterance(text); voice.lang = "zh-CN"; voice.rate = 0.85; voice.pitch = 1.5; window.speechSynthesis.speak(voice); } else { alert(text); } } /* ========================= 打开猫咪详情 ========================= */ function openCat(icon, title, text) { document.getElementById("modalCat") .textContent = icon; document.getElementById("modalTitle") .textContent = title; document.getElementById("modalText") .textContent = text; document.getElementById("catModal") .classList.add("active"); } /* ========================= 关闭猫咪详情 ========================= */ function closeCat() { document.getElementById("catModal") .classList.remove("active"); } /* 点击背景关闭 */ document.getElementById("catModal") .addEventListener( "click", function(event) { if (event.target === this) { closeCat(); } } ); </script>
 
 </body> </html>
