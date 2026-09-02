@@ -1,936 +1,410 @@
 <!DOCTYPE html>
 
-<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Herly — Your Little Life Assistant</title>
 
-<title>Herly — Your Little Life Assistant</title>
-
-<meta name="description" content="Herly is a beautiful digital life assistant for women — money, relationships, everyday life, beauty, fashion, study and work.">
-
-<style> /* ========================================================= HERLY — GLOBAL ========================================================= */ :root{ --pink:#ff6fae; --pink-dark:#e94e91; --pink-light:#fff1f7; --pink-soft:#ffe1ee; --rose:#f7a8c9; --purple:#9b7cff; --purple-light:#eee9ff; --cream:#fffafc; --white:#ffffff; --text:#302431; --text-soft:#685966; --muted:#9a8995; --border:#f1dce7; --shadow:0 20px 60px rgba(197,91,139,.12); --shadow-small:0 10px 30px rgba(197,91,139,.08); --radius:24px; } *{ box-sizing:border-box; margin:0; padding:0; } html{ scroll-behavior:smooth; } body{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color:var(--text); background: radial-gradient( circle at 5% 5%, rgba(255,214,232,.75), transparent 28% ), radial-gradient( circle at 95% 15%, rgba(232,225,255,.75), transparent 28% ), linear-gradient( 180deg, #fffafd 0%, #ffffff 50%, #fff9fc 100% ); min-height:100vh; } button, input, textarea{ font-family:inherit; } /* ========================================================= NAVIGATION ========================================================= */ .navbar{ position:sticky; top:0; z-index:1000; background:rgba(255,255,255,.78); backdrop-filter:blur(20px); border-bottom:1px solid rgba(255,255,255,.9); } .nav-inner{ max-width:1220px; margin:auto; height:76px; padding:0 24px; display:flex; align-items:center; justify-content:space-between; } .logo{ display:flex; align-items:center; gap:11px; color:var(--text); text-decoration:none; font-weight:950; font-size:23px; } .logo-mark{ width:43px; height:43px; display:grid; place-items:center; border-radius:15px; background: linear-gradient( 135deg, #ff69aa, #ffa6cd ); color:white; box-shadow: 0 10px 25px rgba(255,102,169,.25); } .nav-links{ display:flex; gap:27px; } .nav-links a{ text-decoration:none; color:#6f5d6b; font-size:14px; font-weight:750; transition:.2s; } .nav-links a:hover{ color:var(--pink-dark); } .nav-actions{ display:flex; align-items:center; gap:9px; } .nav-button{ height:42px; padding:0 16px; border-radius:13px; border:1px solid var(--border); background:white; cursor:pointer; font-weight:800; color:#675664; } .nav-vip{ border:0; color:white; background: linear-gradient( 135deg, #ff67a8, #9c7cff ); box-shadow: 0 9px 22px rgba(224,89,151,.2); } /* ========================================================= HERO ========================================================= */ .hero{ max-width:1220px; margin:auto; padding: 90px 24px 80px; text-align:center; } .hero-badge{ display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border-radius:999px; background:white; border:1px solid #ffd7e7; color:#d95091; font-size:13px; font-weight:850; box-shadow:var(--shadow-small); } .hero h1{ margin-top:27px; font-size: clamp( 48px, 8vw, 88px ); line-height:1; letter-spacing:-4px; font-weight:950; } .gradient{ background: linear-gradient( 90deg, #ff579e, #b078ff ); -webkit-background-clip:text; background-clip:text; color:transparent; } .hero-description{ max-width:690px; margin: 25px auto 0; color:var(--text-soft); font-size:17px; line-height:1.8; } .hero-buttons{ display:flex; justify-content:center; gap:12px; margin-top:31px; flex-wrap:wrap; } .primary{ border:0; padding: 15px 24px; border-radius:15px; color:white; cursor:pointer; font-weight:850; background: linear-gradient( 135deg, #ff5ba1, #e94f91 ); box-shadow: 0 12px 27px rgba(231,75,143,.24); transition:.2s; } .primary:hover{ transform:translateY(-2px); } .secondary{ border:1px solid var(--border); background:white; padding: 14px 23px; border-radius:15px; cursor:pointer; font-weight:800; color:#6b5966; } /* ========================================================= QUICK STATS ========================================================= */ .stats{ max-width:930px; margin: -15px auto 50px; padding: 20px; display:grid; grid-template-columns: repeat(3,1fr); gap:12px; } .stat{ background:white; border: 1px solid var(--border); border-radius:19px; padding:21px; text-align:center; box-shadow:var(--shadow-small); } .stat strong{ display:block; font-size:24px; font-weight:950; } .stat span{ color:var(--muted); font-size:12px; } /* ========================================================= MAIN ========================================================= */ .container{ max-width:1220px; margin:auto; padding: 0 24px 90px; } .section{ margin-top:58px; } .section-heading{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:21px; } .section-heading h2{ font-size:30px; letter-spacing:-1px; font-weight:950; } .section-heading p{ color:var(--muted); font-size:14px; margin-top:7px; } /* ========================================================= SEARCH ========================================================= */ .search-wrapper{ position:relative; max-width:670px; margin: 0 auto 35px; } .search-wrapper input{ width:100%; height:58px; padding: 0 20px 0 52px; border: 1px solid var(--border); border-radius:18px; outline:none; background:white; box-shadow:var(--shadow-small); font-size:14px; } .search-wrapper span{ position:absolute; left:19px; top:18px; font-size:19px; } /* ========================================================= CATEGORY ========================================================= */ .categories{ display:flex; gap:9px; flex-wrap:wrap; margin-bottom:20px; } .category{ border: 1px solid var(--border); background:white; color:#765f70; border-radius:999px; padding: 10px 15px; cursor:pointer; font-size:13px; font-weight:750; } .category.active, .category:hover{ background:var(--pink-light); color:#d84e90; border-color:#ffc3dc; } /* ========================================================= TOOL CARDS ========================================================= */ .tool-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:17px; } .tool-card{ position:relative; min-height:205px; padding:22px; background: rgba(255,255,255,.9); border: 1px solid var(--border); border-radius:23px; box-shadow: 0 12px 35px rgba(177,91,132,.065); cursor:pointer; transition: transform .25s, box-shadow .25s, border .25s; } .tool-card:hover{ transform:translateY(-6px); box-shadow: 0 25px 60px rgba(177,91,132,.13); border-color:#ffc5dd; } .tool-icon{ width:53px; height:53px; display:grid; place-items:center; border-radius:17px; background: linear-gradient( 135deg, #fff0f7, #f0ebff ); font-size:25px; } .tool-card h3{ margin-top:16px; font-size:17px; font-weight:900; } .tool-card p{ margin-top:7px; color:var(--muted); font-size:13px; line-height:1.6; } .heart{ position:absolute; top:17px; right:17px; border:0; background:transparent; cursor:pointer; font-size:18px; color:#d7bdca; } .heart.saved{ color:#f04f96; } /* ========================================================= VIP SECTION ========================================================= */ .vip-section{ margin-top:80px; padding: 45px; border-radius:34px; background: radial-gradient( circle at 85% 5%, rgba(255,255,255,.7), transparent 25% ), linear-gradient( 135deg, #ffd9e9, #ebe5ff ); position:relative; overflow:hidden; } .vip-section::after{ content:"✦"; position:absolute; right:80px; bottom:-45px; font-size:190px; color:rgba(255,255,255,.35); } .vip-content{ position:relative; z-index:2; max-width:650px; } .vip-label{ display:inline-block; padding: 7px 12px; border-radius:999px; background:white; color:#9a68dc; font-size:12px; font-weight:900; } .vip-section h2{ margin-top:16px; font-size:35px; letter-spacing:-1px; font-weight:950; } .vip-section p{ margin-top:11px; color:#715f70; line-height:1.7; } .vip-features{ margin-top:22px; display:grid; grid-template-columns: repeat(2,1fr); gap:10px; } .vip-feature{ background: rgba(255,255,255,.65); border: 1px solid rgba(255,255,255,.8); padding:12px; border-radius:13px; font-size:13px; font-weight:750; } /* ========================================================= PRICING ========================================================= */ .pricing{ display:grid; grid-template-columns: repeat(2,1fr); gap:18px; max-width:800px; margin: 30px auto 0; } .price-card{ background:white; border: 1px solid var(--border); border-radius:27px; padding:29px; box-shadow:var(--shadow); position:relative; } .price-card.vip{ border: 2px solid #ff9dc5; transform:translateY(-6px); } .popular{ position:absolute; top:-13px; right:20px; background: linear-gradient( 135deg, #ff67a9, #9b7cff ); color:white; padding: 6px 11px; border-radius:999px; font-size:11px; font-weight:900; } .price-card h3{ font-size:21px; } .price{ margin-top:15px; font-size:39px; font-weight:950; } .price span{ font-size:13px; color:var(--muted); font-weight:600; } .price-list{ margin-top:21px; list-style:none; } .price-list li{ padding: 9px 0; color:#705e6c; font-size:13px; border-bottom: 1px solid #f6e9ef; } .price-list li:last-child{ border-bottom:0; } /* ========================================================= MODAL ========================================================= */ .modal{ position:fixed; inset:0; z-index:3000; display:none; align-items:center; justify-content:center; padding:20px; background: rgba(38,22,33,.38); backdrop-filter:blur(10px); } .modal.show{ display:flex; } .modal-box{ width: min( 650px, 100% ); max-height:90vh; overflow:auto; background:white; border-radius:30px; padding:31px; box-shadow: 0 40px 100px rgba(0,0,0,.22); animation: modalPop .25s ease; } @keyframes modalPop{ from{ opacity:0; transform: translateY(15px) scale(.97); } to{ opacity:1; transform:none; } } .modal-header{ display:flex; justify-content:space-between; align-items:flex-start; } .modal-icon{ font-size:42px; } .modal-header h2{ margin-top:7px; font-size:25px; } .close{ width:40px; height:40px; border:0; border-radius:13px; background:var(--pink-light); cursor:pointer; font-size:17px; } .form-group{ margin-top:17px; } .form-group label{ display:block; font-size:13px; font-weight:850; } .input, .textarea{ width:100%; margin-top:8px; border: 1px solid #eadce4; border-radius:13px; padding:13px; outline:none; font-size:14px; background:white; } .input:focus, .textarea:focus{ border-color:#ff91bc; box-shadow: 0 0 0 4px #fff0f7; } .result{ margin-top:20px; padding:18px; border-radius:15px; background:#fff4f8; border: 1px solid #ffd8e8; line-height:1.7; font-weight:750; word-break:break-word; } .modal-actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; } .small-button{ border: 1px solid #efdce6; background:white; padding: 12px 16px; border-radius:12px; cursor:pointer; font-weight:750; } /* ========================================================= LOCKED VIP ========================================================= */ .locked{ overflow:hidden; } .lock-overlay{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background: rgba(255,255,255,.86); backdrop-filter:blur(5px); border-radius:23px; } .lock-overlay strong{ font-size:19px; } .lock-overlay span{ margin-top:5px; color:var(--muted); font-size:12px; } .unlock-button{ margin-top:13px; border:0; background: linear-gradient( 135deg, #ff67a8, #9c7cff ); color:white; padding: 10px 16px; border-radius:12px; cursor:pointer; font-weight:850; } /* ========================================================= FOOTER ========================================================= */ footer{ border-top: 1px solid #f1e1e9; background: rgba(255,255,255,.7); } .footer-inner{ max-width:1220px; margin:auto; padding: 48px 24px; display:flex; justify-content:space-between; gap:30px; } .footer-logo{ font-size:21px; font-weight:950; } .footer-inner p{ margin-top:8px; color:var(--muted); font-size:13px; } .footer-links{ display:flex; gap:20px; flex-wrap:wrap; } .footer-links a{ color:#7c6876; text-decoration:none; font-size:13px; } /* ========================================================= RESPONSIVE ========================================================= */ @media(max-width:950px){ .tool-grid{ grid-template-columns: repeat(2,1fr); } .nav-links{ display:none; } } @media(max-width:600px){ .hero{ padding-top:55px; } .hero h1{ letter-spacing:-2px; } .stats{ grid-template-columns:1fr; } .tool-grid{ grid-template-columns:1fr; } .vip-section{ padding:30px 22px; } .vip-features{ grid-template-columns:1fr; } .pricing{ grid-template-columns:1fr; } .price-card.vip{ transform:none; } .footer-inner{ flex-direction:column; } } /* ========================================================= DARK MODE ========================================================= */ body.dark{ --text:#f8eaf2; --text-soft:#c9b5c2; --muted:#ae9aa8; --border:#453442; background: radial-gradient( circle at 10% 10%, #3c2534, transparent 30% ), radial-gradient( circle at 90% 15%, #2c2740, transparent 30% ), #171218; } body.dark .navbar{ background: rgba(24,17,24,.82); } body.dark .nav-links a, body.dark .logo{ color:#f8eaf2; } body.dark .nav-button, body.dark .tool-card, body.dark .search-wrapper input, body.dark .category, body.dark .secondary, body.dark .price-card, body.dark .modal-box{ background:#251c25; color:#f8eaf2; border-color:#463441; } body.dark .tool-card p, body.dark .section-heading p, body.dark .hero-description{ color:#bcaab7; } body.dark .locked .lock-overlay{ background:rgba(37,28,37,.9); } body.dark footer{ background:#1b141b; border-color:#3b2935; } </style>
+<style> :root{ --pink:#ff6fae; --pink2:#ff9ac7; --rose:#fff0f6; --rose2:#ffe1ed; --purple:#9d7bea; --purple2:#e9ddff; --text:#302536; --muted:#887d8b; --white:#ffffff; --bg:#fff9fc; --card:#ffffff; --border:#f2dce7; --shadow:0 15px 45px rgba(210,120,160,.12); --radius:24px; } *{ box-sizing:border-box; margin:0; padding:0; } html{ scroll-behavior:smooth; } body{ font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background: radial-gradient(circle at 10% 10%,rgba(255,174,208,.18),transparent 25%), radial-gradient(circle at 90% 15%,rgba(190,160,255,.16),transparent 22%), var(--bg); color:var(--text); line-height:1.6; transition:.3s; } body.dark{ --text:#f8edf4; --muted:#b8a8b5; --bg:#17131a; --card:#211b24; --border:#382c38; --rose:#30202b; --rose2:#412637; --shadow:0 15px 45px rgba(0,0,0,.25); background: radial-gradient(circle at 10% 10%,rgba(255,105,170,.10),transparent 25%), radial-gradient(circle at 90% 15%,rgba(160,120,255,.10),transparent 22%), var(--bg); } button,input,select,textarea{ font:inherit; } button{ cursor:pointer; border:none; } a{ text-decoration:none; color:inherit; } .container{ width:min(1180px,92%); margin:auto; } /* NAV */ .nav{ position:sticky; top:0; z-index:100; backdrop-filter:blur(18px); background:rgba(255,249,252,.78); border-bottom:1px solid var(--border); } body.dark .nav{ background:rgba(23,19,26,.82); } .nav-inner{ height:76px; display:flex; align-items:center; justify-content:space-between; gap:20px; } .logo{ display:flex; align-items:center; gap:10px; font-size:23px; font-weight:900; } .logo-heart{ width:40px; height:40px; border-radius:14px; display:grid; place-items:center; background:linear-gradient(135deg,var(--pink),var(--purple)); color:white; box-shadow:0 8px 20px rgba(255,111,174,.25); } .nav-links{ display:flex; align-items:center; gap:24px; color:var(--muted); font-size:14px; font-weight:700; } .nav-links a:hover{ color:var(--pink); } .nav-actions{ display:flex; align-items:center; gap:9px; } .icon-btn{ width:42px; height:42px; border-radius:14px; background:var(--card); border:1px solid var(--border); color:var(--text); } .vip-btn{ padding:11px 17px; border-radius:14px; color:white; font-weight:800; background:linear-gradient(135deg,var(--pink),var(--purple)); box-shadow:0 8px 20px rgba(255,111,174,.22); } .mobile-menu{ display:none; } /* HERO */ .hero{ padding:75px 0 40px; } .hero-grid{ display:grid; grid-template-columns:1.25fr .75fr; gap:30px; align-items:stretch; } .hero-main{ padding:45px; min-height:410px; border-radius:34px; background: radial-gradient(circle at 90% 10%,rgba(255,255,255,.8),transparent 25%), linear-gradient(135deg,#ffd8e8,#f2e5ff); position:relative; overflow:hidden; } body.dark .hero-main{ background:linear-gradient(135deg,#482638,#302448); } .hero-main:after{ content:""; position:absolute; width:250px; height:250px; right:-70px; bottom:-100px; border-radius:50%; background:rgba(255,255,255,.3); } .eyebrow{ display:inline-flex; padding:7px 12px; border-radius:999px; background:rgba(255,255,255,.7); font-size:12px; font-weight:800; color:#b14d7d; margin-bottom:20px; } .hero h1{ font-size:clamp(42px,6vw,70px); line-height:1.02; letter-spacing:-3px; max-width:720px; } .gradient-text{ background:linear-gradient(90deg,#ff579f,#9c72ec); -webkit-background-clip:text; color:transparent; } .hero p{ max-width:580px; color:#735d6b; margin:20px 0 28px; font-size:17px; } body.dark .hero p{ color:#cdbac8; } .hero-buttons{ display:flex; gap:12px; flex-wrap:wrap; } .primary{ padding:14px 20px; border-radius:16px; background:var(--text); color:var(--bg); font-weight:850; } .secondary{ padding:14px 20px; border-radius:16px; background:rgba(255,255,255,.72); border:1px solid rgba(255,255,255,.8); font-weight:800; } .hero-side{ display:flex; flex-direction:column; gap:15px; } .quick-card{ flex:1; background:var(--card); border:1px solid var(--border); border-radius:26px; padding:24px; box-shadow:var(--shadow); } .quick-card h3{ margin:9px 0 5px; } .quick-card p{ font-size:13px; color:var(--muted); } .progress{ height:9px; background:var(--rose); border-radius:999px; overflow:hidden; margin-top:17px; } .progress div{ height:100%; width:68%; background:linear-gradient(90deg,var(--pink),var(--purple)); border-radius:999px; } /* SEARCH */ .search-box{ margin:20px 0 50px; position:relative; } .search-box input{ width:100%; padding:18px 22px 18px 52px; border-radius:18px; border:1px solid var(--border); outline:none; background:var(--card); color:var(--text); box-shadow:var(--shadow); } .search-icon{ position:absolute; left:19px; top:15px; font-size:21px; } /* SECTION */ .section{ padding:45px 0; } .section-head{ display:flex; justify-content:space-between; align-items:end; margin-bottom:24px; gap:15px; } .section-head h2{ font-size:30px; letter-spacing:-1px; } .section-head p{ color:var(--muted); font-size:14px; } .view-all{ color:var(--pink); font-weight:800; font-size:14px; } /* CATEGORIES */ .category-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; } .category{ background:var(--card); border:1px solid var(--border); border-radius:22px; padding:22px 17px; transition:.2s; box-shadow:var(--shadow); } .category:hover{ transform:translateY(-4px); border-color:var(--pink2); } .category-icon{ width:48px; height:48px; border-radius:16px; display:grid; place-items:center; font-size:23px; background:var(--rose); margin-bottom:14px; } .category h3{ font-size:15px; } .category p{ font-size:12px; color:var(--muted); margin-top:3px; } /* TOOL CARDS */ .tool-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:17px; } .tool-card{ position:relative; background:var(--card); border:1px solid var(--border); border-radius:24px; padding:23px; box-shadow:var(--shadow); transition:.22s; overflow:hidden; } .tool-card:hover{ transform:translateY(-5px); border-color:var(--pink2); } .tool-top{ display:flex; justify-content:space-between; align-items:flex-start; } .tool-icon{ width:48px; height:48px; border-radius:16px; display:grid; place-items:center; background:var(--rose); font-size:23px; } .favorite{ background:none; color:#c7b9c1; font-size:20px; } .favorite.active{ color:var(--pink); } .tool-card h3{ margin:18px 0 5px; font-size:17px; } .tool-card p{ color:var(--muted); font-size:13px; min-height:42px; } .tool-btn{ width:100%; margin-top:18px; padding:12px; border-radius:14px; background:var(--rose); color:var(--text); font-weight:800; } .tool-btn:hover{ background:var(--rose2); } .vip-tag{ display:inline-block; margin-top:10px; padding:4px 8px; border-radius:7px; background:#f2e7ff; color:#8c62cf; font-size:10px; font-weight:900; } /* DASHBOARD */ .dashboard{ display:grid; grid-template-columns:1.3fr .7fr; gap:20px; } .panel{ background:var(--card); border:1px solid var(--border); border-radius:25px; padding:24px; box-shadow:var(--shadow); } .panel h3{ margin-bottom:18px; } .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; } .stat{ background:var(--rose); padding:18px; border-radius:18px; } .stat small{ color:var(--muted); font-size:11px; } .stat strong{ display:block; font-size:24px; margin-top:3px; } .todo-input{ display:flex; gap:8px; margin-bottom:14px; } .todo-input input{ flex:1; } input,select,textarea{ border:1px solid var(--border); background:var(--bg); color:var(--text); border-radius:13px; padding:12px; outline:none; } textarea{ resize:vertical; } .add-btn{ padding:0 15px; border-radius:13px; background:var(--pink); color:white; font-weight:800; } .todo-list{ list-style:none; display:flex; flex-direction:column; gap:8px; } .todo-list li{ padding:12px; border-radius:13px; background:var(--rose); display:flex; justify-content:space-between; align-items:center; font-size:13px; } .todo-list li.done span{ text-decoration:line-through; opacity:.5; } .delete{ background:none; color:#bdaab5; } /* BIG FEATURE */ .feature{ margin:45px 0; padding:38px; border-radius:30px; background:linear-gradient(135deg,#31243a,#5e3555); color:white; position:relative; overflow:hidden; } .feature-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:center; } .feature h2{ font-size:38px; line-height:1.1; margin-bottom:13px; } .feature p{ color:#dfcbd9; font-size:14px; } .feature-list{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:22px; } .feature-list div{ padding:12px; border:1px solid rgba(255,255,255,.12); border-radius:13px; background:rgba(255,255,255,.05); font-size:13px; } .feature-box{ background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.12); border-radius:25px; padding:25px; } .fake-phone{ background:#fff; color:#302536; border-radius:25px; padding:20px; } .fake-phone-top{ display:flex; justify-content:space-between; font-weight:900; } .mini-row{ display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #eee; font-size:13px; } /* PRICING */ .pricing{ display:grid; grid-template-columns:1fr 1fr; gap:18px; } .price-card{ background:var(--card); border:1px solid var(--border); border-radius:28px; padding:30px; box-shadow:var(--shadow); } .price-card.featured{ border:2px solid var(--pink); position:relative; } .popular{ position:absolute; right:20px; top:18px; background:var(--pink); color:white; padding:5px 9px; border-radius:999px; font-size:10px; font-weight:900; } .price{ font-size:43px; font-weight:900; margin:10px 0; } .price span{ font-size:13px; color:var(--muted); font-weight:500; } .features{ list-style:none; margin:20px 0; } .features li{ padding:7px 0; font-size:14px; } .price-button{ width:100%; padding:14px; border-radius:15px; background:var(--text); color:var(--bg); font-weight:900; } .featured .price-button{ background:linear-gradient(90deg,var(--pink),var(--purple)); color:white; } /* FAQ */ .faq{ display:flex; flex-direction:column; gap:10px; } .faq-item{ background:var(--card); border:1px solid var(--border); border-radius:18px; overflow:hidden; } .faq-q{ width:100%; text-align:left; padding:18px; background:none; color:var(--text); display:flex; justify-content:space-between; font-weight:800; } .faq-a{ display:none; padding:0 18px 18px; color:var(--muted); font-size:14px; } .faq-item.open .faq-a{ display:block; } /* FOOTER */ footer{ margin-top:70px; padding:45px 0; border-top:1px solid var(--border); } .footer-grid{ display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:30px; } .footer-brand p{ color:var(--muted); font-size:13px; max-width:350px; margin-top:12px; } .footer-col h4{ margin-bottom:12px; } .footer-col a{ display:block; color:var(--muted); font-size:13px; margin:8px 0; } /* MODAL */ .modal{ display:none; position:fixed; inset:0; background:rgba(30,18,28,.58); backdrop-filter:blur(7px); z-index:500; padding:20px; align-items:center; justify-content:center; } .modal.show{ display:flex; } .modal-box{ width:min(560px,100%); max-height:90vh; overflow:auto; background:var(--card); border:1px solid var(--border); border-radius:28px; padding:28px; box-shadow:0 30px 100px rgba(0,0,0,.2); animation:pop .2s ease; } @keyframes pop{ from{transform:scale(.94);opacity:0} to{transform:scale(1);opacity:1} } .modal-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; } .close{ width:38px; height:38px; border-radius:12px; background:var(--rose); color:var(--text); } .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; } .form-group{ margin-bottom:14px; } .form-group.full{ grid-column:1/-1; } .form-group label{ display:block; font-size:12px; font-weight:800; margin-bottom:6px; } .form-group input, .form-group select, .form-group textarea{ width:100%; } .calculate{ width:100%; padding:14px; border-radius:14px; background:linear-gradient(90deg,var(--pink),var(--purple)); color:white; font-weight:900; margin-top:5px; } .result{ margin-top:15px; padding:18px; background:var(--rose); border-radius:18px; font-size:14px; } .result strong{ font-size:25px; display:block; } /* HABITS */ .habit-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:15px; } .day{ aspect-ratio:1; border-radius:10px; background:var(--rose); display:grid; place-items:center; font-size:10px; cursor:pointer; } .day.active{ background:var(--pink); color:white; } /* MOOD */ .moods{ display:flex; gap:8px; flex-wrap:wrap; } .mood{ padding:10px 14px; border-radius:14px; background:var(--rose); font-size:20px; } .mood.selected{ outline:2px solid var(--pink); } /* TOAST */ .toast{ position:fixed; right:20px; bottom:20px; background:var(--text); color:var(--bg); padding:13px 18px; border-radius:15px; z-index:1000; transform:translateY(100px); opacity:0; transition:.3s; font-size:13px; font-weight:700; } .toast.show{ transform:translateY(0); opacity:1; } /* RESPONSIVE */ @media(max-width:950px){ .nav-links{ display:none; } .mobile-menu{ display:block; } .hero-grid, .dashboard, .feature-grid{ grid-template-columns:1fr; } .category-grid{ grid-template-columns:repeat(3,1fr); } .tool-grid{ grid-template-columns:repeat(2,1fr); } .footer-grid{ grid-template-columns:1fr 1fr; } } @media(max-width:650px){ .nav-inner{ height:68px; } .vip-btn{ display:none; } .hero{ padding-top:35px; } .hero-main{ padding:28px; min-height:auto; } .hero h1{ font-size:45px; letter-spacing:-2px; } .category-grid, .tool-grid, .pricing{ grid-template-columns:1fr; } .stats{ grid-template-columns:1fr; } .feature{ padding:25px; } .feature-list{ grid-template-columns:1fr; } .footer-grid{ grid-template-columns:1fr; } .form-grid{ grid-template-columns:1fr; } .form-group.full{ grid-column:auto; } } </style>
 
 </head>
 
 <body>
 
-<!-- ======================================================= NAVIGATION ======================================================= -->
+<!-- NAV -->
 
-<nav class="navbar">
+<nav class="nav"> <div class="container nav-inner">
 
-<div class="nav-inner">
+<a href="#" class="logo"> <span class="logo-heart">♥</span> <span>herly</span> </a>
 
-    <a href="#" class="logo">
+<div class="nav-links"> <a href="#tools">Tools</a> <a href="#dashboard">My Dashboard</a> <a href="#vip">VIP</a> <a href="#faq">FAQ</a> </div>
 
-        <div class="logo-mark">
-            ✿
-        </div>
+<div class="nav-actions"> <button class="icon-btn" onclick="toggleDark()" title="Dark mode">☾</button> <button class="vip-btn" onclick="openVIP()">Get VIP ✨</button> </div>
 
-        Herly
+</div> </nav>
 
-    </a>
+<!-- HERO -->
 
-    <div class="nav-links">
+<header class="hero"> <div class="container hero-grid">
 
-        <a href="#money">Money</a>
-
-        <a href="#love">Love</a>
-
-        <a href="#life">Life</a>
-
-        <a href="#beauty">Beauty</a>
-
-        <a href="#study">Study</a>
-
-        <a href="#vip">VIP</a>
-
-    </div>
-
-    <div class="nav-actions">
-
-        <button
-            class="nav-button"
-            onclick="toggleDark()"
-        >
-            🌙
-        </button>
-
-        <button
-            class="nav-button nav-vip"
-            onclick="scrollToVIP()"
-        >
-            ✨ Join VIP
-        </button>
-
-    </div>
-
-</div>
-
-</nav>
-
-<!-- ======================================================= HERO ======================================================= -->
-
-<section class="hero">
-
-<div class="hero-badge">
-    🌷 Made for everyday girl life
-</div>
+<div class="hero-main"> <div class="eyebrow">🎀 Your little life assistant</div>
 
 <h1>
-    Your little
-    <span class="gradient">
-        life assistant.
-    </span>
+    Make your life
+    <span class="gradient-text">a little easier.</span>
 </h1>
 
-<p class="hero-description">
-
-    Money, relationships, everyday life,
-    beauty, fashion, study and work —
-    everything you need, in one beautiful place.
-
+<p>
+    Money, love, beauty, study, travel and everyday life —
+    Herly puts the little things together in one beautiful place.
 </p>
 
 <div class="hero-buttons">
-
-    <button
-        class="primary"
-        onclick="document.getElementById('tools').scrollIntoView()"
-    >
-        Explore Herly ✨
+    <button class="primary" onclick="document.getElementById('tools').scrollIntoView()">
+        Explore tools ✨
     </button>
-
-    <button
-        class="secondary"
-        onclick="scrollToVIP()"
-    >
-        Discover VIP 💎
+    <button class="secondary" onclick="openTool('budget')">
+        Plan my money 💸
     </button>
-
-</div>
-
-</section>
-
-<!-- ======================================================= STATS ======================================================= -->
-
-<div class="stats">
-
-<div class="stat">
-    <strong>30+</strong>
-    <span>Everyday tools</span>
-</div>
-
-<div class="stat">
-    <strong>6</strong>
-    <span>Life categories</span>
-</div>
-
-<div class="stat">
-    <strong>100%</strong>
-    <span>Made for you</span>
 </div>
 
 </div>
 
-<!-- ======================================================= MAIN ======================================================= -->
+<div class="hero-side">
 
-<main class="container">
+<div class="quick-card"> <div style="font-size:28px">🌷</div> <h3>Today's little goal</h3> <p id="dailyGoal">Drink water & finish one important thing.</p>
+
+<div class="progress">
+    <div id="goalProgress"></div>
+</div>
+
+<button class="tool-btn" onclick="completeGoal()">I did it ✨</button>
+
+</div>
+
+<div class="quick-card"> <div style="font-size:28px">💗</div> <h3 id="welcomeTitle">Welcome to Herly</h3> <p>Your personal little dashboard is waiting for you.</p> </div>
+
+</div> </div> </header>
 
 <!-- SEARCH -->
 
-<div class="search-wrapper">
+<section class="container"> <div class="search-box"> <span class="search-icon">⌕</span> <input id="search" type="text" placeholder="What do you need help with? Try “budget”, “date”, “study”..." oninput="searchTools()" > </div> </section>
 
-<span>🔍</span>
+<!-- CATEGORIES -->
 
-<input
-    id="search"
-    placeholder="Search a tool — money, love, beauty..."
-    oninput="searchTools()"
->
+<section class="section" id="tools"> <div class="container">
+
+<div class="section-head"> <div> <h2>What do you need today? 🎀</h2> <p>Pick a little corner of your life.</p> </div> </div>
+
+<div class="category-grid">
+
+<div class="category" onclick="filterCategory('money')"> <div class="category-icon">💰</div> <h3>Money</h3> <p>Spend smarter</p> </div>
+
+<div class="category" onclick="filterCategory('love')"> <div class="category-icon">💕</div> <h3>Love & Social</h3> <p>Make moments sweeter</p> </div>
+
+<div class="category" onclick="filterCategory('life')"> <div class="category-icon">🏡</div> <h3>Everyday Life</h3> <p>Get life together</p> </div>
+
+<div class="category" onclick="filterCategory('beauty')"> <div class="category-icon">👗</div> <h3>Beauty & Fashion</h3> <p>Feel good</p> </div>
+
+<div class="category" onclick="filterCategory('study')"> <div class="category-icon">📚</div> <h3>Study & Work</h3> <p>Get things done</p> </div>
+
+</div> </div> </section>
+
+<!-- TOOLS -->
+
+<section class="section"> <div class="container">
+
+<div class="section-head"> <div> <h2>Popular tools ✨</h2> <p>Actually useful. Actually clickable.</p> </div> <button class="view-all" onclick="showAllTools()">View all</button> </div>
+
+<div class="tool-grid" id="toolGrid">
+
+<!-- MONEY -->
+
+<div class="tool-card" data-category="money" data-keywords="money budget discount shopping"> <div class="tool-top"> <div class="tool-icon">💸</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Discount Calculator</h3> <p>Find the real price before you buy.</p> <button class="tool-btn" onclick="openTool('discount')">Open calculator</button> </div>
+
+<div class="tool-card" data-category="money" data-keywords="tip restaurant money"> <div class="tool-top"> <div class="tool-icon">🍽️</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Tip Calculator</h3> <p>Calculate tips and split the bill.</p> <button class="tool-btn" onclick="openTool('tip')">Calculate</button> </div>
+
+<div class="tool-card" data-category="money" data-keywords="budget expenses money"> <div class="tool-top"> <div class="tool-icon">📊</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Monthly Budget</h3> <p>See where your money is going.</p> <span class="vip-tag">VIP</span> <button class="tool-btn" onclick="openTool('budget')">Build my budget</button> </div>
+
+<div class="tool-card" data-category="money" data-keywords="saving goal money"> <div class="tool-top"> <div class="tool-icon">🐷</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Saving Goal</h3> <p>Turn a dream into a monthly target.</p> <button class="tool-btn" onclick="openTool('saving')">Set a goal</button> </div>
+
+<div class="tool-card" data-category="money" data-keywords="salary hourly income work"> <div class="tool-top"> <div class="tool-icon">💼</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Salary & Hourly Pay</h3> <p>Understand your monthly and yearly income.</p> <button class="tool-btn" onclick="openTool('salary')">Calculate</button> </div>
+
+<div class="tool-card" data-category="money" data-keywords="subscription bills money"> <div class="tool-top"> <div class="tool-icon">🧾</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Subscription Checker</h3> <p>See how much subscriptions cost you.</p> <button class="tool-btn" onclick="openTool('subscription')">Check</button> </div>
+
+<!-- LOVE -->
+
+<div class="tool-card" data-category="love" data-keywords="love relationship anniversary"> <div class="tool-top"> <div class="tool-icon">💕</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Love Days</h3> <p>How long have you been together?</p> <button class="tool-btn" onclick="openTool('love')">Count our days</button> </div>
+
+<div class="tool-card" data-category="love" data-keywords="date relationship"> <div class="tool-top"> <div class="tool-icon">🌹</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Date Idea Generator</h3> <p>Need a cute idea for tonight?</p> <button class="tool-btn" onclick="openTool('date')">Give me an idea</button> </div>
+
+<div class="tool-card" data-category="love" data-keywords="gift present"> <div class="tool-top"> <div class="tool-icon">🎁</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Gift Planner</h3> <p>Plan the perfect gift without overspending.</p> <button class="tool-btn" onclick="openTool('gift')">Plan gift</button> </div>
+
+<div class="tool-card" data-category="love" data-keywords="anniversary birthday"> <div class="tool-top"> <div class="tool-icon">💌</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Important Dates</h3> <p>Keep birthdays and anniversaries organized.</p> <span class="vip-tag">VIP</span> <button class="tool-btn" onclick="openVIP()">Unlock planner</button> </div>
+
+<!-- LIFE -->
+
+<div class="tool-card" data-category="life" data-keywords="packing travel"> <div class="tool-top"> <div class="tool-icon">🧳</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Travel Packing List</h3> <p>Build a packing checklist in seconds.</p> <button class="tool-btn" onclick="openTool('packing')">Pack with me</button> </div>
+
+<div class="tool-card" data-category="life" data-keywords="food dinner eat"> <div class="tool-top"> <div class="tool-icon">🍓</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>What Should I Eat?</h3> <p>Stop staring at the fridge.</p> <button class="tool-btn" onclick="openTool('food')">Choose for me</button> </div>
+
+<div class="tool-card" data-category="life" data-keywords="sleep"> <div class="tool-top"> <div class="tool-icon">🌙</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Sleep Planner</h3> <p>Choose a bedtime based on your wake-up time.</p> <button class="tool-btn" onclick="openTool('sleep')">Plan sleep</button> </div>
+
+<div class="tool-card" data-category="life" data-keywords="room cleaning"> <div class="tool-top"> <div class="tool-icon">🧺</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Room Reset</h3> <p>A tiny checklist for a fresh room.</p> <button class="tool-btn" onclick="openTool('room')">Reset room</button> </div>
+
+<div class="tool-card" data-category="life" data-keywords="shopping list grocery"> <div class="tool-top"> <div class="tool-icon">🛒</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Shopping List</h3> <p>Keep your grocery list in one place.</p> <button class="tool-btn" onclick="openTool('shopping')">Open list</button> </div>
+
+<div class="tool-card" data-category="life" data-keywords="todo tasks"> <div class="tool-top"> <div class="tool-icon">✅</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Little To-Do List</h3> <p>Turn a messy brain into a simple list.</p> <button class="tool-btn" onclick="openTool('todo')">Open list</button> </div>
+
+<!-- BEAUTY -->
+
+<div class="tool-card" data-category="beauty" data-keywords="outfit fashion clothes"> <div class="tool-top"> <div class="tool-icon">👗</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>What Should I Wear?</h3> <p>Tell Herly the weather and mood.</p> <button class="tool-btn" onclick="openTool('outfit')">Style me</button> </div>
+
+<div class="tool-card" data-category="beauty" data-keywords="nail beauty color"> <div class="tool-top"> <div class="tool-icon">💅</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Nail Color Picker</h3> <p>Find your next manicure mood.</p> <button class="tool-btn" onclick="openTool('nails')">Pick a color</button> </div>
+
+<div class="tool-card" data-category="beauty" data-keywords="wardrobe clothes fashion"> <div class="tool-top"> <div class="tool-icon">👚</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>My Wardrobe</h3> <p>Organize your favorite pieces.</p> <span class="vip-tag">VIP</span> <button class="tool-btn" onclick="openVIP()">Unlock wardrobe</button> </div>
+
+<div class="tool-card" data-category="beauty" data-keywords="color palette"> <div class="tool-top"> <div class="tool-icon">🎨</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Personal Color Palette</h3> <p>Build a little palette for your aesthetic.</p> <button class="tool-btn" onclick="openTool('palette')">Create palette</button> </div>
+
+<!-- STUDY -->
+
+<div class="tool-card" data-category="study" data-keywords="pomodoro focus study"> <div class="tool-top"> <div class="tool-icon">🍅</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Pomodoro Focus</h3> <p>25 minutes of focus. Then breathe.</p> <button class="tool-btn" onclick="openTool('pomodoro')">Start focus</button> </div>
+
+<div class="tool-card" data-category="study" data-keywords="exam countdown study"> <div class="tool-top"> <div class="tool-icon">📖</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Exam Countdown</h3> <p>Know exactly how much time you have.</p> <button class="tool-btn" onclick="openTool('exam')">Set countdown</button> </div>
+
+<div class="tool-card" data-category="study" data-keywords="study planner"> <div class="tool-top"> <div class="tool-icon">📝</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Study Planner</h3> <p>Break a big subject into small sessions.</p> <span class="vip-tag">VIP</span> <button class="tool-btn" onclick="openVIP()">Unlock planner</button> </div>
+
+<div class="tool-card" data-category="study" data-keywords="resume career job"> <div class="tool-top"> <div class="tool-icon">💼</div> <button class="favorite" onclick="favoriteTool(this)">♡</button> </div> <h3>Resume Helper</h3> <p>Turn your experience into stronger CV bullets.</p> <span class="vip-tag">VIP</span> <button class="tool-btn" onclick="openVIP()">Unlock helper</button> </div>
+
+</div> </div> </section>
+
+<!-- DASHBOARD -->
+
+<section class="section" id="dashboard"> <div class="container">
+
+<div class="section-head"> <div> <h2>My little dashboard 🌷</h2> <p>Your private data is saved in this browser.</p> </div> </div>
+
+<div class="dashboard">
+
+<div class="panel"> <h3>Today's overview</h3>
+
+<div class="stats">
+    <div class="stat">
+        <small>Budget this month</small>
+        <strong id="dashBudget">€0</strong>
+    </div>
+
+    <div class="stat">
+        <small>Saved</small>
+        <strong id="dashSaved">€0</strong>
+    </div>
+
+    <div class="stat">
+        <small>Tasks done</small>
+        <strong id="dashTasks">0</strong>
+    </div>
+</div>
+
+<div style="margin-top:25px">
+    <h3>Little priorities</h3>
+
+    <div class="todo-input">
+        <input id="todoInput" placeholder="Add something you want to finish...">
+        <button class="add-btn" onclick="addTodo()">+</button>
+    </div>
+
+    <ul class="todo-list" id="todoList"></ul>
+</div>
 
 </div>
 
-<!-- ======================================================= MONEY ======================================================= -->
+<div class="panel"> <h3>How are you feeling?</h3>
 
-<section class="section" id="money" >
+<div class="moods">
+    <button class="mood" onclick="setMood(this,'🥰')">🥰</button>
+    <button class="mood" onclick="setMood(this,'😊')">😊</button>
+    <button class="mood" onclick="setMood(this,'😌')">😌</button>
+    <button class="mood" onclick="setMood(this,'😐')">😐</button>
+    <button class="mood" onclick="setMood(this,'😵‍💫')">😵‍💫</button>
+    <button class="mood" onclick="setMood(this,'😭')">😭</button>
+</div>
 
-<div class="section-heading">
+<div id="moodResult" style="margin-top:18px;color:var(--muted);font-size:13px">
+    Choose today's mood.
+</div>
 
-    <div>
+<h3 style="margin-top:25px">Habit tracker</h3>
 
-        <h2>💰 Money & Shopping</h2>
+<div class="habit-grid" id="habitGrid"></div>
 
-        <p>
-            Make smarter little money decisions.
-        </p>
-
-    </div>
+<button class="tool-btn" onclick="resetHabits()">Reset week</button>
 
 </div>
 
-<div class="tool-grid">
+</div> </div> </section>
 
-    <div
-        class="tool-card"
-        data-name="discount shopping discount"
-        onclick="openTool('discount')"
-    >
+<!-- FEATURE -->
 
-        <button
-            class="heart"
-            onclick="saveTool(event,this)"
-        >
-            ♡
-        </button>
+<section class="container"> <div class="feature">
 
-        <div class="tool-icon">🛍️</div>
+<div class="feature-grid">
 
-        <h3>Discount Calculator</h3>
+<div> <div style="font-size:14px;color:#ffb9d5;font-weight:800"> ✨ HERLY VIP </div>
 
-        <p>
-            See exactly how much you save during a sale.
-        </p>
+<h2>Your whole life.<br>One little dashboard.</h2>
 
-    </div>
+<p>
+    Save your plans, track your goals, organize your wardrobe,
+    manage important dates and make Herly work around your life.
+</p>
 
+<div class="feature-list">
+    <div>✓ No ads</div>
+    <div>✓ Save your history</div>
+    <div>✓ Advanced planning</div>
+    <div>✓ Personal wardrobe</div>
+    <div>✓ Study planner</div>
+    <div>✓ Export plans</div>
+</div>
 
-    <div
-        class="tool-card"
-        data-name="tip money restaurant"
-        onclick="openTool('tip')"
-    >
-
-        <button
-            class="heart"
-            onclick="saveTool(event,this)"
-        >
-            ♡
-        </button>
-
-        <div class="tool-icon">💸</div>
-
-        <h3>Tip Calculator</h3>
-
-        <p>
-            Split bills and calculate tips instantly.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card"
-        data-name="budget money"
-        onclick="openTool('budget')"
-    >
-
-        <button
-            class="heart"
-            onclick="saveTool(event,this)"
-        >
-            ♡
-        </button>
-
-        <div class="tool-icon">💰</div>
-
-        <h3>Monthly Budget</h3>
-
-        <p>
-            Plan your monthly spending in seconds.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card"
-        data-name="save money goal"
-        onclick="openTool('saving')"
-    >
-
-        <button
-            class="heart"
-            onclick="saveTool(event,this)"
-        >
-            ♡
-        </button>
-
-        <div class="tool-icon">🎯</div>
-
-        <h3>Saving Goal</h3>
-
-        <p>
-            Find out how much you need to save each month.
-        </p>
-
-    </div>
+<button class="vip-btn" style="margin-top:22px" onclick="openVIP()">
+    Explore VIP ✨
+</button>
 
 </div>
 
-</section>
+<div class="feature-box"> <div class="fake-phone">
 
-<!-- ======================================================= LOVE ======================================================= -->
-
-<section class="section" id="love" >
-
-<div class="section-heading">
-
-    <div>
-
-        <h2>💕 Love & Social</h2>
-
-        <p>
-            Little things that make relationships sweeter.
-        </p>
-
+    <div class="fake-phone-top">
+        <span>herly ♡</span>
+        <span>☼</span>
     </div>
 
-</div>
-
-<div class="tool-grid">
-
-    <div
-        class="tool-card"
-        data-name="love days relationship"
-        onclick="openTool('loveDays')"
-    >
-
-        <button
-            class="heart"
-            onclick="saveTool(event,this)"
-        >
-            ♡
-        </button>
-
-        <div class="tool-icon">💕</div>
-
-        <h3>Love Days</h3>
-
-        <p>
-            How many days have you been together?
-        </p>
-
+    <div style="margin:22px 0">
+        <small style="color:#988994">TODAY</small>
+        <h3>You've got this 🎀</h3>
     </div>
 
-
-    <div
-        class="tool-card"
-        data-name="date anniversary"
-        onclick="openTool('anniversary')"
-    >
-
-        <div class="tool-icon">🌹</div>
-
-        <h3>Anniversary Countdown</h3>
-
-        <p>
-            Count down to your special day.
-        </p>
-
+    <div class="mini-row">
+        <span>💰 Budget</span>
+        <strong>€240 left</strong>
     </div>
 
-
-    <div
-        class="tool-card"
-        data-name="gift budget"
-        onclick="openTool('gift')"
-    >
-
-        <div class="tool-icon">🎁</div>
-
-        <h3>Gift Budget</h3>
-
-        <p>
-            Find a comfortable gift budget.
-        </p>
-
+    <div class="mini-row">
+        <span>📚 Study</span>
+        <strong>2 sessions</strong>
     </div>
 
+    <div class="mini-row">
+        <span>💕 Anniversary</span>
+        <strong>12 days</strong>
+    </div>
 
-    <div
-        class="tool-card"
-        data-name="date ideas"
-        onclick="openTool('dateIdeas')"
-    >
-
-        <div class="tool-icon">🌷</div>
-
-        <h3>Date Idea Generator</h3>
-
-        <p>
-            Need an idea for tonight?
-        </p>
-
+    <div class="mini-row">
+        <span>🧘 Habit</span>
+        <strong>5 / 7</strong>
     </div>
 
 </div>
 
-</section>
-
-<!-- ======================================================= LIFE ======================================================= -->
-
-<section class="section" id="life" >
-
-<div class="section-heading">
-
-    <div>
-
-        <h2>🌿 Everyday Life</h2>
-
-        <p>
-            Make everyday life a little easier.
-        </p>
-
-    </div>
-
 </div>
 
-<div class="tool-grid">
+</div> </div> </section>
 
-    <div
-        class="tool-card"
-        data-name="packing travel suitcase"
-        onclick="openTool('packing')"
-    >
+<!-- PRICING -->
 
-        <div class="tool-icon">🧳</div>
+<section class="section" id="vip"> <div class="container">
 
-        <h3>Travel Packing List</h3>
-
-        <p>
-            Never forget your essentials again.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card"
-        data-name="food dinner"
-        onclick="openTool('food')"
-    >
-
-        <div class="tool-icon">🍝</div>
-
-        <h3>What Should I Eat?</h3>
-
-        <p>
-            Let Herly choose your next meal.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card"
-        data-name="sleep"
-        onclick="openTool('sleep')"
-    >
-
-        <div class="tool-icon">😴</div>
-
-        <h3>Sleep Planner</h3>
-
-        <p>
-            Find a better bedtime for tomorrow.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card"
-        data-name="cleaning home"
-        onclick="openTool('cleaning')"
-    >
-
-        <div class="tool-icon">🧹</div>
-
-        <h3>Room Reset</h3>
-
-        <p>
-            Get a simple room-cleaning plan.
-        </p>
-
-    </div>
-
-</div>
-
-</section>
-
-<!-- ======================================================= BEAUTY ======================================================= -->
-
-<section class="section" id="beauty" >
-
-<div class="section-heading">
-
-    <div>
-
-        <h2>💄 Beauty & Fashion</h2>
-
-        <p>
-            Outfit, colors, beauty and little inspiration.
-        </p>
-
-    </div>
-
-</div>
-
-<div class="tool-grid">
-
-    <div
-        class="tool-card"
-        data-name="outfit fashion clothes"
-        onclick="openTool('outfit')"
-    >
-
-        <div class="tool-icon">👗</div>
-
-        <h3>What Should I Wear?</h3>
-
-        <p>
-            Get a random outfit idea.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card"
-        data-name="nails beauty"
-        onclick="openTool('nails')"
-    >
-
-        <div class="tool-icon">💅</div>
-
-        <h3>Nail Color Picker</h3>
-
-        <p>
-            Find your next nail color.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card"
-        data-name="color fashion"
-        onclick="openTool('palette')"
-    >
-
-        <div class="tool-icon">🎨</div>
-
-        <h3>Color Palette</h3>
-
-        <p>
-            Create a beautiful personal palette.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card locked"
-        data-name="wardrobe vip"
-        onclick="openVIPTool()"
-    >
-
-        <div class="tool-icon">👜</div>
-
-        <h3>My Wardrobe</h3>
-
-        <p>
-            Organize your clothes and outfits.
-        </p>
-
-        <div class="lock-overlay">
-
-            <strong>🔒 VIP</strong>
-
-            <span>
-                Personal wardrobe
-            </span>
-
-            <button
-                class="unlock-button"
-                onclick="event.stopPropagation();scrollToVIP()"
-            >
-                Unlock
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-<!-- ======================================================= STUDY ======================================================= -->
-
-<section class="section" id="study" >
-
-<div class="section-heading">
-
-    <div>
-
-        <h2>📚 Study & Work</h2>
-
-        <p>
-            Stay organized without making life complicated.
-        </p>
-
-    </div>
-
-</div>
-
-<div class="tool-grid">
-
-    <div
-        class="tool-card"
-        data-name="pomodoro study"
-        onclick="openTool('pomodoro')"
-    >
-
-        <div class="tool-icon">🍅</div>
-
-        <h3>Pomodoro Timer</h3>
-
-        <p>
-            Focus for 25 minutes, then breathe.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card"
-        data-name="exam countdown study"
-        onclick="openTool('exam')"
-    >
-
-        <div class="tool-icon">🎓</div>
-
-        <h3>Exam Countdown</h3>
-
-        <p>
-            See how much time you have left.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card"
-        data-name="salary work money"
-        onclick="openTool('salary')"
-    >
-
-        <div class="tool-icon">💼</div>
-
-        <h3>Salary Calculator</h3>
-
-        <p>
-            Estimate your monthly income.
-        </p>
-
-    </div>
-
-
-    <div
-        class="tool-card locked"
-        data-name="resume vip work"
-        onclick="openVIPTool()"
-    >
-
-        <div class="tool-icon">📄</div>
-
-        <h3>Resume Helper</h3>
-
-        <p>
-            Create better CV content.
-        </p>
-
-        <div class="lock-overlay">
-
-            <strong>🔒 VIP</strong>
-
-            <span>
-                Advanced career tools
-            </span>
-
-            <button
-                class="unlock-button"
-                onclick="event.stopPropagation();scrollToVIP()"
-            >
-                Unlock
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-<!-- ======================================================= VIP ======================================================= -->
-
-<section class="vip-section" id="vip" >
-
-<div class="vip-content">
-
-    <span class="vip-label">
-        💎 HERLY VIP
-    </span>
-
-    <h2>
-        A little more help,
-        whenever you need it.
-    </h2>
-
-    <p>
-        Unlock advanced tools designed to help
-        you organize your money, wardrobe,
-        relationships, travel, study and everyday life.
-    </p>
-
-    <div class="vip-features">
-
-        <div class="vip-feature">
-            ✨ No advertisements
-        </div>
-
-        <div class="vip-feature">
-            💰 Advanced budget planner
-        </div>
-
-        <div class="vip-feature">
-            👗 Personal wardrobe
-        </div>
-
-        <div class="vip-feature">
-            🧳 Advanced travel planner
-        </div>
-
-        <div class="vip-feature">
-            📄 Resume & career tools
-        </div>
-
-        <div class="vip-feature">
-            💾 Save your history
-        </div>
-
-        <div class="vip-feature">
-            📊 Export your plans
-        </div>
-
-        <div class="vip-feature">
-            🌷 VIP-only templates
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-<!-- ======================================================= PRICING ======================================================= -->
-
-<section class="section">
-
-<div
-    class="section-heading"
-    style="text-align:center;display:block;"
->
-
-    <h2>
-        Choose your Herly
-    </h2>
-
-    <p>
-        Start free. Upgrade when you want more.
-    </p>
-
-</div>
-
+<div class="section-head"> <div> <h2>Choose your Herly 💎</h2> <p>Start free. Upgrade when you want more.</p> </div> </div>
 
 <div class="pricing">
 
-    <div class="price-card">
+<div class="price-card"> <h3>Herly Free</h3> <p style="color:var(--muted);font-size:13px"> For getting your life a little more organized. </p>
 
-        <h3>🌸 Free</h3>
+<div class="price">€0 <span>forever</span></div>
 
-        <div class="price">
-            €0
-            <span>
-                / forever
-            </span>
-        </div>
+<ul class="features">
+    <li>✓ Basic life tools</li>
+    <li>✓ Discount calculator</li>
+    <li>✓ Love days</li>
+    <li>✓ Date ideas</li>
+    <li>✓ Packing lists</li>
+    <li>✓ Pomodoro</li>
+    <li>✓ Dark mode</li>
+</ul>
 
-        <ul class="price-list">
-
-            <li>✓ Basic everyday tools</li>
-
-            <li>✓ Money calculators</li>
-
-            <li>✓ Love tools</li>
-
-            <li>✓ Beauty tools</li>
-
-            <li>✓ Study tools</li>
-
-            <li>✓ Dark mode</li>
-
-        </ul>
-
-        <button
-            class="secondary"
-            style="width:100%;margin-top:20px;"
-        >
-            Current Plan
-        </button>
-
-    </div>
-
-
-    <div class="price-card vip">
-
-        <div class="popular">
-            MOST POPULAR
-        </div>
-
-        <h3>
-            💎 Herly VIP
-        </h3>
-
-        <div class="price">
-            €4.99
-            <span>
-                / month
-            </span>
-        </div>
-
-        <ul class="price-list">
-
-            <li>✓ Everything in Free</li>
-
-            <li>✓ No advertisements</li>
-
-            <li>✓ Advanced tools</li>
-
-            <li>✓ Personal wardrobe</li>
-
-            <li>✓ Travel planner</li>
-
-            <li>✓ Resume helper</li>
-
-            <li>✓ Save history</li>
-
-            <li>✓ Export plans</li>
-
-            <li>✓ VIP templates</li>
-
-        </ul>
-
-        <button
-            class="primary"
-            style="width:100%;margin-top:20px;"
-            onclick="startVIP()"
-        >
-            Upgrade to VIP ✨
-        </button>
-
-    </div>
+<button class="price-button" onclick="toast('You are already using Herly Free 💗')">
+    Current plan
+</button>
 
 </div>
 
-</section>
+<div class="price-card featured">
 
-</main>
+<div class="popular">MOST POPULAR</div>
 
-<!-- ======================================================= FOOTER ======================================================= -->
+<h3>Herly VIP ✨</h3>
+<p style="color:var(--muted);font-size:13px">
+    For girls who want their whole life in one place.
+</p>
 
-<footer>
+<div class="price">€4.99 <span>/ month</span></div>
 
-<div class="footer-inner">
+<ul class="features">
+    <li>✓ Everything in Free</li>
+    <li>✓ Advanced budget planner</li>
+    <li>✓ Personal wardrobe</li>
+    <li>✓ Important dates</li>
+    <li>✓ Advanced travel planner</li>
+    <li>✓ Study planner</li>
+    <li>✓ Resume helper</li>
+    <li>✓ Save history</li>
+    <li>✓ Export plans</li>
+    <li>✓ No ads</li>
+</ul>
 
-    <div>
-
-        <div class="footer-logo">
-            🌷 Herly
-        </div>
-
-        <p>
-            Your little life assistant.
-        </p>
-
-    </div>
-
-    <div class="footer-links">
-
-        <a href="#money">
-            Money
-        </a>
-
-        <a href="#love">
-            Love
-        </a>
-
-        <a href="#life">
-            Life
-        </a>
-
-        <a href="#beauty">
-            Beauty
-        </a>
-
-        <a href="#study">
-            Study
-        </a>
-
-        <a href="#vip">
-            VIP
-        </a>
-
-    </div>
+<button class="price-button" onclick="openVIP()">
+    Get Herly VIP ✨
+</button>
 
 </div>
 
-</footer>
+</div> </div> </section>
 
-<!-- ======================================================= MODAL ======================================================= -->
+<!-- FAQ -->
 
-<div class="modal" id="modal" >
+<section class="section" id="faq"> <div class="container">
 
-<div class="modal-box">
+<div class="section-head"> <div> <h2>Little questions 💌</h2> <p>Everything you might want to know.</p> </div> </div>
 
-    <div class="modal-header">
+<div class="faq">
 
-        <div>
+<div class="faq-item"> <button class="faq-q" onclick="toggleFAQ(this)"> Is Herly free? <span>＋</span> </button> <div class="faq-a"> Yes. Many everyday tools are free. VIP is designed for people who want advanced planning and personalization. </div> </div>
 
-            <div
-                class="modal-icon"
-                id="modalIcon"
-            ></div>
+<div class="faq-item"> <button class="faq-q" onclick="toggleFAQ(this)"> Is my information stored? <span>＋</span> </button> <div class="faq-a"> This demo version stores your preferences and small pieces of data in your browser using localStorage. </div> </div>
 
-            <h2 id="modalTitle"></h2>
+<div class="faq-item"> <button class="faq-q" onclick="toggleFAQ(this)"> Does VIP payment work already? <span>＋</span> </button> <div class="faq-a"> The current page contains a VIP product and upgrade interface, but real payments are not connected yet. </div> </div>
 
-        </div>
+<div class="faq-item"> <button class="faq-q" onclick="toggleFAQ(this)"> Can I use Herly on my phone? <span>＋</span> </button> <div class="faq-a"> Yes. The layout is responsive and is designed to work on phones, tablets and desktop screens. </div> </div>
 
-        <button
-            class="close"
-            onclick="closeModal()"
-        >
-            ✕
-        </button>
+</div> </div> </section>
 
-    </div>
+<!-- FOOTER -->
 
-    <div id="toolArea"></div>
+<footer> <div class="container footer-grid">
+
+<div class="footer-brand"> <div class="logo"> <span class="logo-heart">♥</span> <span>herly</span> </div>
+
+<p>
+    Your little life assistant for money, love,
+    beauty, study and everything in between.
+</p>
+
+<p style="margin-top:20px">
+    © 2026 Herly. Made with ♡
+</p>
 
 </div>
 
-</div>
+<div class="footer-col"> <h4>Explore</h4> <a href="#tools">Tools</a> <a href="#dashboard">Dashboard</a> <a href="#vip">VIP</a> </div>
 
-<script> /* ========================================================= TOOL SYSTEM ========================================================= */ const modal = document.getElementById("modal"); const modalTitle = document.getElementById("modalTitle"); const modalIcon = document.getElementById("modalIcon"); const toolArea = document.getElementById("toolArea"); function openTool(type){ const tools={ discount:{ title:"Discount Calculator", icon:"🛍️", html:` <div class="form-group"> <label>Original Price</label> <input class="input" id="originalPrice" type="number" placeholder="100" > </div> <div class="form-group"> <label>Discount %</label> <input class="input" id="discountPercent" type="number" placeholder="20" > </div> <div class="modal-actions"> <button class="primary" onclick="calculateDiscount()" > Calculate </button> </div> <div class="result" id="discountResult" > Your result will appear here. </div> ` }, tip:{ title:"Tip Calculator", icon:"💸", html:` <div class="form-group"> <label>Bill Amount</label> <input class="input" id="bill" type="number" placeholder="50" > </div> <div class="form-group"> <label>Tip %</label> <input class="input" id="tipPercent" type="number" value="15" > </div> <div class="form-group"> <label>People</label> <input class="input" id="people" type="number" value="1" > </div> <div class="modal-actions"> <button class="primary" onclick="calculateTip()" > Calculate </button> </div> <div class="result" id="tipResult" > Your result will appear here. </div> ` }, budget:{ title:"Monthly Budget", icon:"💰", html:` <div class="form-group"> <label>Monthly Income</label> <input class="input" id="income" type="number" placeholder="2500" > </div> <div class="form-group"> <label>Housing</label> <input class="input" id="housing" type="number" placeholder="800" > </div> <div class="form-group"> <label>Food</label> <input class="input" id="foodCost" type="number" placeholder="350" > </div> <div class="form-group"> <label>Other Spending</label> <input class="input" id="otherCost" type="number" placeholder="300" > </div> <div class="modal-actions"> <button class="primary" onclick="calculateBudget()" > Plan My Budget </button> </div> <div class="result" id="budgetResult" > Your budget will appear here. </div> ` }, saving:{ title:"Saving Goal", icon:"🎯", html:` <div class="form-group"> <label>Goal Amount</label> <input class="input" id="goal" type="number" placeholder="2000" > </div> <div class="form-group"> <label>Already Saved</label> <input class="input" id="saved" type="number" placeholder="300" > </div> <div class="form-group"> <label>Months</label> <input class="input" id="months" type="number" placeholder="8" > </div> <div class="modal-actions"> <button class="primary" onclick="calculateSaving()" > Calculate </button> </div> <div class="result" id="savingResult" > Your saving plan will appear here. </div> ` }, loveDays:{ title:"Love Days", icon:"💕", html:` <div class="form-group"> <label>Relationship Start Date</label> <input class="input" id="loveDate" type="date" > </div> <div class="modal-actions"> <button class="primary" onclick="calculateLoveDays()" > Count Our Days 💕 </button> </div> <div class="result" id="loveResult" > Enter your special date. </div> ` }, anniversary:{ title:"Anniversary Countdown", icon:"🌹", html:` <div class="form-group"> <label>Next Anniversary</label> <input class="input" id="anniversaryDate" type="date" > </div> <div class="modal-actions"> <button class="primary" onclick="calculateAnniversary()" > Countdown 🌹 </button> </div> <div class="result" id="anniversaryResult" > Your countdown will appear here. </div> ` }, gift:{ title:"Gift Budget", icon:"🎁", html:` <div class="form-group"> <label>Monthly Income</label> <input class="input" id="giftIncome" type="number" placeholder="2500" > </div> <div class="form-group"> <label>How Close Are You?</label> <select class="input" id="giftLevel" > <option value="0.01"> Friend </option> <option value="0.02"> Good Friend </option> <option value="0.04"> Very Close </option> <option value="0.07"> Partner </option> </select> </div> <div class="modal-actions"> <button class="primary" onclick="calculateGift()" > Find Budget </button> </div> <div class="result" id="giftResult" > Your suggested gift budget will appear here. </div> ` }, dateIdeas:{ title:"Date Idea Generator", icon:"🌷", html:` <div class="form-group"> <label>Choose your mood</label> <select class="input" id="dateMood" > <option value="cozy"> Cozy </option> <option value="fun"> Fun </option> <option value="romantic"> Romantic </option> <option value="cheap"> Budget Friendly </option> </select> </div> <div class="modal-actions"> <button class="primary" onclick="generateDateIdea()" > Surprise Me 💕 </button> </div> <div class="result" id="dateResult" > Let's find something cute. </div> ` }, packing:{ title:"Travel Packing List", icon:"🧳", html:` <div class="form-group"> <label>Trip Length</label> <input class="input" id="tripDays" type="number" value="5" > </div> <div class="modal-actions"> <button class="primary" onclick="generatePacking()" > Create My List </button> </div> <div class="result" id="packingResult" > Your packing list will appear here. </div> ` }, food:{ title:"What Should I Eat?", icon:"🍝", html:` <div class="modal-actions"> <button class="primary" onclick="chooseFood()" > Choose For Me 🍴 </button> </div> <div class="result" id="foodResult" > I can't decide either. 😭 </div> ` }, sleep:{ title:"Sleep Planner", icon:"😴", html:` <div class="form-group"> <label>What time do you need to wake up?</label> <input class="input" id="wakeTime" type="time" value="07:00" > </div> <div class="modal-actions"> <button class="primary" onclick="calculateSleep()" > Find Bedtimes </button> </div> <div class="result" id="sleepResult" > Your suggested bedtimes will appear here. </div> ` }, cleaning:{ title:"Room Reset", icon:"🧹", html:` <div class="modal-actions"> <button class="primary" onclick="cleaningPlan()" > Give Me A Plan ✨ </button> </div> <div class="result" id="cleaningResult" > Your room is about to feel better. </div> ` }, outfit:{ title:"What Should I Wear?", icon:"👗", html:` <div class="form-group"> <label>Today's mood</label> <select class="input" id="outfitMood" > <option>Casual</option> <option>Elegant</option> <option>Cozy</option> <option>Girly</option> <option>Minimal</option> </select> </div> <div class="modal-actions"> <button class="primary" onclick="chooseOutfit()" > Style Me ✨ </button> </div> <div class="result" id="outfitResult" > Let's create your look. </div> ` }, nails:{ title:"Nail Color Picker", icon:"💅", html:` <div class="modal-actions"> <button class="primary" onclick="chooseNails()" > Pick My Color 💅 </button> </div> <div class="result" id="nailsResult" > Your next nail color is... </div> ` }, palette:{ title:"Personal Color Palette", icon:"🎨", html:` <div class="form-group"> <label>Choose a favorite color</label> <input class="input" id="favoriteColor" type="color" value="#ff69b4" style="height:55px;padding:5px;" > </div> <div class="modal-actions"> <button class="primary" onclick="createPalette()" > Create Palette </button> </div> <div class="result" id="paletteResult" > Your palette will appear here. </div> ` }, pomodoro:{ title:"Pomodoro Timer", icon:"🍅", html:` <div class="result" id="pomodoroTimer" style=" text-align:center; font-size:42px; " > 25:00 </div> <div class="modal-actions"> <button class="primary" onclick="startPomodoro()" > Start </button> <button class="small-button" onclick="resetPomodoro()" > Reset </button> </div> ` }, exam:{ title:"Exam Countdown", icon:"🎓", html:` <div class="form-group"> <label>Exam Date</label> <input class="input" id="examDate" type="date" > </div> <div class="modal-actions"> <button class="primary" onclick="examCountdown()" > Count Down </button> </div> <div class="result" id="examResult" > You've got this. 💕 </div> ` }, salary:{ title:"Salary Calculator", icon:"💼", html:` <div class="form-group"> <label>Annual Salary</label> <input class="input" id="annualSalary" type="number" placeholder="40000" > </div> <div class="modal-actions"> <button class="primary" onclick="calculateSalary()" > Calculate </button> </div> <div class="result" id="salaryResult" > Your estimate will appear here. </div> ` } }; const tool=tools[type]; if(!tool){ return; } modalIcon.textContent=tool.icon; modalTitle.textContent=tool.title; toolArea.innerHTML=tool.html; modal.classList.add("show"); } function closeModal(){ modal.classList.remove("show"); } modal.addEventListener( "click", function(event){ if(event.target===modal){ closeModal(); } } ); /* ========================================================= MONEY ========================================================= */ function calculateDiscount(){ const price= parseFloat( document.getElementById("originalPrice").value ); const discount= parseFloat( document.getElementById("discountPercent").value ); if( isNaN(price) || isNaN(discount) ){ return; } const saved= price*discount/100; const finalPrice= price-saved; document.getElementById( "discountResult" ).innerHTML= ` You save: €${saved.toFixed(2)} <br> Final price: €${finalPrice.toFixed(2)} <br> <small> That's ${discount}% off ✨ </small> `; } function calculateTip(){ const bill= parseFloat( document.getElementById("bill").value ); const percent= parseFloat( document.getElementById("tipPercent").value ); const people= parseInt( document.getElementById("people").value ); if( isNaN(bill) || isNaN(percent) || !people ){ return; } const tip= bill*percent/100; const total= bill+tip; const each= total/people; document.getElementById( "tipResult" ).innerHTML= ` Tip: €${tip.toFixed(2)} <br> Total: €${total.toFixed(2)} <br> Each person: €${each.toFixed(2)} `; } function calculateBudget(){ const income= parseFloat( document.getElementById("income").value )||0; const housing= parseFloat( document.getElementById("housing").value )||0; const food= parseFloat( document.getElementById("foodCost").value )||0; const other= parseFloat( document.getElementById("otherCost").value )||0; const remaining= income- housing- food- other; document.getElementById( "budgetResult" ).innerHTML= ` Monthly income: €${income.toFixed(2)} <br> Planned spending: €${(housing+food+other).toFixed(2)} <br> <strong> Remaining: €${remaining.toFixed(2)} </strong> `; } function calculateSaving(){ const goal= parseFloat( document.getElementById("goal").value )||0; const saved= parseFloat( document.getElementById("saved").value )||0; const months= parseFloat( document.getElementById("months").value )||1; const remaining= Math.max( 0, goal-saved ); const monthly= remaining/months; document.getElementById( "savingResult" ).innerHTML= ` You still need: €${remaining.toFixed(2)} <br> Save approximately: €${monthly.toFixed(2)} per month 🎯 `; } /* ========================================================= LOVE ========================================================= */ function calculateLoveDays(){ const date= new Date( document.getElementById("loveDate").value ); const now= new Date(); const difference= now-date; const days= Math.floor( difference/ (1000*60*60*24) ); document.getElementById( "loveResult" ).innerHTML= ` You've been together for <strong>${days}</strong> days 💕 <br> That's a lot of memories. `; } function calculateAnniversary(){ const date= new Date( document.getElementById( "anniversaryDate" ).value ); const now= new Date(); date.setHours(0,0,0,0); now.setHours(0,0,0,0); const days= Math.ceil( (date-now)/ (1000*60*60*24) ); document.getElementById( "anniversaryResult" ).innerHTML= days>=0 ? `${days} days until your special day 🌹` : `That date has already passed. 💕`; } function calculateGift(){ const income= parseFloat( document.getElementById( "giftIncome" ).value )||0; const level= parseFloat( document.getElementById( "giftLevel" ).value ); const budget= income*level; document.getElementById( "giftResult" ).innerHTML= ` A comfortable gift budget could be around <strong> €${budget.toFixed(2)} </strong> 🎁 `; } function generateDateIdea(){ const mood= document.getElementById( "dateMood" ).value; const ideas={ cozy:[ "Movie night with homemade snacks 🍿", "Cook dinner together 🍝", "Coffee + board games ☕", "Blanket + sunset picnic 🌅" ], fun:[ "Try a new restaurant 🍜", "Go bowling 🎳", "Visit an arcade 🎮", "Take funny photos together 📸" ], romantic:[ "Sunset walk + handwritten notes 🌹", "Dress up for dinner ✨", "Make a little memory box 💕", "Stargazing night 🌙" ], cheap:[ "Cook a €10 dinner together 🍝", "Free museum or gallery day 🎨", "Park picnic 🧺", "Walk around a new neighborhood 🚶‍♀️" ] }; const list= ideas[mood]; const choice= list[ Math.floor( Math.random()*list.length ) ]; document.getElementById( "dateResult" ).textContent=choice; } /* ========================================================= LIFE ========================================================= */ function generatePacking(){ const days= parseInt( document.getElementById( "tripDays" ).value )||5; document.getElementById( "packingResult" ).innerHTML= ` 🧳 Packing List <br><br> 👕 ${Math.min(days+1,8)} tops <br> 👖 ${Math.min(Math.ceil(days/2)+1,5)} bottoms <br> 🩲 ${days+1} underwear <br> 🧦 ${days+1} pairs of socks <br> 👟 Comfortable shoes <br> 🪥 Toothbrush + toiletries <br> 🔌 Chargers <br> 💊 Personal essentials <br> 💄 Beauty essentials `; } function chooseFood(){ const foods=[ "🍣 Sushi", "🍝 Pasta", "🍕 Pizza", "🥗 Salad bowl", "🍜 Ramen", "🌮 Tacos", "🍔 Burger", "🥞 Pancakes", "🍛 Curry", "🥟 Dumplings" ]; const choice= foods[ Math.floor( Math.random()*foods.length ) ]; document.getElementById( "foodResult" ).innerHTML= ` Tonight you should have: <strong>${choice}</strong> <br><br> No more “I don't know what to eat.” 😂 `; } function calculateSleep(){ const wake= document.getElementById( "wakeTime" ).value; const parts= wake.split(":"); let minutes= parseInt(parts[0])*60+ parseInt(parts[1]); const cycles=[ 6, 5, 4 ]; let output=""; cycles.forEach( cycle=>{ let bedtime= minutes- cycle*90- 15; bedtime= (bedtime+1440)%1440; const h= Math.floor( bedtime/60 ); const m= bedtime%60; output+= `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}<br>`; } ); document.getElementById( "sleepResult" ).innerHTML= ` Try one of these bedtimes: <br><br> ${output} <small> Based on approximately 90-minute sleep cycles. </small> `; } function cleaningPlan(){ const tasks=[ "🛏️ Make your bed", "🧺 Put clothes away", "🗑️ Empty trash", "🧴 Clear your desk", "🧹 Quick floor clean", "🪞 Clean your mirror", "🌸 Add one nice detail" ]; document.getElementById( "cleaningResult" ).innerHTML= ` <strong>15-minute room reset:</strong> <br><br> ${tasks.join("<br>")} `; } /* ========================================================= BEAUTY ========================================================= */ function chooseOutfit(){ const mood= document.getElementById( "outfitMood" ).value; const outfits={ Casual: "White tee + jeans + sneakers + small shoulder bag 🤍", Elegant: "Simple dress + delicate jewelry + clean heels ✨", Cozy: "Oversized knit + wide-leg pants + sneakers ☁️", Girly: "Soft blouse + skirt + ballet flats + cute bag 🌷", Minimal: "Neutral top + tailored trousers + simple accessories 🤎" }; document.getElementById( "outfitResult" ).textContent= outfits[mood]; } function chooseNails(){ const colors=[ "🌸 Soft Pink", "🍓 Strawberry", "🤍 Milky White", "🍒 Cherry Red", "🪻 Lavender", "☕ Mocha", "🌷 Dusty Rose", "✨ Pearl" ]; const choice= colors[ Math.floor( Math.random()*colors.length ) ]; document.getElementById( "nailsResult" ).innerHTML= ` Your color: <strong>${choice}</strong> 💅 `; } function createPalette(){ const color= document.getElementById( "favoriteColor" ).value; document.getElementById( "paletteResult" ).innerHTML= ` Your base color: <strong>${color}</strong> <br><br> 🎨 Try pairing it with: <br> ${color} <br> Soft White 🤍 <br> Warm Beige 🤎 <br> Dusty Pink 🌸 <br> Soft Lavender 🪻 `; } /* ========================================================= STUDY & WORK ========================================================= */ let pomodoroInterval; let pomodoroSeconds=25*60; function startPomodoro(){ clearInterval( pomodoroInterval ); pomodoroInterval= setInterval( ()=>{ if( pomodoroSeconds<=0 ){ clearInterval( pomodoroInterval ); alert( "Pomodoro complete! Take a little break. 🌷" ); return; } pomodoroSeconds--; updatePomodoro(); }, 1000 ); } function updatePomodoro(){ const min= Math.floor( pomodoroSeconds/60 ); const sec= pomodoroSeconds%60; const element= document.getElementById( "pomodoroTimer" ); if(element){ element.textContent= `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`; } } function resetPomodoro(){ clearInterval( pomodoroInterval ); pomodoroSeconds= 25*60; updatePomodoro(); } function examCountdown(){ const date= new Date( document.getElementById( "examDate" ).value ); const now= new Date(); const days= Math.ceil( (date-now)/ (1000*60*60*24) ); document.getElementById( "examResult" ).innerHTML= ` <strong>${days}</strong> days left. <br><br> You've got this. 📚💕 `; } function calculateSalary(){ const annual= parseFloat( document.getElementById( "annualSalary" ).value )||0; const monthly= annual/12; const weekly= annual/52; document.getElementById( "salaryResult" ).innerHTML= ` Annual: €${annual.toFixed(2)} <br> Monthly: €${monthly.toFixed(2)} <br> Weekly: €${weekly.toFixed(2)} <br><br> <small> This is a simple estimate before taxes and deductions. </small> `; } /* ========================================================= SEARCH ========================================================= */ function searchTools(){ const keyword= document.getElementById( "search" ).value.toLowerCase(); document .querySelectorAll( ".tool-card" ) .forEach( card=>{ const name= ( card.dataset.name|| "" ).toLowerCase(); card.style.display= name.includes(keyword) ? "" : "none"; } ); } /* ========================================================= FAVORITES ========================================================= */ function saveTool(event,button){ event.stopPropagation(); button.classList.toggle( "saved" ); button.textContent= button.classList.contains("saved") ? "♥" : "♡"; } /* ========================================================= VIP ========================================================= */ function scrollToVIP(){ document .getElementById("vip") .scrollIntoView({ behavior:"smooth" }); } function openVIPTool(){ scrollToVIP(); } function startVIP(){ alert( "💎 VIP checkout coming soon!\n\n" + "This button is ready to connect to a real payment system." ); } /* ========================================================= DARK MODE ========================================================= */ function toggleDark(){ document.body.classList.toggle( "dark" ); localStorage.setItem( "herlyDark", document.body.classList.contains( "dark" ) ); } if( localStorage.getItem( "herlyDark" )==="true" ){ document.body.classList.add( "dark" ); } </script>
+<div class="footer-col"> <h4>Categories</h4> <a href="#tools">Money</a> <a href="#tools">Love</a> <a href="#tools">Beauty</a> <a href="#tools">Study</a> </div>
+
+<div class="footer-col"> <h4>Help</h4> <a href="#faq">FAQ</a> <a href="#" onclick="toast('Privacy page coming soon 💗');return false;">Privacy</a> <a href="#" onclick="toast('Terms page coming soon 💗');return false;">Terms</a> </div>
+
+</div> </footer>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal" onclick="closeOutside(event)"> <div class="modal-box">
+
+<div class="modal-head"> <h2 id="modalTitle">Tool</h2> <button class="close" onclick="closeModal()">×</button> </div>
+
+<div id="modalContent"></div>
+
+</div> </div>
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+<script> /* ========================= BASIC APP STATE ========================= */ let app = JSON.parse(localStorage.getItem("herlyApp")) || { todos:[], budget:0, saved:0, mood:"", habits:[false,false,false,false,false,false,false], dark:false, favorites:[] }; function saveApp(){ localStorage.setItem("herlyApp",JSON.stringify(app)); updateDashboard(); } /* ========================= DARK MODE ========================= */ function toggleDark(){ app.dark=!app.dark; document.body.classList.toggle("dark",app.dark); saveApp(); } if(app.dark){ document.body.classList.add("dark"); } /* ========================= TOAST ========================= */ let toastTimer; function toast(message){ const el=document.getElementById("toast"); el.textContent=message; el.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>{ el.classList.remove("show"); },2500); } /* ========================= MODAL ========================= */ function openModal(title,html){ document.getElementById("modalTitle").textContent=title; document.getElementById("modalContent").innerHTML=html; document.getElementById("modal").classList.add("show"); } function closeModal(){ document.getElementById("modal").classList.remove("show"); } function closeOutside(e){ if(e.target.id==="modal"){ closeModal(); } } /* ========================= TOOLS ========================= */ function openTool(tool){ if(tool==="discount"){ openModal("Discount Calculator 💸",` <div class="form-grid"> <div class="form-group"> <label>Original price</label> <input id="price" type="number" placeholder="100"> </div> <div class="form-group"> <label>Discount %</label> <input id="discount" type="number" placeholder="20"> </div> </div> <button class="calculate" onclick="calcDiscount()">Calculate</button> <div class="result" id="discountResult"> Enter your numbers above. </div> `); } else if(tool==="tip"){ openModal("Tip Calculator 🍽️",` <div class="form-grid"> <div class="form-group"> <label>Bill</label> <input id="bill" type="number" placeholder="80"> </div> <div class="form-group"> <label>Tip %</label> <input id="tipPercent" type="number" value="15"> </div> <div class="form-group full"> <label>People</label> <input id="people" type="number" value="2" min="1"> </div> </div> <button class="calculate" onclick="calcTip()">Split the bill</button> <div class="result" id="tipResult"> Enter the bill amount. </div> `); } else if(tool==="budget"){ openModal("Monthly Budget 📊",` <div class="form-group"> <label>Monthly income (€)</label> <input id="income" type="number" placeholder="2500"> </div> <div class="form-grid"> <div class="form-group"> <label>Rent / housing</label> <input id="rent" type="number" placeholder="900"> </div> <div class="form-group"> <label>Food</label> <input id="foodBudget" type="number" placeholder="300"> </div> <div class="form-group"> <label>Transport</label> <input id="transport" type="number" placeholder="100"> </div> <div class="form-group"> <label>Fun / shopping</label> <input id="fun" type="number" placeholder="200"> </div> <div class="form-group full"> <label>Savings goal</label> <input id="savingBudget" type="number" placeholder="300"> </div> </div> <button class="calculate" onclick="calcBudget()">Build my budget</button> <div class="result" id="budgetResult"> Your monthly overview will appear here. </div> `); } else if(tool==="saving"){ openModal("Saving Goal 🐷",` <div class="form-grid"> <div class="form-group"> <label>Goal amount (€)</label> <input id="goalAmount" type="number" placeholder="1200"> </div> <div class="form-group"> <label>Already saved (€)</label> <input id="alreadySaved" type="number" value="0"> </div> <div class="form-group full"> <label>Months until goal</label> <input id="goalMonths" type="number" placeholder="6"> </div> </div> <button class="calculate" onclick="calcSaving()">Create my plan</button> <div class="result" id="savingResult"> Let's turn your goal into small steps. </div> `); } else if(tool==="salary"){ openModal("Salary & Hourly Pay 💼",` <div class="form-grid"> <div class="form-group"> <label>Hourly rate (€)</label> <input id="hourly" type="number" placeholder="18"> </div> <div class="form-group"> <label>Hours / week</label> <input id="hours" type="number" value="40"> </div> <div class="form-group full"> <label>Weeks / year</label> <input id="weeks" type="number" value="52"> </div> </div> <button class="calculate" onclick="calcSalary()">Calculate income</button> <div class="result" id="salaryResult"> Your estimated income will appear here. </div> `); } else if(tool==="subscription"){ openModal("Subscription Checker 🧾",` <div class="form-group"> <label>Monthly subscriptions (€)</label> <input id="subMonthly" type="number" placeholder="35"> </div> <button class="calculate" onclick="calcSubscription()">See yearly cost</button> <div class="result" id="subscriptionResult"> Enter your monthly subscription spending. </div> `); } else if(tool==="love"){ openModal("Love Days 💕",` <div class="form-group"> <label>Relationship start date</label> <input id="loveDate" type="date"> </div> <button class="calculate" onclick="calcLove()">Count our days</button> <div class="result" id="loveResult"> Enter the date you started dating. </div> `); } else if(tool==="date"){ const ideas=[ "🍓 Make a cute picnic together", "🎨 Paint each other badly", "🍿 Pick a movie neither of you has seen", "☕ Try a new café", "🌙 Go on a late-night walk", "🍝 Cook a new recipe together", "📸 Take disposable-camera style photos", "🎮 Have a cozy game night", "🌷 Visit a flower market", "🚗 Take a spontaneous mini road trip" ]; const idea=ideas[Math.floor(Math.random()*ideas.length)]; openModal("Date Idea 🌹",` <div style="text-align:center;padding:25px"> <div style="font-size:55px;margin-bottom:15px">${idea.split(" ")[0]}</div> <h2>${idea.substring(2)}</h2> <p style="color:var(--muted);margin-top:10px"> No overthinking. Just make a little memory. 💗 </p> <button class="calculate" onclick="openTool('date')"> Give me another idea </button> </div> `); } else if(tool==="gift"){ openModal("Gift Planner 🎁",` <div class="form-grid"> <div class="form-group"> <label>For whom?</label> <select id="giftWho"> <option>Partner</option> <option>Best friend</option> <option>Mom</option> <option>Dad</option> <option>Sibling</option> <option>Other</option> </select> </div> <div class="form-group"> <label>Budget (€)</label> <input id="giftBudget" type="number" placeholder="50"> </div> <div class="form-group full"> <label>Occasion</label> <select id="giftOccasion"> <option>Birthday</option> <option>Anniversary</option> <option>Christmas</option> <option>Just because</option> <option>Graduation</option> </select> </div> </div> <button class="calculate" onclick="generateGift()">Find ideas</button> <div class="result" id="giftResult"> We'll make a little gift plan. </div> `); } else if(tool==="packing"){ openModal("Travel Packing List 🧳",` <div class="form-grid"> <div class="form-group"> <label>Trip days</label> <input id="tripDays" type="number" value="5"> </div> <div class="form-group"> <label>Trip type</label> <select id="tripType"> <option>City trip</option> <option>Beach</option> <option>Business</option> <option>Cold weather</option> </select> </div> </div> <button class="calculate" onclick="generatePacking()">Build checklist</button> <div class="result" id="packingResult"> Your packing list will appear here. </div> `); } else if(tool==="food"){ const meals=[ "🍝 Creamy tomato pasta", "🥗 Fresh chicken salad", "🌮 Tacos", "🍣 Sushi night", "🥞 Pancakes", "🍜 Ramen", "🥪 Toasted sandwich", "🍛 Curry", "🍕 Homemade pizza", "🥑 Avocado toast" ]; const meal=meals[Math.floor(Math.random()*meals.length)]; openModal("What Should I Eat? 🍓",` <div style="text-align:center;padding:20px"> <div style="font-size:60px">${meal.split(" ")[0]}</div> <h2 style="margin:12px 0">${meal.substring(2)}</h2> <p style="color:var(--muted)"> Herly has decided. No more “I don't know”. 😌 </p> <button class="calculate" onclick="openTool('food')"> Pick again </button> </div> `); } else if(tool==="sleep"){ openModal("Sleep Planner 🌙",` <div class="form-group"> <label>What time do you need to wake up?</label> <input id="wakeTime" type="time" value="07:00"> </div> <button class="calculate" onclick="calcSleep()">Find bedtimes</button> <div class="result" id="sleepResult"> We'll calculate several sleep-cycle options. </div> `); } else if(tool==="room"){ const tasks=[ "🛏️ Make the bed", "🧺 Put clothes away", "🗑️ Take out trash", "🧴 Clear bathroom surfaces", "🧹 Quick floor clean", "🕯️ Make the room smell nice", "🪴 Water your plants", "✨ Put 5 things back where they belong" ]; openModal("Room Reset 🧺",` <p style="color:var(--muted);margin-bottom:15px"> Don't clean everything. Just do these tiny resets. </p> <div id="roomTasks"> ${tasks.map((x,i)=>` <label style="display:flex;gap:10px;padding:12px;background:var(--rose);border-radius:13px;margin-bottom:7px"> <input type="checkbox" onchange="roomProgress()"> <span>${x}</span> </label> `).join("")} </div> <div class="result" id="roomResult"> 0 / ${tasks.length} complete </div> `); } else if(tool==="shopping"){ openModal("Shopping List 🛒",` <div class="todo-input"> <input id="shoppingInput" placeholder="Milk, strawberries, shampoo..."> <button class="add-btn" onclick="addShopping()">+</button> </div> <ul class="todo-list" id="shoppingList"></ul> `); loadShopping(); } else if(tool==="todo"){ document.getElementById("dashboard").scrollIntoView(); toast("Your little to-do list is in the dashboard ✨"); } else if(tool==="outfit"){ openModal("What Should I Wear? 👗",` <div class="form-grid"> <div class="form-group"> <label>Weather</label> <select id="weather"> <option>Cold</option> <option>Cool</option> <option>Warm</option> <option>Hot</option> <option>Rainy</option> </select> </div> <div class="form-group"> <label>Mood</label> <select id="outfitMood"> <option>Cozy</option> <option>Girly</option> <option>Minimal</option> <option>Elegant</option> <option>Casual</option> </select> </div> </div> <button class="calculate" onclick="generateOutfit()">Style me ✨</button> <div class="result" id="outfitResult"> Tell me your weather and mood. </div> `); } else if(tool==="nails"){ const colors=[ ["🌸","Soft Pink"], ["🍒","Cherry Red"], ["🥛","Milky White"], ["🪻","Lavender"], ["🍓","Strawberry"], ["☕","Mocha"], ["🫧","Baby Blue"], ["🌹","Rose"], ["🖤","Midnight"], ["✨","Champagne"] ]; const c=colors[Math.floor(Math.random()*colors.length)]; openModal("Nail Color Picker 💅",` <div style="text-align:center;padding:20px"> <div style="font-size:70px">${c[0]}</div> <h2>${c[1]}</h2> <p style="color:var(--muted);margin:10px 0 20px"> This is your manicure mood today. </p> <button class="calculate" onclick="openTool('nails')"> Pick another </button> </div> `); } else if(tool==="palette"){ const palettes=[ ["#F7CAD0","#F8EDEB","#F4B6C2","#D8B4E2","#FFF7F9"], ["#E8DCC4","#BFD8BD","#F5E6CC","#D7B9A3","#FFFDF8"], ["#D8E2DC","#FFE5D9","#FFCAD4","#9D8189","#FFF8F5"], ["#EDE7F6","#D1C4E9","#F8BBD0","#FCE4EC","#FFF"] ]; const p=palettes[Math.floor(Math.random()*palettes.length)]; openModal("Your Personal Palette 🎨",` <p style="color:var(--muted)"> A little palette for your mood, outfits or room. </p> <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:20px"> ${p.map(color=>` <div style="height:100px;border-radius:15px;background:${color};border:1px solid #eee"></div> `).join("")} </div> <button class="calculate" onclick="openTool('palette')"> Create another </button> `); } else if(tool==="pomodoro"){ openModal("Pomodoro Focus 🍅",` <div style="text-align:center"> <div id="timer" style="font-size:65px;font-weight:900;margin:15px 0"> 25:00 </div> <p style="color:var(--muted)"> Focus for 25 minutes. You can do this. </p> <div style="display:flex;gap:8px;margin-top:20px"> <button class="calculate" onclick="startTimer()"> Start </button> <button class="tool-btn" onclick="resetTimer()"> Reset </button> </div> </div> `); } else if(tool==="exam"){ openModal("Exam Countdown 📖",` <div class="form-group"> <label>Exam date</label> <input id="examDate" type="date"> </div> <button class="calculate" onclick="calcExam()">Start countdown</button> <div class="result" id="examResult"> Enter your exam date. </div> `); } } /* ========================= CALCULATORS ========================= */ function calcDiscount(){ const price=parseFloat(document.getElementById("price").value); const discount=parseFloat(document.getElementById("discount").value); if(isNaN(price)||isNaN(discount)){ toast("Please enter both numbers 💗"); return; } const save=price*discount/100; const final=price-save; document.getElementById("discountResult").innerHTML=` <small>You save</small> <strong>€${save.toFixed(2)}</strong> Final price: <b>€${final.toFixed(2)}</b> `; } function calcTip(){ const bill=parseFloat(document.getElementById("bill").value); const percent=parseFloat(document.getElementById("tipPercent").value); const people=parseInt(document.getElementById("people").value); if(isNaN(bill)||isNaN(percent)||isNaN(people)||people<1){ toast("Please enter valid numbers 💗"); return; } const tip=bill*percent/100; const total=bill+tip; const each=total/people; document.getElementById("tipResult").innerHTML=` Tip: <b>€${tip.toFixed(2)}</b><br> Total: <b>€${total.toFixed(2)}</b> <strong>€${each.toFixed(2)} each</strong> `; } function calcBudget(){ const income=+document.getElementById("income").value||0; const rent=+document.getElementById("rent").value||0; const food=+document.getElementById("foodBudget").value||0; const transport=+document.getElementById("transport").value||0; const fun=+document.getElementById("fun").value||0; const saving=+document.getElementById("savingBudget").value||0; const expenses=rent+food+transport+fun; const left=income-expenses-saving; app.budget=income; app.saved=saving; saveApp(); document.getElementById("budgetResult").innerHTML=` <small>Monthly income</small> <strong>€${income.toFixed(2)}</strong> Essentials & lifestyle: <b>€${expenses.toFixed(2)}</b><br> Planned savings: <b>€${saving.toFixed(2)}</b><br> ${left>=0 ? `Money left: <b>€${left.toFixed(2)}</b> 🌷` : `You're over budget by <b>€${Math.abs(left).toFixed(2)}</b> ⚠️`} `; } function calcSaving(){ const goal=+document.getElementById("goalAmount").value||0; const current=+document.getElementById("alreadySaved").value||0; const months=+document.getElementById("goalMonths").value||1; const remaining=Math.max(0,goal-current); const monthly=remaining/months; app.saved=current; saveApp(); document.getElementById("savingResult").innerHTML=` <small>Remaining</small> <strong>€${remaining.toFixed(2)}</strong> You need about <b>€${monthly.toFixed(2)}</b> per month. `; } function calcSalary(){ const hourly=+document.getElementById("hourly").value||0; const hours=+document.getElementById("hours").value||0; const weeks=+document.getElementById("weeks").value||52; const yearly=hourly*hours*weeks; const monthly=yearly/12; document.getElementById("salaryResult").innerHTML=` <small>Estimated yearly income</small> <strong>€${yearly.toFixed(2)}</strong> Approx. monthly: <b>€${monthly.toFixed(2)}</b> `; } function calcSubscription(){ const monthly=+document.getElementById("subMonthly").value||0; const yearly=monthly*12; document.getElementById("subscriptionResult").innerHTML=` <small>Yearly subscription cost</small> <strong>€${yearly.toFixed(2)}</strong> That's €${(yearly/365).toFixed(2)} per day. `; } function calcLove(){ const value=document.getElementById("loveDate").value; if(!value){ toast("Choose your special date 💕"); return; } const start=new Date(value+"T00:00:00"); const now=new Date(); const days=Math.floor((now-start)/(1000*60*60*24)); document.getElementById("loveResult").innerHTML=` <small>You've been together for</small> <strong>${days.toLocaleString()} days 💕</strong> That's a lot of little memories. `; } function generateGift(){ const budget=+document.getElementById("giftBudget").value||50; const who=document.getElementById("giftWho").value; let ideas; if(budget<20){ ideas=[ "Cute handwritten letter", "Mini photo album", "Favorite snacks", "Personalized playlist", "Little self-care box" ]; }else if(budget<60){ ideas=[ "Personalized jewelry", "Cozy self-care set", "Dinner together", "Cute perfume", "Photo book" ]; }else{ ideas=[ "Weekend experience", "Nice jewelry", "Concert tickets", "Luxury self-care set", "Special dinner" ]; } const idea=ideas[Math.floor(Math.random()*ideas.length)]; document.getElementById("giftResult").innerHTML=` <small>For ${who}, around €${budget}</small> <strong>${idea} 🎁</strong> Keep it personal — that's what makes it special. `; } function generatePacking(){ const days=+document.getElementById("tripDays").value||1; const type=document.getElementById("tripType").value; let list=[ `👕 ${Math.max(2,days)} tops`, `👖 ${Math.max(1,Math.ceil(days/2))} bottoms`, "🩲 Underwear", "🧦 Socks", "👟 Comfortable shoes", "🪥 Toothbrush & toothpaste", "🧴 Toiletries", "🔌 Chargers", "💳 Wallet / ID", "💊 Personal essentials" ]; if(type==="Beach") list.push("🩱 Swimsuit","🕶️ Sunglasses","🧴 Sunscreen"); if(type==="Cold weather") list.push("🧥 Warm coat","🧣 Scarf","🧤 Gloves"); if(type==="Business") list.push("👔 Smart outfit","💻 Laptop"); if(type==="City trip") list.push("🎒 Day bag","📸 Camera"); document.getElementById("packingResult").innerHTML= list.map(x=>`<div style="padding:7px 0">☐ ${x}</div>`).join(""); } function calcSleep(){ const value=document.getElementById("wakeTime").value; if(!value){ toast("Choose a wake-up time 🌙"); return; } let [h,m]=value.split(":").map(Number); const options=[6,7.5,9]; const times=options.map(hours=>{ let total=h*60+m-hours*60-15; while(total<0) total+=1440; const hh=Math.floor(total/60)%24; const mm=Math.round(total%60); return `${String(hh).padStart(2,"0")}:${String(mm).padStart(2,"0")}`; }); document.getElementById("sleepResult").innerHTML=` <small>For a ${value} wake-up</small> <strong>${times[1]}</strong> Other options: ${times[0]} or ${times[2]}. <br><small>Add ~15 minutes to fall asleep.</small> `; } function roomProgress(){ const boxes=document.querySelectorAll("#roomTasks input"); const done=[...boxes].filter(x=>x.checked).length; document.getElementById("roomResult").innerHTML= `${done} / ${boxes.length} complete ${done===boxes.length?"✨":"🌷"}`; } function generateOutfit(){ const weather=document.getElementById("weather").value; const mood=document.getElementById("outfitMood").value; let outfit=""; if(weather==="Cold"){ outfit="Cozy knit sweater + wide-leg trousers + boots + long coat"; }else if(weather==="Cool"){ outfit="Cardigan + basic top + jeans + loafers"; }else if(weather==="Warm"){ outfit="Light top + flowy skirt + sneakers"; }else if(weather==="Hot"){ outfit="Cute tank + linen shorts + sandals"; }else{ outfit="Waterproof jacket + comfy jeans + ankle boots"; } if(mood==="Girly"){ outfit+=" + ribbon or delicate jewelry 🎀"; } if(mood==="Elegant"){ outfit+=" + simple gold accessories ✨"; } document.getElementById("outfitResult").innerHTML=` <small>Your ${mood.toLowerCase()} look</small> <strong>${outfit}</strong> `; } function calcExam(){ const value=document.getElementById("examDate").value; if(!value){ toast("Choose an exam date 📚"); return; } const target=new Date(value+"T23:59:59"); const now=new Date(); const diff=target-now; if(diff<0){ document.getElementById("examResult").innerHTML= "<strong>The exam date has passed.</strong> Time to celebrate or plan the next one. 🌷"; return; } const days=Math.ceil(diff/(1000*60*60*24)); document.getElementById("examResult").innerHTML=` <small>Time remaining</small> <strong>${days} days 📖</strong> You still have time. One session at a time. `; } /* ========================= SHOPPING LIST ========================= */ function getShopping(){ return JSON.parse(localStorage.getItem("herlyShopping")||"[]"); } function saveShopping(items){ localStorage.setItem("herlyShopping",JSON.stringify(items)); } function addShopping(){ const input=document.getElementById("shoppingInput"); if(!input.value.trim()) return; const items=getShopping(); items.push({ text:input.value.trim(), done:false }); saveShopping(items); input.value=""; loadShopping(); } function toggleShopping(index){ const items=getShopping(); items[index].done=!items[index].done; saveShopping(items); loadShopping(); } function deleteShopping(index){ const items=getShopping(); items.splice(index,1); saveShopping(items); loadShopping(); } function loadShopping(){ const list=document.getElementById("shoppingList"); if(!list) return; const items=getShopping(); list.innerHTML=items.map((item,i)=>` <li class="${item.done?"done":""}"> <span onclick="toggleShopping(${i})" style="cursor:pointer"> ${item.done?"✓":"○"} ${item.text} </span> <button class="delete" onclick="deleteShopping(${i})">×</button> </li> `).join(""); } /* ========================= TODO ========================= */ function addTodo(){ const input=document.getElementById("todoInput"); if(!input.value.trim()) return; app.todos.push({ text:input.value.trim(), done:false }); input.value=""; saveApp(); renderTodos(); } function toggleTodo(index){ app.todos[index].done=!app.todos[index].done; saveApp(); renderTodos(); } function deleteTodo(index){ app.todos.splice(index,1); saveApp(); renderTodos(); } function renderTodos(){ const list=document.getElementById("todoList"); list.innerHTML=app.todos.map((todo,i)=>` <li class="${todo.done?"done":""}"> <span onclick="toggleTodo(${i})" style="cursor:pointer"> ${todo.done?"✓":"○"} ${todo.text} </span> <button class="delete" onclick="deleteTodo(${i})">×</button> </li> `).join(""); } /* ========================= MOOD ========================= */ function setMood(button,mood){ document.querySelectorAll(".mood").forEach(x=>x.classList.remove("selected")); button.classList.add("selected"); app.mood=mood; const messages={ "🥰":"You're glowing today. Keep that energy. ✨", "😊":"A little good mood goes a long way. 🌷", "😌":"Slow days count too. Take your time. ☁️", "😐":"Maybe choose one tiny thing to make today nicer.", "😵‍💫":"Pause. Breathe. One thing at a time. 🫶", "😭":"Be gentle with yourself today. You don't have to fix everything." }; document.getElementById("moodResult").textContent=messages[mood]; saveApp(); } /* ========================= HABITS ========================= */ function renderHabits(){ const grid=document.getElementById("habitGrid"); grid.innerHTML=""; const names=["M","T","W","T","F","S","S"]; app.habits.forEach((active,i)=>{ const div=document.createElement("div"); div.className="day"+(active?" active":""); div.textContent=names[i]; div.onclick=()=>{ app.habits[i]=!app.habits[i]; saveApp(); renderHabits(); }; grid.appendChild(div); }); } function resetHabits(){ app.habits=[false,false,false,false,false,false,false]; saveApp(); renderHabits(); toast("Fresh week, fresh start 🌷"); } /* ========================= FAVORITES ========================= */ function favoriteTool(button){ button.classList.toggle("active"); button.textContent= button.classList.contains("active")?"♥":"♡"; toast( button.classList.contains("active") ?"Added to favorites 💗" :"Removed from favorites" ); } /* ========================= SEARCH ========================= */ function searchTools(){ const query=document.getElementById("search").value.toLowerCase().trim(); document.querySelectorAll(".tool-card").forEach(card=>{ const text=( card.innerText+" "+ card.dataset.keywords ).toLowerCase(); card.style.display= !query || text.includes(query) ?"block" :"none"; }); } function filterCategory(category){ document.querySelectorAll(".tool-card").forEach(card=>{ card.style.display= card.dataset.category===category ?"block" :"none"; }); document.getElementById("toolGrid").scrollIntoView({ behavior:"smooth", block:"center" }); toast( category.charAt(0).toUpperCase()+category.slice(1)+ " tools ✨" ); } function showAllTools(){ document.querySelectorAll(".tool-card").forEach(card=>{ card.style.display="block"; }); document.getElementById("search").value=""; toast("Showing all Herly tools ✨"); } /* ========================= VIP ========================= */ function openVIP(){ openModal("Herly VIP ✨",` <div style="text-align:center"> <div style="font-size:55px;margin-bottom:10px">💎</div> <h2>Your life, but more organized.</h2> <p style="color:var(--muted);margin:10px 0 20px"> Unlock the tools that turn Herly from a cute toolbox into your personal life dashboard. </p> <div style="display:grid;gap:8px;text-align:left"> <div style="padding:12px;background:var(--rose);border-radius:13px"> ✓ Advanced money planner </div> <div style="padding:12px;background:var(--rose);border-radius:13px"> ✓ Personal wardrobe </div> <div style="padding:12px;background:var(--rose);border-radius:13px"> ✓ Important dates </div> <div style="padding:12px;background:var(--rose);border-radius:13px"> ✓ Study & career tools </div> <div style="padding:12px;background:var(--rose);border-radius:13px"> ✓ Saved history & exports </div> <div style="padding:12px;background:var(--rose);border-radius:13px"> ✓ No ads </div> </div> <div style="font-size:35px;font-weight:900;margin:18px 0"> €4.99 <span style="font-size:13px;color:var(--muted)"> / month </span> </div> <button class="calculate" onclick="fakeCheckout()"> Continue to VIP ✨ </button> <p style="font-size:11px;color:var(--muted);margin-top:10px"> Demo checkout — real payment integration can be connected later. </p> </div> `); } function fakeCheckout(){ closeModal(); toast("VIP checkout is ready for payment integration 💎"); setTimeout(()=>{ document.getElementById("vip").scrollIntoView({ behavior:"smooth" }); },500); } /* ========================= FAQ ========================= */ function toggleFAQ(button){ const item=button.parentElement; item.classList.toggle("open"); button.querySelector("span").textContent= item.classList.contains("open")?"−":"＋"; } /* ========================= DAILY GOAL ========================= */ function completeGoal(){ document.getElementById("goalProgress").style.width="100%"; document.getElementById("dailyGoal").textContent= "You did your little goal today. Proud of you. 💗"; toast("Goal completed! ✨"); } /* ========================= DASHBOARD ========================= */ function updateDashboard(){ document.getElementById("dashBudget").textContent= "€"+Number(app.budget||0).toFixed(0); document.getElementById("dashSaved").textContent= "€"+Number(app.saved||0).toFixed(0); document.getElementById("dashTasks").textContent= app.todos.filter(x=>x.done).length; } /* ========================= TIMER ========================= */ let timerInterval=null; let timerSeconds=1500; function startTimer(){ if(timerInterval) return; timerInterval=setInterval(()=>{ timerSeconds--; const min=Math.floor(timerSeconds/60); const sec=timerSeconds%60; const el=document.getElementById("timer"); if(el){ el.textContent= `${String(min).padStart(2,"0")}:${String(sec).padStart(2,"0")}`; } if(timerSeconds<=0){ clearInterval(timerInterval); timerInterval=null; toast("Focus session complete! Take a little break 🍓"); timerSeconds=1500; } },1000); } function resetTimer(){ clearInterval(timerInterval); timerInterval=null; timerSeconds=1500; const el=document.getElementById("timer"); if(el){ el.textContent="25:00"; } } /* ========================= INIT ========================= */ renderTodos(); renderHabits(); updateDashboard(); if(app.mood){ document.getElementById("moodResult").textContent= "Today's saved mood: "+app.mood; } /* ========================= WELCOME ========================= */ const hour=new Date().getHours(); let greeting="Welcome back"; if(hour<12) greeting="Good morning"; else if(hour<18) greeting="Good afternoon"; else greeting="Good evening"; document.getElementById("welcomeTitle").textContent= greeting+" 🎀"; /* ========================= PREVENT FORM SUBMIT ISSUES ========================= */ document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ closeModal(); } }); </script>
 
 </body> </html>
