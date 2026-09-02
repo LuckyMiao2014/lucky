@@ -2,614 +2,660 @@
 
 <html lang="zh-CN"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>♡ Pinky Cat World ♡</title>
+<title>Pink Tools · 女生专属在线工具箱</title>
 
-<style> /* ========================= 基础设置 ========================= */ * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { font-family: "Arial", "Microsoft YaHei", sans-serif; background: radial-gradient(circle at 10% 20%, #ffe4ef 0 8%, transparent 9%), radial-gradient(circle at 90% 10%, #ffd5e6 0 7%, transparent 8%), #fff7fa; color: #684957; overflow-x: hidden; } a { text-decoration: none; color: inherit; } button { font-family: inherit; } /* ========================= 顶部导航 ========================= */ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(240, 140, 175, 0.25); padding: 15px 7%; } .nav-container { max-width: 1200px; margin: auto; display: flex; align-items: center; justify-content: space-between; } .logo { font-size: 25px; font-weight: 800; color: #df6f9a; } .logo span { color: #ff9fc0; } .nav-links { display: flex; gap: 30px; list-style: none; } .nav-links a { font-weight: 600; color: #805365; transition: 0.3s; } .nav-links a:hover { color: #ed76a3; } /* ========================= Hero 首页 ========================= */ .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 130px 20px 80px; background: linear-gradient( 135deg, #ffd0e1, #fff0f6, #ffdce9 ); position: relative; overflow: hidden; } .hero-content { max-width: 850px; position: relative; z-index: 2; } .hero-small { color: #d36a91; font-weight: bold; letter-spacing: 3px; margin-bottom: 20px; } .hero h1 { font-size: clamp(50px, 9vw, 100px); color: #d85f8d; line-height: 1; margin-bottom: 25px; } .hero h1 span { color: white; text-shadow: 0 4px 15px rgba(210, 90, 130, 0.25); } .hero p { font-size: 21px; line-height: 1.8; color: #85556a; } .hero-buttons { margin-top: 35px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; } .primary-button, .secondary-button { padding: 15px 30px; border-radius: 50px; border: none; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; } .primary-button { background: #ef7eaa; color: white; box-shadow: 0 10px 25px rgba(220, 100, 145, 0.25); } .primary-button:hover { transform: translateY(-5px) scale(1.04); } .secondary-button { background: white; color: #dc6c96; } .secondary-button:hover { transform: translateY(-5px); } /* 飘浮爱心 */ .heart { position: absolute; color: rgba(255, 255, 255, 0.8); animation: floatHeart 7s infinite ease-in-out; } .heart.one { left: 8%; top: 25%; font-size: 35px; } .heart.two { right: 10%; top: 35%; font-size: 50px; animation-delay: 1s; } .heart.three { left: 18%; bottom: 15%; font-size: 25px; animation-delay: 2s; } .heart.four { right: 20%; bottom: 18%; font-size: 30px; animation-delay: 3s; } @keyframes floatHeart { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(10deg); } } /* ========================= 通用 Section ========================= */ section { padding: 100px 7%; } .section-container { max-width: 1200px; margin: auto; } .section-title { text-align: center; margin-bottom: 55px; } .section-title span { color: #ec78a4; font-size: 14px; font-weight: bold; letter-spacing: 3px; } .section-title h2 { margin-top: 10px; font-size: 42px; color: #d86592; } .section-title p { margin-top: 15px; color: #94677a; } /* ========================= 猫咪统计 ========================= */ .stats { background: white; } .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; } .stat-card { padding: 30px; text-align: center; background: #fff5f8; border-radius: 25px; transition: 0.3s; } .stat-card:hover { transform: translateY(-8px); } .stat-icon { font-size: 40px; } .stat-number { font-size: 34px; font-weight: 800; color: #df6b97; margin-top: 10px; } .stat-text { color: #8b6575; margin-top: 5px; } /* ========================= 猫咪卡片 ========================= */ .cats { background: linear-gradient( 180deg, #fff6fa, #ffeaf2 ); } .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; } .cat-card { background: white; border-radius: 30px; overflow: hidden; box-shadow: 0 15px 40px rgba(205, 100, 140, 0.12); transition: 0.4s; } .cat-card:hover { transform: translateY(-12px) rotate(1deg); } .cat-picture { height: 240px; display: flex; align-items: center; justify-content: center; font-size: 130px; background: linear-gradient( 135deg, #ffc5dc, #ffeef5 ); } .cat-info { padding: 28px; } .cat-info h3 { font-size: 25px; color: #d76692; } .cat-info p { margin-top: 10px; line-height: 1.7; } .cat-tags { margin-top: 18px; display: flex; gap: 8px; flex-wrap: wrap; } .tag { background: #ffe3ed; color: #c96289; padding: 7px 12px; border-radius: 30px; font-size: 13px; } .cat-button { width: 100%; margin-top: 20px; padding: 12px; border: none; border-radius: 15px; background: #f58db2; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; } .cat-button:hover { background: #e76e9d; } /* ========================= 猫咪日常 ========================= */ .diary { background: white; } .diary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; } .diary-card { padding: 30px; border: 2px solid #ffe0eb; border-radius: 25px; background: #fffafb; transition: 0.3s; } .diary-card:hover { border-color: #f7a0be; transform: translateY(-5px); } .diary-date { color: #e37aa1; font-size: 13px; font-weight: bold; } .diary-card h3 { margin-top: 12px; color: #cf668f; } .diary-card p { margin-top: 12px; line-height: 1.8; } /* ========================= 猫咪语音区域 ========================= */ .voice { background: linear-gradient( 135deg, #f9a5c2, #ffdbe8 ); text-align: center; } .voice-box { max-width: 750px; margin: auto; background: rgba(255,255,255,0.8); padding: 55px 30px; border-radius: 40px; box-shadow: 0 20px 50px rgba(190,80,125,0.15); } .voice-cat { font-size: 100px; animation: talking 1.2s infinite ease-in-out; } @keyframes talking { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg) scale(1.04); } } .voice-box h2 { color: #d45f8d; font-size: 35px; } .voice-box p { margin: 15px 0 25px; line-height: 1.7; } .voice-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; } .voice-button { border: none; background: #ec78a5; color: white; padding: 14px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; transition: 0.3s; } .voice-button:hover { transform: scale(1.06); } /* ========================= 猫咪小知识 ========================= */ .facts { background: #fff5f9; } .fact-box { max-width: 850px; margin: auto; text-align: center; padding: 45px; background: white; border-radius: 35px; box-shadow: 0 15px 40px rgba(210,100,145,0.1); } .fact-icon { font-size: 70px; } .fact-box h3 { color: #d56491; margin: 15px 0; font-size: 27px; } .fact-box p { line-height: 1.9; } /* ========================= 联系区域 ========================= */ .contact { background: white; } .contact-box { max-width: 750px; margin: auto; text-align: center; background: linear-gradient( 135deg, #ffe0eb, #fff5f9 ); border-radius: 35px; padding: 50px 30px; } .contact-box h2 { color: #d36390; font-size: 35px; } .contact-box p { margin: 15px 0 25px; } /* ========================= Footer ========================= */ footer { background: #d96995; color: white; text-align: center; padding: 45px 20px; } footer .footer-logo { font-size: 28px; font-weight: bold; } footer p { margin-top: 12px; opacity: 0.9; } /* ========================= 猫咪详情弹窗 ========================= */ .modal { position: fixed; inset: 0; background: rgba(100, 50, 70, 0.45); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; } .modal.active { display: flex; } .modal-content { width: 100%; max-width: 600px; background: white; border-radius: 35px; padding: 40px; text-align: center; position: relative; animation: modalIn 0.3s ease; } @keyframes modalIn { from { transform: translateY(30px) scale(0.9); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } } .close { position: absolute; right: 20px; top: 15px; border: none; background: #ffe4ee; color: #d46691; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 20px; } .modal-cat { font-size: 100px; } .modal-content h2 { color: #d36390; margin: 10px 0; } .modal-content p { line-height: 1.8; margin-top: 15px; } /* ========================= 响应式 ========================= */ @media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } .cat-grid { grid-template-columns: repeat(2, 1fr); } .diary-grid { grid-template-columns: repeat(2, 1fr); } .nav-links { gap: 15px; } } @media (max-width: 650px) { .navbar { padding: 14px 20px; } .nav-links { display: none; } section { padding: 75px 20px; } .stats-grid, .cat-grid, .diary-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 55px; } .section-title h2 { font-size: 34px; } } </style>
+<meta name="description" content="Pink Tools 是一个简单、漂亮、免费的在线工具箱，提供计算器、文字工具、颜色工具、日期工具、密码生成器等实用工具。">
+
+<style> :root{ --pink:#ff6fae; --pink-dark:#e94f91; --pink-light:#fff0f7; --pink-soft:#ffe3f0; --purple:#9b7cff; --text:#342536; --muted:#8b7888; --white:#ffffff; --border:rgba(255,255,255,.75); --shadow:0 20px 60px rgba(202,91,145,.13); --radius:24px; } *{ margin:0; padding:0; box-sizing:border-box; } html{ scroll-behavior:smooth; } body{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: radial-gradient(circle at 10% 10%, #ffe5f1 0, transparent 25%), radial-gradient(circle at 90% 20%, #eee7ff 0, transparent 25%), linear-gradient(180deg,#fff8fc 0%,#fff 45%,#fff8fc 100%); color:var(--text); min-height:100vh; } /* ================= NAV ================= */ .navbar{ position:sticky; top:0; z-index:1000; backdrop-filter:blur(20px); background:rgba(255,255,255,.78); border-bottom:1px solid rgba(255,255,255,.9); } .nav-inner{ max-width:1180px; margin:auto; height:76px; padding:0 22px; display:flex; align-items:center; justify-content:space-between; } .logo{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); font-weight:900; font-size:22px; } .logo-icon{ width:42px; height:42px; border-radius:14px; display:grid; place-items:center; background:linear-gradient(135deg,#ff73b1,#ff9bc9); box-shadow:0 10px 25px rgba(255,105,170,.25); } .nav-links{ display:flex; gap:28px; } .nav-links a{ color:#665566; text-decoration:none; font-size:14px; font-weight:700; } .nav-links a:hover{ color:var(--pink-dark); } .nav-actions{ display:flex; gap:10px; } .icon-button{ width:42px; height:42px; border:1px solid #f3dbe7; background:#fff; border-radius:14px; cursor:pointer; font-size:17px; } /* ================= HERO ================= */ .hero{ max-width:1180px; margin:0 auto; padding:82px 22px 55px; text-align:center; } .badge{ display:inline-flex; align-items:center; gap:8px; padding:9px 15px; border-radius:999px; background:#fff; border:1px solid #ffd7e8; color:#d94c8e; font-size:13px; font-weight:800; box-shadow:0 10px 30px rgba(220,91,145,.08); } .hero h1{ margin-top:24px; font-size:clamp(42px,7vw,78px); line-height:1.02; letter-spacing:-3px; font-weight:950; } .gradient-text{ background:linear-gradient(90deg,#ff559c,#a77bff); -webkit-background-clip:text; background-clip:text; color:transparent; } .hero p{ max-width:680px; margin:22px auto 0; color:var(--muted); font-size:17px; line-height:1.8; } .search-box{ max-width:650px; margin:32px auto 0; position:relative; } .search-box input{ width:100%; height:62px; padding:0 25px 0 54px; border-radius:20px; border:1px solid #f2dce8; outline:none; background:rgba(255,255,255,.9); font-size:15px; box-shadow:var(--shadow); } .search-icon{ position:absolute; left:20px; top:20px; font-size:20px; } /* ================= MAIN ================= */ .container{ max-width:1180px; margin:auto; padding:0 22px 80px; } .section{ margin-top:35px; } .section-header{ display:flex; justify-content:space-between; align-items:end; margin-bottom:20px; } .section-title{ font-size:28px; font-weight:900; } .section-subtitle{ color:var(--muted); font-size:14px; margin-top:6px; } .tools-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:17px; } .tool-card{ position:relative; background:rgba(255,255,255,.86); border:1px solid #f6e1eb; border-radius:22px; padding:22px; min-height:185px; cursor:pointer; transition:.25s ease; box-shadow:0 12px 35px rgba(177,91,132,.07); } .tool-card:hover{ transform:translateY(-6px); box-shadow:0 22px 50px rgba(177,91,132,.14); border-color:#ffc6df; } .tool-icon{ width:52px; height:52px; display:grid; place-items:center; border-radius:17px; background:linear-gradient(135deg,#fff0f7,#f1ebff); font-size:25px; } .tool-card h3{ margin-top:16px; font-size:17px; } .tool-card p{ color:var(--muted); font-size:13px; line-height:1.6; margin-top:7px; } .favorite{ position:absolute; top:17px; right:17px; border:0; background:transparent; cursor:pointer; font-size:18px; } /* ================= CATEGORIES ================= */ .categories{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; } .category{ border:1px solid #f0dbe7; background:white; padding:10px 16px; border-radius:999px; cursor:pointer; color:#765f70; font-size:13px; font-weight:700; } .category.active, .category:hover{ background:#ffedf6; border-color:#ffc4dd; color:#d94c8e; } /* ================= PROMO ================= */ .promo{ margin-top:45px; padding:34px; border-radius:30px; background: radial-gradient(circle at 85% 10%,rgba(255,255,255,.65),transparent 25%), linear-gradient(135deg,#ffd7e9,#eee6ff); display:flex; align-items:center; justify-content:space-between; gap:25px; overflow:hidden; } .promo h2{ font-size:27px; } .promo p{ color:#765f70; margin-top:9px; line-height:1.6; } .primary-button{ border:0; background:linear-gradient(135deg,#ff559c,#e84991); color:white; padding:14px 23px; border-radius:15px; cursor:pointer; font-weight:800; box-shadow:0 12px 25px rgba(232,73,145,.25); } .primary-button:hover{ transform:translateY(-2px); } /* ================= MODAL ================= */ .modal{ display:none; position:fixed; inset:0; z-index:2000; background:rgba(46,25,39,.35); backdrop-filter:blur(10px); padding:20px; align-items:center; justify-content:center; } .modal.show{ display:flex; } .modal-content{ width:min(650px,100%); max-height:90vh; overflow:auto; background:white; border-radius:30px; padding:30px; box-shadow:0 40px 100px rgba(0,0,0,.2); animation:pop .25s ease; } @keyframes pop{ from{ opacity:0; transform:translateY(15px) scale(.97); } to{ opacity:1; transform:none; } } .modal-top{ display:flex; align-items:center; justify-content:space-between; } .close{ width:40px; height:40px; border:0; border-radius:13px; background:#fff0f6; cursor:pointer; font-size:18px; } .tool-area{ margin-top:25px; } .input{ width:100%; padding:14px 15px; border:1px solid #ead9e3; border-radius:13px; outline:none; font-size:15px; margin-top:8px; } .input:focus{ border-color:#ff8abb; box-shadow:0 0 0 4px #fff0f7; } .field{ margin-top:15px; } .field label{ font-size:13px; font-weight:800; } .result{ margin-top:20px; padding:18px; background:#fff4f8; border:1px solid #ffd9e8; border-radius:15px; font-weight:800; word-break:break-word; } .tool-buttons{ display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; } .secondary-button{ border:1px solid #efdbe6; background:white; padding:13px 18px; border-radius:13px; cursor:pointer; font-weight:700; } /* ================= FOOTER ================= */ footer{ border-top:1px solid #f2e2eb; background:rgba(255,255,255,.7); } .footer-inner{ max-width:1180px; margin:auto; padding:45px 22px; display:flex; justify-content:space-between; gap:30px; } .footer-brand{ font-weight:900; font-size:20px; } .footer-text{ margin-top:8px; color:var(--muted); font-size:13px; } .footer-links{ display:flex; gap:20px; } .footer-links a{ text-decoration:none; color:#806c7b; font-size:13px; } /* ================= RESPONSIVE ================= */ @media(max-width:900px){ .tools-grid{ grid-template-columns:repeat(2,1fr); } .nav-links{ display:none; } } @media(max-width:560px){ .hero{ padding-top:55px; } .hero h1{ letter-spacing:-2px; } .tools-grid{ grid-template-columns:1fr; } .promo{ flex-direction:column; align-items:flex-start; } .footer-inner{ flex-direction:column; } } /* ================= DARK MODE ================= */ body.dark{ --text:#f8eaf2; --muted:#c2afbb; background: radial-gradient(circle at 10% 10%,#3b2332,transparent 30%), radial-gradient(circle at 90% 20%,#28233c,transparent 30%), #171219; } body.dark .navbar{ background:rgba(25,18,25,.78); } body.dark .logo, body.dark .nav-links a{ color:#f8eaf2; } body.dark .tool-card, body.dark .search-box input, body.dark .icon-button, body.dark .category, body.dark .secondary-button, body.dark .modal-content{ background:#251b24; color:#f8eaf2; border-color:#45313f; } body.dark .tool-card p, body.dark .section-subtitle, body.dark .hero p{ color:#bdaebb; } body.dark footer{ background:#1c151b; border-color:#3a2935; } </style>
 
 </head>
 
 <body>
 
-<!-- ========================= 导航 ========================= -->
+<nav class="navbar"> <div class="nav-inner">
 
-<nav class="navbar">
-
-<div class="nav-container">
-
-    <a href="#home" class="logo">
-        ♡ Pinky <span>Cat</span>
+    <a href="#" class="logo">
+        <div class="logo-icon">🌸</div>
+        Pink Tools
     </a>
 
-    <ul class="nav-links">
+    <div class="nav-links">
+        <a href="#tools">全部工具</a>
+        <a href="#popular">热门</a>
+        <a href="#about">关于我们</a>
+    </div>
 
-        <li>
-            <a href="#home">首页</a>
-        </li>
-
-        <li>
-            <a href="#cats">猫咪</a>
-        </li>
-
-        <li>
-            <a href="#diary">日记</a>
-        </li>
-
-        <li>
-            <a href="#voice">猫咪说话</a>
-        </li>
-
-        <li>
-            <a href="#contact">联系</a>
-        </li>
-
-    </ul>
+    <div class="nav-actions">
+        <button class="icon-button" onclick="toggleDark()" title="深色模式">🌙</button>
+    </div>
 
 </div>
 
 </nav>
 
-<!-- ========================= 首页 ========================= -->
+<section class="hero">
 
-<header class="hero" id="home">
-
-<div class="heart one">♡</div>
-<div class="heart two">♥</div>
-<div class="heart three">♡</div>
-<div class="heart four">✿</div>
-
-
-<div class="hero-content">
-
-    <div class="hero-small">
-        WELCOME TO MY LITTLE WORLD
-    </div>
-
-    <h1>
-        Pinky<br>
-        <span>Cat World 🐱</span>
-    </h1>
-
-    <p>
-        一个属于猫咪、爱心和粉色的小世界。<br>
-        在这里认识可爱的猫咪，听听它们的声音吧 ♡
-    </p>
-
-
-    <div class="hero-buttons">
-
-        <a
-            href="#cats"
-            class="primary-button">
-            🐾 探索猫咪
-        </a>
-
-        <button
-            class="secondary-button"
-            onclick="sayCat('欢迎来到我的猫咪世界！喵～')">
-            🔊 听猫咪说话
-        </button>
-
-    </div>
-
+<div class="badge">
+    ✨ 免费 · 简单 · 漂亮
 </div>
 
-</header>
-
-<!-- ========================= 数据统计 ========================= -->
-
-<section class="stats">
-
-<div class="section-container">
-
-    <div class="stats-grid">
-
-        <div class="stat-card">
-
-            <div class="stat-icon">🐱</div>
-
-            <div class="stat-number">12+</div>
-
-            <div class="stat-text">
-                可爱猫咪
-            </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">💗</div>
-
-            <div class="stat-number">∞</div>
-
-            <div class="stat-text">
-                猫咪的爱
-            </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">🎀</div>
-
-            <div class="stat-number">24/7</div>
-
-            <div class="stat-text">
-                可爱时间
-            </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">🐾</div>
-
-            <div class="stat-number">100%</div>
-
-            <div class="stat-text">
-                猫咪能量
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</section>
-
-<!-- ========================= 猫咪档案 ========================= -->
-
-<section class="cats" id="cats">
-
-<div class="section-container">
-
-    <div class="section-title">
-
-        <span>MEET THE CATS</span>
-
-        <h2>🌸 猫咪档案 🌸</h2>
-
-        <p>
-            点击你喜欢的猫咪，看看它们的小秘密 ♡
-        </p>
-
-    </div>
-
-
-    <div class="cat-grid">
-
-
-        <!-- 猫咪 1 -->
-
-        <article class="cat-card">
-
-            <div class="cat-picture">
-                🐱
-            </div>
-
-            <div class="cat-info">
-
-                <h3>莓莓 Strawberry</h3>
-
-                <p>
-                    一只超级爱撒娇的小猫，
-                    最喜欢粉色、草莓和午睡。
-                </p>
-
-                <div class="cat-tags">
-
-                    <span class="tag">
-                        甜甜的
-                    </span>
-
-                    <span class="tag">
-                        爱撒娇
-                    </span>
-
-                    <span class="tag">
-                        爱睡觉
-                    </span>
-
-                </div>
-
-                <button
-                    class="cat-button"
-                    onclick="openCat(
-                        '🐱',
-                        '莓莓 Strawberry',
-                        '莓莓是一只非常温柔的小猫。她每天最喜欢做的事情就是找一个舒服的小角落睡觉，然后突然跑过来向你撒娇。她最喜欢草莓味的小零食！'
-                    )">
-
-                    查看莓莓 ♡
-
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- 猫咪 2 -->
-
-        <article class="cat-card">
-
-            <div class="cat-picture">
-                🐈
-            </div>
-
-            <div class="cat-info">
-
-                <h3>奶糖 Milky</h3>
-
-                <p>
-                    外表高冷，实际上是一只
-                    非常黏人的小可爱。
-                </p>
-
-                <div class="cat-tags">
-
-                    <span class="tag">
-                        高冷
-                    </span>
-
-                    <span class="tag">
-                        黏人
-                    </span>
-
-                    <span class="tag">
-                        好奇
-                    </span>
-
-                </div>
-
-                <button
-                    class="cat-button"
-                    onclick="openCat(
-                        '🐈',
-                        '奶糖 Milky',
-                        '奶糖看起来总是一副高冷的样子，但是只要你坐下来，他就会偷偷跑到你旁边。最喜欢窗边晒太阳，也喜欢观察外面的世界。'
-                    )">
-
-                    查看奶糖 ♡
-
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- 猫咪 3 -->
-
-        <article class="cat-card">
-
-            <div class="cat-picture">
-                🐈‍⬛
-            </div>
-
-            <div class="cat-info">
-
-                <h3>黑糖 Coco</h3>
-
-                <p>
-                    一只神秘又可爱的黑猫，
-                    晚上特别活跃。
-                </p>
-
-                <div class="cat-tags">
-
-                    <span class="tag">
-                        神秘
-                    </span>
-
-                    <span class="tag">
-                        活泼
-                    </span>
-
-                    <span class="tag">
-                        夜猫子
-                    </span>
-
-                </div>
-
-                <button
-                    class="cat-button"
-                    onclick="openCat(
-                        '🐈‍⬛',
-                        '黑糖 Coco',
-                        '黑糖是一只非常聪明的黑猫。白天喜欢睡觉，到了晚上就开始探索整个房间。他最喜欢玩小球和追逐影子。'
-                    )">
-
-                    查看黑糖 ♡
-
-                </button>
-
-            </div>
-
-        </article>
-
-
-    </div>
-
-</div>
-
-</section>
-
-<!-- ========================= 猫咪日记 ========================= -->
-
-<section class="diary" id="diary">
-
-<div class="section-container">
-
-    <div class="section-title">
-
-        <span>CAT DIARY</span>
-
-        <h2>📖 猫咪小日记</h2>
-
-        <p>
-            记录一些猫咪的小故事。
-        </p>
-
-    </div>
-
-
-    <div class="diary-grid">
-
-
-        <article class="diary-card">
-
-            <div class="diary-date">
-                SEPTEMBER 01
-            </div>
-
-            <h3>
-                🌸 今天又睡了一整天
-            </h3>
-
-            <p>
-                上午十点醒来，吃了一点东西，
-                然后继续睡觉。下午醒来以后，
-                又开始睡觉。
-            </p>
-
-        </article>
-
-
-        <article class="diary-card">
-
-            <div class="diary-date">
-                AUGUST 28
-            </div>
-
-            <h3>
-                🎀 找到了新玩具
-            </h3>
-
-            <p>
-                今天发现了一个新的毛线球。
-                玩了整整两个小时，最后把它藏到了沙发下面。
-            </p>
-
-        </article>
-
-
-        <article class="diary-card">
-
-            <div class="diary-date">
-                AUGUST 20
-            </div>
-
-            <h3>
-                💗 今天被摸摸了
-            </h3>
-
-            <p>
-                今天得到了好多好多摸摸。
-                于是决定暂时不捣乱了。
-            </p>
-
-        </article>
-
-
-    </div>
-
-</div>
-
-</section>
-
-<!-- ========================= 猫咪说话 ========================= -->
-
-<section class="voice" id="voice">
-
-<div class="voice-box">
-
-    <div class="voice-cat">
-        🐱
-    </div>
-
-    <h2>
-        🔊 猫咪说话时间
-    </h2>
-
-    <p>
-        点击下面的按钮，让猫咪和你说话吧！
-    </p>
-
-
-    <div class="voice-buttons">
-
-        <button
-            class="voice-button"
-            onclick="sayCat('喵～你好呀！')">
-
-            🐱 你好
-
-        </button>
-
-
-        <button
-            class="voice-button"
-            onclick="sayCat('喵喵！我今天超级开心！')">
-
-            💗 开心
-
-        </button>
-
-
-        <button
-            class="voice-button"
-            onclick="sayCat('喵……我困了，我要睡觉了。')">
-
-            😴 困了
-
-        </button>
-
-
-        <button
-            class="voice-button"
-            onclick="sayCat('喵！给我一点小鱼干！')">
-
-            🐟 要零食
-
-        </button>
-
-    </div>
-
-</div>
-
-</section>
-
-<!-- ========================= 猫咪知识 ========================= -->
-
-<section class="facts">
-
-<div class="section-container">
-
-    <div class="section-title">
-
-        <span>DID YOU KNOW?</span>
-
-        <h2>✨ 猫咪小知识</h2>
-
-    </div>
-
-
-    <div class="fact-box">
-
-        <div class="fact-icon">
-            🐾
-        </div>
-
-        <h3>
-            猫咪每天可以睡很久！
-        </h3>
-
-        <p>
-            猫咪通常会花很多时间休息和睡觉。
-            这是因为它们需要保存能量，
-            所以看到猫咪睡觉的时候，
-            不要觉得它们“什么都没做”哦！
-        </p>
-
-    </div>
-
-</div>
-
-</section>
-
-<!-- ========================= 联系 ========================= -->
-
-<section class="contact" id="contact">
-
-<div class="contact-box">
-
-    <h2>
-        💌 给猫咪一个拥抱
-    </h2>
-
-    <p>
-        如果你也喜欢猫咪，
-        那么今天也要记得开心一点哦 ♡
-    </p>
-
-    <button
-        class="primary-button"
-        onclick="sayCat('谢谢你喜欢猫咪！喵～♡')">
-
-        ♡ 对猫咪说我爱你
-
-    </button>
-
-</div>
-
-</section>
-
-<!-- ========================= Footer ========================= -->
-
-<footer>
-
-<div class="footer-logo">
-    ♡ Pinky Cat World ♡
-</div>
+<h1>
+    你的专属<br>
+    <span class="gradient-text">在线工具箱</span>
+</h1>
 
 <p>
-    Made with love, pink & cats 🎀🐱
+    学习、工作、生活、创作需要的小工具，
+    都可以在这里快速完成。
+    不需要安装软件，打开浏览器就能使用。
 </p>
 
-<p>
-    © 2026 My Little Cat Website
-</p>
+<div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input
+        id="search"
+        type="text"
+        placeholder="搜索你需要的工具，例如：密码、计算器、颜色……"
+        oninput="searchTools()"
+    >
+</div>
+
+</section>
+
+<main class="container">
+
+<section class="section" id="popular">
+
+<div class="section-header">
+    <div>
+        <div class="section-title">🔥 热门工具</div>
+        <div class="section-subtitle">大家最常使用的小工具</div>
+    </div>
+</div>
+
+<div class="tools-grid">
+
+    <div class="tool-card" onclick="openTool('percentage')">
+        <button class="favorite" onclick="event.stopPropagation();favorite(this)">♡</button>
+        <div class="tool-icon">％</div>
+        <h3>百分比计算器</h3>
+        <p>快速计算折扣、增长率、百分比。</p>
+    </div>
+
+    <div class="tool-card" onclick="openTool('password')">
+        <button class="favorite" onclick="event.stopPropagation();favorite(this)">♡</button>
+        <div class="tool-icon">🔐</div>
+        <h3>密码生成器</h3>
+        <p>生成随机、安全的复杂密码。</p>
+    </div>
+
+    <div class="tool-card" onclick="openTool('word')">
+        <button class="favorite" onclick="event.stopPropagation();favorite(this)">♡</button>
+        <div class="tool-icon">📝</div>
+        <h3>字数统计</h3>
+        <p>统计文字、字符、单词和段落。</p>
+    </div>
+
+    <div class="tool-card" onclick="openTool('color')">
+        <button class="favorite" onclick="event.stopPropagation();favorite(this)">♡</button>
+        <div class="tool-icon">🎨</div>
+        <h3>颜色转换</h3>
+        <p>HEX、RGB 颜色格式快速转换。</p>
+    </div>
+
+</div>
+
+</section>
+
+<section class="section" id="tools">
+
+<div class="section-header">
+    <div>
+        <div class="section-title">🧰 所有工具</div>
+        <div class="section-subtitle">选择一个工具开始使用</div>
+    </div>
+</div>
+
+<div class="categories">
+    <button class="category active" onclick="filterCategory('all',this)">全部</button>
+    <button class="category" onclick="filterCategory('life',this)">生活</button>
+    <button class="category" onclick="filterCategory('text',this)">文字</button>
+    <button class="category" onclick="filterCategory('creative',this)">创作</button>
+    <button class="category" onclick="filterCategory('utility',this)">实用</button>
+</div>
+
+<div class="tools-grid" id="allTools">
+
+    <div class="tool-card" data-category="life" data-name="小费计算器" onclick="openTool('tip')">
+        <div class="tool-icon">💰</div>
+        <h3>小费计算器</h3>
+        <p>快速计算小费以及人均金额。</p>
+    </div>
+
+    <div class="tool-card" data-category="life" data-name="倒计时" onclick="openTool('timer')">
+        <div class="tool-icon">⏰</div>
+        <h3>倒计时</h3>
+        <p>设置一个简单漂亮的倒计时。</p>
+    </div>
+
+    <div class="tool-card" data-category="text" data-name="字数统计" onclick="openTool('word')">
+        <div class="tool-icon">📝</div>
+        <h3>字数统计</h3>
+        <p>统计中文字符、英文单词等。</p>
+    </div>
+
+    <div class="tool-card" data-category="text" data-name="大小写转换" onclick="openTool('case')">
+        <div class="tool-icon">🔤</div>
+        <h3>大小写转换</h3>
+        <p>英文大小写快速转换。</p>
+    </div>
+
+    <div class="tool-card" data-category="utility" data-name="密码生成器" onclick="openTool('password')">
+        <div class="tool-icon">🔐</div>
+        <h3>密码生成器</h3>
+        <p>生成随机安全密码。</p>
+    </div>
+
+    <div class="tool-card" data-category="utility" data-name="百分比计算器" onclick="openTool('percentage')">
+        <div class="tool-icon">％</div>
+        <h3>百分比计算器</h3>
+        <p>折扣、增长率、百分比计算。</p>
+    </div>
+
+    <div class="tool-card" data-category="creative" data-name="颜色转换" onclick="openTool('color')">
+        <div class="tool-icon">🎨</div>
+        <h3>HEX / RGB</h3>
+        <p>快速转换颜色代码。</p>
+    </div>
+
+    <div class="tool-card" data-category="utility" data-name="JSON格式化" onclick="openTool('json')">
+        <div class="tool-icon">{ }</div>
+        <h3>JSON 格式化</h3>
+        <p>让复杂 JSON 变得清晰易读。</p>
+    </div>
+
+</div>
+
+</section>
+
+<section class="promo">
+
+<div>
+    <h2>💗 让生活变得简单一点</h2>
+    <p>
+        我们正在持续增加新的免费工具。<br>
+        如果你喜欢 Pink Tools，可以收藏这个网站。
+    </p>
+</div>
+
+<button class="primary-button" onclick="alert('感谢你的支持 💕')">
+    支持 Pink Tools
+</button>
+
+</section>
+
+</main>
+
+<footer id="about">
+
+<div class="footer-inner">
+
+    <div>
+        <div class="footer-brand">🌸 Pink Tools</div>
+        <div class="footer-text">
+            Simple tools for everyday life.
+        </div>
+    </div>
+
+    <div class="footer-links">
+        <a href="#">首页</a>
+        <a href="#tools">工具</a>
+        <a href="#">隐私</a>
+        <a href="#">联系</a>
+    </div>
+
+</div>
 
 </footer>
 
-<!-- ========================= 猫咪详情弹窗 ========================= -->
+<!-- MODAL -->
 
-<div class="modal" id="catModal">
+<div class="modal" id="modal">
 
 <div class="modal-content">
 
-    <button
-        class="close"
-        onclick="closeCat()">
+    <div class="modal-top">
+        <div>
+            <div id="modalIcon" style="font-size:38px;"></div>
+            <h2 id="modalTitle" style="margin-top:10px;"></h2>
+        </div>
 
-        ×
-
-    </button>
-
-    <div
-        class="modal-cat"
-        id="modalCat">
-
-        🐱
-
+        <button class="close" onclick="closeModal()">✕</button>
     </div>
 
-    <h2 id="modalTitle">
-        猫咪
-    </h2>
-
-    <p id="modalText">
-        猫咪介绍
-    </p>
-
-    <br>
-
-    <button
-        class="primary-button"
-        onclick="sayCat('喵～很高兴认识你！')">
-
-        🔊 和我说话
-
-    </button>
+    <div id="toolArea" class="tool-area"></div>
 
 </div>
 
 </div>
 
-<script> /* ========================= 猫咪语音 ========================= */ function sayCat(text) { if ("speechSynthesis" in window) { window.speechSynthesis.cancel(); const voice = new SpeechSynthesisUtterance(text); voice.lang = "zh-CN"; voice.rate = 0.85; voice.pitch = 1.5; window.speechSynthesis.speak(voice); } else { alert(text); } } /* ========================= 打开猫咪详情 ========================= */ function openCat(icon, title, text) { document.getElementById("modalCat") .textContent = icon; document.getElementById("modalTitle") .textContent = title; document.getElementById("modalText") .textContent = text; document.getElementById("catModal") .classList.add("active"); } /* ========================= 关闭猫咪详情 ========================= */ function closeCat() { document.getElementById("catModal") .classList.remove("active"); } /* 点击背景关闭 */ document.getElementById("catModal") .addEventListener( "click", function(event) { if (event.target === this) { closeCat(); } } ); </script>
+<script> const modal = document.getElementById("modal"); const modalTitle = document.getElementById("modalTitle"); const modalIcon = document.getElementById("modalIcon"); const toolArea = document.getElementById("toolArea"); function openTool(type){ modal.classList.add("show"); const tools = { percentage:{ title:"百分比计算器", icon:"％", html:` <div class="field"> <label>数字</label> <input class="input" id="percentNumber" type="number" placeholder="例如 200"> </div> <div class="field"> <label>百分比</label> <input class="input" id="percentValue" type="number" placeholder="例如 15"> </div> <div class="tool-buttons"> <button class="primary-button" onclick="calculatePercentage()">计算</button> </div> <div class="result" id="percentResult"> 结果会显示在这里 </div> ` }, tip:{ title:"小费计算器", icon:"💰", html:` <div class="field"> <label>账单金额</label> <input class="input" id="bill" type="number" placeholder="例如 50"> </div> <div class="field"> <label>小费百分比</label> <input class="input" id="tipPercent" type="number" value="15"> </div> <div class="field"> <label>人数</label> <input class="input" id="people" type="number" value="1"> </div> <div class="tool-buttons"> <button class="primary-button" onclick="calculateTip()">计算</button> </div> <div class="result" id="tipResult"> 结果会显示在这里 </div> ` }, password:{ title:"密码生成器", icon:"🔐", html:` <div class="field"> <label>密码长度</label> <input class="input" id="passwordLength" type="number" value="16" min="4" max="50"> </div> <div class="tool-buttons"> <button class="primary-button" onclick="generatePassword()">生成密码</button> </div> <div class="result" id="passwordResult"> 点击生成 </div> <div class="tool-buttons"> <button class="secondary-button" onclick="copyText('passwordResult')"> 📋 复制密码 </button> </div> ` }, word:{ title:"字数统计", icon:"📝", html:` <div class="field"> <label>输入文字</label> <textarea class="input" id="wordText" rows="9" placeholder="在这里输入或粘贴文字……" oninput="countWords()" ></textarea>
+
+            </div>
+
+            <div class="result" id="wordResult">
+                字符：0<br>
+                不含空格：0<br>
+                单词：0<br>
+                行数：0
+            </div>
+        `
+    },
+
+    case:{
+        title:"大小写转换",
+        icon:"🔤",
+        html:`
+            <div class="field">
+                <label>输入英文</label>
+                <textarea
+                    class="input"
+                    id="caseText"
+                    rows="8"
+                    placeholder="Type something here..."
+                ></textarea>
+            </div>
+
+            <div class="tool-buttons">
+                <button class="primary-button" onclick="toUpper()">全部大写</button>
+                <button class="secondary-button" onclick="toLower()">全部小写</button>
+            </div>
+        `
+    },
+
+    color:{
+        title:"HEX / RGB 颜色工具",
+        icon:"🎨",
+        html:`
+            <div class="field">
+                <label>HEX</label>
+                <input
+                    class="input"
+                    id="hex"
+                    value="#ff69b4"
+                    oninput="hexToRgb()"
+                >
+            </div>
+
+            <div class="result" id="colorResult">
+                RGB(255, 105, 180)
+            </div>
+
+            <div
+                id="colorPreview"
+                style="
+                    height:100px;
+                    border-radius:18px;
+                    margin-top:18px;
+                    background:#ff69b4;
+                "
+            ></div>
+        `
+    },
+
+    json:{
+        title:"JSON 格式化",
+        icon:"{ }",
+        html:`
+            <div class="field">
+                <label>JSON</label>
+                <textarea
+                    class="input"
+                    id="jsonText"
+                    rows="10"
+                    placeholder='{"name":"Pink Tools","love":true}'
+                ></textarea>
+            </div>
+
+            <div class="tool-buttons">
+                <button class="primary-button" onclick="formatJSON()">格式化</button>
+                <button class="secondary-button" onclick="minifyJSON()">压缩</button>
+            </div>
+
+            <div class="result" id="jsonResult">
+                结果会显示在这里
+            </div>
+
+            <div class="tool-buttons">
+                <button class="secondary-button" onclick="copyText('jsonResult')">
+                    📋 复制结果
+                </button>
+            </div>
+        `
+    },
+
+    timer:{
+        title:"倒计时",
+        icon:"⏰",
+        html:`
+            <div class="field">
+                <label>分钟</label>
+                <input class="input" id="timerMinutes" type="number" value="5">
+            </div>
+
+            <div class="tool-buttons">
+                <button class="primary-button" onclick="startTimer()">开始倒计时</button>
+            </div>
+
+            <div
+                class="result"
+                id="timerResult"
+                style="font-size:35px;text-align:center;"
+            >
+                05:00
+            </div>
+        `
+    }
+
+};
+
+const tool=tools[type];
+
+modalIcon.textContent=tool.icon;
+modalTitle.textContent=tool.title;
+toolArea.innerHTML=tool.html;
+
+}
+
+function closeModal(){
+modal.classList.remove("show");
+}
+
+modal.addEventListener("click",function(e){
+if(e.target===modal){
+closeModal();
+}
+});
+
+function calculatePercentage(){
+
+const number=parseFloat(
+    document.getElementById("percentNumber").value
+);
+
+const percent=parseFloat(
+    document.getElementById("percentValue").value
+);
+
+if(isNaN(number)||isNaN(percent)){
+    document.getElementById("percentResult").textContent="请输入数字";
+    return;
+}
+
+const result=number*percent/100;
+
+document.getElementById("percentResult").textContent=
+    `${number} 的 ${percent}% = ${result}`;
+
+}
+
+function calculateTip(){
+
+const bill=parseFloat(document.getElementById("bill").value);
+const percent=parseFloat(document.getElementById("tipPercent").value);
+const people=parseInt(document.getElementById("people").value);
+
+if(isNaN(bill)||isNaN(percent)||isNaN(people)||people<=0){
+    document.getElementById("tipResult").textContent="请输入正确的信息";
+    return;
+}
+
+const tip=bill*percent/100;
+const total=bill+tip;
+const each=total/people;
+
+document.getElementById("tipResult").innerHTML=
+    `小费：${tip.toFixed(2)}<br>
+     总金额：${total.toFixed(2)}<br>
+     每人：${each.toFixed(2)}`;
+
+}
+
+function generatePassword(){
+
+const length=parseInt(
+    document.getElementById("passwordLength").value
+);
+
+const chars=
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"+
+    "abcdefghijklmnopqrstuvwxyz"+
+    "0123456789"+
+    "!@#$%^&*()_+";
+
+let password="";
+
+for(let i=0;i<length;i++){
+    password+=chars.charAt(
+        Math.floor(Math.random()*chars.length)
+    );
+}
+
+document.getElementById("passwordResult").textContent=password;
+
+}
+
+function countWords(){
+
+const text=document.getElementById("wordText").value;
+
+const chars=text.length;
+const noSpace=text.replace(/\s/g,"").length;
+
+const words=text.trim()
+    ? text.trim().split(/\s+/).length
+    : 0;
+
+const lines=text
+    ? text.split("\n").length
+    : 0;
+
+document.getElementById("wordResult").innerHTML=
+    `字符：${chars}<br>
+     不含空格：${noSpace}<br>
+     单词：${words}<br>
+     行数：${lines}`;
+
+}
+
+function toUpper(){
+
+const el=document.getElementById("caseText");
+
+el.value=el.value.toUpperCase();
+
+}
+
+function toLower(){
+
+const el=document.getElementById("caseText");
+
+el.value=el.value.toLowerCase();
+
+}
+
+function hexToRgb(){
+
+let hex=document.getElementById("hex").value.trim();
+
+if(!hex.startsWith("#")){
+    hex="#"+hex;
+}
+
+if(/^#[0-9A-Fa-f]{6}$/.test(hex)){
+
+    const r=parseInt(hex.substring(1,3),16);
+    const g=parseInt(hex.substring(3,5),16);
+    const b=parseInt(hex.substring(5,7),16);
+
+    document.getElementById("colorResult").textContent=
+        `RGB(${r}, ${g}, ${b})`;
+
+    document.getElementById("colorPreview").style.background=hex;
+}
+
+}
+
+function formatJSON(){
+
+try{
+
+    const obj=JSON.parse(
+        document.getElementById("jsonText").value
+    );
+
+    document.getElementById("jsonResult").textContent=
+        JSON.stringify(obj,null,2);
+
+}catch(error){
+
+    document.getElementById("jsonResult").textContent=
+        "❌ JSON 格式不正确";
+}
+
+}
+
+function minifyJSON(){
+
+try{
+
+    const obj=JSON.parse(
+        document.getElementById("jsonText").value
+    );
+
+    document.getElementById("jsonResult").textContent=
+        JSON.stringify(obj);
+
+}catch(error){
+
+    document.getElementById("jsonResult").textContent=
+        "❌ JSON 格式不正确";
+}
+
+}
+
+function copyText(id){
+
+const text=document.getElementById(id).textContent;
+
+navigator.clipboard.writeText(text);
+
+alert("已复制到剪贴板 💕");
+
+}
+
+let timerInterval;
+
+function startTimer(){
+
+clearInterval(timerInterval);
+
+let minutes=parseInt(
+    document.getElementById("timerMinutes").value
+);
+
+let seconds=minutes*60;
+
+function update(){
+
+    const m=Math.floor(seconds/60);
+    const s=seconds%60;
+
+    document.getElementById("timerResult").textContent=
+        `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+
+    if(seconds<=0){
+
+        clearInterval(timerInterval);
+
+        alert("时间到啦！💕");
+
+        return;
+    }
+
+    seconds--;
+}
+
+update();
+
+timerInterval=setInterval(update,1000);
+
+}
+
+function favorite(button){
+
+button.textContent=
+    button.textContent==="♡" ? "♥" : "♡";
+
+}
+
+function toggleDark(){
+
+document.body.classList.toggle("dark");
+
+localStorage.setItem(
+    "pinkToolsDark",
+    document.body.classList.contains("dark")
+);
+
+}
+
+if(localStorage.getItem("pinkToolsDark")==="true"){
+document.body.classList.add("dark");
+}
+
+function searchTools(){
+
+const keyword=
+    document.getElementById("search").value.toLowerCase();
+
+document.querySelectorAll("#allTools .tool-card")
+    .forEach(card=>{
+
+        const name=
+            card.dataset.name.toLowerCase();
+
+        card.style.display=
+            name.includes(keyword)
+            ? ""
+            : "none";
+    });
+
+}
+
+function filterCategory(category,button){
+
+document.querySelectorAll(".category")
+    .forEach(btn=>btn.classList.remove("active"));
+
+button.classList.add("active");
+
+document.querySelectorAll("#allTools .tool-card")
+    .forEach(card=>{
+
+        if(category==="all"){
+            card.style.display="";
+        }else{
+            card.style.display=
+                card.dataset.category===category
+                ? ""
+                : "none";
+        }
+
+    });
+
+}
+
+</script>
 
 </body> </html>
