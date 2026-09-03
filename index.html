@@ -5,1179 +5,1222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Petite Paper Atelier — Secret Pink Attic</title>
+<title>Secret Pink Attic — Printable Paper Craft</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
-
-:root{
-    --pink:#f6d8df;
-    --deep-pink:#b96f83;
-    --rose:#d99aaa;
-    --cream:#fffaf7;
-    --paper:#fffdfb;
-    --brown:#6f5553;
-    --dark:#3f3031;
-    --gold:#caa875;
-    --shadow:0 18px 45px rgba(116,75,82,.13);
-}
 
 *{
     box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
 }
 
 body{
-    background:
-        radial-gradient(circle at 10% 20%, rgba(255,255,255,.9) 0 2px, transparent 3px),
-        radial-gradient(circle at 80% 70%, rgba(255,255,255,.7) 0 2px, transparent 3px),
-        linear-gradient(135deg,#fff9f7,#f9e7eb,#fffaf7);
-    background-size:120px 120px,170px 170px,100% 100%;
-    color:var(--dark);
-    font-family:"DM Sans",sans-serif;
+    margin:0;
+    background:#fff8fc;
+    color:#68485b;
+    font-family:Georgia,serif;
 }
 
-/* ---------- NAV ---------- */
-
-nav{
+header{
     position:sticky;
     top:0;
     z-index:100;
-    backdrop-filter:blur(16px);
-    background:rgba(255,250,248,.82);
-    border-bottom:1px solid rgba(185,111,131,.12);
-}
-
-.nav-inner{
-    max-width:1200px;
-    margin:auto;
-    padding:18px 25px;
+    background:rgba(255,248,252,.95);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid #efd6e2;
+    padding:15px 6%;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
-    font-family:"Cormorant Garamond",serif;
-    font-size:28px;
-    font-weight:600;
-    color:var(--deep-pink);
+    font-weight:bold;
+    letter-spacing:2px;
+    color:#8e5576;
 }
 
-.logo span{
-    font-size:12px;
-    display:block;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:#a88788;
-    margin-top:-5px;
-}
-
-.nav-links{
-    display:flex;
-    gap:25px;
-    align-items:center;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:#715d5d;
+nav button{
+    border:0;
+    background:none;
+    color:#8e5576;
+    margin-left:20px;
+    cursor:pointer;
     font-size:14px;
 }
 
-.nav-links a:hover{
-    color:var(--deep-pink);
-}
-
-.cart{
-    border:0;
-    background:#fff;
-    padding:10px 15px;
-    border-radius:50px;
-    box-shadow:0 5px 20px rgba(100,60,70,.08);
-    cursor:pointer;
-    color:#805c64;
-}
-
-/* ---------- HERO ---------- */
-
 .hero{
-    min-height:650px;
-    max-width:1200px;
-    margin:auto;
-    padding:85px 25px 70px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    align-items:center;
-    gap:60px;
+    text-align:center;
+    padding:65px 20px 35px;
 }
 
 .eyebrow{
-    display:inline-block;
-    color:var(--deep-pink);
-    letter-spacing:3px;
+    color:#b16c91;
+    letter-spacing:4px;
     font-size:12px;
-    text-transform:uppercase;
-    margin-bottom:18px;
+    font-family:Arial,sans-serif;
+    font-weight:bold;
 }
 
-.hero h1{
-    font-family:"Cormorant Garamond",serif;
-    font-size:clamp(55px,7vw,92px);
-    line-height:.88;
-    font-weight:500;
-    color:#594243;
+h1{
+    font-size:58px;
+    line-height:1;
+    margin:15px 0;
+    color:#75465f;
 }
 
-.hero h1 em{
-    color:var(--deep-pink);
-    font-style:italic;
+.subtitle{
+    max-width:650px;
+    margin:auto;
+    font:16px/1.7 Arial,sans-serif;
+    color:#806b76;
 }
 
-.hero p{
-    max-width:500px;
-    color:#806c6d;
-    line-height:1.8;
-    margin:30px 0;
-    font-size:16px;
-}
-
-.hero-buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
+.actions{
+    margin-top:28px;
 }
 
 .btn{
     border:0;
-    border-radius:50px;
-    padding:14px 23px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.btn-primary{
-    background:var(--deep-pink);
-    color:white;
-    box-shadow:0 12px 25px rgba(185,111,131,.28);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-}
-
-.btn-soft{
-    background:white;
-    color:#765c60;
-    border:1px solid #ead7da;
-}
-
-.price-line{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-top:24px;
-}
-
-.price{
-    font-family:"Cormorant Garamond",serif;
-    font-size:30px;
-    color:#594243;
-}
-
-.old-price{
-    text-decoration:line-through;
-    color:#ad9999;
-}
-
-/* ---------- PAPER PREVIEW ---------- */
-
-.preview-wrap{
-    position:relative;
-}
-
-.paper-shadow{
-    background:rgba(125,77,87,.13);
-    filter:blur(25px);
-    width:90%;
-    height:90%;
-    position:absolute;
-    left:5%;
-    top:7%;
+    padding:14px 24px;
     border-radius:30px;
+    cursor:pointer;
+    font-weight:bold;
+    margin:5px;
 }
 
-.pattern-paper{
-    position:relative;
-    background:#fffdfa;
-    border-radius:8px;
-    padding:28px;
-    box-shadow:var(--shadow);
-    transform:rotate(1.2deg);
-    border:1px solid #eee2df;
+.primary{
+    background:#8e5576;
+    color:white;
 }
 
-.pattern-header{
-    text-align:center;
-    border-bottom:1px dashed #d7b8bc;
-    padding-bottom:15px;
-    margin-bottom:20px;
+.secondary{
+    background:white;
+    border:1px solid #e6bfd1;
+    color:#8e5576;
 }
 
-.pattern-header h2{
-    font-family:"Cormorant Garamond",serif;
-    font-size:28px;
-    color:#9d6272;
-}
+/* MAIN DESIGN */
 
-.pattern-header p{
-    font-size:9px;
-    letter-spacing:2px;
-    color:#a99596;
-}
-
-.pattern-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-}
-
-.pattern-piece{
-    height:125px;
-    border:2px dashed #c99ba5;
-    border-radius:18px;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#fff9f7;
-}
-
-.pattern-piece:after{
-    content:"FOLD";
-    position:absolute;
-    bottom:7px;
-    font-size:7px;
-    letter-spacing:2px;
-    color:#bd8a94;
-}
-
-.piece-one{
-    border-radius:40px 40px 12px 12px;
-}
-
-.piece-two{
-    clip-path:polygon(15% 0,85% 0,100% 100%,0 100%);
-}
-
-.piece-three{
-    border-radius:50%;
-    width:90px;
-    height:90px;
-    margin:auto;
-}
-
-.piece-four{
-    border-radius:15px;
-}
-
-.pattern-piece span{
-    font-family:"Cormorant Garamond",serif;
-    color:#9d6874;
-    font-size:18px;
-}
-
-.tabs{
-    position:absolute;
-    width:18px;
-    height:9px;
-    background:#f4d9de;
-    border:1px solid #d6abb3;
-}
-
-.t1{left:12px;top:10px}
-.t2{right:12px;top:10px}
-.t3{left:12px;bottom:10px}
-.t4{right:12px;bottom:10px}
-
-.preview-note{
-    text-align:center;
-    margin-top:20px;
-    font-size:11px;
-    color:#9a8182;
-}
-
-/* ---------- PRODUCT INFO ---------- */
-
-.section{
+.paper{
     max-width:1100px;
-    margin:auto;
-    padding:90px 25px;
+    margin:30px auto;
+    background:white;
+    padding:40px;
+    border-radius:30px;
+    box-shadow:0 20px 60px rgba(142,85,118,.12);
 }
 
-.section-title{
+.paper h2{
     text-align:center;
-    margin-bottom:50px;
+    color:#75465f;
 }
 
-.section-title span{
-    color:var(--deep-pink);
-    text-transform:uppercase;
-    letter-spacing:3px;
-    font-size:11px;
-}
-
-.section-title h2{
-    font-family:"Cormorant Garamond",serif;
-    font-size:52px;
-    font-weight:500;
-    margin-top:10px;
-}
-
-.features{
+.instructions{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin:25px 0 35px;
 }
 
-.feature{
-    background:rgba(255,255,255,.68);
-    border:1px solid rgba(185,111,131,.12);
-    padding:30px;
-    border-radius:24px;
-    box-shadow:0 10px 30px rgba(100,60,70,.05);
+.instruction{
+    background:#fff4f8;
+    padding:18px;
+    border-radius:18px;
+    text-align:center;
+    font-family:Arial,sans-serif;
 }
 
-.feature-icon{
-    font-size:30px;
-    margin-bottom:15px;
+.instruction b{
+    display:block;
+    color:#8e5576;
+    margin-bottom:5px;
 }
 
-.feature h3{
-    font-family:"Cormorant Garamond",serif;
-    font-size:25px;
-    margin-bottom:8px;
+/* SVG PATTERN */
+
+.sheet{
+    width:100%;
+    overflow:auto;
+    background:#fafafa;
+    border:1px solid #ead6df;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:35px;
 }
 
-.feature p{
-    font-size:13px;
-    color:#806e70;
-    line-height:1.7;
+svg{
+    width:100%;
+    min-width:760px;
+    height:auto;
+    display:block;
 }
 
-/* ---------- WHAT'S INCLUDED ---------- */
+.cut{
+    fill:#fffafc;
+    stroke:#75465f;
+    stroke-width:2;
+}
 
-.included{
+.fold{
+    stroke:#c47b9e;
+    stroke-width:1.5;
+    stroke-dasharray:8 6;
+}
+
+.detail{
+    fill:#f7d9e6;
+    stroke:#b86d93;
+    stroke-width:1.5;
+}
+
+.label{
+    fill:#75465f;
+    font-family:Arial,sans-serif;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.small{
+    fill:#9b7485;
+    font-family:Arial,sans-serif;
+    font-size:10px;
+}
+
+.glue{
+    fill:#f3c8db;
+    stroke:#b86d93;
+    stroke-width:1;
+}
+
+.furniture{
+    fill:#f6d2e2;
+    stroke:#a96589;
+    stroke-width:1.5;
+}
+
+/* BUILD PREVIEW */
+
+.preview{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:50px;
+    gap:30px;
     align-items:center;
 }
 
-.list{
-    list-style:none;
-}
-
-.list li{
-    padding:14px 0;
-    border-bottom:1px solid #eadbdd;
-    color:#725d60;
-}
-
-.list li::before{
-    content:"♡";
-    color:var(--deep-pink);
-    margin-right:12px;
-}
-
-.cottage-card{
-    min-height:400px;
-    border-radius:35px;
-    background:
-        linear-gradient(rgba(255,220,228,.3),rgba(255,246,240,.8)),
-        radial-gradient(circle at 50% 25%,#fff 0 5%,transparent 6%),
-        #efd2d8;
+.room{
+    height:440px;
     position:relative;
     overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:var(--shadow);
+    border-radius:30px;
+    background:
+        radial-gradient(circle at 50% 20%,white,#f9ddea);
+    box-shadow:inset 0 0 50px rgba(142,85,118,.08);
 }
 
-.cottage{
-    width:240px;
-    height:190px;
-    background:#fff8f3;
-    border:4px solid #b87b88;
-    border-radius:18px;
-    position:relative;
-    margin-top:80px;
-    box-shadow:0 20px 30px rgba(120,70,80,.18);
-}
-
-.roof{
+.backwall{
     position:absolute;
-    width:290px;
-    height:150px;
-    background:#d994a5;
-    transform:rotate(45deg);
-    left:-25px;
-    top:-100px;
-    border:4px solid #a96777;
+    width:260px;
+    height:230px;
+    background:#fff7fa;
+    border:4px solid #d9a6bc;
+    left:50%;
+    top:70px;
+    transform:translateX(-50%);
 }
 
 .window{
-    width:52px;
-    height:62px;
-    background:#f8d9df;
-    border:4px solid #b87b88;
     position:absolute;
-    left:25px;
-    top:55px;
-    border-radius:28px 28px 5px 5px;
+    width:100px;
+    height:110px;
+    left:80px;
+    top:35px;
+    border-radius:55px 55px 20px 20px;
+    background:#f0c1d5;
+    border:12px solid white;
+    box-shadow:0 0 0 3px #d9a6bc;
+}
+
+.window:before{
+    content:"";
+    position:absolute;
+    width:3px;
+    height:100%;
+    background:#d9a6bc;
+    left:50%;
 }
 
 .window:after{
     content:"";
     position:absolute;
+    height:3px;
+    width:100%;
+    background:#d9a6bc;
+    top:50%;
+}
+
+.floor{
+    position:absolute;
+    width:330px;
+    height:150px;
     left:50%;
-    top:0;
-    width:3px;
-    height:100%;
-    background:#b87b88;
+    bottom:20px;
+    transform:translateX(-50%) rotate(-4deg);
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #edc9da 0,
+            #edc9da 35px,
+            #f8e5ed 35px,
+            #f8e5ed 70px
+        );
+    border:4px solid #d39db6;
 }
 
-.door{
-    width:50px;
-    height:75px;
-    background:#d8a5af;
-    border:3px solid #a96b79;
+.bed{
     position:absolute;
-    right:28px;
-    bottom:0;
-    border-radius:25px 25px 0 0;
+    width:150px;
+    height:65px;
+    left:50%;
+    bottom:105px;
+    transform:translateX(-50%);
+    background:#e9b4cb;
+    border:3px solid #a96589;
+    border-radius:15px;
 }
 
-.door:after{
-    content:"•";
+.pillow{
     position:absolute;
-    right:7px;
-    top:35px;
-    color:#8d5965;
+    width:65px;
+    height:27px;
+    background:white;
+    border-radius:15px;
+    left:12px;
+    top:12px;
+}
+
+.canopy{
+    position:absolute;
+    width:190px;
+    height:120px;
+    border-top:7px solid #b16c91;
+    border-radius:100%;
+    left:50%;
+    bottom:155px;
+    transform:translateX(-50%);
+}
+
+.mini-table{
+    position:absolute;
+    width:70px;
+    height:35px;
+    background:#e8b4cb;
+    border:3px solid #a96589;
+    right:25px;
+    bottom:100px;
+}
+
+.mirror{
+    position:absolute;
+    width:55px;
+    height:70px;
+    border-radius:50%;
+    background:#fff;
+    border:7px solid #d895b5;
+    right:35px;
+    top:100px;
 }
 
 .flower{
     position:absolute;
-    font-size:28px;
-}
-
-.f1{left:12%;top:12%}
-.f2{right:13%;top:25%}
-.f3{left:78%;bottom:12%}
-
-/* ---------- STEPS ---------- */
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-}
-
-.step{
-    text-align:center;
-}
-
-.number{
-    width:45px;
-    height:45px;
+    width:15px;
+    height:15px;
     border-radius:50%;
-    background:#f0ccd4;
-    color:#8c5965;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 15px;
-    font-family:"Cormorant Garamond",serif;
-    font-size:21px;
+    background:#d98caf;
 }
 
-.step h3{
-    font-family:"Cormorant Garamond",serif;
-    font-size:23px;
-    margin-bottom:7px;
+.flower1{
+    left:35px;
+    top:60px;
 }
 
-.step p{
-    font-size:12px;
-    line-height:1.6;
-    color:#897274;
+.flower2{
+    right:30px;
+    top:45px;
 }
 
-/* ---------- PRODUCT CARD ---------- */
-
-.buy-box{
-    background:linear-gradient(135deg,#fff,#fff4f5);
-    border:1px solid #ead7da;
-    border-radius:35px;
-    padding:55px;
-    text-align:center;
-    box-shadow:var(--shadow);
+.flower3{
+    left:70px;
+    bottom:70px;
 }
 
-.buy-box h2{
-    font-family:"Cormorant Garamond",serif;
-    font-size:55px;
-    font-weight:500;
+.preview-text h2{
+    color:#75465f;
+    font-size:36px;
 }
 
-.buy-box p{
-    color:#806c6d;
-    max-width:560px;
-    margin:15px auto 25px;
-    line-height:1.7;
+.preview-text p{
+    font:15px/1.8 Arial,sans-serif;
+    color:#806b76;
 }
 
-.buy-price{
-    font-family:"Cormorant Garamond",serif;
-    font-size:44px;
-    color:#a75e70;
-    margin-bottom:20px;
+.legend{
+    margin-top:20px;
+    font-family:Arial,sans-serif;
+    font-size:13px;
 }
 
-.small{
-    font-size:11px;
-    color:#a38d8e;
-    margin-top:14px;
-}
-
-/* ---------- REVIEWS ---------- */
-
-.reviews{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.review{
-    background:white;
-    padding:28px;
-    border-radius:22px;
-    box-shadow:0 10px 30px rgba(100,60,70,.06);
-}
-
-.stars{
-    color:#cda66b;
-    letter-spacing:3px;
-    margin-bottom:15px;
-}
-
-.review p{
-    color:#735f62;
-    font-family:"Cormorant Garamond",serif;
-    font-size:20px;
-    line-height:1.4;
-}
-
-.review small{
+.legend span{
     display:block;
-    margin-top:18px;
-    color:#a58e8f;
+    margin:8px 0;
 }
 
-/* ---------- FOOTER ---------- */
+.line{
+    display:inline-block;
+    width:45px;
+    border-top:2px solid #75465f;
+    margin-right:10px;
+}
+
+.dashed{
+    display:inline-block;
+    width:45px;
+    border-top:2px dashed #c47b9e;
+    margin-right:10px;
+}
+
+/* PRODUCT */
+
+.product{
+    background:#75465f;
+    color:white;
+    border-radius:28px;
+    padding:40px;
+    margin-top:45px;
+    text-align:center;
+}
+
+.product h2{
+    color:white;
+    font-size:34px;
+}
+
+.product p{
+    font:15px/1.7 Arial,sans-serif;
+    color:#f9eaf1;
+}
+
+.product .btn{
+    background:white;
+    color:#75465f;
+}
+
+/* FOOTER */
 
 footer{
-    padding:60px 25px;
     text-align:center;
-    color:#967e80;
-    font-size:12px;
+    padding:50px 20px;
+    color:#9b7c8d;
+    font:12px Arial,sans-serif;
 }
-
-.footer-logo{
-    font-family:"Cormorant Garamond",serif;
-    font-size:32px;
-    color:#b96f83;
-    margin-bottom:8px;
-}
-
-/* ---------- MODAL ---------- */
-
-.modal{
-    display:none;
-    position:fixed;
-    z-index:300;
-    inset:0;
-    background:rgba(63,48,49,.45);
-    backdrop-filter:blur(8px);
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-.modal-box{
-    background:#fffaf8;
-    max-width:500px;
-    width:100%;
-    border-radius:30px;
-    padding:40px;
-    text-align:center;
-    position:relative;
-    box-shadow:0 30px 80px rgba(60,40,45,.25);
-}
-
-.close{
-    position:absolute;
-    right:18px;
-    top:15px;
-    border:0;
-    background:none;
-    font-size:24px;
-    cursor:pointer;
-    color:#9b7378;
-}
-
-.modal-box h2{
-    font-family:"Cormorant Garamond",serif;
-    font-size:40px;
-    color:#9f6472;
-}
-
-.modal-box p{
-    color:#806c6d;
-    line-height:1.7;
-    margin:15px 0 25px;
-}
-
-/* ---------- RESPONSIVE ---------- */
 
 @media(max-width:800px){
 
-    .nav-links{
-        display:none;
+    h1{
+        font-size:45px;
     }
 
-    .hero{
-        grid-template-columns:1fr;
-        padding-top:55px;
-    }
-
-    .hero h1{
-        font-size:65px;
-    }
-
-    .features,
-    .reviews{
-        grid-template-columns:1fr;
-    }
-
-    .included{
-        grid-template-columns:1fr;
-    }
-
-    .steps{
+    .instructions{
         grid-template-columns:1fr 1fr;
     }
 
-    .buy-box{
-        padding:35px 20px;
-    }
-
-    .pattern-paper{
-        max-width:450px;
-        margin:auto;
-    }
-}
-
-@media(max-width:480px){
-
-    .hero h1{
-        font-size:55px;
-    }
-
-    .steps{
+    .preview{
         grid-template-columns:1fr;
     }
 
-    .pattern-grid{
-        gap:8px;
+    .paper{
+        margin:15px;
+        padding:20px;
     }
 
-    .pattern-piece{
-        height:105px;
-    }
 }
+
+@media print{
+
+    header,
+    .hero,
+    .instructions,
+    .preview,
+    .product,
+    footer,
+    .screen-only{
+        display:none!important;
+    }
+
+    body{
+        background:white;
+    }
+
+    .paper{
+        box-shadow:none;
+        margin:0;
+        padding:0;
+    }
+
+    .sheet{
+        border:0;
+        padding:0;
+        page-break-after:always;
+    }
+
+    svg{
+        min-width:0;
+        width:100%;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
+<header>
+
+<div class="logo">
+PETITE PAPER ATELIER
+</div>
+
 <nav>
-    <div class="nav-inner">
-
-        <div class="logo">
-            Petite Paper Atelier
-            <span>tiny things, big dreams</span>
-        </div>
-
-        <div class="nav-links">
-            <a href="#product">The Pattern</a>
-            <a href="#included">What's Inside</a>
-            <a href="#how">How It Works</a>
-            <a href="#reviews">Reviews</a>
-        </div>
-
-        <button class="cart" onclick="openCart()">
-            🛍️ Cart <span id="cartCount">0</span>
-        </button>
-
-    </div>
+<button onclick="scrollToPattern()">Pattern</button>
+<button onclick="scrollToBuild()">Build</button>
+<button onclick="window.print()">Print</button>
 </nav>
 
+</header>
 
-<!-- HERO -->
+
 <section class="hero">
 
-    <div>
+<div class="eyebrow">
+ORIGINAL PAPER MINIATURE
+</div>
 
-        <span class="eyebrow">Printable Paper Craft · No. 01</span>
+<h1>
+Secret Pink Attic
+</h1>
 
-        <h1>
-            Secret<br>
-            <em>Pink</em><br>
-            Attic
-        </h1>
+<p class="subtitle">
+A real printable paper miniature.
+Print it. Cut it. Fold it. Glue it.
+Then watch a flat sheet turn into a tiny dreamy room.
+</p>
 
-        <p>
-            A tiny enchanted room hidden inside a printable sheet.
-            Cut it, fold it, glue it — and watch a little magical world
-            appear in your hands.
-        </p>
+<div class="actions">
 
-        <div class="hero-buttons">
+<button class="btn primary" onclick="scrollToPattern()">
+✂ Start Making
+</button>
 
-            <button class="btn btn-primary" onclick="buyProduct()">
-                Get the Pattern · €6.90
-            </button>
+<button class="btn secondary" onclick="window.print()">
+🖨 Print Pattern
+</button>
 
-            <button class="btn btn-soft" onclick="openPreview()">
-                ♡ See Preview
-            </button>
-
-        </div>
-
-        <div class="price-line">
-            <span class="price">€6.90</span>
-            <span class="old-price">€9.90</span>
-            <span>Instant digital download</span>
-        </div>
-
-    </div>
-
-
-    <!-- PATTERN PREVIEW -->
-    <div class="preview-wrap">
-
-        <div class="paper-shadow"></div>
-
-        <div class="pattern-paper">
-
-            <div class="pattern-header">
-                <h2>Secret Pink Attic</h2>
-                <p>PRINT · CUT · FOLD · CREATE</p>
-            </div>
-
-            <div class="pattern-grid">
-
-                <div class="pattern-piece piece-one">
-                    <span>WALL A</span>
-                    <i class="tabs t1"></i>
-                    <i class="tabs t3"></i>
-                </div>
-
-                <div class="pattern-piece piece-two">
-                    <span>ROOF</span>
-                    <i class="tabs t2"></i>
-                    <i class="tabs t4"></i>
-                </div>
-
-                <div class="pattern-piece">
-                    <span>WINDOW</span>
-                </div>
-
-                <div class="pattern-piece">
-                    <span>DOOR</span>
-                </div>
-
-                <div class="pattern-piece piece-three">
-                    <span>RUG</span>
-                </div>
-
-                <div class="pattern-piece">
-                    <span>CURTAIN</span>
-                </div>
-
-            </div>
-
-            <div class="preview-note">
-                ★ Dashed lines = folds · Solid lines = cuts · Tabs = glue
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- PRODUCT FEATURES -->
-<section class="section" id="product">
-
-    <div class="section-title">
-        <span>Why it's different</span>
-        <h2>Not just a paper house.</h2>
-    </div>
-
-    <div class="features">
-
-        <div class="feature">
-            <div class="feature-icon">🏡</div>
-            <h3>A Tiny World</h3>
-            <p>
-                Build a miniature secret attic with layers,
-                furniture, windows, decorations and hidden details.
-            </p>
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">✂️</div>
-            <h3>Made With Paper</h3>
-            <p>
-                Print the pattern at home, cut the pieces,
-                fold the marked lines and assemble your little room.
-            </p>
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">🎀</div>
-            <h3>Designed To Delight</h3>
-            <p>
-                Every detail is designed to feel like opening
-                the door to a tiny pink fairytale.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- WHAT'S INCLUDED -->
-<section class="section" id="included">
-
-    <div class="included">
-
-        <div>
-
-            <div class="section-title" style="text-align:left;margin-bottom:25px;">
-                <span>Inside your download</span>
-                <h2>Everything<br>you need.</h2>
-            </div>
-
-            <ul class="list">
-                <li>Printable cottage walls</li>
-                <li>Curved magical roof</li>
-                <li>Secret arched door</li>
-                <li>Layered windows</li>
-                <li>Mini canopy bed</li>
-                <li>Tiny fireplace</li>
-                <li>Vanity mirror</li>
-                <li>Mini tea table</li>
-                <li>Fluffy-look printed rug</li>
-                <li>Curtains and bows</li>
-                <li>Mini flowers and decorations</li>
-                <li>Step-by-step assembly guide</li>
-            </ul>
-
-        </div>
-
-
-        <div class="cottage-card">
-
-            <div class="flower f1">🌸</div>
-            <div class="flower f2">✨</div>
-            <div class="flower f3">🎀</div>
-
-            <div class="cottage">
-
-                <div class="roof"></div>
-
-                <div class="window"></div>
-
-                <div class="door"></div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- HOW IT WORKS -->
-<section class="section" id="how">
-
-    <div class="section-title">
-        <span>So easy</span>
-        <h2>From flat paper<br>to tiny magic.</h2>
-    </div>
-
-    <div class="steps">
-
-        <div class="step">
-            <div class="number">01</div>
-            <h3>Download</h3>
-            <p>
-                Receive your printable PDF instantly after purchase.
-            </p>
-        </div>
-
-        <div class="step">
-            <div class="number">02</div>
-            <h3>Print</h3>
-            <p>
-                Print on cardstock or sturdy paper at home.
-            </p>
-        </div>
-
-        <div class="step">
-            <div class="number">03</div>
-            <h3>Cut & Fold</h3>
-            <p>
-                Follow the cut lines, fold lines and numbered tabs.
-            </p>
-        </div>
-
-        <div class="step">
-            <div class="number">04</div>
-            <h3>Build</h3>
-            <p>
-                Assemble the pieces and reveal your secret little room.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- BUY BOX -->
-<section class="section">
-
-    <div class="buy-box">
-
-        <span class="eyebrow">Your little escape</span>
-
-        <h2>Build something magical.</h2>
-
-        <p>
-            One printable pattern. One quiet afternoon.
-            One tiny room that feels like it belongs in a fairytale.
-        </p>
-
-        <div class="buy-price">€6.90</div>
-
-        <button class="btn btn-primary" onclick="buyProduct()">
-            🛍️ Add to Cart
-        </button>
-
-        <div class="small">
-            Digital product · No physical item will be shipped
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- REVIEWS -->
-<section class="section" id="reviews">
-
-    <div class="section-title">
-        <span>Little notes</span>
-        <h2>Made for cozy afternoons.</h2>
-    </div>
-
-    <div class="reviews">
-
-        <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>
-                “It looked cute on the screen, but the finished
-                little room was even more magical.”
-            </p>
-            <small>— Emma · verified maker</small>
-        </div>
-
-        <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>
-                “I printed it on thicker paper and spent an afternoon
-                making it. It was honestly so relaxing.”
-            </p>
-            <small>— Sophie · paper lover</small>
-        </div>
-
-        <div class="review">
-            <div class="stars">★★★★★</div>
-            <p>
-                “The tiny details are what make it special.
-                It feels like a miniature secret world.”
-            </p>
-            <small>— Mia · happy customer</small>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer>
-
-    <div class="footer-logo">
-        Petite Paper Atelier
-    </div>
-
-    <p>
-        Tiny paper worlds for dreamy afternoons.
-    </p>
-
-    <br>
-
-    <p>
-        © 2026 Petite Paper Atelier · Digital products
-    </p>
-
-</footer>
-
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-
-    <div class="modal-box">
-
-        <button class="close" onclick="closeModal()">×</button>
-
-        <h2 id="modalTitle">♡</h2>
-
-        <p id="modalText"></p>
-
-        <button class="btn btn-primary" onclick="closeModal()">
-            Lovely ♡
-        </button>
-
-    </div>
+<main class="paper" id="pattern">
+
+<h2>
+✂ PRINTABLE PATTERN
+</h2>
+
+<div class="instructions">
+
+<div class="instruction">
+<b>01</b>
+Print at 100%
+</div>
+
+<div class="instruction">
+<b>02</b>
+Cut solid lines
+</div>
+
+<div class="instruction">
+<b>03</b>
+Fold dashed lines
+</div>
+
+<div class="instruction">
+<b>04</b>
+Glue the tabs
+</div>
 
 </div>
 
 
+<!-- SHEET 1 -->
+
+<div class="sheet">
+
+<svg viewBox="0 0 1000 650"
+xmlns="http://www.w3.org/2000/svg">
+
+<!-- BACK WALL -->
+
+<rect
+x="300"
+y="80"
+width="400"
+height="250"
+rx="8"
+class="cut"/>
+
+<!-- WINDOW -->
+
+<path
+d="M440 225
+L440 165
+Q440 120 500 120
+Q560 120 560 165
+L560 225
+Z"
+class="detail"/>
+
+<path
+d="M455 215
+L455 170
+Q455 140 500 140
+Q545 140 545 170
+L545 215
+Z"
+fill="#fff"/>
+
+<line x1="500" y1="140" x2="500" y2="215" class="fold"/>
+<line x1="455" y1="178" x2="545" y2="178" class="fold"/>
+
+<text x="500" y="285"
+text-anchor="middle"
+class="label">
+BACK WALL
+</text>
+
+<!-- LEFT WALL -->
+
+<path
+d="M90 80
+L270 80
+L270 330
+L90 330
+Z"
+class="cut"/>
+
+<path
+d="M110 200
+L110 150
+Q110 115 180 115
+Q250 115 250 150
+L250 200
+Z"
+class="detail"/>
+
+<line x1="180" y1="115" x2="180" y2="200" class="fold"/>
+
+<text x="180" y="285"
+text-anchor="middle"
+class="label">
+LEFT WALL
+</text>
+
+<!-- RIGHT WALL -->
+
+<path
+d="M730 80
+L910 80
+L910 330
+L730 330
+Z"
+class="cut"/>
+
+<path
+d="M750 200
+L750 150
+Q750 115 820 115
+Q890 115 890 150
+L890 200
+Z"
+class="detail"/>
+
+<line x1="820" y1="115" x2="820" y2="200" class="fold"/>
+
+<text x="820" y="285"
+text-anchor="middle"
+class="label">
+RIGHT WALL
+</text>
+
+<!-- GLUE TABS -->
+
+<path
+d="M90 330 L270 330 L270 355 L90 355 Z"
+class="glue"/>
+
+<path
+d="M300 330 L700 330 L700 355 L300 355 Z"
+class="glue"/>
+
+<path
+d="M730 330 L910 330 L910 355 L730 355 Z"
+class="glue"/>
+
+<text x="180" y="347"
+text-anchor="middle"
+class="small">
+GLUE TAB
+</text>
+
+<text x="500" y="347"
+text-anchor="middle"
+class="small">
+GLUE TAB
+</text>
+
+<text x="820" y="347"
+text-anchor="middle"
+class="small">
+GLUE TAB
+</text>
+
+<!-- FOLD GUIDES -->
+
+<line x1="270" y1="80" x2="270" y2="355" class="fold"/>
+<line x1="300" y1="80" x2="300" y2="355" class="fold"/>
+<line x1="700" y1="80" x2="700" y2="355" class="fold"/>
+<line x1="730" y1="80" x2="730" y2="355" class="fold"/>
+
+<text x="500" y="430"
+text-anchor="middle"
+class="label">
+SHEET 1 — ROOM SHELL
+</text>
+
+<text x="500" y="455"
+text-anchor="middle"
+class="small">
+SOLID = CUT      DASHED = FOLD      PINK TAB = GLUE
+</text>
+
+</svg>
+
+</div>
+
+
+<!-- SHEET 2 -->
+
+<div class="sheet">
+
+<svg viewBox="0 0 1000 650"
+xmlns="http://www.w3.org/2000/svg">
+
+<!-- FLOOR -->
+
+<rect
+x="100"
+y="80"
+width="800"
+height="300"
+class="cut"/>
+
+<!-- FLOOR CENTER -->
+
+<line
+x1="500"
+y1="80"
+x2="500"
+y2="380"
+class="fold"/>
+
+<!-- FLOOR WOOD -->
+
+<line x1="180" y1="80" x2="180" y2="380" class="fold"/>
+<line x1="260" y1="80" x2="260" y2="380" class="fold"/>
+<line x1="340" y1="80" x2="340" y2="380" class="fold"/>
+<line x1="660" y1="80" x2="660" y2="380" class="fold"/>
+<line x1="740" y1="80" x2="740" y2="380" class="fold"/>
+<line x1="820" y1="80" x2="820" y2="380" class="fold"/>
+
+<text x="500" y="225"
+text-anchor="middle"
+class="label">
+FLOOR
+</text>
+
+<text x="500" y="250"
+text-anchor="middle"
+class="small">
+FOLD CENTER
+</text>
+
+
+<!-- ROOF -->
+
+<rect
+x="300"
+y="450"
+width="400"
+height="100"
+class="detail"/>
+
+<line
+x1="500"
+y1="450"
+x2="500"
+y2="550"
+class="fold"/>
+
+<text x="500" y="505"
+text-anchor="middle"
+class="label">
+ROOF
+</text>
+
+<text x="500" y="575"
+text-anchor="middle"
+class="small">
+FOLD CENTER — GLUE SIDES UNDER WALL TABS
+</text>
+
+</svg>
+
+</div>
+
+
+<!-- SHEET 3 -->
+
+<div class="sheet">
+
+<svg viewBox="0 0 1000 650"
+xmlns="http://www.w3.org/2000/svg">
+
+<!-- DOOR -->
+
+<path
+d="M90 90
+L260 90
+L260 300
+L90 300
+Z"
+class="detail"/>
+
+<path
+d="M115 275
+L115 165
+Q115 125 175 125
+Q235 125 235 165
+L235 275
+Z"
+fill="#fff"
+stroke="#b86d93"
+stroke-width="2"/>
+
+<circle cx="215" cy="205" r="5"
+fill="#b86d93"/>
+
+<text x="175" y="325"
+text-anchor="middle"
+class="label">
+DOOR
+</text>
+
+
+<!-- WINDOW -->
+
+<path
+d="M350 290
+L350 170
+Q350 100 430 100
+Q510 100 510 170
+L510 290
+Z"
+class="detail"/>
+
+<path
+d="M370 270
+L370 175
+Q370 125 430 125
+Q490 125 490 175
+L490 270
+Z"
+fill="white"/>
+
+<line x1="430" y1="125" x2="430" y2="270" class="fold"/>
+<line x1="370" y1="190" x2="490" y2="190" class="fold"/>
+
+<text x="430" y="325"
+text-anchor="middle"
+class="label">
+RAISED WINDOW
+</text>
+
+
+<!-- RUG -->
+
+<rect
+x="600"
+y="110"
+width="260"
+height="150"
+rx="45"
+class="detail"/>
+
+<rect
+x="625"
+y="135"
+width="210"
+height="100"
+rx="30"
+fill="white"
+stroke="#d9a6bc"
+stroke-width="2"/>
+
+<text x="730" y="285"
+text-anchor="middle"
+class="label">
+RUG
+</text>
+
+
+<!-- FLOWERS -->
+
+<g class="detail">
+
+<circle cx="150" cy="450" r="22"/>
+<circle cx="190" cy="450" r="22"/>
+<circle cx="170" cy="425" r="22"/>
+<circle cx="170" cy="475" r="22"/>
+
+<circle cx="170" cy="450" r="10"/>
+
+</g>
+
+<line
+x1="170"
+y1="475"
+x2="170"
+y2="555"
+class="fold"/>
+
+<text x="170" y="585"
+text-anchor="middle"
+class="label">
+FLOWER
+</text>
+
+
+<!-- BOW -->
+
+<ellipse
+cx="430"
+cy="480"
+rx="45"
+ry="28"
+class="detail"/>
+
+<ellipse
+cx="520"
+cy="480"
+rx="45"
+ry="28"
+class="detail"/>
+
+<circle
+cx="475"
+cy="480"
+r="15"
+fill="#b86d93"/>
+
+<text x="475" y="540"
+text-anchor="middle"
+class="label">
+BOW
+</text>
+
+</svg>
+
+</div>
+
+
+<!-- SHEET 4 -->
+
+<div class="sheet">
+
+<svg viewBox="0 0 1000 650"
+xmlns="http://www.w3.org/2000/svg">
+
+<!-- BED -->
+
+<rect
+x="80"
+y="90"
+width="330"
+height="150"
+rx="15"
+class="furniture"/>
+
+<line x1="150" y1="90" x2="150" y2="240" class="fold"/>
+<line x1="340" y1="90" x2="340" y2="240" class="fold"/>
+
+<rect
+x="125"
+y="125"
+width="90"
+height="45"
+rx="20"
+fill="white"/>
+
+<text x="245" y="280"
+text-anchor="middle"
+class="label">
+BED
+</text>
+
+
+<!-- HEADBOARD -->
+
+<path
+d="M500 240
+L500 120
+Q500 70 575 70
+Q650 70 650 120
+L650 240
+Z"
+class="detail"/>
+
+<text x="575" y="280"
+text-anchor="middle"
+class="label">
+HEADBOARD
+</text>
+
+
+<!-- CANOPY -->
+
+<rect
+x="740"
+y="90"
+width="170"
+height="100"
+class="detail"/>
+
+<line x1="785" y1="90" x2="785" y2="190" class="fold"/>
+<line x1="825" y1="90" x2="825" y2="190" class="fold"/>
+<line x1="865" y1="90" x2="865" y2="190" class="fold"/>
+
+<text x="825" y="225"
+text-anchor="middle"
+class="label">
+CANOPY
+</text>
+
+
+<!-- VANITY -->
+
+<rect
+x="100"
+y="390"
+width="280"
+height="100"
+class="furniture"/>
+
+<ellipse
+cx="240"
+cy="425"
+rx="65"
+ry="30"
+fill="white"
+stroke="#b86d93"
+stroke-width="2"/>
+
+<line x1="130" y1="390" x2="130" y2="490" class="fold"/>
+<line x1="350" y1="390" x2="350" y2="490" class="fold"/>
+
+<text x="240" y="530"
+text-anchor="middle"
+class="label">
+VANITY
+</text>
+
+
+<!-- TEA TABLE -->
+
+<rect
+x="500"
+y="390"
+width="250"
+height="85"
+class="furniture"/>
+
+<line x1="530" y1="390" x2="530" y2="475" class="fold"/>
+<line x1="720" y1="390" x2="720" y2="475" class="fold"/>
+
+<text x="625" y="515"
+text-anchor="middle"
+class="label">
+TEA TABLE
+</text>
+
+
+<!-- CUP -->
+
+<circle
+cx="850"
+cy="430"
+r="35"
+class="detail"/>
+
+<circle
+cx="850"
+cy="430"
+r="23"
+fill="white"/>
+
+<text x="850" y="495"
+text-anchor="middle"
+class="label">
+CUP
+</text>
+
+</svg>
+
+</div>
+
+
+<section id="build" class="preview">
+
+<div class="room">
+
+<div class="backwall">
+
+<div class="window"></div>
+
+</div>
+
+<div class="canopy"></div>
+
+<div class="bed">
+<div class="pillow"></div>
+</div>
+
+<div class="floor"></div>
+
+<div class="mini-table"></div>
+
+<div class="mirror"></div>
+
+<div class="flower flower1"></div>
+<div class="flower flower2"></div>
+<div class="flower flower3"></div>
+
+</div>
+
+
+<div class="preview-text">
+
+<div class="eyebrow">
+WHAT IT BECOMES
+</div>
+
+<h2>
+From paper<br>
+to a tiny room.
+</h2>
+
+<p>
+The important part is that the website doesn't just show you a picture of a cottage.
+The pages above are the actual construction pieces.
+</p>
+
+<p>
+Print them at 100%, cut around the solid outlines, score the dashed lines and glue the pink tabs behind the walls.
+</p>
+
+<div class="legend">
+
+<span>
+<i class="line"></i>
+Solid line = CUT
+</span>
+
+<span>
+<i class="dashed"></i>
+Dashed line = FOLD
+</span>
+
+<span>
+🩷 Pink area = GLUE TAB
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="product">
+
+<h2>
+Create Your Secret Pink Attic
+</h2>
+
+<p>
+Original printable paper miniature · A4 ·
+Room shell + roof + furniture + decorations
+</p>
+
+<button
+class="btn"
+onclick="window.print()">
+🖨 Print the Pattern
+</button>
+
+</section>
+
+</main>
+
+
+<footer>
+
+PETITE PAPER ATELIER
+<br><br>
+Tiny things. Big dreams.
+
+</footer>
+
+
 <script>
 
-let cart = 0;
+function scrollToPattern(){
 
-
-/* ---------- ADD TO CART ---------- */
-
-function buyProduct(){
-
-    cart++;
-
-    document.getElementById("cartCount").innerText = cart;
-
-    showModal(
-        "Added to your little basket ♡",
-        "Secret Pink Attic has been added to your cart. This demo is ready for a real payment system later."
-    );
-}
-
-
-/* ---------- CART ---------- */
-
-function openCart(){
-
-    if(cart === 0){
-
-        showModal(
-            "Your basket is empty ♡",
-            "Your little paper world is waiting for you."
-        );
-
-    }else{
-
-        showModal(
-            "Your basket 🎀",
-            "Secret Pink Attic × " + cart +
-            "<br><br>Total: €" + (6.90 * cart).toFixed(2) +
-            "<br><br>Next step: connect this button to your real checkout."
-        );
-
-    }
+    document
+    .getElementById("pattern")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
 
 }
 
+function scrollToBuild(){
 
-/* ---------- PREVIEW ---------- */
-
-function openPreview(){
-
-    showModal(
-        "A tiny world is waiting…",
-        "This is the printable pattern preview. The final product can contain multiple A4 pages with cut lines, fold lines, glue tabs, numbered pieces and a complete assembly guide."
-    );
+    document
+    .getElementById("build")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
 
 }
-
-
-/* ---------- MODAL ---------- */
-
-function showModal(title,text){
-
-    document.getElementById("modalTitle").innerHTML = title;
-    document.getElementById("modalText").innerHTML = text;
-
-    document.getElementById("modal").style.display = "flex";
-
-}
-
-function closeModal(){
-
-    document.getElementById("modal").style.display = "none";
-
-}
-
-
-/* ---------- CLOSE WHEN CLICK OUTSIDE ---------- */
-
-window.onclick = function(event){
-
-    const modal = document.getElementById("modal");
-
-    if(event.target === modal){
-
-        closeModal();
-
-    }
-
-};
 
 </script>
 
