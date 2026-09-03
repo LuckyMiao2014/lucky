@@ -1,3692 +1,1183 @@
 ```html
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Herly ♡ My Little Pink Cottage</title>
+
+<title>Petite Paper Atelier — Secret Pink Attic</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
 
 :root{
-  --pink:#f7b5cf;
-  --pink-light:#ffe5ef;
-  --pink-deep:#d96f9b;
-  --rose:#b9517d;
-  --cream:#fffaf7;
-  --white:#fff;
-  --text:#624452;
-  --muted:#987d89;
-  --lavender:#e9def7;
-  --peach:#ffe3d0;
-  --green:#dcebdc;
-  --shadow:0 20px 55px rgba(154,88,119,.14);
-  --border:rgba(185,81,125,.14);
+    --pink:#f6d8df;
+    --deep-pink:#b96f83;
+    --rose:#d99aaa;
+    --cream:#fffaf7;
+    --paper:#fffdfb;
+    --brown:#6f5553;
+    --dark:#3f3031;
+    --gold:#caa875;
+    --shadow:0 18px 45px rgba(116,75,82,.13);
 }
 
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-html{scroll-behavior:smooth}
+html{
+    scroll-behavior:smooth;
+}
 
 body{
-  margin:0;
-  color:var(--text);
-  font-family:"DM Sans",sans-serif;
-  background:
-    radial-gradient(circle at 10% 10%,#ffd9e8,transparent 28%),
-    radial-gradient(circle at 90% 15%,#e8ddf7,transparent 25%),
-    radial-gradient(circle at 50% 90%,#ffe6d6,transparent 30%),
-    #fff8f6;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 70%, rgba(255,255,255,.7) 0 2px, transparent 3px),
+        linear-gradient(135deg,#fff9f7,#f9e7eb,#fffaf7);
+    background-size:120px 120px,170px 170px,100% 100%;
+    color:var(--dark);
+    font-family:"DM Sans",sans-serif;
 }
 
-/* fluffy texture */
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
-  opacity:.5;
-  background:
-    radial-gradient(circle,#fff 1px,transparent 2px) 0 0/18px 18px,
-    radial-gradient(circle,#f0b5ca 1px,transparent 2px) 8px 10px/25px 25px;
-}
+/* ---------- NAV ---------- */
 
-body.dark{
-  --cream:#251c23;
-  --white:#30232b;
-  --text:#f9eaf0;
-  --muted:#c7aeba;
-  --border:rgba(255,220,232,.13);
-  background:#21191f;
-}
-
-button,input,textarea,select{font:inherit}
-
-button{cursor:pointer}
-
-a{text-decoration:none;color:inherit}
-
-.container{
-  width:min(1180px,92%);
-  margin:auto;
-}
-
-h1,h2,h3,.logo{
-  font-family:"Playfair Display",serif;
-}
-
-/* NAV */
-.nav{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:rgba(255,250,248,.78);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-}
-
-.dark .nav{
-  background:rgba(37,28,35,.8);
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(16px);
+    background:rgba(255,250,248,.82);
+    border-bottom:1px solid rgba(185,111,131,.12);
 }
 
 .nav-inner{
-  height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+    max-width:1200px;
+    margin:auto;
+    padding:18px 25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
-  font-size:29px;
-  font-weight:700;
-  color:var(--rose);
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    font-weight:600;
+    color:var(--deep-pink);
 }
 
-.logo span{color:#ef9abd}
+.logo span{
+    font-size:12px;
+    display:block;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#a88788;
+    margin-top:-5px;
+}
 
 .nav-links{
-  display:flex;
-  gap:4px;
-  flex-wrap:wrap;
-  justify-content:center;
+    display:flex;
+    gap:25px;
+    align-items:center;
 }
 
 .nav-links a{
-  padding:9px 11px;
-  border-radius:999px;
-  color:var(--muted);
-  font-size:12px;
+    text-decoration:none;
+    color:#715d5d;
+    font-size:14px;
 }
 
 .nav-links a:hover{
-  background:var(--pink-light);
-  color:var(--rose);
+    color:var(--deep-pink);
 }
 
-.nav-actions{
-  display:flex;
-  gap:8px;
+.cart{
+    border:0;
+    background:#fff;
+    padding:10px 15px;
+    border-radius:50px;
+    box-shadow:0 5px 20px rgba(100,60,70,.08);
+    cursor:pointer;
+    color:#805c64;
 }
 
-.round-btn,
-.pill-btn{
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.7);
-  color:var(--text);
-  border-radius:999px;
-  padding:9px 13px;
-}
+/* ---------- HERO ---------- */
 
-.pink-btn{
-  background:linear-gradient(135deg,#eea0bd,#d66c99);
-  color:white;
-  border:0;
-}
-
-/* HERO */
 .hero{
-  padding:60px 0 35px;
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
+    min-height:650px;
+    max-width:1200px;
+    margin:auto;
+    padding:85px 25px 70px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:60px;
 }
 
 .eyebrow{
-  display:inline-flex;
-  padding:8px 13px;
-  border-radius:999px;
-  background:#fff0f5;
-  border:1px solid var(--border);
-  color:var(--rose);
-  font-size:12px;
-  font-weight:700;
+    display:inline-block;
+    color:var(--deep-pink);
+    letter-spacing:3px;
+    font-size:12px;
+    text-transform:uppercase;
+    margin-bottom:18px;
 }
 
 .hero h1{
-  color:var(--rose);
-  font-size:clamp(48px,6vw,78px);
-  line-height:.98;
-  margin:20px 0;
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(55px,7vw,92px);
+    line-height:.88;
+    font-weight:500;
+    color:#594243;
 }
 
 .hero h1 em{
-  color:#df91b1;
-  font-weight:500;
+    color:var(--deep-pink);
+    font-style:italic;
 }
 
 .hero p{
-  color:var(--muted);
-  line-height:1.8;
-  font-size:16px;
-  max-width:570px;
+    max-width:500px;
+    color:#806c6d;
+    line-height:1.8;
+    margin:30px 0;
+    font-size:16px;
 }
 
 .hero-buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:24px 0;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
 }
 
-.primary,
-.secondary{
-  border-radius:17px;
-  padding:13px 18px;
-  font-weight:700;
+.btn{
+    border:0;
+    border-radius:50px;
+    padding:14px 23px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
 }
 
-.primary{
-  border:0;
-  background:linear-gradient(135deg,#ee9fbd,#d76e9b);
-  color:white;
-  box-shadow:0 12px 28px rgba(215,110,155,.25);
+.btn-primary{
+    background:var(--deep-pink);
+    color:white;
+    box-shadow:0 12px 25px rgba(185,111,131,.28);
 }
 
-.secondary{
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.65);
-  color:var(--rose);
+.btn-primary:hover{
+    transform:translateY(-3px);
 }
 
-/* SEARCH */
-.search{
-  display:flex;
-  gap:8px;
-  padding:8px;
-  background:rgba(255,255,255,.72);
-  border:1px solid var(--border);
-  border-radius:19px;
-  max-width:600px;
-  box-shadow:var(--shadow);
+.btn-soft{
+    background:white;
+    color:#765c60;
+    border:1px solid #ead7da;
 }
 
-.search input{
-  flex:1;
-  min-width:0;
-  border:0;
-  outline:0;
-  background:transparent;
-  color:var(--text);
-  padding:8px 10px;
-}
-
-.search button{
-  border:0;
-  border-radius:13px;
-  background:var(--pink-light);
-  color:var(--rose);
-  padding:9px 14px;
-}
-
-/* COTTAGE */
-.cottage{
-  height:420px;
-  position:relative;
-  overflow:hidden;
-  border:10px solid white;
-  border-radius:42px;
-  background:linear-gradient(#f3c6d8 0 55%,#f4d5bd 55%);
-  box-shadow:var(--shadow);
-}
-
-.window{
-  position:absolute;
-  top:35px;
-  left:55px;
-  width:160px;
-  height:145px;
-  border:9px solid #fff5f4;
-  border-radius:90px 90px 18px 18px;
-  background:linear-gradient(#b9a5d6,#f5c9dc);
-}
-
-.window:after{
-  content:"☾";
-  position:absolute;
-  right:20px;
-  top:20px;
-  color:#fff0bc;
-  font-size:38px;
-}
-
-.curtain{
-  position:absolute;
-  top:28px;
-  left:32px;
-  font-size:70px;
-}
-
-.sofa{
-  position:absolute;
-  left:35px;
-  bottom:75px;
-  width:300px;
-  height:105px;
-  background:#eeb2cb;
-  border-radius:35px 35px 20px 20px;
-  box-shadow:0 13px 0 #d894b2;
-}
-
-.pillow{
-  position:absolute;
-  width:78px;
-  height:62px;
-  border-radius:25px;
-  background:#fff0f5;
-  top:18px;
-}
-
-.pillow.one{left:20px}
-.pillow.two{right:20px;background:#f8d4e4}
-
-.rug{
-  position:absolute;
-  left:55px;
-  bottom:25px;
-  width:340px;
-  height:65px;
-  background:#fff0dd;
-  border-radius:50%;
-  box-shadow:0 0 0 9px #efc3d4;
-}
-
-.teddy{
-  position:absolute;
-  right:75px;
-  bottom:105px;
-  font-size:75px;
-}
-
-.lamp{
-  position:absolute;
-  right:30px;
-  top:175px;
-  font-size:60px;
-}
-
-.flowers{
-  position:absolute;
-  right:55px;
-  top:55px;
-  font-size:40px;
-}
-
-.float{
-  position:absolute;
-  animation:float 5s ease-in-out infinite;
-}
-
-.f1{left:20px;top:210px;font-size:28px}
-.f2{right:30px;top:270px;font-size:25px}
-.f3{left:46%;top:30px;font-size:23px}
-
-@keyframes float{
-  50%{transform:translateY(-13px) rotate(4deg)}
-}
-
-/* SECTIONS */
-.section{
-  padding:38px 0;
-}
-
-.section-head{
-  margin-bottom:18px;
-}
-
-.section-head h2{
-  color:var(--rose);
-  font-size:35px;
-  margin:0;
-}
-
-.section-head p{
-  color:var(--muted);
-  margin:5px 0;
-  font-size:13px;
-}
-
-/* ROOMS */
-.rooms{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-
-.room{
-  position:relative;
-  min-height:170px;
-  padding:21px;
-  border-radius:27px;
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  overflow:hidden;
-  transition:.25s;
-}
-
-.room:hover{
-  transform:translateY(-5px);
-}
-
-.room .emoji{
-  font-size:34px;
-}
-
-.room b{
-  display:block;
-  font-size:19px;
-  margin-top:7px;
-}
-
-.room p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.6;
-  max-width:210px;
-}
-
-.room button{
-  position:absolute;
-  right:14px;
-  bottom:14px;
-  border:0;
-  background:rgba(255,255,255,.7);
-  color:var(--rose);
-  border-radius:12px;
-  padding:8px 11px;
-}
-
-.r-home{background:linear-gradient(135deg,#ffe5cf,#ffd5e4)}
-.r-money{background:linear-gradient(135deg,#fff0d8,#ffd6e7)}
-.r-shopping{background:linear-gradient(135deg,#ffe0ed,#e8d8f6)}
-.r-love{background:linear-gradient(135deg,#ffd9e6,#ffe8cf)}
-.r-beauty{background:linear-gradient(135deg,#f4ddf1,#ffd9df)}
-.r-study{background:linear-gradient(135deg,#dce8f8,#f6dce8)}
-.r-wellness{background:linear-gradient(135deg,#dcefdc,#f7e4d8)}
-.r-dream{background:linear-gradient(135deg,#e7dcfa,#ffddeb)}
-
-/* DASHBOARD */
-.dashboard{
-  display:grid;
-  grid-template-columns:1.3fr .7fr;
-  gap:15px;
-}
-
-.panel{
-  padding:22px;
-  background:rgba(255,255,255,.67);
-  border:1px solid var(--border);
-  border-radius:28px;
-  box-shadow:var(--shadow);
-}
-
-.dark .panel{
-  background:rgba(48,35,43,.75);
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  margin-top:15px;
-}
-
-.stat{
-  padding:14px;
-  border-radius:18px;
-  background:rgba(255,255,255,.6);
-  border:1px solid var(--border);
-}
-
-.stat small{
-  color:var(--muted);
-  font-size:10px;
-}
-
-.stat strong{
-  display:block;
-  color:var(--rose);
-  font-size:20px;
-  margin-top:5px;
-}
-
-.moods{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-}
-
-.moods button{
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.65);
-  border-radius:14px;
-  padding:9px 11px;
-}
-
-.moods button.active{
-  background:var(--pink-light);
-  color:var(--rose);
-}
-
-.field,
-.textarea{
-  width:100%;
-  padding:11px 12px;
-  border-radius:13px;
-  border:1px solid var(--border);
-  outline:0;
-  background:rgba(255,255,255,.7);
-  color:var(--text);
-}
-
-.textarea{
-  min-height:100px;
-  resize:vertical;
-}
-
-.todo-row{
-  display:flex;
-  gap:8px;
-  margin-top:10px;
-}
-
-.todo-row .field{flex:1}
-
-.todo-list{
-  list-style:none;
-  margin:10px 0 0;
-  padding:0;
-}
-
-.todo-list li{
-  display:flex;
-  justify-content:space-between;
-  padding:10px;
-  border-bottom:1px dashed var(--border);
-  font-size:13px;
-}
-
-.todo-list button{
-  border:0;
-  background:var(--pink-light);
-  color:var(--rose);
-  border-radius:9px;
-}
-
-/* MAGIC */
-.magic{
-  padding:27px;
-  border-radius:30px;
-  background:linear-gradient(135deg,#fff0f5,#eee2f9);
-  border:1px solid var(--border);
-  box-shadow:var(--shadow);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-}
-
-.magic h2{
-  color:var(--rose);
-  margin:12px 0 5px;
-  font-size:30px;
-}
-
-.magic p{
-  color:var(--muted);
-}
-
-/* TOOL GRID */
-.tool-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:13px;
-}
-
-.tool{
-  min-height:155px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  padding:17px;
-  border-radius:22px;
-  background:rgba(255,255,255,.68);
-  border:1px solid var(--border);
-  box-shadow:0 10px 30px rgba(130,78,102,.07);
-  transition:.2s;
-}
-
-.dark .tool{
-  background:rgba(48,35,43,.72);
-}
-
-.tool:hover{
-  transform:translateY(-3px);
-}
-
-.tool-top{
-  display:flex;
-  justify-content:space-between;
-}
-
-.tool-icon{
-  font-size:25px;
-}
-
-.favorite{
-  border:0;
-  background:transparent;
-  font-size:20px;
-  color:#d99ab5;
-}
-
-.favorite.active{
-  color:#d75e91;
-}
-
-.tool h3{
-  font-family:"DM Sans",sans-serif;
-  font-size:15px;
-  margin:7px 0;
-}
-
-.tool p{
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.5;
-  margin:0;
-}
-
-.open-tool{
-  border:0;
-  background:var(--pink-light);
-  color:var(--rose);
-  border-radius:12px;
-  padding:8px 10px;
-  margin-top:10px;
-  font-weight:700;
-}
-
-/* DREAM / PRICING */
-.pricing{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.price-card{
-  padding:27px;
-  border-radius:29px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.7);
-  box-shadow:var(--shadow);
-}
-
-.price-card.featured{
-  background:linear-gradient(135deg,#ffe1ec,#eee1f8);
-}
-
-.price-card h3{
-  font-size:25px;
-  margin:0;
+.price-line{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:24px;
 }
 
 .price{
-  font-size:37px;
-  color:var(--rose);
-  font-weight:700;
-  margin:10px 0;
+    font-family:"Cormorant Garamond",serif;
+    font-size:30px;
+    color:#594243;
 }
 
-.price-card li{
-  color:var(--muted);
-  line-height:2;
+.old-price{
+    text-decoration:line-through;
+    color:#ad9999;
 }
 
-/* MODAL */
-.modal-back{
-  position:fixed;
-  inset:0;
-  z-index:100;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:18px;
-  background:rgba(64,38,52,.6);
-  backdrop-filter:blur(9px);
+/* ---------- PAPER PREVIEW ---------- */
+
+.preview-wrap{
+    position:relative;
 }
 
-.modal-back.show{display:flex}
+.paper-shadow{
+    background:rgba(125,77,87,.13);
+    filter:blur(25px);
+    width:90%;
+    height:90%;
+    position:absolute;
+    left:5%;
+    top:7%;
+    border-radius:30px;
+}
+
+.pattern-paper{
+    position:relative;
+    background:#fffdfa;
+    border-radius:8px;
+    padding:28px;
+    box-shadow:var(--shadow);
+    transform:rotate(1.2deg);
+    border:1px solid #eee2df;
+}
+
+.pattern-header{
+    text-align:center;
+    border-bottom:1px dashed #d7b8bc;
+    padding-bottom:15px;
+    margin-bottom:20px;
+}
+
+.pattern-header h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:28px;
+    color:#9d6272;
+}
+
+.pattern-header p{
+    font-size:9px;
+    letter-spacing:2px;
+    color:#a99596;
+}
+
+.pattern-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+
+.pattern-piece{
+    height:125px;
+    border:2px dashed #c99ba5;
+    border-radius:18px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff9f7;
+}
+
+.pattern-piece:after{
+    content:"FOLD";
+    position:absolute;
+    bottom:7px;
+    font-size:7px;
+    letter-spacing:2px;
+    color:#bd8a94;
+}
+
+.piece-one{
+    border-radius:40px 40px 12px 12px;
+}
+
+.piece-two{
+    clip-path:polygon(15% 0,85% 0,100% 100%,0 100%);
+}
+
+.piece-three{
+    border-radius:50%;
+    width:90px;
+    height:90px;
+    margin:auto;
+}
+
+.piece-four{
+    border-radius:15px;
+}
+
+.pattern-piece span{
+    font-family:"Cormorant Garamond",serif;
+    color:#9d6874;
+    font-size:18px;
+}
+
+.tabs{
+    position:absolute;
+    width:18px;
+    height:9px;
+    background:#f4d9de;
+    border:1px solid #d6abb3;
+}
+
+.t1{left:12px;top:10px}
+.t2{right:12px;top:10px}
+.t3{left:12px;bottom:10px}
+.t4{right:12px;bottom:10px}
+
+.preview-note{
+    text-align:center;
+    margin-top:20px;
+    font-size:11px;
+    color:#9a8182;
+}
+
+/* ---------- PRODUCT INFO ---------- */
+
+.section{
+    max-width:1100px;
+    margin:auto;
+    padding:90px 25px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title span{
+    color:var(--deep-pink);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:11px;
+}
+
+.section-title h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:52px;
+    font-weight:500;
+    margin-top:10px;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    background:rgba(255,255,255,.68);
+    border:1px solid rgba(185,111,131,.12);
+    padding:30px;
+    border-radius:24px;
+    box-shadow:0 10px 30px rgba(100,60,70,.05);
+}
+
+.feature-icon{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.feature h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.feature p{
+    font-size:13px;
+    color:#806e70;
+    line-height:1.7;
+}
+
+/* ---------- WHAT'S INCLUDED ---------- */
+
+.included{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.list{
+    list-style:none;
+}
+
+.list li{
+    padding:14px 0;
+    border-bottom:1px solid #eadbdd;
+    color:#725d60;
+}
+
+.list li::before{
+    content:"♡";
+    color:var(--deep-pink);
+    margin-right:12px;
+}
+
+.cottage-card{
+    min-height:400px;
+    border-radius:35px;
+    background:
+        linear-gradient(rgba(255,220,228,.3),rgba(255,246,240,.8)),
+        radial-gradient(circle at 50% 25%,#fff 0 5%,transparent 6%),
+        #efd2d8;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:var(--shadow);
+}
+
+.cottage{
+    width:240px;
+    height:190px;
+    background:#fff8f3;
+    border:4px solid #b87b88;
+    border-radius:18px;
+    position:relative;
+    margin-top:80px;
+    box-shadow:0 20px 30px rgba(120,70,80,.18);
+}
+
+.roof{
+    position:absolute;
+    width:290px;
+    height:150px;
+    background:#d994a5;
+    transform:rotate(45deg);
+    left:-25px;
+    top:-100px;
+    border:4px solid #a96777;
+}
+
+.window{
+    width:52px;
+    height:62px;
+    background:#f8d9df;
+    border:4px solid #b87b88;
+    position:absolute;
+    left:25px;
+    top:55px;
+    border-radius:28px 28px 5px 5px;
+}
+
+.window:after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    width:3px;
+    height:100%;
+    background:#b87b88;
+}
+
+.door{
+    width:50px;
+    height:75px;
+    background:#d8a5af;
+    border:3px solid #a96b79;
+    position:absolute;
+    right:28px;
+    bottom:0;
+    border-radius:25px 25px 0 0;
+}
+
+.door:after{
+    content:"•";
+    position:absolute;
+    right:7px;
+    top:35px;
+    color:#8d5965;
+}
+
+.flower{
+    position:absolute;
+    font-size:28px;
+}
+
+.f1{left:12%;top:12%}
+.f2{right:13%;top:25%}
+.f3{left:78%;bottom:12%}
+
+/* ---------- STEPS ---------- */
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.step{
+    text-align:center;
+}
+
+.number{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#f0ccd4;
+    color:#8c5965;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 15px;
+    font-family:"Cormorant Garamond",serif;
+    font-size:21px;
+}
+
+.step h3{
+    font-family:"Cormorant Garamond",serif;
+    font-size:23px;
+    margin-bottom:7px;
+}
+
+.step p{
+    font-size:12px;
+    line-height:1.6;
+    color:#897274;
+}
+
+/* ---------- PRODUCT CARD ---------- */
+
+.buy-box{
+    background:linear-gradient(135deg,#fff,#fff4f5);
+    border:1px solid #ead7da;
+    border-radius:35px;
+    padding:55px;
+    text-align:center;
+    box-shadow:var(--shadow);
+}
+
+.buy-box h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:55px;
+    font-weight:500;
+}
+
+.buy-box p{
+    color:#806c6d;
+    max-width:560px;
+    margin:15px auto 25px;
+    line-height:1.7;
+}
+
+.buy-price{
+    font-family:"Cormorant Garamond",serif;
+    font-size:44px;
+    color:#a75e70;
+    margin-bottom:20px;
+}
+
+.small{
+    font-size:11px;
+    color:#a38d8e;
+    margin-top:14px;
+}
+
+/* ---------- REVIEWS ---------- */
+
+.reviews{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.review{
+    background:white;
+    padding:28px;
+    border-radius:22px;
+    box-shadow:0 10px 30px rgba(100,60,70,.06);
+}
+
+.stars{
+    color:#cda66b;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+.review p{
+    color:#735f62;
+    font-family:"Cormorant Garamond",serif;
+    font-size:20px;
+    line-height:1.4;
+}
+
+.review small{
+    display:block;
+    margin-top:18px;
+    color:#a58e8f;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+    padding:60px 25px;
+    text-align:center;
+    color:#967e80;
+    font-size:12px;
+}
+
+.footer-logo{
+    font-family:"Cormorant Garamond",serif;
+    font-size:32px;
+    color:#b96f83;
+    margin-bottom:8px;
+}
+
+/* ---------- MODAL ---------- */
 
 .modal{
-  width:min(650px,100%);
-  max-height:90vh;
-  overflow:auto;
-  position:relative;
-  padding:25px;
-  border-radius:31px;
-  background:var(--cream);
-  border:1px solid var(--border);
-  box-shadow:0 30px 80px rgba(50,30,40,.35);
+    display:none;
+    position:fixed;
+    z-index:300;
+    inset:0;
+    background:rgba(63,48,49,.45);
+    backdrop-filter:blur(8px);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal-box{
+    background:#fffaf8;
+    max-width:500px;
+    width:100%;
+    border-radius:30px;
+    padding:40px;
+    text-align:center;
+    position:relative;
+    box-shadow:0 30px 80px rgba(60,40,45,.25);
 }
 
 .close{
-  position:absolute;
-  right:15px;
-  top:13px;
-  width:35px;
-  height:35px;
-  border:0;
-  border-radius:50%;
-  background:var(--pink-light);
-  color:var(--rose);
-  font-size:20px;
+    position:absolute;
+    right:18px;
+    top:15px;
+    border:0;
+    background:none;
+    font-size:24px;
+    cursor:pointer;
+    color:#9b7378;
 }
 
-.modal h2{
-  color:var(--rose);
-  font-size:30px;
-  margin:0 40px 7px 0;
+.modal-box h2{
+    font-family:"Cormorant Garamond",serif;
+    font-size:40px;
+    color:#9f6472;
 }
 
-.modal p{
-  color:var(--muted);
-  line-height:1.7;
+.modal-box p{
+    color:#806c6d;
+    line-height:1.7;
+    margin:15px 0 25px;
 }
 
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:800px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        padding-top:55px;
+    }
+
+    .hero h1{
+        font-size:65px;
+    }
+
+    .features,
+    .reviews{
+        grid-template-columns:1fr;
+    }
+
+    .included{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .buy-box{
+        padding:35px 20px;
+    }
+
+    .pattern-paper{
+        max-width:450px;
+        margin:auto;
+    }
 }
 
-.result{
-  margin-top:13px;
-  padding:15px;
-  border-radius:17px;
-  background:#fff0f5;
-  color:var(--rose);
-  line-height:1.7;
-}
+@media(max-width:480px){
 
-.dark .result{
-  background:#3c2934;
-}
+    .hero h1{
+        font-size:55px;
+    }
 
-.center{text-align:center}
+    .steps{
+        grid-template-columns:1fr;
+    }
 
-.badge{
-  display:inline-block;
-  padding:5px 8px;
-  border-radius:999px;
-  background:#fff0ca;
-  color:#9d702b;
-  font-size:10px;
-  font-weight:700;
-}
+    .pattern-grid{
+        gap:8px;
+    }
 
-footer{
-  text-align:center;
-  padding:50px 0 70px;
-  color:var(--muted);
-  font-size:12px;
-}
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:25px;
-  transform:translate(-50%,20px);
-  opacity:0;
-  z-index:150;
-  padding:12px 18px;
-  border-radius:999px;
-  background:#5b3d4c;
-  color:white;
-  transition:.3s;
-}
-
-.toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
-}
-
-/* RESPONSIVE */
-@media(max-width:1000px){
-  .nav-links{display:none}
-  .hero-grid{grid-template-columns:1fr}
-  .rooms{grid-template-columns:repeat(2,1fr)}
-  .tool-grid{grid-template-columns:repeat(2,1fr)}
-  .dashboard{grid-template-columns:1fr}
-}
-
-@media(max-width:600px){
-  .hero{padding-top:30px}
-  .cottage{height:310px}
-  .window{left:25px;top:25px;width:120px;height:105px}
-  .sofa{left:20px;bottom:55px;width:220px;height:80px}
-  .rug{left:30px;width:250px;bottom:18px}
-  .teddy{right:20px;bottom:80px;font-size:55px}
-  .lamp{right:10px;top:130px;font-size:45px}
-  .rooms,.tool-grid,.pricing{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr 1fr}
-  .form-grid{grid-template-columns:1fr}
-  .magic{display:block}
+    .pattern-piece{
+        height:105px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<nav class="nav">
-<div class="container nav-inner">
-  <a class="logo" href="#home">herly<span>♡</span></a>
+<!-- NAVIGATION -->
+<nav>
+    <div class="nav-inner">
 
-  <div class="nav-links">
-    <a href="#home">Home</a>
-    <a href="#money">Money</a>
-    <a href="#shopping">Shopping</a>
-    <a href="#love">Love</a>
-    <a href="#beauty">Beauty</a>
-    <a href="#study">Study</a>
-    <a href="#wellness">Cozy</a>
-    <a href="#dreams">Dreams</a>
-  </div>
+        <div class="logo">
+            Petite Paper Atelier
+            <span>tiny things, big dreams</span>
+        </div>
 
-  <div class="nav-actions">
-    <button class="round-btn" onclick="toggleDark()">☾</button>
-    <button class="pill-btn pink-btn" onclick="vip()">Dreamy VIP ✦</button>
-  </div>
-</div>
+        <div class="nav-links">
+            <a href="#product">The Pattern</a>
+            <a href="#included">What's Inside</a>
+            <a href="#how">How It Works</a>
+            <a href="#reviews">Reviews</a>
+        </div>
+
+        <button class="cart" onclick="openCart()">
+            🛍️ Cart <span id="cartCount">0</span>
+        </button>
+
+    </div>
 </nav>
 
-<main>
 
-<!-- HOME -->
-<section class="hero" id="home">
-<div class="container hero-grid">
+<!-- HERO -->
+<section class="hero">
 
-<div>
-  <span class="eyebrow">🧸 Welcome to your little digital cottage</span>
+    <div>
 
-  <h1>
-    Come home to<br>
-    <em>your little world.</em>
-  </h1>
+        <span class="eyebrow">Printable Paper Craft · No. 01</span>
 
-  <p>
-    Herly is your tiny pink digital cottage for money, shopping,
-    love, beauty, study, wellness, routines and dreams.
-    Everything soft, useful and cozy — all in one place.
-  </p>
+        <h1>
+            Secret<br>
+            <em>Pink</em><br>
+            Attic
+        </h1>
 
-  <div class="hero-buttons">
-    <button class="primary" onclick="document.getElementById('rooms').scrollIntoView()">
-      Enter my cottage 🎀
-    </button>
+        <p>
+            A tiny enchanted room hidden inside a printable sheet.
+            Cut it, fold it, glue it — and watch a little magical world
+            appear in your hands.
+        </p>
 
-    <button class="secondary" onclick="openTool('magic')">
-      ✨ Today's magic
-    </button>
-  </div>
+        <div class="hero-buttons">
 
-  <div class="search">
-    <input id="searchInput" placeholder="Search budget, diary, outfit, love...">
-    <button onclick="searchTools()">Search</button>
-  </div>
-</div>
+            <button class="btn btn-primary" onclick="buyProduct()">
+                Get the Pattern · €6.90
+            </button>
 
-<div class="cottage">
-  <div class="window"></div>
-  <div class="curtain">☁️</div>
-  <div class="flowers">🌷</div>
+            <button class="btn btn-soft" onclick="openPreview()">
+                ♡ See Preview
+            </button>
 
-  <div class="sofa">
-    <div class="pillow one"></div>
-    <div class="pillow two"></div>
-  </div>
+        </div>
 
-  <div class="rug"></div>
-  <div class="teddy">🧸</div>
-  <div class="lamp">🕯️</div>
+        <div class="price-line">
+            <span class="price">€6.90</span>
+            <span class="old-price">€9.90</span>
+            <span>Instant digital download</span>
+        </div>
 
-  <span class="float f1">🎀</span>
-  <span class="float f2">✦</span>
-  <span class="float f3">🌸</span>
-</div>
+    </div>
 
-</div>
+
+    <!-- PATTERN PREVIEW -->
+    <div class="preview-wrap">
+
+        <div class="paper-shadow"></div>
+
+        <div class="pattern-paper">
+
+            <div class="pattern-header">
+                <h2>Secret Pink Attic</h2>
+                <p>PRINT · CUT · FOLD · CREATE</p>
+            </div>
+
+            <div class="pattern-grid">
+
+                <div class="pattern-piece piece-one">
+                    <span>WALL A</span>
+                    <i class="tabs t1"></i>
+                    <i class="tabs t3"></i>
+                </div>
+
+                <div class="pattern-piece piece-two">
+                    <span>ROOF</span>
+                    <i class="tabs t2"></i>
+                    <i class="tabs t4"></i>
+                </div>
+
+                <div class="pattern-piece">
+                    <span>WINDOW</span>
+                </div>
+
+                <div class="pattern-piece">
+                    <span>DOOR</span>
+                </div>
+
+                <div class="pattern-piece piece-three">
+                    <span>RUG</span>
+                </div>
+
+                <div class="pattern-piece">
+                    <span>CURTAIN</span>
+                </div>
+
+            </div>
+
+            <div class="preview-note">
+                ★ Dashed lines = folds · Solid lines = cuts · Tabs = glue
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
 
 
-<!-- ROOMS -->
-<section class="section" id="rooms">
-<div class="container">
+<!-- PRODUCT FEATURES -->
+<section class="section" id="product">
 
-<div class="section-head">
-  <h2>My little rooms</h2>
-  <p>Every room has a different little kind of magic.</p>
-</div>
+    <div class="section-title">
+        <span>Why it's different</span>
+        <h2>Not just a paper house.</h2>
+    </div>
 
-<div class="rooms">
+    <div class="features">
 
-<div class="room r-home">
-<div class="emoji">🏠</div>
-<b>Home</b>
-<p>Your dashboard, today's mood, tasks, habits and quick actions.</p>
-<button onclick="go('dashboard')">Enter →</button>
-</div>
+        <div class="feature">
+            <div class="feature-icon">🏡</div>
+            <h3>A Tiny World</h3>
+            <p>
+                Build a miniature secret attic with layers,
+                furniture, windows, decorations and hidden details.
+            </p>
+        </div>
 
-<div class="room r-money">
-<div class="emoji">💰</div>
-<b>Money Room</b>
-<p>Budget, expenses, saving, subscriptions, shopping decisions and more.</p>
-<button onclick="go('money')">Enter →</button>
-</div>
+        <div class="feature">
+            <div class="feature-icon">✂️</div>
+            <h3>Made With Paper</h3>
+            <p>
+                Print the pattern at home, cut the pieces,
+                fold the marked lines and assemble your little room.
+            </p>
+        </div>
 
-<div class="room r-shopping">
-<div class="emoji">🛍️</div>
-<b>Shopping Room</b>
-<p>Wishlist, gifts, shopping lists and your little wardrobe.</p>
-<button onclick="go('shopping')">Enter →</button>
-</div>
+        <div class="feature">
+            <div class="feature-icon">🎀</div>
+            <h3>Designed To Delight</h3>
+            <p>
+                Every detail is designed to feel like opening
+                the door to a tiny pink fairytale.
+            </p>
+        </div>
 
-<div class="room r-love">
-<div class="emoji">💌</div>
-<b>Love & Social</b>
-<p>Dates, birthdays, letters, memories and friendship plans.</p>
-<button onclick="go('love')">Enter →</button>
-</div>
+    </div>
 
-<div class="room r-beauty">
-<div class="emoji">🪞</div>
-<b>Beauty & Self-Care</b>
-<p>Outfits, nails, colors, routines and beauty planning.</p>
-<button onclick="go('beauty')">Enter →</button>
-</div>
-
-<div class="room r-study">
-<div class="emoji">📚</div>
-<b>Study & Work</b>
-<p>Pomodoro, exams, grades, CVs, interviews and applications.</p>
-<button onclick="go('study')">Enter →</button>
-</div>
-
-<div class="room r-wellness">
-<div class="emoji">🌙</div>
-<b>Wellness & Cozy</b>
-<p>Sleep, routines, mood, habits, water and gentle resets.</p>
-<button onclick="go('wellness')">Enter →</button>
-</div>
-
-<div class="room r-dream">
-<div class="emoji">🌷</div>
-<b>Dream Room</b>
-<p>Dreams, goals, vision boards, bucket lists and your future self.</p>
-<button onclick="go('dreams')">Enter →</button>
-</div>
-
-</div>
-</div>
 </section>
 
 
-<!-- DASHBOARD -->
-<section class="section" id="dashboard">
-<div class="container">
+<!-- WHAT'S INCLUDED -->
+<section class="section" id="included">
 
-<div class="section-head">
-<h2>My little dashboard</h2>
-<p>Your cozy command center.</p>
-</div>
+    <div class="included">
 
-<div class="dashboard">
+        <div>
 
-<div class="panel">
+            <div class="section-title" style="text-align:left;margin-bottom:25px;">
+                <span>Inside your download</span>
+                <h2>Everything<br>you need.</h2>
+            </div>
 
-<h3>🎀 How are you feeling today?</h3>
+            <ul class="list">
+                <li>Printable cottage walls</li>
+                <li>Curved magical roof</li>
+                <li>Secret arched door</li>
+                <li>Layered windows</li>
+                <li>Mini canopy bed</li>
+                <li>Tiny fireplace</li>
+                <li>Vanity mirror</li>
+                <li>Mini tea table</li>
+                <li>Fluffy-look printed rug</li>
+                <li>Curtains and bows</li>
+                <li>Mini flowers and decorations</li>
+                <li>Step-by-step assembly guide</li>
+            </ul>
 
-<div class="moods">
-<button onclick="setMood(this,'Happy')">😊 Happy</button>
-<button onclick="setMood(this,'Calm')">🌷 Calm</button>
-<button onclick="setMood(this,'Tired')">😴 Tired</button>
-<button onclick="setMood(this,'Excited')">✨ Excited</button>
-<button onclick="setMood(this,'Meh')">☁️ Meh</button>
-</div>
-
-<div class="stats">
-<div class="stat">
-<small>Spent today</small>
-<strong id="spent">€0</strong>
-</div>
-
-<div class="stat">
-<small>Saved</small>
-<strong id="saved">€0</strong>
-</div>
-
-<div class="stat">
-<small>Water</small>
-<strong id="waterStat">0/8</strong>
-</div>
-
-<div class="stat">
-<small>Tasks done</small>
-<strong id="tasksDone">0</strong>
-</div>
-</div>
-
-<h3>📝 Little To-Do</h3>
-
-<div class="todo-row">
-<input class="field" id="todoInput" placeholder="Add one tiny thing...">
-<button class="primary" onclick="addTodo()">Add</button>
-</div>
-
-<ul class="todo-list" id="todoList"></ul>
-
-</div>
+        </div>
 
 
-<div class="panel">
+        <div class="cottage-card">
 
-<h3>🌷 Today's plan</h3>
+            <div class="flower f1">🌸</div>
+            <div class="flower f2">✨</div>
+            <div class="flower f3">🎀</div>
 
-<textarea
-class="textarea"
-id="dailyPlan"
-placeholder="Morning coffee... study... walk... little reward..."
-></textarea>
+            <div class="cottage">
 
-<button class="primary" style="margin-top:8px" onclick="savePlan()">
-Save plan
-</button>
+                <div class="roof"></div>
 
-<h3>💧 Water</h3>
+                <div class="window"></div>
 
-<button class="primary" onclick="drinkWater()">
-+ Drink a glass
-</button>
+                <div class="door"></div>
 
-<button class="secondary" onclick="openTool('diary')">
-Quick diary ✍️
-</button>
+            </div>
 
-</div>
+        </div>
 
-</div>
-</div>
+    </div>
+
 </section>
 
 
-<!-- DAILY MAGIC -->
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+
+    <div class="section-title">
+        <span>So easy</span>
+        <h2>From flat paper<br>to tiny magic.</h2>
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="number">01</div>
+            <h3>Download</h3>
+            <p>
+                Receive your printable PDF instantly after purchase.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="number">02</div>
+            <h3>Print</h3>
+            <p>
+                Print on cardstock or sturdy paper at home.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="number">03</div>
+            <h3>Cut & Fold</h3>
+            <p>
+                Follow the cut lines, fold lines and numbered tabs.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="number">04</div>
+            <h3>Build</h3>
+            <p>
+                Assemble the pieces and reveal your secret little room.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- BUY BOX -->
 <section class="section">
-<div class="container">
 
-<div class="magic">
+    <div class="buy-box">
 
-<div>
-<span class="eyebrow">✨ Daily Magic</span>
-<h2 id="magicText">You are allowed to have a soft day.</h2>
-<p>A tiny sentence for your tiny cottage.</p>
-</div>
+        <span class="eyebrow">Your little escape</span>
 
-<button class="primary" onclick="newMagic()">
-Another one ♡
-</button>
+        <h2>Build something magical.</h2>
 
-</div>
+        <p>
+            One printable pattern. One quiet afternoon.
+            One tiny room that feels like it belongs in a fairytale.
+        </p>
 
-</div>
+        <div class="buy-price">€6.90</div>
+
+        <button class="btn btn-primary" onclick="buyProduct()">
+            🛍️ Add to Cart
+        </button>
+
+        <div class="small">
+            Digital product · No physical item will be shipped
+        </div>
+
+    </div>
+
 </section>
 
 
-<!-- MONEY -->
-<section class="section" id="money">
-<div class="container">
+<!-- REVIEWS -->
+<section class="section" id="reviews">
 
-<div class="section-head">
-<h2>💰 Money Room</h2>
-<p>Your little financial corner.</p>
-</div>
+    <div class="section-title">
+        <span>Little notes</span>
+        <h2>Made for cozy afternoons.</h2>
+    </div>
 
-<div class="tool-grid">
+    <div class="reviews">
 
-<div class="tool">
-<div>
-<div class="tool-top"><span class="tool-icon">💸</span><button class="favorite">♡</button></div>
-<h3>Discount Calculator</h3>
-<p>See your sale price and savings.</p>
-</div>
-<button class="open-tool" onclick="openTool('discount')">Open →</button>
-</div>
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>
+                “It looked cute on the screen, but the finished
+                little room was even more magical.”
+            </p>
+            <small>— Emma · verified maker</small>
+        </div>
 
-<div class="tool">
-<div>
-<div class="tool-top"><span class="tool-icon">🧾</span><button class="favorite">♡</button></div>
-<h3>Quick Expense</h3>
-<p>Save a purchase to your little ledger.</p>
-</div>
-<button class="open-tool" onclick="openTool('expense')">Open →</button>
-</div>
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>
+                “I printed it on thicker paper and spent an afternoon
+                making it. It was honestly so relaxing.”
+            </p>
+            <small>— Sophie · paper lover</small>
+        </div>
 
-<div class="tool">
-<div>
-<div class="tool-top"><span class="tool-icon">📊</span><button class="favorite">♡</button></div>
-<h3>Monthly Budget</h3>
-<p>Plan income, costs and savings.</p>
-</div>
-<button class="open-tool" onclick="openTool('budget')">Open →</button>
-</div>
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>
+                “The tiny details are what make it special.
+                It feels like a miniature secret world.”
+            </p>
+            <small>— Mia · happy customer</small>
+        </div>
 
-<div class="tool">
-<div>
-<div class="tool-top"><span class="tool-icon">📱</span><button class="favorite">♡</button></div>
-<h3>Subscription Check</h3>
-<p>See what subscriptions cost yearly.</p>
-</div>
-<button class="open-tool" onclick="openTool('subscription')">Open →</button>
-</div>
+    </div>
 
-<div class="tool">
-<div>
-<div class="tool-top"><span class="tool-icon">🌷</span><button class="favorite">♡</button></div>
-<h3>Saving Goal</h3>
-<p>Turn a dream into monthly steps.</p>
-</div>
-<button class="open-tool" onclick="openTool('saving')">Open →</button>
-</div>
-
-<div class="tool">
-<div>
-<div class="tool-top"><span class="tool-icon">🍰</span><button class="favorite">♡</button></div>
-<h3>AA Split</h3>
-<p>Split a bill easily.</p>
-</div>
-<button class="open-tool" onclick="openTool('split')">Open →</button>
-</div>
-
-<div class="tool">
-<div>
-<div class="tool-top"><span class="tool-icon">💼</span><button class="favorite">♡</button></div>
-<h3>Salary & Hourly Pay</h3>
-<p>Estimate your hourly value.</p>
-</div>
-<button class="open-tool" onclick="openTool('hourly')">Open →</button>
-</div>
-
-<div class="tool">
-<div>
-<div class="tool-top"><span class="tool-icon">🌍</span><button class="favorite">♡</button></div>
-<h3>Currency Converter</h3>
-<p>Simple demo currency conversion.</p>
-</div>
-<button class="open-tool" onclick="openTool('currency')">Open →</button>
-</div>
-
-<div class="tool">
-<div>
-<div class="tool-top"><span class="tool-icon">🛍️</span><button class="favorite">♡</button></div>
-<h3>Should I Buy It?</h3>
-<p>Think before an impulse purchase.</p>
-</div>
-<button class="open-tool" onclick="openTool('buy')">Open →</button>
-</div>
-
-</div>
-</div>
 </section>
 
 
-<!-- SHOPPING -->
-<section class="section" id="shopping">
-<div class="container">
-
-<div class="section-head">
-<h2>🛍️ Shopping Room</h2>
-<p>Your dreamy shopping corner.</p>
-</div>
-
-<div class="tool-grid">
-
-<div class="tool"><div><span class="tool-icon">♡</span><h3>Wishlist</h3><p>Save something you want.</p></div><button class="open-tool" onclick="openTool('wishlist')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🏷️</span><h3>Price Tracker</h3><p>Keep manual price notes.</p></div><button class="open-tool" onclick="openTool('price')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">⭐</span><h3>Worth It?</h3><p>Rate a purchase.</p></div><button class="open-tool" onclick="openTool('buy')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🎁</span><h3>Gift Finder</h3><p>Pick a gift direction.</p></div><button class="open-tool" onclick="openTool('gift')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">💝</span><h3>Gift Budget</h3><p>Plan without overspending.</p></div><button class="open-tool" onclick="openTool('budget')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🛒</span><h3>Shopping List</h3><p>Keep your little list.</p></div><button class="open-tool" onclick="openTool('shoppinglist')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">👗</span><h3>Capsule Wardrobe</h3><p>Build a small closet.</p></div><button class="open-tool" onclick="openTool('wardrobe')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🧺</span><h3>Closet Planner</h3><p>Plan what you actually wear.</p></div><button class="open-tool" onclick="openTool('wardrobe')">Open →</button></div>
-
-</div>
-</div>
-</section>
-
-
-<!-- LOVE -->
-<section class="section" id="love">
-<div class="container">
-
-<div class="section-head">
-<h2>💌 Love & Social</h2>
-<p>Little memories for people you love.</p>
-</div>
-
-<div class="tool-grid">
-
-<div class="tool"><div><span class="tool-icon">💗</span><h3>Love Days</h3><p>Count your special days.</p></div><button class="open-tool" onclick="openTool('love')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">📅</span><h3>Anniversaries</h3><p>Remember important dates.</p></div><button class="open-tool" onclick="openTool('love')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🎂</span><h3>Birthday Reminder</h3><p>Plan birthdays early.</p></div><button class="open-tool" onclick="openTool('birthday')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🌙</span><h3>Date Night Generator</h3><p>Find a cute date.</p></div><button class="open-tool" onclick="openTool('date')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🎁</span><h3>Gift Planner</h3><p>Plan gifts by budget.</p></div><button class="open-tool" onclick="openTool('gift')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">💌</span><h3>Love Letter</h3><p>Start a sweet letter.</p></div><button class="open-tool" onclick="openTool('letter')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">💬</span><h3>Conversation Starters</h3><p>Get a question to ask.</p></div><button class="open-tool" onclick="openTool('conversation')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🕊️</span><h3>After an Argument</h3><p>A gentle reflection guide.</p></div><button class="open-tool" onclick="openTool('argument')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🌷</span><h3>Couple Bucket List</h3><p>Collect shared dreams.</p></div><button class="open-tool" onclick="openTool('wishlist')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">👯</span><h3>Friends Hangout</h3><p>Plan a gathering.</p></div><button class="open-tool" onclick="openTool('party')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🎉</span><h3>Party Planner</h3><p>Plan your little party.</p></div><button class="open-tool" onclick="openTool('party')">Open →</button></div>
-
-</div>
-</div>
-</section>
-
-
-<!-- BEAUTY -->
-<section class="section" id="beauty">
-<div class="container">
-
-<div class="section-head">
-<h2>🪞 Beauty & Self-Care</h2>
-<p>Your soft little vanity.</p>
-</div>
-
-<div class="tool-grid">
-
-<div class="tool"><div><span class="tool-icon">👗</span><h3>Outfit Generator</h3><p>Pick a look by vibe.</p></div><button class="open-tool" onclick="openTool('outfit')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">💅</span><h3>Nail Picker</h3><p>Choose your nail mood.</p></div><button class="open-tool" onclick="openTool('nails')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🎨</span><h3>Color Palette</h3><p>Create a dreamy palette.</p></div><button class="open-tool" onclick="openTool('palette')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🫧</span><h3>Self-Care Planner</h3><p>A gentle little menu.</p></div><button class="open-tool" onclick="openTool('selfcare')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🧴</span><h3>Skincare Routine</h3><p>Organize everyday steps.</p></div><button class="open-tool" onclick="openTool('routine')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">💇</span><h3>Hair Appointment</h3><p>Keep a beauty note.</p></div><button class="open-tool" onclick="openTool('diary')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🌷</span><h3>Beauty Bucket</h3><p>Save beauty experiences.</p></div><button class="open-tool" onclick="openTool('wishlist')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">💄</span><h3>Makeup Shopping List</h3><p>Keep beauty purchases organized.</p></div><button class="open-tool" onclick="openTool('shoppinglist')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">👚</span><h3>Wardrobe Planner</h3><p>Plan your closet.</p></div><button class="open-tool" onclick="openTool('wardrobe')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🎀</span><h3>What Should I Wear?</h3><p>Let the cottage choose.</p></div><button class="open-tool" onclick="openTool('outfit')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">✨</span><h3>Today's Style</h3><p>Choose your mood.</p></div><button class="open-tool" onclick="openTool('style')">Open →</button></div>
-
-</div>
-</div>
-</section>
-
-
-<!-- STUDY -->
-<section class="section" id="study">
-<div class="container">
-
-<div class="section-head">
-<h2>📚 Study & Work</h2>
-<p>Your cozy little study nook.</p>
-</div>
-
-<div class="tool-grid">
-
-<div class="tool"><div><span class="tool-icon">🍅</span><h3>Pomodoro</h3><p>25 minutes of cozy focus.</p></div><button class="open-tool" onclick="openTool('pomodoro')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">📝</span><h3>To-Do</h3><p>Your tasks live on Home.</p></div><button class="open-tool" onclick="go('dashboard')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">📖</span><h3>Study Planner</h3><p>Break study into tiny steps.</p></div><button class="open-tool" onclick="openTool('studyplan')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">⏳</span><h3>Exam Countdown</h3><p>Count the days.</p></div><button class="open-tool" onclick="openTool('exam')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">📌</span><h3>Assignment Tracker</h3><p>Keep deadlines visible.</p></div><button class="open-tool" onclick="openTool('assignment')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🎓</span><h3>GPA Calculator</h3><p>Average your grades.</p></div><button class="open-tool" onclick="openTool('gpa')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🧮</span><h3>Grade Calculator</h3><p>Turn points into percentage.</p></div><button class="open-tool" onclick="openTool('grade')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">💼</span><h3>Salary Calculator</h3><p>Estimate hourly pay.</p></div><button class="open-tool" onclick="openTool('hourly')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">📄</span><h3>CV / Resume Helper</h3><p>Build a clear CV structure.</p></div><button class="open-tool" onclick="openTool('cv')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🎤</span><h3>Interview Questions</h3><p>Practice common questions.</p></div><button class="open-tool" onclick="openTool('interview')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">💌</span><h3>Job Application Tracker</h3><p>Keep notes on applications.</p></div><button class="open-tool" onclick="openTool('applications')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🧘</span><h3>Focus Mode</h3><p>Start a distraction-free timer.</p></div><button class="open-tool" onclick="openTool('pomodoro')">Open →</button></div>
-
-</div>
-</div>
-</section>
-
-
-<!-- WELLNESS -->
-<section class="section" id="wellness">
-<div class="container">
-
-<div class="section-head">
-<h2>🌙 Wellness & Cozy</h2>
-<p>Your soft little rest room.</p>
-</div>
-
-<div class="tool-grid">
-
-<div class="tool"><div><span class="tool-icon">😴</span><h3>Sleep Planner</h3><p>Plan your sleep window.</p></div><button class="open-tool" onclick="openTool('sleep')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🌅</span><h3>Morning Routine</h3><p>Create a soft start.</p></div><button class="open-tool" onclick="openTool('routine')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🌙</span><h3>Night Routine</h3><p>Close the day gently.</p></div><button class="open-tool" onclick="openTool('routine')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">😊</span><h3>Mood Tracker</h3><p>Save today's mood.</p></div><button class="open-tool" onclick="go('dashboard')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🌱</span><h3>Habit Tracker</h3><p>Build tiny streaks.</p></div><button class="open-tool" onclick="openTool('habit')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🫶</span><h3>Gratitude Journal</h3><p>Save three good things.</p></div><button class="open-tool" onclick="openTool('gratitude')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">📔</span><h3>Diary</h3><p>Your private little page.</p></div><button class="open-tool" onclick="openTool('diary')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">💧</span><h3>Water Reminder</h3><p>Track your glasses.</p></div><button class="open-tool" onclick="openTool('water')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🧸</span><h3>Should I Rest?</h3><p>Choose a gentle reset.</p></div><button class="open-tool" onclick="openTool('rest')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">📵</span><h3>Digital Detox</h3><p>Put the screen down.</p></div><button class="open-tool" onclick="openTool('detox')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🫧</span><h3>5-Minute Reset</h3><p>Reset one tiny corner.</p></div><button class="open-tool" onclick="openTool('reset')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🧹</span><h3>Room Reset</h3><p>Make your space feel lighter.</p></div><button class="open-tool" onclick="openTool('reset')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🌷</span><h3>Weekend Reset</h3><p>Plan a gentle weekend.</p></div><button class="open-tool" onclick="openTool('weekend')">Open →</button></div>
-
-</div>
-</div>
-</section>
-
-
-<!-- DREAMS -->
-<section class="section" id="dreams">
-<div class="container">
-
-<div class="section-head">
-<h2>🌷 Dream Room</h2>
-<p>The little room where your future lives.</p>
-</div>
-
-<div class="tool-grid">
-
-<div class="tool"><div><span class="tool-icon">✨</span><h3>Dream Board</h3><p>Collect your dreams.</p></div><button class="open-tool" onclick="openTool('dream')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🗺️</span><h3>Bucket List</h3><p>Save experiences you want.</p></div><button class="open-tool" onclick="openTool('wishlist')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🎯</span><h3>Life Goals</h3><p>Turn wishes into steps.</p></div><button class="open-tool" onclick="openTool('goals')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🌸</span><h3>2026 Goals</h3><p>Write your year.</p></div><button class="open-tool" onclick="openTool('goals')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">💌</span><h3>Future Self Letter</h3><p>Write to future you.</p></div><button class="open-tool" onclick="openTool('future')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">✈️</span><h3>Places I Want to Visit</h3><p>Collect destinations.</p></div><button class="open-tool" onclick="openTool('wishlist')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">📚</span><h3>Things I Want to Learn</h3><p>Build a learning list.</p></div><button class="open-tool" onclick="openTool('wishlist')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🧸</span><h3>My Little Dreams</h3><p>No dream is too small.</p></div><button class="open-tool" onclick="openTool('dream')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">🖼️</span><h3>Vision Board</h3><p>Write your vision.</p></div><button class="open-tool" onclick="openTool('vision')">Open →</button></div>
-
-<div class="tool"><div><span class="tool-icon">📔</span><h3>Monthly Reflection</h3><p>Reflect on your month.</p></div><button class="open-tool" onclick="openTool('reflection')">Open →</button></div>
-
-</div>
-</div>
-</section>
-
-
-<!-- VIP -->
-<section class="section">
-<div class="container">
-
-<div class="section-head">
-<h2>💎 Dreamy VIP</h2>
-<p>Your little cottage can grow with you.</p>
-</div>
-
-<div class="pricing">
-
-<div class="price-card">
-<h3>Free 🌷</h3>
-<div class="price">€0</div>
-<ul>
-<li>Core everyday tools</li>
-<li>Dashboard</li>
-<li>Diary</li>
-<li>Dream board</li>
-<li>Local browser saving</li>
-</ul>
-<button class="secondary">Your current plan</button>
-</div>
-
-<div class="price-card featured">
-<span class="badge">COMING SOON</span>
-<h3>Herly Dream ✦</h3>
-<div class="price">€4.99 <small>/ month</small></div>
-<ul>
-<li>Advanced planning tools</li>
-<li>Premium themes</li>
-<li>More wardrobe features</li>
-<li>Travel planning</li>
-<li>Export & extra personalization</li>
-</ul>
-<button class="primary" onclick="vip()">Join the waitlist</button>
-</div>
-
-</div>
-
-<p style="text-align:center;color:var(--muted);font-size:11px">
-VIP checkout is currently a demo. No payment is collected.
-</p>
-
-</div>
-</section>
-
-</main>
-
+<!-- FOOTER -->
 <footer>
-Made with pink clouds, tiny dreams, warm tea & too many bows 🎀<br>
-Herly · My Little Pink Cottage
+
+    <div class="footer-logo">
+        Petite Paper Atelier
+    </div>
+
+    <p>
+        Tiny paper worlds for dreamy afternoons.
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 Petite Paper Atelier · Digital products
+    </p>
+
 </footer>
 
 
 <!-- MODAL -->
-<div class="modal-back" id="modalBack" onclick="outsideClose(event)">
-<div class="modal">
+<div class="modal" id="modal">
 
-<button class="close" onclick="closeModal()">×</button>
+    <div class="modal-box">
 
-<div id="modalContent"></div>
+        <button class="close" onclick="closeModal()">×</button>
+
+        <h2 id="modalTitle">♡</h2>
+
+        <p id="modalText"></p>
+
+        <button class="btn btn-primary" onclick="closeModal()">
+            Lovely ♡
+        </button>
+
+    </div>
 
 </div>
-</div>
-
-<div class="toast" id="toast"></div>
 
 
 <script>
 
-const KEY="herly_3_0_data";
+let cart = 0;
 
-let data=JSON.parse(localStorage.getItem(KEY)||"{}");
 
-function save(){
-  localStorage.setItem(KEY,JSON.stringify(data));
-}
+/* ---------- ADD TO CART ---------- */
 
-function toast(message){
-  const t=document.getElementById("toast");
-  t.textContent=message;
-  t.classList.add("show");
+function buyProduct(){
 
-  setTimeout(()=>{
-    t.classList.remove("show");
-  },2200);
-}
+    cart++;
 
-function money(value){
-  return new Intl.NumberFormat("de-DE",{
-    style:"currency",
-    currency:"EUR"
-  }).format(Number(value)||0);
-}
+    document.getElementById("cartCount").innerText = cart;
 
-function go(id){
-  document.getElementById(id)?.scrollIntoView({
-    behavior:"smooth"
-  });
-}
-
-function toggleDark(){
-  document.body.classList.toggle("dark");
-
-  localStorage.setItem(
-    "herlyDark",
-    document.body.classList.contains("dark")
-  );
-}
-
-if(localStorage.getItem("herlyDark")==="true"){
-  document.body.classList.add("dark");
+    showModal(
+        "Added to your little basket ♡",
+        "Secret Pink Attic has been added to your cart. This demo is ready for a real payment system later."
+    );
 }
 
 
-/* DASHBOARD */
+/* ---------- CART ---------- */
 
-function renderDashboard(){
+function openCart(){
 
-  const expenses=data.expenses||[];
+    if(cart === 0){
 
-  const total=expenses.reduce(
-    (sum,e)=>sum+Number(e.amount||0),0
-  );
+        showModal(
+            "Your basket is empty ♡",
+            "Your little paper world is waiting for you."
+        );
 
-  document.getElementById("spent").textContent=money(total);
+    }else{
 
-  document.getElementById("saved").textContent=
-    money(data.saved||0);
+        showModal(
+            "Your basket 🎀",
+            "Secret Pink Attic × " + cart +
+            "<br><br>Total: €" + (6.90 * cart).toFixed(2) +
+            "<br><br>Next step: connect this button to your real checkout."
+        );
 
-  document.getElementById("waterStat").textContent=
-    (data.water||0)+"/8";
-
-  const todos=data.todos||[];
-
-  document.getElementById("tasksDone").textContent=
-    todos.filter(x=>x.done).length;
-
-  document.getElementById("dailyPlan").value=
-    data.plan||"";
-
-  const list=document.getElementById("todoList");
-
-  list.innerHTML="";
-
-  todos.forEach((todo,index)=>{
-
-    const li=document.createElement("li");
-
-    li.innerHTML=`
-      <label>
-        <input
-          type="checkbox"
-          ${todo.done?"checked":""}
-          onchange="toggleTodo(${index})"
-        >
-        ${todo.done?"<s>":""}
-        ${escapeHTML(todo.text)}
-        ${todo.done?"</s>":""}
-      </label>
-
-      <button onclick="removeTodo(${index})">×</button>
-    `;
-
-    list.appendChild(li);
-  });
-
-  if(!todos.length){
-    list.innerHTML="<li>Nothing here yet — add one tiny thing ♡</li>";
-  }
+    }
 
 }
 
-function addTodo(){
 
-  const input=document.getElementById("todoInput");
+/* ---------- PREVIEW ---------- */
 
-  const text=input.value.trim();
+function openPreview(){
 
-  if(!text){
-    toast("Add one tiny thing first ♡");
-    return;
-  }
+    showModal(
+        "A tiny world is waiting…",
+        "This is the printable pattern preview. The final product can contain multiple A4 pages with cut lines, fold lines, glue tabs, numbered pieces and a complete assembly guide."
+    );
 
-  data.todos=data.todos||[];
-
-  data.todos.push({
-    text,
-    done:false
-  });
-
-  input.value="";
-
-  save();
-  renderDashboard();
-}
-
-function toggleTodo(index){
-
-  data.todos[index].done=
-    !data.todos[index].done;
-
-  save();
-  renderDashboard();
-}
-
-function removeTodo(index){
-
-  data.todos.splice(index,1);
-
-  save();
-  renderDashboard();
-}
-
-function savePlan(){
-
-  data.plan=
-    document.getElementById("dailyPlan").value;
-
-  save();
-
-  toast("Today's plan is tucked away ♡");
-}
-
-function drinkWater(){
-
-  data.water=(data.water||0)+1;
-
-  if(data.water>8){
-    data.water=8;
-  }
-
-  save();
-  renderDashboard();
-
-  toast("A little sip for you 💧");
-}
-
-function setMood(button,mood){
-
-  document
-    .querySelectorAll(".moods button")
-    .forEach(x=>x.classList.remove("active"));
-
-  button.classList.add("active");
-
-  data.mood=mood;
-
-  save();
-
-  toast("Mood saved: "+mood+" ♡");
 }
 
 
-/* MAGIC */
+/* ---------- MODAL ---------- */
 
-const magicMessages=[
-  "You are allowed to have a soft day.",
-  "Tiny progress still counts.",
-  "Your future self is cheering for you.",
-  "You do not have to rush your life.",
-  "One little thing at a time, sweetheart.",
-  "Rest is part of the plan.",
-  "Make your room cozy and your expectations gentle.",
-  "You are doing better than you think.",
-  "Today can be simple and still be beautiful.",
-  "You deserve little moments of peace."
-];
+function showModal(title,text){
 
-function newMagic(){
+    document.getElementById("modalTitle").innerHTML = title;
+    document.getElementById("modalText").innerHTML = text;
 
-  const message=
-    magicMessages[
-      Math.floor(Math.random()*magicMessages.length)
-    ];
+    document.getElementById("modal").style.display = "flex";
 
-  data.magic=message;
-
-  save();
-
-  document.getElementById("magicText").textContent=message;
-
-  toast("A little message for you ✨");
-}
-
-
-/* MODAL */
-
-function openModal(title,html){
-
-  document.getElementById("modalContent").innerHTML=
-    `<h2>${title}</h2>${html}`;
-
-  document
-    .getElementById("modalBack")
-    .classList.add("show");
 }
 
 function closeModal(){
 
-  document
-    .getElementById("modalBack")
-    .classList.remove("show");
-}
-
-function outsideClose(event){
-
-  if(event.target.id==="modalBack"){
-    closeModal();
-  }
+    document.getElementById("modal").style.display = "none";
 
 }
 
 
-/* TOOLS */
+/* ---------- CLOSE WHEN CLICK OUTSIDE ---------- */
 
-function openTool(type){
+window.onclick = function(event){
 
-  const tools={
+    const modal = document.getElementById("modal");
 
-    magic:[
-      "✨ Daily Magic",
-      `
-      <p id="modalMagic">
-      ${escapeHTML(data.magic||magicMessages[0])}
-      </p>
+    if(event.target === modal){
 
-      <button class="primary" onclick="newMagic();document.getElementById('modalMagic').textContent=data.magic">
-      Another little message ♡
-      </button>
-      `
-    ],
-
-    discount:[
-      "💸 Discount Calculator",
-      `
-      <div class="form-grid">
-      <input class="field" id="price1" type="number" placeholder="Original price €">
-      <input class="field" id="discount1" type="number" placeholder="Discount %">
-      </div>
-
-      <button class="primary" style="margin-top:10px" onclick="calculateDiscount()">
-      Calculate
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    expense:[
-      "🧾 Quick Expense",
-      `
-      <input class="field" id="expenseName" placeholder="What did you buy?">
-
-      <input class="field"
-      id="expenseAmount"
-      type="number"
-      placeholder="Amount €"
-      style="margin-top:8px">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="addExpense()">
-      Save expense
-      </button>
-      `
-    ],
-
-    budget:[
-      "📊 Monthly Budget",
-      `
-      <div class="form-grid">
-
-      <input class="field" id="income" type="number" placeholder="Income €">
-
-      <input class="field" id="fixed" type="number" placeholder="Fixed costs €">
-
-      <input class="field" id="saving" type="number" placeholder="Savings €">
-
-      <input class="field" id="other" type="number" placeholder="Other spending €">
-
-      </div>
-
-      <button class="primary"
-      style="margin-top:10px"
-      onclick="calculateBudget()">
-      Plan my month
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    subscription:[
-      "📱 Subscription Check",
-      `
-      <div class="form-grid">
-
-      <input class="field" id="subMonthly" type="number" placeholder="Monthly total €">
-
-      <input class="field" id="subCount" type="number" placeholder="Number of subscriptions">
-
-      </div>
-
-      <button class="primary"
-      style="margin-top:10px"
-      onclick="calculateSubscription()">
-      See annual cost
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    saving:[
-      "🌷 Saving Goal",
-      `
-      <div class="form-grid">
-
-      <input class="field" id="goal" type="number" placeholder="Goal €">
-
-      <input class="field" id="alreadySaved" type="number" placeholder="Already saved €">
-
-      <input class="field" id="monthlySave" type="number" placeholder="Monthly saving €">
-
-      </div>
-
-      <button class="primary"
-      style="margin-top:10px"
-      onclick="calculateSaving()">
-      Make my plan
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    split:[
-      "🍰 AA Split",
-      `
-      <div class="form-grid">
-
-      <input class="field" id="bill" type="number" placeholder="Total €">
-
-      <input class="field" id="people" type="number" placeholder="People">
-
-      </div>
-
-      <button class="primary"
-      style="margin-top:10px"
-      onclick="calculateSplit()">
-      Split it
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    hourly:[
-      "💼 Salary & Hourly Pay",
-      `
-      <div class="form-grid">
-
-      <input class="field" id="salary" type="number" placeholder="Monthly pay €">
-
-      <input class="field" id="hours" type="number" placeholder="Hours / month">
-
-      </div>
-
-      <button class="primary"
-      style="margin-top:10px"
-      onclick="calculateHourly()">
-      Calculate
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    currency:[
-      "🌍 Currency Converter",
-      `
-      <p>Demo rates for now. Later you can connect a live currency API.</p>
-
-      <div class="form-grid">
-
-      <input class="field" id="eur" type="number" placeholder="EUR">
-
-      <select class="field" id="currency">
-        <option value="1.08">USD</option>
-        <option value="0.86">GBP</option>
-        <option value="170">JPY</option>
-        <option value="1.60">CHF</option>
-      </select>
-
-      </div>
-
-      <button class="primary"
-      style="margin-top:10px"
-      onclick="calculateCurrency()">
-      Convert
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    buy:[
-      "🛍️ Should I Buy It?",
-      `
-      <input class="field" id="buyName" placeholder="What are you thinking of buying?">
-
-      <input class="field"
-      id="buyPrice"
-      type="number"
-      placeholder="Price €"
-      style="margin-top:8px">
-
-      <select class="field"
-      id="buyType"
-      style="margin-top:8px">
-
-      <option value="need">I actually need it</option>
-      <option value="want">I really want it</option>
-      <option value="impulse">Impulse purchase</option>
-
-      </select>
-
-      <button class="primary"
-      style="margin-top:10px"
-      onclick="purchaseDecision()">
-      Ask the cottage
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    wishlist:[
-      "♡ Wishlist",
-      `
-      <input class="field"
-      id="wishInput"
-      placeholder="Add a little wish...">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="addWishlist()">
-      Add
-      </button>
-
-      <ul class="todo-list" id="wishlistList"></ul>
-      `
-    ],
-
-    price:[
-      "🏷️ Price Tracker",
-      `
-      <input class="field" id="priceItem" placeholder="Item name">
-
-      <input class="field"
-      id="oldPrice"
-      type="number"
-      placeholder="Old price €"
-      style="margin-top:8px">
-
-      <input class="field"
-      id="newPrice"
-      type="number"
-      placeholder="Current price €"
-      style="margin-top:8px">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="savePrice()">
-      Save price note
-      </button>
-      `
-    ],
-
-    gift:[
-      "🎁 Gift Finder",
-      `
-      <p>Choose a vibe:</p>
-
-      <div class="moods">
-      <button onclick="giftIdea('romantic')">💗 Romantic</button>
-      <button onclick="giftIdea('cute')">🌷 Cute</button>
-      <button onclick="giftIdea('useful')">🧸 Useful</button>
-      <button onclick="giftIdea('budget')">🍓 Budget</button>
-      </div>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    shoppinglist:[
-      "🛒 Shopping List",
-      `
-      <input class="field"
-      id="shoppingInput"
-      placeholder="Milk, flowers, shampoo...">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="addShoppingItem()">
-      Add
-      </button>
-
-      <ul class="todo-list" id="shoppingList"></ul>
-      `
-    ],
-
-    wardrobe:[
-      "👗 Capsule Wardrobe",
-      `
-      <p>
-      A simple capsule starter:
-      </p>
-
-      <div class="result">
-      🤍 2 neutral tops<br>
-      🎀 1 pretty blouse<br>
-      🩰 1 cardigan<br>
-      👖 2 everyday bottoms<br>
-      👗 1 dress<br>
-      👟 1 everyday shoe<br>
-      🥿 1 dressy shoe<br>
-      👜 1 everyday bag
-      </div>
-      `
-    ],
-
-    love:[
-      "💗 Love Days",
-      `
-      <input class="field"
-      id="loveDate"
-      type="date"
-      value="${data.loveDate||""}">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="calculateLove()">
-      Count our days
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    birthday:[
-      "🎂 Birthday Reminder",
-      `
-      <input class="field" id="birthdayName" placeholder="Name">
-
-      <input class="field"
-      id="birthdayDate"
-      type="date"
-      style="margin-top:8px">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="saveBirthday()">
-      Save birthday
-      </button>
-      `
-    ],
-
-    date:[
-      "🌙 Date Night Generator",
-      `
-      <p>Pick a vibe:</p>
-
-      <div class="moods">
-      <button onclick="dateIdea('cozy')">🧸 Cozy</button>
-      <button onclick="dateIdea('cute')">🌷 Cute</button>
-      <button onclick="dateIdea('adventure')">✨ Adventure</button>
-      <button onclick="dateIdea('budget')">🍓 Budget</button>
-      </div>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    letter:[
-      "💌 Love Letter",
-      `
-      <input class="field" id="letterName" placeholder="Their name">
-
-      <input class="field"
-      id="letterReason"
-      placeholder="Something you love about them"
-      style="margin-top:8px">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="makeLetter()">
-      Write softly
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    conversation:[
-      "💬 Conversation Starters",
-      `
-      <button class="primary" onclick="conversation()">
-      Give me a question
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    argument:[
-      "🕊️ After an Argument",
-      `
-      <div class="result">
-      ① Take a few minutes to cool down.<br>
-      ② Ask yourself what you actually felt.<br>
-      ③ Separate the problem from the person.<br>
-      ④ Say “I felt...” instead of blaming.<br>
-      ⑤ Ask what both of you need next.<br>
-      ⑥ If emotions are too high, take a respectful pause.
-      </div>
-      `
-    ],
-
-    party:[
-      "🎉 Party Planner",
-      `
-      <input class="field" id="partyTheme" placeholder="Party theme">
-
-      <input class="field"
-      id="partyPeople"
-      type="number"
-      placeholder="Guests"
-      style="margin-top:8px">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="partyPlan()">
-      Make a starter plan
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    outfit:[
-      "👗 Outfit Generator",
-      `
-      <div class="moods">
-      <button onclick="outfit('soft')">🎀 Soft Girl</button>
-      <button onclick="outfit('casual')">☁️ Casual</button>
-      <button onclick="outfit('date')">💌 Date</button>
-      <button onclick="outfit('study')">📚 Study</button>
-      </div>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    nails:[
-      "💅 Nail Picker",
-      `
-      <button class="primary" onclick="nails()">
-      Pick my nails ✨
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    palette:[
-      "🎨 Color Palette",
-      `
-      <button class="primary" onclick="palette()">
-      Create palette
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    selfcare:[
-      "🫧 Self-Care Planner",
-      `
-      <button class="primary" onclick="selfcare()">
-      Give me a gentle plan
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    routine:[
-      "🌷 Routine Planner",
-      `
-      <div class="result">
-      🌅 Wake up gently<br>
-      💧 Drink water<br>
-      🪥 Brush teeth<br>
-      🧴 Get ready<br>
-      📝 Choose 3 priorities<br>
-      ☕ Make a drink<br>
-      🎀 Start your day slowly
-      </div>
-      `
-    ],
-
-    style:[
-      "✨ Today's Style",
-      `
-      <button class="primary" onclick="styleMood()">
-      Choose my style
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    pomodoro:[
-      "🍅 Cozy Pomodoro",
-      `
-      <div class="center">
-
-      <div id="timer"
-      style="
-      font-family:'Playfair Display';
-      font-size:58px;
-      color:var(--rose);
-      margin:15px">
-      25:00
-      </div>
-
-      <button class="primary" onclick="startTimer()">Start</button>
-
-      <button class="secondary" onclick="resetTimer()">Reset</button>
-
-      </div>
-      `
-    ],
-
-    studyplan:[
-      "📖 Study Planner",
-      `
-      <input class="field" id="studySubject" placeholder="Subject">
-
-      <input class="field"
-      id="studyMinutes"
-      type="number"
-      placeholder="Minutes available"
-      style="margin-top:8px">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="studyPlan()">
-      Make my plan
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    exam:[
-      "⏳ Exam Countdown",
-      `
-      <input class="field" id="examDate" type="date">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="examCountdown()">
-      Count down
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    assignment:[
-      "📌 Assignment Tracker",
-      `
-      <input class="field" id="assignment" placeholder="Assignment / deadline">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="saveAssignment()">
-      Save assignment
-      </button>
-
-      <div class="result">
-      Your assignments are saved locally in this browser.
-      </div>
-      `
-    ],
-
-    grade:[
-      "🧮 Grade Calculator",
-      `
-      <div class="form-grid">
-
-      <input class="field"
-      id="points"
-      type="number"
-      placeholder="Points earned">
-
-      <input class="field"
-      id="possible"
-      type="number"
-      placeholder="Points possible">
-
-      </div>
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="grade()">
-      Calculate
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    gpa:[
-      "🎓 GPA Calculator",
-      `
-      <div class="form-grid">
-
-      <input class="field" id="g1" type="number" step=".01" placeholder="Grade 1">
-      <input class="field" id="g2" type="number" step=".01" placeholder="Grade 2">
-      <input class="field" id="g3" type="number" step=".01" placeholder="Grade 3">
-      <input class="field" id="g4" type="number" step=".01" placeholder="Grade 4">
-
-      </div>
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="gpa()">
-      Calculate average
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    cv:[
-      "📄 CV / Resume Helper",
-      `
-      <input class="field" id="cvRole" placeholder="Target role">
-
-      <textarea
-      class="textarea"
-      id="cvExperience"
-      placeholder="Your experience, projects and skills..."
-      style="margin-top:8px"></textarea>
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="makeCV()">
-      Build structure
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    interview:[
-      "🎤 Interview Questions",
-      `
-      <button class="primary" onclick="interviewQuestions()">
-      Give me questions
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    applications:[
-      "💌 Job Application Tracker",
-      `
-      <input class="field"
-      id="application"
-      placeholder="Company — Role — Status">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="saveApplication()">
-      Save application
-      </button>
-      `
-    ],
-
-    sleep:[
-      "😴 Sleep Planner",
-      `
-      <div class="form-grid">
-
-      <input class="field"
-      id="bed"
-      type="time">
-
-      <input class="field"
-      id="wake"
-      type="time">
-
-      </div>
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="sleepPlan()">
-      Check sleep window
-      </button>
-
-      <div class="result" id="result"></div>
-      `
-    ],
-
-    habit:[
-      "🌱 Habit Tracker",
-      `
-      <input class="field"
-      id="habitInput"
-      placeholder="Read 10 pages, walk, stretch...">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="addHabit()">
-      Add habit
-      </button>
-
-      <ul class="todo-list" id="habitList"></ul>
-      `
-    ],
-
-    gratitude:[
-      "🫶 Gratitude Journal",
-      `
-      <textarea
-      class="textarea"
-      id="gratitudeText"
-      placeholder="Three tiny things I'm grateful for..."></textarea>
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="saveGratitude()">
-      Save
-      </button>
-      `
-    ],
-
-    water:[
-      "💧 Water Reminder",
-      `
-      <p>
-      You've logged ${data.water||0} glasses today.
-      </p>
-
-      <button class="primary" onclick="drinkWater();closeModal()">
-      + Drink a glass
-      </button>
-      `
-    ],
-
-    diary:[
-      "📔 Little Diary",
-      `
-      <input class="field"
-      id="diaryTitle"
-      placeholder="Today felt like...">
-
-      <textarea
-      class="textarea"
-      id="diaryText"
-      placeholder="Write anything here..."
-      style="margin-top:8px"></textarea>
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="saveDiary()">
-      Save diary
-      </button>
-
-      <div class="result">
-      Saved entries: ${(data.diary||[]).length}
-      </div>
-      `
-    ],
-
-    rest:[
-      "🧸 Should I Rest?",
-      `
-      <div class="result">
-      If your body and mind are asking for a pause,
-      you don't have to earn rest first.<br><br>
-      🌷 Drink something<br>
-      🧸 Put your phone down<br>
-      ☁️ Sit somewhere comfortable<br>
-      🫧 Do one tiny thing slowly<br>
-      💗 Let “enough” be enough today.
-      </div>
-      `
-    ],
-
-    detox:[
-      "📵 Digital Detox",
-      `
-      <button class="primary" onclick="startDetox()">
-      Start 10 minutes
-      </button>
-
-      <div class="result" id="result">
-      Put your phone somewhere a little farther away.
-      </div>
-      `
-    ],
-
-    reset:[
-      "🫧 5-Minute Reset",
-      `
-      <div class="result">
-      ① Put away 5 things.<br>
-      ② Wipe one surface.<br>
-      ③ Open a window.<br>
-      ④ Drink water.<br>
-      ⑤ Take one slow breath.
-      </div>
-
-      <button class="primary" onclick="startFive()">
-      Start 5 minutes
-      </button>
-      `
-    ],
-
-    weekend:[
-      "🌷 Weekend Reset",
-      `
-      <div class="result">
-      🧺 Laundry<br>
-      🧹 Reset your room<br>
-      🛒 Check groceries<br>
-      📚 Check next week's deadlines<br>
-      🫧 Self-care moment<br>
-      ☕ Do one thing just because you like it.
-      </div>
-      `
-    ],
-
-    dream:[
-      "✨ Dream Board",
-      `
-      <input class="field"
-      id="dreamInput"
-      placeholder="A little dream...">
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="addDream()">
-      Add dream
-      </button>
-
-      <ul class="todo-list" id="dreamList"></ul>
-      `
-    ],
-
-    goals:[
-      "🎯 Life Goals",
-      `
-      <textarea
-      class="textarea"
-      id="goalsText"
-      placeholder="What kind of life do you want to build?">${escapeHTML(data.goals||"")}</textarea>
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="saveGoals()">
-      Save goals
-      </button>
-      `
-    ],
-
-    future:[
-      "💌 Future Self Letter",
-      `
-      <textarea
-      class="textarea"
-      id="futureText"
-      placeholder="Dear future me...">${escapeHTML(data.future||"")}</textarea>
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="saveFuture()">
-      Save letter
-      </button>
-      `
-    ],
-
-    vision:[
-      "🖼️ Vision Board",
-      `
-      <textarea
-      class="textarea"
-      id="visionText"
-      placeholder="My dream home... my work... travel... love...">${escapeHTML(data.vision||"")}</textarea>
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="saveVision()">
-      Save vision
-      </button>
-      `
-    ],
-
-    reflection:[
-      "📔 Monthly Reflection",
-      `
-      <textarea
-      class="textarea"
-      id="reflectionText"
-      placeholder="What made me happy? What did I learn? What do I want next month?">${escapeHTML(data.reflection||"")}</textarea>
-
-      <button class="primary"
-      style="margin-top:8px"
-      onclick="saveReflection()">
-      Save reflection
-      </button>
-      `
-    ]
-
-  };
-
-  const tool=tools[type];
-
-  if(!tool){
-    openModal("🎀 Little Tool",`
-      <p>This little room is still being decorated.</p>
-    `);
-    return;
-  }
-
-  openModal(tool[0],tool[1]);
-
-  if(type==="wishlist") renderWishlist();
-  if(type==="shoppinglist") renderShopping();
-  if(type==="habit") renderHabits();
-  if(type==="dream") renderDreams();
-
-}
-
-
-/* MONEY FUNCTIONS */
-
-function calculateDiscount(){
-
-  const price=Number(document.getElementById("price1").value);
-  const discount=Number(document.getElementById("discount1").value);
-
-  const saving=price*discount/100;
-  const final=price-saving;
-
-  document.getElementById("result").innerHTML=
-    `You save <b>${money(saving)}</b><br>
-    Final price: <b>${money(final)}</b> 🎀`;
-}
-
-function addExpense(){
-
-  const name=document.getElementById("expenseName").value.trim();
-  const amount=Number(document.getElementById("expenseAmount").value);
-
-  if(!name||!amount){
-    toast("Add the item and amount ♡");
-    return;
-  }
-
-  data.expenses=data.expenses||[];
-
-  data.expenses.push({
-    name,
-    amount,
-    date:new Date().toISOString()
-  });
-
-  save();
-  renderDashboard();
-
-  toast("Expense saved ♡");
-  closeModal();
-}
-
-function calculateBudget(){
-
-  const income=Number(document.getElementById("income").value);
-  const fixed=Number(document.getElementById("fixed").value);
-  const saving=Number(document.getElementById("saving").value);
-  const other=Number(document.getElementById("other").value);
-
-  const left=income-fixed-saving-other;
-
-  document.getElementById("result").innerHTML=
-    `You have <b>${money(left)}</b> left for the month. 🌷`;
-
-}
-
-function calculateSubscription(){
-
-  const monthly=Number(
-    document.getElementById("subMonthly").value
-  );
-
-  const annual=monthly*12;
-
-  document.getElementById("result").innerHTML=
-    `Approximately <b>${money(annual)}</b> per year.`;
-
-}
-
-function calculateSaving(){
-
-  const goal=Number(document.getElementById("goal").value);
-  const saved=Number(document.getElementById("alreadySaved").value);
-  const monthly=Number(document.getElementById("monthlySave").value);
-
-  const left=Math.max(0,goal-saved);
-
-  document.getElementById("result").innerHTML=
-    monthly
-    ? `${money(left)} remaining · about <b>${Math.ceil(left/monthly)} months</b>.`
-    : `${money(left)} remaining. Add monthly saving to estimate time.`;
-
-}
-
-function calculateSplit(){
-
-  const bill=Number(document.getElementById("bill").value);
-  const people=Number(document.getElementById("people").value);
-
-  document.getElementById("result").textContent=
-    people
-    ? `Each person pays ${money(bill/people)} ♡`
-    : "Add the number of people.";
-
-}
-
-function calculateHourly(){
-
-  const salary=Number(document.getElementById("salary").value);
-  const hours=Number(document.getElementById("hours").value);
-
-  document.getElementById("result").textContent=
-    hours
-    ? `Approx. ${money(salary/hours)} per hour.`
-    : "Add hours.";
-
-}
-
-function calculateCurrency(){
-
-  const eur=Number(document.getElementById("eur").value);
-  const rate=Number(document.getElementById("currency").value);
-
-  document.getElementById("result").textContent=
-    `≈ ${(eur*rate).toFixed(2)} in the selected currency. Demo rate.`;
-
-}
-
-function purchaseDecision(){
-
-  const type=document.getElementById("buyType").value;
-  const price=Number(document.getElementById("buyPrice").value);
-
-  let message;
-
-  if(type==="need"){
-    message="If you need it and it fits your budget, buy intentionally. ♡";
-  }
-
-  if(type==="want"){
-    message="Wait 24 hours. If you still love it tomorrow, reconsider.";
-  }
-
-  if(type==="impulse"){
-    message="Put it on your Wishlist for 7 days before buying.";
-  }
-
-  document.getElementById("result").innerHTML=
-    message+"<br><br>Price: "+money(price);
-}
-
-
-/* SHOPPING */
-
-function addWishlist(){
-
-  const input=document.getElementById("wishInput");
-  const value=input.value.trim();
-
-  if(!value)return;
-
-  data.wishlist=data.wishlist||[];
-
-  data.wishlist.push(value);
-
-  save();
-
-  input.value="";
-
-  renderWishlist();
-}
-
-function renderWishlist(){
-
-  const list=document.getElementById("wishlistList");
-
-  if(!list)return;
-
-  list.innerHTML="";
-
-  (data.wishlist||[]).forEach((item,index)=>{
-
-    const li=document.createElement("li");
-
-    li.innerHTML=`
-      🌷 ${escapeHTML(item)}
-      <button onclick="removeWishlist(${index})">×</button>
-    `;
-
-    list.appendChild(li);
-
-  });
-
-}
-
-function removeWishlist(index){
-
-  data.wishlist.splice(index,1);
-
-  save();
-
-  renderWishlist();
-}
-
-function savePrice(){
-
-  const item=document.getElementById("priceItem").value;
-  const oldP=Number(document.getElementById("oldPrice").value);
-  const newP=Number(document.getElementById("newPrice").value);
-
-  data.priceNotes=data.priceNotes||[];
-
-  data.priceNotes.push({
-    item,
-    oldP,
-    newP
-  });
-
-  save();
-
-  toast("Price note saved ♡");
-}
-
-function addShoppingItem(){
-
-  const input=document.getElementById("shoppingInput");
-
-  if(!input.value.trim())return;
-
-  data.shopping=data.shopping||[];
-
-  data.shopping.push({
-    text:input.value.trim(),
-    done:false
-  });
-
-  input.value="";
-
-  save();
-
-  renderShopping();
-}
-
-function renderShopping(){
-
-  const list=document.getElementById("shoppingList");
-
-  if(!list)return;
-
-  list.innerHTML="";
-
-  (data.shopping||[]).forEach((item,index)=>{
-
-    const li=document.createElement("li");
-
-    li.innerHTML=`
-      <label>
-      <input type="checkbox"
-      ${item.done?"checked":""}
-      onchange="toggleShopping(${index})">
-      ${escapeHTML(item.text)}
-      </label>
-
-      <button onclick="removeShopping(${index})">×</button>
-    `;
-
-    list.appendChild(li);
-
-  });
-
-}
-
-function toggleShopping(index){
-
-  data.shopping[index].done=
-    !data.shopping[index].done;
-
-  save();
-  renderShopping();
-}
-
-function removeShopping(index){
-
-  data.shopping.splice(index,1);
-
-  save();
-  renderShopping();
-}
-
-function giftIdea(type){
-
-  const ideas={
-    romantic:[
-      "A handwritten letter + flowers",
-      "A tiny photo album",
-      "A planned surprise date"
-    ],
-    cute:[
-      "Personalized keychain",
-      "Mini plushie",
-      "Cute mug + favorite snack"
-    ],
-    useful:[
-      "Quality everyday bag",
-      "Travel organizer",
-      "Something they use every day"
-    ],
-    budget:[
-      "Homemade cookies",
-      "A playlist + letter",
-      "Picnic with snacks from home"
-    ]
-  };
-
-  document.getElementById("result").textContent=
-    ideas[type][
-      Math.floor(Math.random()*ideas[type].length)
-    ]+" 🎁";
-
-}
-
-
-/* LOVE */
-
-function calculateLove(){
-
-  const date=document.getElementById("loveDate").value;
-
-  if(!date)return;
-
-  data.loveDate=date;
-
-  save();
-
-  const start=new Date(date+"T00:00:00");
-
-  const days=Math.floor(
-    (Date.now()-start.getTime())/86400000
-  );
-
-  document.getElementById("result").textContent=
-    days>=0
-    ? `${days} beautiful days together 💗`
-    : "That date is still in the future.";
-}
-
-function saveBirthday(){
-
-  data.birthday=data.birthday||[];
-
-  data.birthday.push({
-    name:document.getElementById("birthdayName").value,
-    date:document.getElementById("birthdayDate").value
-  });
-
-  save();
-
-  toast("Birthday tucked away 🎂");
-
-  closeModal();
-}
-
-function dateIdea(type){
-
-  const ideas={
-
-    cozy:[
-      "Build a blanket fort + movie",
-      "Bake cookies together",
-      "Make a tiny scrapbook"
-    ],
-
-    cute:[
-      "Flower market + café",
-      "Photo booth challenge",
-      "Dress up for dessert"
-    ],
-
-    adventure:[
-      "Explore a new neighborhood",
-      "Sunset walk + playlist",
-      "Mini day trip"
-    ],
-
-    budget:[
-      "Cook together",
-      "At-home spa night",
-      "Park picnic"
-    ]
-
-  };
-
-  document.getElementById("result").textContent=
-    ideas[type][
-      Math.floor(Math.random()*ideas[type].length)
-    ]+" ♡";
-}
-
-function makeLetter(){
-
-  const name=
-    document.getElementById("letterName").value||"my love";
-
-  const reason=
-    document.getElementById("letterReason").value||
-    "the little things you do";
-
-  document.getElementById("result").innerHTML=
-    `Dear ${escapeHTML(name)},<br><br>
-    I just wanted to tell you that I love
-    ${escapeHTML(reason)}.
-    Thank you for making ordinary days feel softer.
-    I'm grateful for you. ♡<br><br>
-    Love, me.`;
-}
-
-function conversation(){
-
-  const questions=[
-    "What's one tiny thing that made you happy this week?",
-    "Where would you go if we could travel tomorrow?",
-    "What's a dream you've never told many people?",
-    "What's your perfect lazy Sunday?",
-    "What is one thing you want to learn?",
-    "What memory always makes you smile?"
-  ];
-
-  document.getElementById("result").textContent=
-    questions[Math.floor(Math.random()*questions.length)];
-}
-
-function partyPlan(){
-
-  const theme=
-    document.getElementById("partyTheme").value||"your party";
-
-  const people=
-    Number(document.getElementById("partyPeople").value)||5;
-
-  document.getElementById("result").innerHTML=
-    `<b>${escapeHTML(theme)}</b><br>
-    Guests: ${people}<br><br>
-    🎀 Theme & decorations<br>
-    🍓 Food & drinks<br>
-    🎵 Playlist<br>
-    📸 Photo corner<br>
-    🎁 Small activity<br>
-    🧹 Cleanup plan`;
-}
-
-
-/* BEAUTY */
-
-function outfit(type){
-
-  const looks={
-
-    soft:"Ribbon cardigan + satin skirt + ballet flats 🎀",
-
-    casual:"Oversized knit + straight jeans + sneakers ☁️",
-
-    date:"Soft blouse + midi skirt + little heels 💌",
-
-    study:"Cozy sweater + wide-leg trousers + sneakers 📚"
-
-  };
-
-  document.getElementById("result").textContent=
-    looks[type];
-}
-
-function nails(){
-
-  const choices=[
-    "Milky pink + tiny pearls",
-    "Strawberry French tips",
-    "Lavender chrome",
-    "Pink jelly nails",
-    "Rose nude + tiny bows",
-    "Ballet pink + glitter"
-  ];
-
-  document.getElementById("result").textContent=
-    choices[Math.floor(Math.random()*choices.length)]+" 💅";
-}
-
-function palette(){
-
-  const choices=[
-    "Blush · Cream · Rose · Lavender",
-    "Strawberry · Milk · Peach · Cocoa",
-    "Ballet Pink · Pearl · Mauve · Champagne",
-    "Rose · Vanilla · Soft Lilac · Dusty Pink"
-  ];
-
-  document.getElementById("result").textContent=
-    choices[Math.floor(Math.random()*choices.length)]+" 🎨";
-}
-
-function selfcare(){
-
-  document.getElementById("result").innerHTML=
-    `🫧 Take a shower<br>
-    🧴 Moisturize<br>
-    ☕ Make a warm drink<br>
-    📵 20 minutes offline<br>
-    📔 Write one sentence<br>
-    🧸 Get cozy`;
-}
-
-function styleMood(){
-
-  const styles=[
-    "🎀 Romantic & soft",
-    "☁️ Cozy minimal",
-    "🌷 Feminine vintage",
-    "🩰 Ballet-inspired",
-    "🍓 Sweet casual",
-    "✨ Dreamy evening"
-  ];
-
-  document.getElementById("result").textContent=
-    styles[Math.floor(Math.random()*styles.length)];
-}
-
-
-/* STUDY */
-
-function studyPlan(){
-
-  const subject=
-    document.getElementById("studySubject").value||"your subject";
-
-  const minutes=
-    Number(document.getElementById("studyMinutes").value)||60;
-
-  document.getElementById("result").innerHTML=
-    `<b>${escapeHTML(subject)}</b><br><br>
-    ① ${Math.round(minutes*.15)} min — Review<br>
-    ② ${Math.round(minutes*.55)} min — Deep study<br>
-    ③ ${Math.round(minutes*.2)} min — Practice<br>
-    ④ ${Math.round(minutes*.1)} min — Recap`;
-}
-
-function examCountdown(){
-
-  const date=document.getElementById("examDate").value;
-
-  if(!date)return;
-
-  const days=Math.ceil(
-    (new Date(date+"T23:59:59")-Date.now())/86400000
-  );
-
-  document.getElementById("result").textContent=
-    days>=0
-    ? `${days} days to go. Tiny steps every day 📚`
-    : "That date has passed.";
-}
-
-function saveAssignment(){
-
-  data.assignments=data.assignments||[];
-
-  data.assignments.push(
-    document.getElementById("assignment").value
-  );
-
-  save();
-
-  toast("Assignment saved 📌");
-}
-
-function grade(){
-
-  const a=Number(document.getElementById("points").value);
-  const b=Number(document.getElementById("possible").value);
-
-  document.getElementById("result").textContent=
-    b?`${((a/b)*100).toFixed(1)}%`:"Add points.";
-}
-
-function gpa(){
-
-  const values=[
-    "g1","g2","g3","g4"
-  ].map(id=>Number(document.getElementById(id).value))
-   .filter(x=>x>0);
-
-  if(!values.length)return;
-
-  const average=
-    values.reduce((a,b)=>a+b,0)/values.length;
-
-  document.getElementById("result").textContent=
-    `Average: ${average.toFixed(2)}`;
-}
-
-function makeCV(){
-
-  const role=
-    document.getElementById("cvRole").value||
-    "your target role";
-
-  const experience=
-    document.getElementById("cvExperience").value||
-    "your experience";
-
-  document.getElementById("result").innerHTML=
-    `<b>${escapeHTML(role)}</b><br><br>
-    1. Profile — 2–3 lines showing your value.<br>
-    2. Skills — choose the most relevant skills.<br>
-    3. Experience — action + task + measurable result.<br>
-    4. Projects — what you built and why it mattered.<br>
-    5. Education — concise and relevant.<br><br>
-    Your notes: ${escapeHTML(experience)}`;
-}
-
-function interviewQuestions(){
-
-  const questions=[
-    "Tell me about yourself.",
-    "Why do you want this role?",
-    "Tell me about a challenge you solved.",
-    "What is one strength you bring?",
-    "What would you like to learn next?"
-  ];
-
-  document.getElementById("result").innerHTML=
-    questions.map(
-      (q,i)=>(i+1)+". "+q
-    ).join("<br>");
-}
-
-function saveApplication(){
-
-  data.applications=data.applications||[];
-
-  data.applications.push(
-    document.getElementById("application").value
-  );
-
-  save();
-
-  toast("Application saved 💌");
-}
-
-
-/* TIMER */
-
-let timerSeconds=1500;
-let timerID=null;
-
-function drawTimer(){
-
-  const timer=document.getElementById("timer");
-
-  if(!timer)return;
-
-  const min=Math.floor(timerSeconds/60);
-  const sec=timerSeconds%60;
-
-  timer.textContent=
-    String(min).padStart(2,"0")+":"+
-    String(sec).padStart(2,"0");
-}
-
-function startTimer(){
-
-  if(timerID)return;
-
-  timerID=setInterval(()=>{
-
-    timerSeconds--;
-
-    drawTimer();
-
-    if(timerSeconds<=0){
-
-      clearInterval(timerID);
-
-      timerID=null;
-
-      toast("Pomodoro complete! Take a tiny break 🌷");
+        closeModal();
 
     }
 
-  },1000);
-}
-
-function resetTimer(){
-
-  clearInterval(timerID);
-
-  timerID=null;
-
-  timerSeconds=1500;
-
-  drawTimer();
-}
-
-function startFive(){
-
-  clearInterval(timerID);
-
-  timerID=null;
-
-  timerSeconds=300;
-
-  openTool("pomodoro");
-
-  startTimer();
-
-  toast("Five cozy minutes start now 🧸");
-}
-
-function startDetox(){
-
-  clearInterval(timerID);
-
-  timerID=null;
-
-  timerSeconds=600;
-
-  openTool("pomodoro");
-
-  startTimer();
-
-  toast("Phone down for ten minutes 📵");
-}
-
-
-/* WELLNESS */
-
-function sleepPlan(){
-
-  const bed=document.getElementById("bed").value;
-  const wake=document.getElementById("wake").value;
-
-  if(!bed||!wake)return;
-
-  let start=new Date("2000-01-01T"+bed);
-  let end=new Date("2000-01-01T"+wake);
-
-  if(end<=start){
-    end.setDate(end.getDate()+1);
-  }
-
-  const hours=
-    (end-start)/3600000;
-
-  document.getElementById("result").textContent=
-    `Your planned sleep window is ${hours.toFixed(1)} hours. 🌙`;
-}
-
-function addHabit(){
-
-  const input=document.getElementById("habitInput");
-
-  if(!input.value.trim())return;
-
-  data.habits=data.habits||[];
-
-  data.habits.push({
-    name:input.value.trim(),
-    days:0
-  });
-
-  save();
-
-  renderHabits();
-}
-
-function renderHabits(){
-
-  const list=document.getElementById("habitList");
-
-  if(!list)return;
-
-  list.innerHTML="";
-
-  (data.habits||[]).forEach((habit,index)=>{
-
-    const li=document.createElement("li");
-
-    li.innerHTML=`
-      🌱 ${escapeHTML(habit.name)}
-
-      <button onclick="habitDone(${index})">
-      ${habit.days} days
-      </button>
-    `;
-
-    list.appendChild(li);
-
-  });
-
-}
-
-function habitDone(index){
-
-  data.habits[index].days++;
-
-  save();
-
-  renderHabits();
-}
-
-function saveGratitude(){
-
-  data.gratitude=
-    document.getElementById("gratitudeText").value;
-
-  save();
-
-  toast("Three tiny things saved 🫶");
-
-  closeModal();
-}
-
-function saveDiary(){
-
-  const text=
-    document.getElementById("diaryText").value.trim();
-
-  const title=
-    document.getElementById("diaryTitle").value.trim();
-
-  if(!text){
-    toast("Write a tiny thought first ♡");
-    return;
-  }
-
-  data.diary=data.diary||[];
-
-  data.diary.push({
-    title,
-    text,
-    date:new Date().toLocaleDateString()
-  });
-
-  save();
-
-  toast("Your diary entry is tucked away ♡");
-
-  closeModal();
-}
-
-
-/* DREAMS */
-
-function addDream(){
-
-  const input=document.getElementById("dreamInput");
-
-  if(!input.value.trim())return;
-
-  data.dreams=data.dreams||[];
-
-  data.dreams.push(input.value.trim());
-
-  save();
-
-  input.value="";
-
-  renderDreams();
-}
-
-function renderDreams(){
-
-  const list=document.getElementById("dreamList");
-
-  if(!list)return;
-
-  list.innerHTML="";
-
-  (data.dreams||[]).forEach((dream,index)=>{
-
-    const li=document.createElement("li");
-
-    li.innerHTML=`
-      🌷 ${escapeHTML(dream)}
-      <button onclick="removeDream(${index})">×</button>
-    `;
-
-    list.appendChild(li);
-
-  });
-
-}
-
-function removeDream(index){
-
-  data.dreams.splice(index,1);
-
-  save();
-
-  renderDreams();
-}
-
-function saveGoals(){
-
-  data.goals=
-    document.getElementById("goalsText").value;
-
-  save();
-
-  toast("Your goals are saved 🎯");
-
-  closeModal();
-}
-
-function saveFuture(){
-
-  data.future=
-    document.getElementById("futureText").value;
-
-  save();
-
-  toast("Your future-self letter is safe 💌");
-
-  closeModal();
-}
-
-function saveVision(){
-
-  data.vision=
-    document.getElementById("visionText").value;
-
-  save();
-
-  toast("Vision saved ✨");
-
-  closeModal();
-}
-
-function saveReflection(){
-
-  data.reflection=
-    document.getElementById("reflectionText").value;
-
-  save();
-
-  toast("Reflection saved 🌷");
-
-  closeModal();
-}
-
-
-/* SEARCH */
-
-function searchTools(){
-
-  const query=
-    document
-      .getElementById("searchInput")
-      .value
-      .toLowerCase()
-      .trim();
-
-  if(!query)return;
-
-  const tools=[
-    ...document.querySelectorAll(".tool")
-  ];
-
-  const found=tools.find(
-    tool=>tool.innerText.toLowerCase().includes(query)
-  );
-
-  if(found){
-
-    found.scrollIntoView({
-      behavior:"smooth",
-      block:"center"
-    });
-
-    found.style.outline=
-      "3px solid #ef9fbd";
-
-    setTimeout(()=>{
-      found.style.outline="";
-    },1800);
-
-  }else{
-
-    toast("No little tool found ♡");
-
-  }
-
-}
-
-
-/* VIP */
-
-function vip(){
-
-  toast(
-    "Dreamy VIP is coming soon ✦ No payment is collected yet."
-  );
-
-}
-
-
-/* SAFETY FOR USER TEXT */
-
-function escapeHTML(text){
-
-  return String(text||"")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* FAVORITES */
-
-document.addEventListener("click",function(event){
-
-  if(event.target.classList.contains("favorite")){
-
-    event.target.classList.toggle("active");
-
-    event.target.textContent=
-      event.target.classList.contains("active")
-      ?"♥"
-      :"♡";
-
-    toast(
-      event.target.classList.contains("active")
-      ?"Added to favorites ♡"
-      :"Removed from favorites"
-    );
-
-  }
-
-});
-
-
-/* INITIALIZE */
-
-if(!data.magic){
-
-  data.magic=magicMessages[0];
-
-  save();
-
-}
-
-document.getElementById("magicText").textContent=
-  data.magic;
-
-renderDashboard();
+};
 
 </script>
 
