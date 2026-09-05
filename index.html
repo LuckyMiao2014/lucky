@@ -1,2611 +1,581 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dream Crown Atelier · Fantasy Papercraft</title>
+<title>Dreamy Crown Atelier</title>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html{
-    scroll-behavior:smooth;
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #faf8f5;
+    color: #51445a;
 }
 
-body{
-    font-family:"DM Sans",sans-serif;
-    color:#554452;
+/* ---------- NAVIGATION ---------- */
 
+nav {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6%;
+    background: rgba(255,255,255,.9);
+    border-bottom: 1px solid #eee5e8;
+}
+
+.logo {
+    font-size: 20px;
+    font-style: italic;
+    color: #73536e;
+}
+
+.logo small {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #554c56;
+    font-size: 14px;
+}
+
+.nav-right {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 9%;
     background:
-        radial-gradient(circle at 10% 5%,rgba(255,190,219,.5),transparent 28%),
-        radial-gradient(circle at 90% 15%,rgba(194,178,255,.45),transparent 30%),
-        radial-gradient(circle at 50% 100%,rgba(176,230,242,.35),transparent 30%),
-        #fffafd;
-
-    overflow-x:hidden;
-}
-
-button{
-    font-family:inherit;
-    cursor:pointer;
-}
-
-:root{
-    --pink:#e89abd;
-    --pink2:#ffe8f2;
-    --purple:#9f86c7;
-    --blue:#8dc8df;
-    --gold:#cba66c;
-    --dark:#554452;
-    --muted:#95818e;
-    --white:#ffffff;
-}
-
-
-/* =====================================================
-   NAV
-===================================================== */
-
-nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    background:rgba(255,250,253,.88);
-    backdrop-filter:blur(20px);
-
-    border-bottom:1px solid #f0dce7;
-}
-
-.nav{
-    max-width:1250px;
-    height:76px;
-    margin:auto;
-
-    padding:0 22px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-family:"Cormorant Garamond",serif;
-    font-size:27px;
-    font-weight:700;
-    line-height:.8;
-}
-
-.logo small{
-    display:block;
-
-    font-family:"DM Sans",sans-serif;
-
-    margin-top:8px;
-
-    font-size:8px;
-    letter-spacing:3px;
-
-    color:#b86f91;
-}
-
-.links{
-    display:flex;
-    gap:28px;
-
-    font-size:12px;
-}
-
-.links a{
-    text-decoration:none;
-    color:var(--dark);
-}
-
-.links a:hover{
-    color:#c56e95;
-}
-
-.cart{
-    border:none;
-
-    background:#5a4653;
-    color:white;
-
-    padding:12px 18px;
-
-    border-radius:30px;
-
-    font-weight:700;
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero{
-    max-width:1250px;
-    min-height:700px;
-
-    margin:auto;
-
-    padding:80px 22px;
-
-    display:grid;
-    grid-template-columns:.85fr 1.15fr;
-
-    gap:40px;
-
-    align-items:center;
-}
-
-.eyebrow{
-    color:#b76b8c;
-
-    font-size:10px;
-
-    text-transform:uppercase;
-
-    letter-spacing:4px;
-
-    font-weight:700;
-
-    margin-bottom:20px;
-}
-
-.hero h1{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:clamp(58px,7vw,92px);
-
-    line-height:.86;
-
-    letter-spacing:-3px;
-
-    color:#584550;
-}
-
-.hero h1 span{
-    color:#c6789b;
-}
-
-.hero-text{
-    color:var(--muted);
-
-    max-width:500px;
-
-    line-height:1.9;
-
-    font-size:14px;
-
-    margin-top:28px;
-}
-
-.buttons{
-    display:flex;
-
-    gap:12px;
-
-    margin-top:28px;
-}
-
-.primary{
-    border:none;
-
-    background:#5a4653;
-
-    color:white;
-
-    padding:15px 24px;
-
-    border-radius:30px;
-
-    font-weight:700;
-}
-
-.secondary{
-    background:white;
-
-    border:1px solid #ead6e1;
-
-    color:#654f5c;
-
-    padding:15px 24px;
-
-    border-radius:30px;
-
-    font-weight:700;
-}
-
-
-/* =====================================================
-   CROWN SHOWCASE
-===================================================== */
-
-.showcase{
-    height:500px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    perspective:1100px;
-
-    position:relative;
-}
-
-.glow{
-    position:absolute;
-
-    width:420px;
-    height:420px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(circle,
-        rgba(255,255,255,.95),
-        rgba(242,201,225,.4),
-        transparent 70%);
-
-    filter:blur(10px);
-}
-
-
-/* main crown */
-
-.crown{
-    width:420px;
-    height:350px;
-
-    position:relative;
-
-    transform-style:preserve-3d;
-
-    transform:
-        rotateX(8deg)
-        rotateY(-12deg)
-        rotateZ(-1deg);
-
-    filter:
-        drop-shadow(
-            0 35px 30px
-            rgba(100,60,90,.22)
-        );
-
-    transition:.7s;
-}
-
-.showcase:hover .crown{
-    transform:
-        rotateX(5deg)
-        rotateY(-4deg)
-        translateY(-8px);
-}
-
-
-/* crown base */
-
-.crown-base{
-    position:absolute;
-
-    left:60px;
-    bottom:45px;
-
-    width:300px;
-    height:90px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f8c7dc,
-            #d8b5e8,
-            #a9d8ed
-        );
-
-    border:
-        6px solid
-        #ad7595;
-
-    border-radius:
-        15px 15px 70px 70px;
-
-    transform:
-        rotateX(-10deg);
-}
-
-
-/* center jewel */
-
-.jewel{
-    position:absolute;
-
-    left:177px;
-    top:155px;
-
-    width:68px;
-    height:88px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f7b5d5,
-            #a98bdd,
-            #8bcfe6
-        );
-
-    border:
-        6px solid
-        #c79c72;
-
-    clip-path:
-        polygon(
-            50% 0,
-            90% 25%,
-            78% 78%,
-            50% 100%,
-            22% 78%,
-            10% 25%
-        );
-
-    box-shadow:
-        0 0 25px
-        rgba(234,180,216,.9);
-
-    z-index:30;
-}
-
-
-/* phoenix wings */
-
-.wing{
-    position:absolute;
-
-    width:150px;
-    height:190px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff1f7,
-            #efc3e7,
-            #b5cbed,
-            #e8c5e1
-        );
-
-    border:
-        5px solid
-        #a87ca3;
-
-    clip-path:
-        polygon(
-            55% 0,
-            72% 15%,
-            88% 7%,
-            82% 30%,
-            100% 35%,
-            80% 50%,
-            91% 68%,
-            66% 63%,
-            67% 100%,
-            48% 73%,
-            35% 94%,
-            33% 65%,
-            8% 77%,
-            24% 52%,
-            0 43%,
-            27% 30%,
-            12% 12%,
-            42% 19%
-        );
-
-    z-index:15;
-}
-
-.wing.left{
-    left:45px;
-    top:65px;
-
-    transform:
-        rotate(-17deg)
-        rotateY(10deg);
-}
-
-.wing.right{
-    right:45px;
-    top:65px;
-
-    transform:
-        scaleX(-1)
-        rotate(-17deg);
-}
-
-
-/* flowers */
-
-.flower{
-    position:absolute;
-
-    width:38px;
-    height:38px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #ffe9f3 20%,
-            #d995bb 22% 40%,
-            #c5a0df 42% 65%,
-            transparent 66%
-        );
-
-    z-index:40;
-}
-
-.f1{
-    left:95px;
-    top:180px;
-}
-
-.f2{
-    right:95px;
-    top:180px;
-}
-
-.f3{
-    left:145px;
-    top:105px;
-    transform:scale(.8);
-}
-
-.f4{
-    right:145px;
-    top:105px;
-    transform:scale(.8);
-}
-
-
-/* butterflies */
-
-.butterfly{
-    position:absolute;
-
-    font-size:35px;
-
-    z-index:50;
-
-    filter:
-        drop-shadow(
-            0 5px 8px
-            rgba(100,50,100,.2)
-        );
-}
-
-.b1{
-    left:100px;
-    top:30px;
-    transform:rotate(-18deg);
-}
-
-.b2{
-    right:95px;
-    top:35px;
-    transform:rotate(15deg);
-}
-
-
-/* hanging jewels */
-
-.hanging{
-    position:absolute;
-
-    bottom:5px;
-
-    width:3px;
-    height:75px;
-
-    background:#c8a3c0;
-
-    z-index:60;
-}
-
-.hanging:after{
-    content:"";
-
-    position:absolute;
-
-    bottom:-15px;
-    left:-7px;
-
-    width:16px;
-    height:23px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffb9d9,
-            #a9d9ed
-        );
-
-    clip-path:
-        polygon(
-            50% 0,
-            100% 40%,
-            50% 100%,
-            0 40%
-        );
-}
-
-.h1{
-    left:105px;
-}
-
-.h2{
-    left:145px;
-    height:95px;
-}
-
-.h3{
-    left:275px;
-    height:95px;
-}
-
-.h4{
-    left:315px;
-}
-
-
-/* =====================================================
-   SECTION
-===================================================== */
-
-.section{
-    max-width:1250px;
-
-    margin:auto;
-
-    padding:90px 22px;
-}
-
-.heading{
-    margin-bottom:38px;
-}
-
-.heading .eyebrow{
-    margin-bottom:12px;
-}
-
-.heading h2{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:52px;
-
-    line-height:1;
-
-    color:#594650;
-}
-
-.heading p{
-    color:var(--muted);
-
-    margin-top:10px;
-}
-
-
-/* =====================================================
-   PRODUCT GRID
-===================================================== */
-
-.products{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:24px;
-}
-
-.product{
-    background:white;
-
-    border:
-        1px solid
-        #eedce6;
-
-    border-radius:28px;
-
-    overflow:hidden;
-
-    box-shadow:
-        0 15px 50px
-        rgba(100,60,85,.08);
-
-    transition:.35s;
-}
-
-.product:hover{
-    transform:translateY(-8px);
-
-    box-shadow:
-        0 28px 70px
-        rgba(100,60,85,.15);
-}
-
-
-/* product visual */
-
-.product-art{
-    height:330px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-.product-art.pink{
-    background:
-        radial-gradient(
-            circle,
-            white,
-            #ffe1ed
-        );
-}
-
-.product-art.blue{
-    background:
-        radial-gradient(
-            circle,
-            white,
-            #dff4fa
-        );
-}
-
-.product-art.purple{
-    background:
-        radial-gradient(
-            circle,
-            white,
-            #e8ddf8
-        );
-}
-
-
-/* mini crown */
-
-.mini-crown{
-    width:245px;
-    height:210px;
-
-    position:relative;
-
-    transform:
-        perspective(600px)
-        rotateX(10deg)
-        rotateY(-12deg);
-
-    filter:
-        drop-shadow(
-            0 25px 15px
-            rgba(90,60,90,.2)
-        );
-
-    transition:.5s;
-}
-
-.product:hover .mini-crown{
-    transform:
-        perspective(600px)
-        rotateX(7deg)
-        rotateY(-4deg)
-        scale(1.05);
-}
-
-.mc-base{
-    position:absolute;
-
-    left:28px;
-    bottom:20px;
-
-    width:190px;
-    height:55px;
-
-    border:
-        4px solid
-        #aa7896;
-
-    border-radius:
-        8px 8px 45px 45px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f5bfd8,
-            #c7afe5,
-            #a9d9eb
-        );
-}
-
-.mc-wing{
-    position:absolute;
-
-    width:90px;
-    height:130px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fff,
-            #f0c6e6,
-            #b8d7ed
-        );
-
-    border:
-        4px solid
-        #a27ba0;
-
-    clip-path:
-        polygon(
-            52% 0,
-            72% 17%,
-            100% 12%,
-            78% 38%,
-            100% 45%,
-            75% 57%,
-            82% 100%,
-            50% 72%,
-            35% 96%,
-            33% 63%,
-            0 75%,
-            25% 48%,
-            0 38%,
-            30% 27%,
-            13% 8%,
-            42% 18%
-        );
-}
-
-.mc-left{
-    left:5px;
-    top:25px;
-}
-
-.mc-right{
-    right:5px;
-    top:25px;
-    transform:scaleX(-1);
-}
-
-.mc-jewel{
-    position:absolute;
-
-    left:105px;
-    top:88px;
-
-    width:38px;
-    height:48px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f7b2d4,
-            #a994df,
-            #8bcce1
-        );
-
-    border:4px solid #c59c6d;
-
-    clip-path:
-        polygon(
-            50% 0,
-            95% 30%,
-            75% 80%,
-            50% 100%,
-            25% 80%,
-            5% 30%
-        );
-}
-
-.mc-flower{
-    position:absolute;
-
-    width:25px;
-    height:25px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle,
-            white 15%,
-            #e5a5c6 17% 45%,
-            #b89bd5 48% 70%,
-            transparent 72%
-        );
-}
-
-.mc-f1{
-    left:52px;
-    top:91px;
-}
-
-.mc-f2{
-    right:52px;
-    top:91px;
-}
-
-.mc-butterfly{
-    position:absolute;
-
-    font-size:25px;
-
-    top:30px;
-    left:108px;
-}
-
-
-/* =====================================================
-   PRODUCT INFO
-===================================================== */
-
-.product-info{
-    padding:23px;
-}
-
-.tag{
-    color:#b86d90;
-
-    text-transform:uppercase;
-
-    letter-spacing:2px;
-
-    font-size:9px;
-
-    font-weight:700;
-}
-
-.product-info h3{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:30px;
-
-    margin:6px 0;
-}
-
-.product-info p{
-    color:var(--muted);
-
-    font-size:12px;
-
-    line-height:1.7;
-
-    min-height:61px;
-}
-
-.product-bottom{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-top:18px;
-}
-
-.price{
-    font-size:19px;
-
-    font-weight:800;
-}
-
-.explore{
-    border:none;
-
-    padding:11px 17px;
-
-    border-radius:30px;
-
-    background:#fff0f6;
-
-    color:#b56689;
-
-    font-weight:700;
-}
-
-
-/* =====================================================
-   WHY
-===================================================== */
-
-.features{
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:16px;
+        radial-gradient(circle at 70% 50%, #eadcf1, transparent 25%),
+        linear-gradient(110deg, #fffaf7, #f7eef5);
 }
 
-.feature{
-    background:
-        rgba(255,255,255,.75);
-
-    border:
-        1px solid
-        #eedee7;
-
-    border-radius:22px;
-
-    padding:25px;
+.hero-text {
+    width: 45%;
 }
 
-.feature-icon{
-    font-size:30px;
-
-    margin-bottom:14px;
+.hero-text h1 {
+    font-size: 47px;
+    line-height: 1.05;
+    font-style: italic;
+    font-weight: normal;
+    color: #684c68;
 }
 
-.feature h3{
-    font-size:15px;
-
-    margin-bottom:8px;
+.hero-text h1 span {
+    display: block;
+    font-style: normal;
+    font-size: 34px;
 }
-
-.feature p{
-    font-size:11px;
 
-    line-height:1.7;
-
-    color:var(--muted);
+.hero-text p {
+    margin-top: 20px;
+    line-height: 1.7;
+    color: #776b78;
 }
-
-
-/* =====================================================
-   MODAL
-===================================================== */
-
-.modal{
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:2000;
 
-    padding:20px;
-
-    background:
-        rgba(65,43,55,.65);
-
-    backdrop-filter:blur(14px);
-
-    overflow:auto;
+.features {
+    display: flex;
+    gap: 35px;
+    margin-top: 30px;
 }
 
-.modal.open{
-    display:block;
+.feature {
+    text-align: center;
+    font-size: 12px;
 }
-
-.modal-box{
-    max-width:1100px;
-
-    margin:20px auto;
-
-    background:#fffafd;
-
-    border-radius:30px;
 
-    overflow:hidden;
-
-    position:relative;
+.feature-icon {
+    width: 45px;
+    height: 45px;
+    margin: auto;
+    border: 1px solid #cdbbca;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin-bottom: 8px;
 }
-
-.close{
-    position:absolute;
-
-    top:18px;
-    right:18px;
-
-    width:44px;
-    height:44px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:white;
 
-    font-size:24px;
-
-    z-index:20;
+.hero-crown {
+    width: 48%;
+    text-align: center;
 }
 
-.modal-top{
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
+.crown {
+    font-size: 170px;
+    filter: drop-shadow(0 15px 15px rgba(120,80,130,.15));
 }
-
-.modal-art{
-    min-height:500px;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:
-        radial-gradient(
-            circle,
-            white,
-            #f2dced,
-            #dceff5
-        );
-}
+/* ---------- COLLECTION ---------- */
 
-.modal-art .crown{
-    transform:
-        scale(.88)
-        rotateX(7deg)
-        rotateY(-10deg);
+.collection {
+    padding: 35px 7%;
 }
 
-.modal-info{
-    padding:70px 45px;
+.collection h2 {
+    text-align: center;
+    font-weight: normal;
+    font-size: 27px;
+    margin-bottom: 25px;
 }
 
-.modal-info .tag{
-    font-size:10px;
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
-.modal-info h2{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:52px;
-
-    line-height:.95;
-
-    margin:12px 0;
+.filters button {
+    border: 1px solid #e2d6df;
+    background: white;
+    border-radius: 20px;
+    padding: 8px 18px;
+    cursor: pointer;
+    color: #6c5b6c;
 }
 
-.modal-info p{
-    color:var(--muted);
-
-    line-height:1.8;
-
-    font-size:13px;
+.filters button.active {
+    background: #79557d;
+    color: white;
 }
 
-.modal-price{
-    font-size:30px;
+/* ---------- PRODUCTS ---------- */
 
-    font-weight:800;
-
-    margin:25px 0;
+.products {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
 }
-
-.buy{
-    width:100%;
 
-    border:none;
-
-    padding:17px;
-
-    border-radius:16px;
-
-    background:#5a4653;
-
-    color:white;
-
-    font-weight:800;
-
-    font-size:14px;
+.product {
+    background: rgba(255,255,255,.75);
+    border: 1px solid #e6dce1;
+    border-radius: 10px;
+    padding: 10px;
+    transition: .25s;
 }
-
-.stats{
-    display:grid;
 
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:8px;
-
-    margin-top:15px;
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(90,60,90,.1);
 }
-
-.stat{
-    background:white;
-
-    border:
-        1px solid
-        #eddae5;
-
-    border-radius:13px;
-
-    padding:12px;
-
-    text-align:center;
 
-    color:var(--muted);
-
-    font-size:9px;
+.product-image {
+    height: 150px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg,#faf1f6,#eee6f4);
+    border-radius: 7px;
+    font-size: 75px;
 }
-
-.stat strong{
-    display:block;
-
-    color:#5b4653;
 
-    font-size:15px;
-
-    margin-bottom:3px;
+.product-number {
+    font-size: 10px;
+    color: #a87b92;
+    margin-top: 8px;
 }
-
-
-/* =====================================================
-   ASSEMBLY
-===================================================== */
-
-.assembly{
-    padding:42px;
 
-    border-top:
-        1px solid
-        #efdee7;
+.product h3 {
+    font-size: 14px;
+    margin: 7px 0;
 }
 
-.assembly h3{
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:35px;
+.product p {
+    font-size: 11px;
+    color: #8c808b;
 }
-
-.assembly>p{
-    color:var(--muted);
-
-    margin-top:7px;
 
-    margin-bottom:24px;
+.price {
+    margin-top: 12px;
+    font-weight: bold;
+    color: #76556f;
 }
 
-.steps{
-    display:grid;
+/* ---------- DETAIL ---------- */
 
-    grid-template-columns:
-        repeat(6,1fr);
-
-    gap:10px;
+.detail {
+    margin: 25px auto;
+    max-width: 1100px;
+    background: white;
+    border: 1px solid #e2d8de;
+    border-radius: 14px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 35px;
 }
-
-.step{
-    background:white;
-
-    border:
-        1px solid
-        #efdee7;
-
-    border-radius:16px;
 
-    padding:12px;
+.detail-image {
+    min-height: 270px;
+    display: grid;
+    place-items: center;
+    background: #faf5f7;
+    border-radius: 10px;
+    font-size: 150px;
 }
 
-.step-number{
-    width:28px;
-    height:28px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    border-radius:50%;
-
-    background:#fff0f6;
-
-    color:#b6678c;
-
-    font-weight:800;
-
-    font-size:12px;
-
-    margin-bottom:9px;
+.detail-content h2 {
+    font-size: 25px;
+    color: #674d66;
+    margin-bottom: 10px;
 }
-
-.step-icon{
-    height:65px;
-
-    border-radius:10px;
-
-    background:#fff2f7;
-
-    display:flex;
-
-    justify-content:center;
 
-    align-items:center;
-
-    font-size:28px;
-
-    margin-bottom:8px;
+.detail-content p {
+    line-height: 1.7;
+    color: #776d77;
 }
 
-.step strong{
-    font-size:10px;
+.stats {
+    display: flex;
+    gap: 15px;
+    margin: 25px 0;
 }
-
-.step p{
-    color:var(--muted);
 
-    font-size:9px;
-
-    margin-top:3px;
+.stat {
+    flex: 1;
+    border: 1px solid #eee2e8;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
 }
-
-
-/* =====================================================
-   MATERIALS
-===================================================== */
-
-.materials{
-    background:
-        linear-gradient(
-            135deg,
-            #fff0f6,
-            #f0e8fb,
-            #e8f8fb
-        );
 
-    border-radius:30px;
-
-    padding:40px;
-
-    margin-top:40px;
+.stat strong {
+    display: block;
+    font-size: 22px;
 }
-
-.materials h3{
-    font-family:"Cormorant Garamond",serif;
 
-    font-size:36px;
+.buy {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.material-list{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin-top:20px;
+.buy .price {
+    font-size: 22px;
 }
-
-.material{
-    background:white;
 
-    padding:10px 15px;
-
-    border-radius:30px;
-
-    font-size:11px;
+.add {
+    border: none;
+    background: #805583;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
 }
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer{
-    background:#594650;
-
-    color:white;
-
-    padding:55px 22px;
 
-    margin-top:60px;
+.add:hover {
+    background: #69466d;
 }
 
-.footer{
-    max-width:1250px;
+/* ---------- FOOTER ---------- */
 
-    margin:auto;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:30px;
+footer {
+    margin-top: 30px;
+    padding: 35px 8%;
+    background: #f4eef2;
+    display: flex;
+    justify-content: space-between;
+    color: #756976;
 }
 
-.footer p{
-    color:#d7c8cf;
-
-    font-size:11px;
-
-    margin-top:9px;
+footer h3 {
+    margin-bottom: 10px;
 }
-
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
 
-@media(max-width:950px){
+/* ---------- RESPONSIVE ---------- */
 
-    .hero{
-        grid-template-columns:1fr;
+@media (max-width: 1000px) {
+    .products {
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    .products{
-        grid-template-columns:
-            repeat(2,1fr);
+    .hero {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .features{
-        grid-template-columns:
-            repeat(2,1fr);
+    .hero-text {
+        width: 100%;
     }
 
-    .modal-top{
-        grid-template-columns:1fr;
+    .hero-crown {
+        width: 100%;
     }
 
-    .modal-art{
-        min-height:430px;
-    }
-
-    .steps{
-        grid-template-columns:
-            repeat(3,1fr);
-    }
-
-    .links{
-        display:none;
+    .features {
+        justify-content: center;
     }
 }
 
-@media(max-width:600px){
-
-    .hero{
-        padding-top:50px;
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;
     }
 
-    .hero h1{
-        font-size:58px;
+    .hero-text h1 {
+        font-size: 35px;
     }
 
-    .showcase{
-        height:400px;
+    .products {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .crown{
-        transform:
-            scale(.72)
-            rotateX(7deg)
-            rotateY(-10deg);
+    .detail {
+        grid-template-columns: 1fr;
     }
 
-    .products{
-        grid-template-columns:1fr;
-    }
-
-    .features{
-        grid-template-columns:1fr;
-    }
-
-    .modal-info{
-        padding:40px 25px;
-    }
-
-    .modal-info h2{
-        font-size:40px;
-    }
-
-    .assembly{
-        padding:25px 18px;
-    }
-
-    .steps{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .footer{
-        flex-direction:column;
+    footer {
+        flex-direction: column;
+        gap: 25px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-     NAV
-===================================================== -->
-
+<!-- NAVIGATION -->
 <nav>
+    <div class="logo">
+        Dreamy Crown Atelier
+        <small>PAPERCraft COLLECTION</small>
+    </div>
 
-<div class="nav">
+    <ul class="nav-links">
+        <li><a href=" ">Home</a ></li>
+        <li><a href="#">Collection</a ></li>
+        <li><a href="#">How It Works</a ></li>
+        <li><a href="#">Materials</a ></li>
+        <li><a href="#">FAQs</a ></li>
+        <li><a href="#">About</a ></li>
+    </ul>
 
-<div class="logo">
-
-Dream Crown Atelier
-
-<small>
-FANTASY PAPERCRAFT · DIGITAL PATTERNS
-</small>
-
-</div>
-
-
-<div class="links">
-
-<a href="#collection">
-Collection
-</a>
-
-<a href="#materials">
-Materials
-</a>
-
-<a href="#how">
-How It Works
-</a>
-
-</div>
-
-
-<button class="cart">
-
-♡ Bag <span id="cartCount">0</span>
-
-</button>
-
-</div>
-
+    <div class="nav-right">
+        🛍️ ♡
+    </div>
 </nav>
 
 
-
-<!-- =====================================================
-     HERO
-===================================================== -->
-
+<!-- HERO -->
 <section class="hero">
 
-<div>
+    <div class="hero-text">
 
-<div class="eyebrow">
-Original 3D Papercraft Patterns
-</div>
+        <h1>
+            <span>Make Your Own</span>
+            Fantasy Crown
+        </h1>
 
-<h1>
+        <p>
+            Erschaffe deine eigene zauberhafte Fantasy-Krone
+            aus wunderschönen Papierdesigns. Einfach ausdrucken,
+            falten, kleben und deine Traumkrone gestalten.
+        </p >
 
-Make a crown<br>
+        <div class="features">
 
-that feels like<br>
+            <div class="feature">
+                <div class="feature-icon">◇</div>
+                3D Papercraft
+            </div>
 
-<span>a dream.</span>
+            <div class="feature">
+                <div class="feature-icon">▧</div>
+                Printable PDF
+            </div>
 
-</h1>
+            <div class="feature">
+                <div class="feature-icon">✧</div>
+                200–300gsm
+            </div>
 
+        </div>
 
-<p class="hero-text">
+    </div>
 
-不是一张普通的装饰图。
-这里的每一款设计都会被拆解成真正可以打印、
-剪裁、折叠、粘合和组装的立体纸艺结构。
-使用硬卡纸，就可以亲手创造一件梦幻的桌面艺术品。
-
-</p>
-
-
-<div class="buttons">
-
-<button
-class="primary"
-onclick="document.getElementById('collection').scrollIntoView()">
-
-Explore Collection ✦
-
-</button>
-
-
-<button
-class="secondary"
-onclick="document.getElementById('how').scrollIntoView()">
-
-How it works
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- BIG CROWN -->
-
-<div class="showcase">
-
-<div class="glow"></div>
-
-
-<div class="crown">
-
-<div class="wing left"></div>
-
-<div class="wing right"></div>
-
-<div class="flower f1"></div>
-
-<div class="flower f2"></div>
-
-<div class="flower f3"></div>
-
-<div class="flower f4"></div>
-
-<div class="butterfly b1">
-🦋
-</div>
-
-<div class="butterfly b2">
-🦋
-</div>
-
-<div class="jewel"></div>
-
-<div class="crown-base"></div>
-
-<div class="hanging h1"></div>
-<div class="hanging h2"></div>
-<div class="hanging h3"></div>
-<div class="hanging h4"></div>
-
-</div>
-
-</div>
+    <div class="hero-crown">
+        <div class="crown">👑</div>
+    </div>
 
 </section>
 
 
+<!-- COLLECTION -->
+<section class="collection">
 
-<!-- =====================================================
-     COLLECTION
-===================================================== -->
+    <h2>Collection · Papier Fantasy Serie</h2>
 
-<section
-class="section"
-id="collection"
->
-
-<div class="heading">
-
-<div class="eyebrow">
-The Dream Collection
-</div>
-
-<h2>
-Six little masterpieces.
-</h2>
-
-<p>
-每一款都有不同的故事、结构和装饰。
-</p>
-
-</div>
+    <div class="filters">
+        <button class="active">All</button>
+        <button>Fantasy</button>
+        <button>Phoenix</button>
+        <button>Butterfly</button>
+        <button>Swan</button>
+        <button>Flower</button>
+        <button>Celestial</button>
+    </div>
 
 
-<div
-class="products"
-id="products"
->
-</div>
+    <div class="products">
+
+        <div class="product">
+            <div class="product-image">🌸👑</div>
+            <div class="product-number">01</div>
+            <h3>Blossom Empress</h3>
+            <p>Fantasy · Flower</p >
+            <div class="price">€14.90</div>
+        </div>
+
+        <div class="product">
+            <div class="product-image">🦋👑</div>
+            <div class="product-number">02</div>
+            <h3>Ice Butterfly</h3>
+            <p>Butterfly · Fantasy</p >
+            <div class="price">€15.90</div>
+        </div>
+
+        <div class="product">
+            <div class="product-image">🔥👑</div>
+            <div class="product-number">03</div>
+            <h3>Moonlit Phoenix</h3>
+            <p>Phoenix · Celestial</p >
+            <div class="price">€17.90</div>
+        </div>
+
+        <div class="product">
+            <div class="product-image">🌿👑</div>
+            <div class="product-number">04</div>
+            <h3>Emerald Garden</h3>
+            <p>Flower · Nature</p >
+            <div class="price">€14.90</div>
+        </div>
+
+        <div class="product">
+            <div class="product-image">✨👑</div>
+            <div class="product-number">05</div>
+            <h3>Golden Dynasty</h3>
+            <p>Fantasy · Elegant</p >
+            <div class="price">€16.90</div>
+        </div>
+
+        <div class="product">
+            <div class="product-image">🦢👑</div>
+            <div class="product-number">06</div>
+            <h3>Swan Princess</h3>
+            <p>Swan · Elegant</p >
+            <div class="price">€18.90</div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PRODUCT DETAIL -->
+<section class="detail">
+
+    <div class="detail-image">
+        🌸👑
+    </div>
+
+    <div class="detail-content">
+
+        <p>01 · Fantasy Collection</p >
+
+        <h2>Blossom Empress</h2>
+
+        <p>
+            Eine wunderschöne Fantasy-Krone mit floralen Elementen,
+            funkelnden Details und einem märchenhaften Design.
+            Perfekt für kreative Papercraft-Projekte.
+        </p >
+
+        <div class="stats">
+            <div class="stat">
+                <strong>22</strong>
+                PDF Dateien
+            </div>
+
+            <div class="stat">
+                <strong>86</strong>
+                Einzelteile
+            </div>
+
+            <div class="stat">
+                <strong>4–6</strong>
+                Stunden
+            </div>
+        </div>
+
+        <div class="buy">
+            <div class="price">€14.90</div>
+            <button class="add" onclick="addToBag()">
+                Add to Bag +
+            </button>
+        </div>
+
+    </div>
 
 </section>
 
 
-
-<!-- =====================================================
-     FEATURES
-===================================================== -->
-
-<section class="section">
-
-<div class="heading">
-
-<div class="eyebrow">
-Designed for makers
-</div>
-
-<h2>
-Made to become real.
-</h2>
-
-</div>
-
-
-<div class="features">
-
-
-<div class="feature">
-
-<div class="feature-icon">
-📐
-</div>
-
-<h3>
-真实立体结构
-</h3>
-
-<p>
-墙体、羽翼、花朵、宝石和流苏全部拆分成独立组件。
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-✂️
-</div>
-
-<h3>
-剪裁＋折叠
-</h3>
-
-<p>
-每个纸模零件都有编号、折线和粘贴区域。
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-📄
-</div>
-
-<h3>
-适合硬卡纸
-</h3>
-
-<p>
-建议使用 200–300gsm 卡纸打印，完成后更加坚固。
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-✨
-</div>
-
-<h3>
-完成后可收藏
-</h3>
-
-<p>
-完成品可以作为房间装饰、摄影道具或者艺术收藏。
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     HOW
-===================================================== -->
-
-<section
-class="section"
-id="how"
->
-
-<div class="heading">
-
-<div class="eyebrow">
-From paper to fantasy
-</div>
-
-<h2>
-How it comes alive.
-</h2>
-
-</div>
-
-
-<div class="features">
-
-
-<div class="feature">
-
-<div class="feature-icon">
-🖨️
-</div>
-
-<h3>
-01 · Print
-</h3>
-
-<p>
-下载数字文件并使用硬卡纸打印。
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-✂️
-</div>
-
-<h3>
-02 · Cut
-</h3>
-
-<p>
-沿着外轮廓剪下所有组件。
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-📏
-</div>
-
-<h3>
-03 · Fold
-</h3>
-
-<p>
-沿虚线折出立体结构。
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-🧴
-</div>
-
-<h3>
-04 · Glue
-</h3>
-
-<p>
-按照编号粘合连接处。
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MATERIALS
-===================================================== -->
-
-<section
-class="section"
-id="materials"
->
-
-<div class="materials">
-
-<h3>
-What you'll need ♡
-</h3>
-
-<p style="
-color:#95818e;
-margin-top:8px;
-line-height:1.7;
-font-size:13px;
-">
-
-不用购买昂贵的工具。
-准备一些基础手工材料，就可以开始制作。
-
-</p>
-
-
-<div class="material-list">
-
-<div class="material">
-📄 200–300gsm Cardstock
-</div>
-
-<div class="material">
-✂️ Precision Scissors
-</div>
-
-<div class="material">
-📏 Ruler
-</div>
-
-<div class="material">
-🧴 Paper Glue
-</div>
-
-<div class="material">
-✏️ Pencil
-</div>
-
-<div class="material">
-🪵 Scoring Tool
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
+<!-- FOOTER -->
 <footer>
 
-<div class="footer">
+    <div>
+        <h3>About Us</h3>
+        <p>
+            Dreamy Crown Atelier<br>
+            Fantasy Papercraft Collection
+        </p >
+    </div>
 
-<div>
+    <div>
+        <h3>Quick Links</h3>
+        <p>Collection · How It Works · Materials · FAQs</p >
+    </div>
 
-<div class="logo">
-Dream Crown Atelier
-</div>
-
-<p>
-Tiny pieces. Big dreams.
-</p>
-
-</div>
-
-
-<div>
-
-<p>
-Digital papercraft patterns
-</p>
-
-<p>
-Designed for makers who love beautiful things.
-</p>
-
-</div>
-
-</div>
+    <div>
+        <h3>Stay in Touch</h3>
+        <p>Instagram · Pinterest · TikTok</p >
+    </div>
 
 </footer>
 
 
-
-<!-- =====================================================
-     PRODUCT MODAL
-===================================================== -->
-
-<div
-class="modal"
-id="modal"
->
-
-<div class="modal-box">
-
-
-<button
-class="close"
-onclick="closeModal()"
->
-×
-</button>
-
-
-<div class="modal-top">
-
-
-<div class="modal-art">
-
-<div class="crown">
-
-<div class="wing left"></div>
-
-<div class="wing right"></div>
-
-<div class="flower f1"></div>
-
-<div class="flower f2"></div>
-
-<div class="flower f3"></div>
-
-<div class="flower f4"></div>
-
-<div class="butterfly b1">
-🦋
-</div>
-
-<div class="butterfly b2">
-🦋
-</div>
-
-<div class="jewel"></div>
-
-<div class="crown-base"></div>
-
-<div class="hanging h1"></div>
-<div class="hanging h2"></div>
-<div class="hanging h3"></div>
-<div class="hanging h4"></div>
-
-</div>
-
-</div>
-
-
-<div class="modal-info">
-
-<div
-class="tag"
-id="modalTag"
->
-</div>
-
-
-<h2
-id="modalTitle"
->
-</h2>
-
-
-<p
-id="modalDescription"
->
-</p>
-
-
-<div
-class="modal-price"
-id="modalPrice"
->
-</div>
-
-
-<button
-class="buy"
-onclick="addToCart()"
->
-
-Add this pattern to my bag ✦
-
-</button>
-
-
-<div class="stats">
-
-<div class="stat">
-
-<strong
-id="modalPages"
->
-</strong>
-
-PDF pages
-
-</div>
-
-
-<div class="stat">
-
-<strong
-id="modalPieces"
->
-</strong>
-
-pieces
-
-</div>
-
-
-<div class="stat">
-
-<strong
-id="modalTime"
->
-</strong>
-
-build time
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- ASSEMBLY -->
-
-<div class="assembly">
-
-<h3>
-Inside your pattern
-</h3>
-
-<p>
-购买以后，你得到的是一套用于制作立体成品的数字纸模文件。
-</p>
-
-
-<div class="steps">
-
-
-<div class="step">
-
-<div class="step-number">
-1
-</div>
-
-<div class="step-icon">
-🖨️
-</div>
-
-<strong>
-PRINT
-</strong>
-
-<p>
-打印模板
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-2
-</div>
-
-<div class="step-icon">
-✂️
-</div>
-
-<strong>
-CUT
-</strong>
-
-<p>
-剪下零件
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-3
-</div>
-
-<div class="step-icon">
-📐
-</div>
-
-<strong>
-SCORE
-</strong>
-
-<p>
-压出折线
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-4
-</div>
-
-<div class="step-icon">
-↪️
-</div>
-
-<strong>
-FOLD
-</strong>
-
-<p>
-折出结构
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-5
-</div>
-
-<div class="step-icon">
-🧴
-</div>
-
-<strong>
-GLUE
-</strong>
-
-<p>
-粘合组件
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">
-6
-</div>
-
-<div class="step-icon">
-👑
-</div>
-
-<strong>
-ASSEMBLE
-</strong>
-
-<p>
-完成凤冠
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
 <script>
 
-
-/* =====================================================
-   PRODUCTS
-===================================================== */
-
-const products = [
-
-{
-    id:1,
-
-    name:"Blossom Empress",
-
-    tag:"Pink Garden Collection",
-
-    price:14.90,
-
-    pages:22,
-
-    pieces:86,
-
-    time:"4–6 h",
-
-    color:"pink",
-
-    description:
-    "樱花盛开的梦幻女王冠。层叠花瓣、珍珠垂饰、粉色羽翼与中央宝石组成华丽的立体结构。"
-},
-
-{
-    id:2,
-
-    name:"Butterfly Dream",
-
-    tag:"Butterfly Collection",
-
-    price:15.90,
-
-    pages:24,
-
-    pieces:94,
-
-    time:"5–7 h",
-
-    color:"blue",
-
-    description:
-    "淡蓝与薰衣草紫交织的蝴蝶梦境。两侧展开立体蝶翼，并加入多层蝴蝶、花朵和水晶装饰。"
-},
-
-{
-    id:3,
-
-    name:"Moonlight Phoenix",
-
-    tag:"Celestial Collection",
-
-    price:17.90,
-
-    pages:28,
-
-    pieces:112,
-
-    time:"6–8 h",
-
-    color:"purple",
-
-    description:
-    "以月光凤凰为中心的幻想凤冠。凤凰、星月、羽翼和宝石组成高层次立体结构，是系列中最复杂的设计之一。"
-},
-
-{
-    id:4,
-
-    name:"Lavender Queen",
-
-    tag:"Lavender Collection",
-
-    price:14.50,
-
-    pages:21,
-
-    pieces:82,
-
-    time:"4–6 h",
-
-    color:"purple",
-
-    description:
-    "薰衣草花园里的紫色女王冠。大量花瓣和水晶形成柔软而华丽的层叠效果。"
-},
-
-{
-    id:5,
-
-    name:"Fairy Garden",
-
-    tag:"Fairy Collection",
-
-    price:16.50,
-
-    pages:25,
-
-    pieces:101,
-
-    time:"5–7 h",
-
-    color:"pink",
-
-    description:
-    "像精灵花园一样的梦幻头冠。蝴蝶、花朵、翅膀和流苏从中央向外层层展开。"
-},
-
-{
-    id:6,
-
-    name:"Celestial Swan",
-
-    tag:"Swan Collection",
-
-    price:18.90,
-
-    pages:30,
-
-    pieces:126,
-
-    time:"7–9 h",
-
-    color:"blue",
-
-    description:
-    "以天鹅羽翼为灵感的高级纸艺头冠。拥有多层羽毛、中央水晶、星星吊饰和对称翼片。"
+function addToBag() {
+    alert("Blossom Empress wurde deinem Warenkorb hinzugefügt! 🌸👑");
 }
-
-];
-
-
-/* =====================================================
-   MINI CROWN
-===================================================== */
-
-function miniCrown(){
-
-return `
-
-<div class="mini-crown">
-
-<div class="mc-wing mc-left"></div>
-
-<div class="mc-wing mc-right"></div>
-
-<div class="mc-flower mc-f1"></div>
-
-<div class="mc-flower mc-f2"></div>
-
-<div class="mc-jewel"></div>
-
-<div class="mc-butterfly">
-🦋
-</div>
-
-<div class="mc-base"></div>
-
-</div>
-
-`;
-
-}
-
-
-/* =====================================================
-   RENDER PRODUCTS
-===================================================== */
-
-function renderProducts(){
-
-const container =
-document.getElementById("products");
-
-
-container.innerHTML =
-products.map(p => `
-
-<article class="product">
-
-
-<div class="
-product-art
-${p.color}
-">
-
-${miniCrown()}
-
-</div>
-
-
-<div class="product-info">
-
-
-<div class="tag">
-${p.tag}
-</div>
-
-
-<h3>
-${p.name}
-</h3>
-
-
-<p>
-${p.description}
-</p>
-
-
-<div class="product-bottom">
-
-
-<div class="price">
-€${p.price.toFixed(2)}
-</div>
-
-
-<button
-class="explore"
-onclick="openProduct(${p.id})"
->
-
-View Pattern →
-
-</button>
-
-
-</div>
-
-</div>
-
-</article>
-
-`).join("");
-
-}
-
-
-/* =====================================================
-   OPEN PRODUCT
-===================================================== */
-
-let currentProduct = null;
-
-
-function openProduct(id){
-
-currentProduct =
-products.find(
-p => p.id === id
-);
-
-
-document.getElementById(
-"modalTag"
-).textContent =
-currentProduct.tag;
-
-
-document.getElementById(
-"modalTitle"
-).textContent =
-currentProduct.name;
-
-
-document.getElementById(
-"modalDescription"
-).textContent =
-currentProduct.description;
-
-
-document.getElementById(
-"modalPrice"
-).textContent =
-"€" +
-currentProduct.price.toFixed(2);
-
-
-document.getElementById(
-"modalPages"
-).textContent =
-currentProduct.pages;
-
-
-document.getElementById(
-"modalPieces"
-).textContent =
-currentProduct.pieces;
-
-
-document.getElementById(
-"modalTime"
-).textContent =
-currentProduct.time;
-
-
-document
-.getElementById("modal")
-.classList.add("open");
-
-
-document.body.style.overflow =
-"hidden";
-
-}
-
-
-/* =====================================================
-   CLOSE
-===================================================== */
-
-function closeModal(){
-
-document
-.getElementById("modal")
-.classList.remove("open");
-
-document.body.style.overflow =
-"";
-
-}
-
-
-/* =====================================================
-   CART
-===================================================== */
-
-let cartCount = 0;
-
-
-function addToCart(){
-
-cartCount++;
-
-
-document.getElementById(
-"cartCount"
-).textContent =
-cartCount;
-
-
-alert(
-currentProduct.name +
-" ♡ 已加入购物袋！\n\n" +
-"下一步可以把这个按钮连接到真正的付款页面，付款成功后自动提供 PDF 下载。"
-);
-
-
-closeModal();
-
-}
-
-
-/* =====================================================
-   CLICK OUTSIDE
-===================================================== */
-
-document
-.getElementById("modal")
-.addEventListener(
-"click",
-function(e){
-
-if(e.target === this){
-
-closeModal();
-
-}
-
-}
-);
-
-
-/* =====================================================
-   START
-===================================================== */
-
-renderProducts();
 
 </script>
-
 
 </body>
 </html>
