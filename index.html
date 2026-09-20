@@ -1,1028 +1,3418 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dream Crown Atelier</title>
+<title>DayBloom · 每一天都开花</title>
 
 <style>
-:root {
-  --pink: #f7a8c4;
-  --deep-pink: #b94d83;
-  --purple: #9d83d4;
-  --blue: #a8d8f0;
-  --cream: #fff8f2;
-  --text: #563d55;
-  --soft-shadow: 0 20px 60px rgba(151, 88, 132, 0.18);
+:root{
+  --pink:#ff7eb6;
+  --pink2:#ffb6d5;
+  --pink3:#fff0f7;
+  --purple:#9b8cff;
+  --purple2:#eeeaff;
+  --text:#382f3d;
+  --muted:#8e8494;
+  --white:#ffffff;
+  --border:#f1e6ee;
+  --green:#72c99a;
+  --yellow:#ffc85c;
+  --shadow:0 12px 35px rgba(170,110,145,.12);
+  --radius:22px;
 }
 
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-html {
-  scroll-behavior: smooth;
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",
+  "Microsoft YaHei",sans-serif;
+  background:#fff9fc;
+  color:var(--text);
+  min-height:100vh;
 }
 
-body {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  color: var(--text);
-  background:
-    radial-gradient(circle at 10% 10%, rgba(255,255,255,.9), transparent 30%),
-    radial-gradient(circle at 90% 20%, rgba(244,190,226,.35), transparent 30%),
-    linear-gradient(135deg, #fff8fc, #f8edff 45%, #fff7ee);
+button,input,select,textarea{
+  font:inherit;
 }
 
-button,
-a {
-  font: inherit;
+button{
+  cursor:pointer;
+  border:none;
 }
 
-button {
-  cursor: pointer;
+.app{
+  display:flex;
+  min-height:100vh;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* ===== 左侧导航 ===== */
+
+.sidebar{
+  width:245px;
+  background:#fff;
+  border-right:1px solid var(--border);
+  padding:28px 18px;
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  z-index:20;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:0 12px 28px;
+}
+
+.logo-icon{
+  width:45px;
+  height:45px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#ff8fbd,#a999ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:23px;
+  box-shadow:0 8px 20px rgba(255,126,182,.22);
+}
+
+.logo h1{
+  font-size:21px;
+  letter-spacing:-.5px;
+}
+
+.logo span{
+  display:block;
+  font-size:11px;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.nav-btn{
+  width:100%;
+  padding:13px 14px;
+  border-radius:14px;
+  background:transparent;
+  color:#786d7b;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-align:left;
+  transition:.2s;
+}
+
+.nav-btn:hover{
+  background:#fff2f8;
+}
+
+.nav-btn.active{
+  background:linear-gradient(90deg,#fff0f7,#f5f1ff);
+  color:#d84e8d;
+  font-weight:700;
+}
+
+.nav-icon{
+  width:25px;
+  text-align:center;
+  font-size:18px;
+}
+
+.sidebar-bottom{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:25px;
+}
+
+.mini-profile{
+  background:#fff7fb;
+  border:1px solid #f8e5ef;
+  border-radius:18px;
+  padding:14px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.avatar{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ff9bc5,#aaa0ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:800;
+}
+
+.mini-profile small{
+  color:var(--muted);
+}
+
+/* ===== 主内容 ===== */
+
+.main{
+  margin-left:245px;
+  width:calc(100% - 245px);
+  padding:34px 42px 60px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+}
+
+.date-text{
+  color:var(--muted);
+  font-size:14px;
+}
+
+.page-title{
+  font-size:30px;
+  margin-top:5px;
+  letter-spacing:-1px;
+}
+
+.top-actions{
+  display:flex;
+  gap:10px;
+}
+
+.icon-btn{
+  width:43px;
+  height:43px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+}
+
+/* ===== 页面 ===== */
+
+.page{
+  display:none;
+  animation:fadeIn .25s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(5px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ===== 今日首页 ===== */
+
+.welcome{
+  background:linear-gradient(120deg,#ffe7f2,#f0edff);
+  border-radius:28px;
+  padding:30px;
+  margin-bottom:22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  overflow:hidden;
+  position:relative;
+}
+
+.welcome:after{
+  content:"🌸";
+  position:absolute;
+  right:55px;
+  top:15px;
+  font-size:95px;
+  opacity:.18;
+}
+
+.welcome h2{
+  font-size:27px;
+  margin-bottom:7px;
+}
+
+.welcome p{
+  color:#887c8b;
+}
+
+.progress-ring{
+  width:108px;
+  height:108px;
+  border-radius:50%;
+  background:conic-gradient(var(--pink) 0deg,#fff 0deg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:2;
+}
+
+.progress-ring:before{
+  content:"";
+  position:absolute;
+  width:83px;
+  height:83px;
+  background:#fff9fc;
+  border-radius:50%;
+}
+
+.progress-ring strong{
+  position:relative;
+  font-size:22px;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:24px;
+}
+
+.stat{
+  background:#fff;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  border-radius:20px;
+  padding:20px;
+}
+
+.stat-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.stat-icon{
+  width:39px;
+  height:39px;
+  border-radius:13px;
+  background:var(--pink3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.stat-number{
+  font-size:27px;
+  font-weight:800;
+  margin-top:14px;
+}
+
+.stat-label{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:3px;
+}
+
+/* ===== 卡片 ===== */
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:24px;
+}
+
+.grid-2{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:20px;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.section-title h3{
+  font-size:18px;
+}
+
+.link-btn{
+  background:none;
+  color:#db6399;
+  font-size:13px;
+}
+
+/* ===== 时间线 ===== */
+
+.timeline{
+  display:flex;
+  flex-direction:column;
+}
+
+.timeline-item{
+  display:grid;
+  grid-template-columns:62px 16px 1fr;
+  gap:10px;
+  min-height:72px;
+}
+
+.time{
+  color:#9b919f;
+  font-size:12px;
+  padding-top:4px;
+  text-align:right;
+}
+
+.line{
+  position:relative;
+}
+
+.line:before{
+  content:"";
+  width:10px;
+  height:10px;
+  background:#ffacd0;
+  border-radius:50%;
+  position:absolute;
+  top:5px;
+  left:2px;
+  z-index:2;
+}
+
+.line:after{
+  content:"";
+  width:1px;
+  background:#f1dfe8;
+  position:absolute;
+  top:15px;
+  bottom:-3px;
+  left:7px;
+}
+
+.timeline-item:last-child .line:after{
+  display:none;
+}
+
+.task-box{
+  border-radius:14px;
+  background:#fff8fb;
+  padding:11px 13px;
+  margin-bottom:10px;
+  border:1px solid #faeaf1;
+}
+
+.task-box.current{
+  background:linear-gradient(90deg,#fff0f7,#f7f2ff);
+  border-color:#f4c9dc;
+}
+
+.task-box.done{
+  opacity:.58;
+}
+
+.task-title{
+  font-size:14px;
+  font-weight:700;
+}
+
+.task-meta{
+  color:#9b909c;
+  font-size:11px;
+  margin-top:4px;
+}
+
+.category{
+  display:inline-block;
+  font-size:10px;
+  padding:3px 7px;
+  border-radius:20px;
+  background:#f0ebff;
+  color:#7869bf;
+  margin-left:5px;
+}
+
+.complete-btn{
+  float:right;
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid #e8dce3;
+  color:transparent;
+}
+
+.complete-btn.checked{
+  background:var(--green);
+  color:#fff;
+  border-color:var(--green);
+}
+
+/* ===== 右侧 ===== */
+
+.now-box{
+  background:linear-gradient(145deg,#fff5fa,#f7f4ff);
+  border-radius:18px;
+  padding:19px;
+  margin-bottom:14px;
+}
+
+.now-label{
+  color:#a0929e;
+  font-size:12px;
+}
+
+.now-title{
+  font-size:21px;
+  font-weight:800;
+  margin:8px 0;
+}
+
+.countdown{
+  font-size:30px;
+  font-weight:800;
+  color:#db6599;
+}
+
+.small-muted{
+  color:var(--muted);
+  font-size:12px;
 }
 
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 6%;
-  background: rgba(255, 248, 252, .88);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(185, 77, 131, .12);
+.streak-box{
+  padding:20px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--deep-pink);
-  letter-spacing: .5px;
+.fire{
+  font-size:32px;
 }
+
+/* ===== 计划页面 ===== */
 
-.logo span {
-  display: block;
-  font-size: 11px;
-  font-weight: normal;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #9b7894;
+.form-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:13px;
 }
 
-.nav {
-  display: flex;
-  gap: 22px;
-  font-size: 14px;
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  margin-bottom:15px;
 }
 
-.nav a:hover {
-  color: var(--deep-pink);
+.field label{
+  font-size:12px;
+  color:#837785;
 }
 
-.cart-button {
-  border: 0;
-  border-radius: 999px;
-  padding: 11px 18px;
-  background: var(--deep-pink);
-  color: white;
-  box-shadow: 0 8px 20px rgba(185, 77, 131, .2);
+.field input,
+.field select,
+.field textarea{
+  border:1px solid #eadfe7;
+  border-radius:12px;
+  padding:11px 12px;
+  outline:none;
+  background:#fff;
+  color:var(--text);
 }
 
-.hero {
-  max-width: 1250px;
-  margin: 0 auto;
-  padding: 75px 6% 45px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 45px;
-  align-items: center;
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  border-color:#ef9fc2;
+  box-shadow:0 0 0 3px #fff0f7;
 }
 
-.eyebrow {
-  color: var(--deep-pink);
-  font-size: 12px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
+textarea{
+  resize:vertical;
+  min-height:80px;
 }
 
-.hero h1 {
-  margin: 15px 0;
-  font-size: clamp(44px, 7vw, 82px);
-  line-height: .98;
-  font-weight: normal;
+.primary-btn{
+  background:linear-gradient(135deg,#ff78ae,#b09aff);
+  color:white;
+  padding:12px 20px;
+  border-radius:13px;
+  font-weight:700;
+  box-shadow:0 8px 20px rgba(223,110,160,.2);
 }
 
-.hero h1 span {
-  color: var(--deep-pink);
-  font-style: italic;
+.secondary-btn{
+  background:#fff4f8;
+  color:#c95588;
+  padding:11px 16px;
+  border-radius:12px;
 }
 
-.hero p {
-  max-width: 520px;
-  font-size: 18px;
-  line-height: 1.8;
-  color: #80647b;
+.task-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
 }
 
-.hero-buttons {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 28px;
+.list-task{
+  padding:15px;
+  border:1px solid var(--border);
+  border-radius:15px;
+  display:flex;
+  align-items:center;
+  gap:13px;
 }
 
-.primary-button,
-.secondary-button {
-  border-radius: 999px;
-  padding: 14px 23px;
-  border: 1px solid transparent;
-  transition: .25s;
+.list-task-main{
+  flex:1;
 }
 
-.primary-button {
-  background: var(--deep-pink);
-  color: white;
-  box-shadow: 0 12px 28px rgba(185, 77, 131, .24);
+.list-task-title{
+  font-weight:700;
+  font-size:14px;
 }
 
-.secondary-button {
-  background: rgba(255,255,255,.65);
-  color: var(--deep-pink);
-  border-color: rgba(185,77,131,.2);
+.list-task-info{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
 }
 
-.primary-button:hover,
-.secondary-button:hover,
-.cart-button:hover {
-  transform: translateY(-3px);
+.delete-btn{
+  background:#fff3f5;
+  color:#d96d82;
+  width:34px;
+  height:34px;
+  border-radius:10px;
 }
 
-.hero-art {
-  min-height: 430px;
-  border-radius: 38px;
-  background:
-    radial-gradient(circle at 50% 20%, rgba(255,255,255,.9), transparent 35%),
-    linear-gradient(145deg, #fbd4e7, #d8c8f5);
-  box-shadow: var(--soft-shadow);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
+/* ===== 打卡 ===== */
+
+.habit-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
 }
 
-.hero-art::before {
-  content: "✦";
-  position: absolute;
-  top: 35px;
-  left: 55px;
-  color: white;
-  font-size: 34px;
+.habit{
+  border:1px solid var(--border);
+  border-radius:19px;
+  padding:20px;
+  background:#fff;
 }
 
-.hero-art::after {
-  content: "✧";
-  position: absolute;
-  right: 55px;
-  bottom: 55px;
-  color: white;
-  font-size: 45px;
+.habit-icon{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  background:#fff0f7;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:23px;
+  margin-bottom:14px;
 }
 
-.hero-crown {
-  width: 82%;
-  max-width: 430px;
-  filter: drop-shadow(0 24px 18px rgba(117, 68, 112, .25));
+.habit h4{
+  margin-bottom:5px;
 }
 
-.section {
-  max-width: 1250px;
-  margin: 0 auto;
-  padding: 70px 6%;
+.habit p{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:16px;
 }
 
-.section-heading {
-  text-align: center;
-  margin-bottom: 35px;
+.habit-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.section-heading h2 {
-  margin: 10px 0;
-  font-size: 43px;
-  font-weight: normal;
+.habit-streak{
+  font-size:12px;
+  color:#d36596;
 }
+
+/* ===== 日历 ===== */
 
-.section-heading p {
-  color: #8a6d83;
-  line-height: 1.7;
+.calendar-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
 }
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+.calendar-buttons{
+  display:flex;
+  gap:7px;
 }
 
-.product-card {
-  background: rgba(255,255,255,.75);
-  border: 1px solid rgba(185,77,131,.13);
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 12px 35px rgba(151,88,132,.08);
-  transition: .25s;
+.calendar-btn{
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  background:#fff1f7;
+  color:#c9578a;
 }
 
-.product-card:hover {
-  transform: translateY(-7px);
-  box-shadow: var(--soft-shadow);
+.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
 }
 
-.product-image {
-  min-height: 235px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: linear-gradient(145deg, #fff5fa, #f3eaff);
+.weekday{
+  text-align:center;
+  color:#a198a3;
+  font-size:12px;
+  padding-bottom:5px;
 }
 
-.product-image svg {
-  width: 100%;
-  max-width: 240px;
-  filter: drop-shadow(0 15px 12px rgba(108,70,120,.18));
+.calendar-day{
+  min-height:90px;
+  border:1px solid #f1e7ed;
+  border-radius:13px;
+  padding:9px;
+  background:#fff;
+  position:relative;
 }
 
-.product-info {
-  padding: 22px;
+.calendar-day.other{
+  opacity:.35;
 }
 
-.product-info h3 {
-  margin: 0 0 8px;
-  font-size: 21px;
+.calendar-day.today{
+  border:2px solid #ff9dc5;
 }
 
-.product-info p {
-  min-height: 65px;
-  color: #92778d;
-  font-size: 14px;
-  line-height: 1.6;
+.day-number{
+  font-size:12px;
+  font-weight:700;
 }
 
-.product-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+.day-dots{
+  display:flex;
+  flex-wrap:wrap;
+  gap:3px;
+  margin-top:9px;
 }
 
-.price {
-  color: var(--deep-pink);
-  font-size: 20px;
-  font-weight: bold;
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#ff9ec5;
 }
 
-.view-button {
-  border: 0;
-  border-radius: 999px;
-  padding: 9px 13px;
-  background: #f8d6e7;
-  color: #9c416e;
+.dot.green{
+  background:#72c99a;
 }
 
-.process {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+/* ===== 小组 ===== */
+
+.group-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:17px;
 }
 
-.process-card {
-  padding: 26px;
-  border-radius: 24px;
-  background: rgba(255,255,255,.68);
-  border: 1px solid rgba(185,77,131,.12);
-  text-align: center;
+.group-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:20px;
 }
 
-.process-number {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto 15px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #f5c4db;
-  color: #9f4675;
-  font-weight: bold;
+.group-cover{
+  height:90px;
+  border-radius:15px;
+  background:linear-gradient(135deg,#ffe0ee,#e9e3ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  margin-bottom:15px;
 }
 
-.process-card h3 {
-  margin: 10px 0;
+.group-card h4{
+  margin-bottom:5px;
 }
 
-.process-card p {
-  color: #8b7185;
-  font-size: 14px;
-  line-height: 1.6;
+.group-card p{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:16px;
 }
 
-.about-box {
-  border-radius: 34px;
-  padding: 45px;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.85), rgba(250,224,241,.85));
-  box-shadow: var(--soft-shadow);
-  text-align: center;
+.group-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.about-box h2 {
-  font-size: 42px;
-  font-weight: normal;
-  margin: 0 0 15px;
+.member-count{
+  color:#9a909d;
+  font-size:11px;
 }
+
+/* ===== 排行 ===== */
 
-.about-box p {
-  max-width: 750px;
-  margin: auto;
-  color: #80647b;
-  line-height: 1.8;
+.ranking-list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
 }
 
-footer {
-  padding: 35px 6%;
-  text-align: center;
-  color: #a17f98;
-  font-size: 13px;
+.rank-row{
+  display:flex;
+  align-items:center;
+  padding:15px;
+  border-radius:15px;
+  background:#fff;
+  border:1px solid var(--border);
 }
 
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: rgba(67, 40, 70, .55);
-  backdrop-filter: blur(8px);
+.rank-row.me{
+  background:#fff2f8;
+  border-color:#f7d1e1;
 }
 
-.modal.active {
-  display: flex;
+.rank-num{
+  width:38px;
+  font-size:18px;
+  font-weight:800;
+  text-align:center;
 }
 
-.modal-box {
-  width: min(850px, 100%);
-  max-height: 92vh;
-  overflow-y: auto;
-  background: #fffafd;
-  border-radius: 30px;
-  box-shadow: 0 30px 100px rgba(50,30,60,.3);
-  position: relative;
+.rank-avatar{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ff9bc5,#aaa0ff);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:13px;
+  font-weight:700;
+  margin-right:12px;
 }
 
-.close-button {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 36px;
-  height: 36px;
-  border: 0;
-  border-radius: 50%;
-  background: #f5d5e5;
-  color: #9f4675;
-  font-size: 22px;
-  z-index: 2;
+.rank-name{
+  flex:1;
+  font-weight:700;
 }
 
-.modal-content {
-  padding: 35px;
+.rank-score{
+  color:#d45f94;
+  font-weight:800;
 }
 
-.modal-product-image {
-  border-radius: 25px;
-  padding: 25px;
-  background: linear-gradient(145deg, #fff1f8, #eee5ff);
-  text-align: center;
+/* ===== 我的 ===== */
+
+.profile-card{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:25px;
+  align-items:center;
+  background:linear-gradient(120deg,#fff0f7,#f1eeff);
 }
 
-.modal-product-image svg {
-  width: min(100%, 440px);
-  max-height: 430px;
+.big-avatar{
+  width:90px;
+  height:90px;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff83b5,#a89aff);
+  color:white;
+  font-size:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
 }
 
-.modal-content h2 {
-  font-size: 38px;
-  font-weight: normal;
-  margin-bottom: 10px;
+.badges{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:18px;
 }
 
-.modal-content p {
-  color: #82677c;
-  line-height: 1.8;
+.badge{
+  text-align:center;
+  padding:20px 10px;
+  border-radius:17px;
+  background:#fff;
+  border:1px solid var(--border);
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 25px 0;
+.badge-icon{
+  font-size:30px;
+  margin-bottom:7px;
 }
 
-.step {
-  padding: 16px;
-  border-radius: 17px;
-  background: #fff0f7;
-  font-size: 14px;
-  line-height: 1.5;
+.badge small{
+  color:var(--muted);
 }
 
-.step strong {
-  display: block;
-  color: var(--deep-pink);
-  margin-bottom: 6px;
+/* ===== Toast ===== */
+
+.toast{
+  position:fixed;
+  right:25px;
+  bottom:25px;
+  background:#382f3d;
+  color:#fff;
+  padding:13px 17px;
+  border-radius:13px;
+  box-shadow:0 15px 30px rgba(0,0,0,.15);
+  opacity:0;
+  transform:translateY(15px);
+  pointer-events:none;
+  transition:.25s;
+  z-index:100;
+  font-size:13px;
 }
 
-.modal-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
 }
+
+/* ===== 手机 ===== */
 
-.notice {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 15px;
-  background: #fff4d9;
-  color: #99733d;
-  font-size: 13px;
-  line-height: 1.6;
+.mobile-menu{
+  display:none;
 }
 
-@media (max-width: 1000px) {
-  .products {
-    grid-template-columns: repeat(2, 1fr);
+@media(max-width:1000px){
+  .stats{
+    grid-template-columns:repeat(2,1fr);
   }
 
-  .process {
-    grid-template-columns: repeat(2, 1fr);
+  .grid-2{
+    grid-template-columns:1fr;
+  }
+
+  .habit-grid,
+  .group-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .form-grid{
+    grid-template-columns:1fr 1fr;
   }
 }
 
-@media (max-width: 760px) {
-  .nav {
-    display: none;
+@media(max-width:720px){
+  .sidebar{
+    width:72px;
+    padding:20px 10px;
   }
 
-  .hero {
-    grid-template-columns: 1fr;
-    padding-top: 45px;
+  .logo{
+    justify-content:center;
+    padding:0 0 25px;
   }
 
-  .hero-art {
-    min-height: 330px;
+  .logo-text,
+  .nav-label,
+  .mini-profile{
+    display:none;
   }
 
-  .products {
-    grid-template-columns: 1fr;
+  .nav-btn{
+    justify-content:center;
+    padding:13px 5px;
   }
 
-  .process {
-    grid-template-columns: 1fr;
+  .sidebar-bottom{
+    display:none;
   }
 
-  .about-box {
-    padding: 30px 22px;
+  .main{
+    margin-left:72px;
+    width:calc(100% - 72px);
+    padding:22px 15px 50px;
   }
 
-  .modal-content {
-    padding: 24px;
+  .topbar{
+    margin-bottom:20px;
   }
 
-  .steps {
-    grid-template-columns: 1fr;
+  .page-title{
+    font-size:24px;
+  }
+
+  .welcome{
+    padding:23px;
+  }
+
+  .welcome h2{
+    font-size:21px;
+  }
+
+  .progress-ring{
+    width:80px;
+    height:80px;
+  }
+
+  .progress-ring:before{
+    width:61px;
+    height:61px;
+  }
+
+  .stats{
+    gap:9px;
+  }
+
+  .stat{
+    padding:14px;
+  }
+
+  .stat-number{
+    font-size:22px;
+  }
+
+  .habit-grid,
+  .group-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .calendar-day{
+    min-height:60px;
+    padding:6px;
+  }
+
+  .day-dots{
+    margin-top:5px;
+  }
+
+  .profile-card{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .big-avatar{
+    margin:auto;
+  }
+
+  .badges{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 </style>
+
 </head>
 
 <body>
 
-<header class="topbar">
-  <a href="#" class="logo">
-    Dream Crown Atelier
-    <span>paper fantasy collection</span>
-  </a>
+<div class="app">
+
+<!-- ==================== 左侧菜单 ==================== -->
+
+<aside class="sidebar">
+
+  <div class="logo">
+    <div class="logo-icon">🌸</div>
+    <div class="logo-text">
+      <h1>DayBloom</h1>
+      <span>每一天都开花</span>
+    </div>
+  </div>
 
   <nav class="nav">
-    <a href="#collection">Collection</a>
-    <a href="#process">How It Works</a>
-    <a href="#about">About</a>
+
+```
+<button class="nav-btn active" data-page="today">
+  <span class="nav-icon">☀️</span>
+  <span class="nav-label">今日</span>
+</button>
+
+<button class="nav-btn" data-page="planner">
+  <span class="nav-icon">📝</span>
+  <span class="nav-label">我的计划</span>
+</button>
+
+<button class="nav-btn" data-page="checkin">
+  <span class="nav-icon">🌱</span>
+  <span class="nav-label">每日打卡</span>
+</button>
+
+<button class="nav-btn" data-page="calendar">
+  <span class="nav-icon">🗓️</span>
+  <span class="nav-label">我的日历</span>
+</button>
+
+<button class="nav-btn" data-page="groups">
+  <span class="nav-icon">👯</span>
+  <span class="nav-label">打卡小组</span>
+</button>
+
+<button class="nav-btn" data-page="ranking">
+  <span class="nav-icon">🏆</span>
+  <span class="nav-label">排行榜</span>
+</button>
+
+<button class="nav-btn" data-page="profile">
+  <span class="nav-icon">💗</span>
+  <span class="nav-label">我的</span>
+</button>
+```
+
   </nav>
 
-  <button class="cart-button" onclick="showCart()">
-    Cart <span id="cartCount">0</span>
+  <div class="sidebar-bottom">
+    <div class="mini-profile">
+      <div class="avatar" id="sideAvatar">M</div>
+      <div>
+        <strong id="sideName">Mia</strong>
+        <small>正在变得更好 ✨</small>
+      </div>
+    </div>
+  </div>
+
+</aside>
+
+<!-- ==================== 主内容 ==================== -->
+
+<main class="main">
+
+  <div class="topbar">
+    <div>
+      <div class="date-text" id="dateText"></div>
+      <h1 class="page-title" id="pageTitle">今日</h1>
+    </div>
+
+```
+<div class="top-actions">
+  <button class="icon-btn" id="notificationBtn" title="开启提醒">
+    🔔
   </button>
-</header>
+</div>
+```
 
-<section class="hero">
+  </div>
+
+  <!-- =========================================================
+       今日
+  ========================================================== -->
+
+  <section class="page active" id="page-today">
+
+```
+<div class="welcome">
+
   <div>
-    <div class="eyebrow">Printable fantasy paper art</div>
-
-    <h1>
-      Little crowns<br>
-      for <span>big dreams.</span>
-    </h1>
-
-    <p>
-      Discover magical printable paper-craft designs inspired by fairy tales,
-      moonlit gardens, enchanted birds and dreamy princess worlds.
-      Print, cut, fold and build your own miniature fantasy object.
-    </p>
-
-    <div class="hero-buttons">
-      <a href="#collection" class="primary-button">Explore Collection</a>
-      <a href="#process" class="secondary-button">See How It Works</a>
-    </div>
+    <h2 id="welcomeText">早上好，Mia 🌷</h2>
+    <p>把今天的小事情，一件一件完成吧。</p>
   </div>
 
-  <div class="hero-art">
-    <svg class="hero-crown" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="heroGold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#fff0b8"/>
-          <stop offset=".5" stop-color="#e9a7cf"/>
-          <stop offset="1" stop-color="#9d75d0"/>
-        </linearGradient>
-      </defs>
-      <path d="M90 345 L55 115 L170 210 L250 55 L330 210 L445 115 L410 345 Z"
-            fill="url(#heroGold)" stroke="#b77ab3" stroke-width="8"/>
-      <path d="M90 345 Q250 405 410 345 L392 390 Q250 445 108 390 Z"
-            fill="#f8c9df" stroke="#b77ab3" stroke-width="7"/>
-      <path d="M135 320 Q250 350 365 320" fill="none" stroke="#fff3fa" stroke-width="12"/>
-      <path d="M170 210 Q250 270 330 210" fill="none" stroke="#fff5ff" stroke-width="10"/>
-      <ellipse cx="250" cy="235" rx="47" ry="60" fill="#cda7f0" stroke="#a77bbd" stroke-width="6"/>
-      <path d="M225 250 Q250 205 275 250 Q250 290 225 250Z" fill="#fff5fb"/>
-      <circle cx="250" cy="205" r="15" fill="#fff4a8"/>
-      <g fill="#fff8d6">
-        <circle cx="125" cy="280" r="10"/>
-        <circle cx="375" cy="280" r="10"/>
-        <circle cx="170" cy="330" r="8"/>
-        <circle cx="330" cy="330" r="8"/>
-      </g>
-    </svg>
-  </div>
-</section>
-
-<section class="section" id="collection">
-  <div class="section-heading">
-    <div class="eyebrow">The first collection</div>
-    <h2>Eight different little fantasies</h2>
-    <p>
-      Every design has its own silhouette, decoration and story.
-      Choose one to see the finished piece and the building steps.
-    </p>
+  <div class="progress-ring" id="progressRing">
+    <strong id="progressPercent">0%</strong>
   </div>
 
-  <div class="products">
-
-    <article class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 300 260">
-          <path d="M55 150 L150 55 L245 150 V225 H55Z" fill="#f4b9d7" stroke="#b96f9d" stroke-width="5"/>
-          <path d="M55 150 L150 55 L245 150" fill="none" stroke="#fff1fa" stroke-width="12"/>
-          <path d="M88 160 V225 H212 V160 Q150 115 88 160Z" fill="#fff0f8" stroke="#c38ab1" stroke-width="4"/>
-          <rect x="120" y="174" width="60" height="51" rx="5" fill="#d5b4ef" stroke="#a77dbf" stroke-width="4"/>
-          <path d="M150 55 V25 M138 38 L150 25 L162 38" stroke="#b96f9d" stroke-width="5" fill="none"/>
-          <circle cx="150" cy="110" r="23" fill="#fff5c5" stroke="#cda65b" stroke-width="4"/>
-          <path d="M150 87 L157 104 L176 106 L161 119 L165 138 L150 129 L135 138 L139 119 L124 106 L143 104Z" fill="#f7d58d"/>
-        </svg>
-      </div>
-      <div class="product-info">
-        <h3>Dreamy Phoenix Crown</h3>
-        <p>A pink, violet and blue fantasy crown with rising phoenix wings.</p>
-        <div class="product-bottom">
-          <span class="price">€6.90</span>
-          <button class="view-button" onclick="openProduct(0)">View Design</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 300 260">
-          <path d="M150 30 C105 60 55 110 70 190 Q150 245 230 190 C245 110 195 60 150 30Z" fill="#b8eafa" stroke="#79b9d8" stroke-width="5"/>
-          <path d="M150 50 C125 95 120 150 150 215 C180 150 175 95 150 50Z" fill="#e8fbff" stroke="#79b9d8" stroke-width="4"/>
-          <path d="M70 190 Q150 155 230 190" fill="none" stroke="#fff" stroke-width="9"/>
-          <circle cx="150" cy="125" r="25" fill="#fff5ce" stroke="#c5a76a" stroke-width="4"/>
-          <path d="M150 100 L158 117 L177 120 L163 134 L166 153 L150 144 L134 153 L137 134 L123 120 L142 117Z" fill="#c1e7ff"/>
-          <g fill="#d8f7ff" stroke="#79b9d8" stroke-width="3">
-            <path d="M95 90 Q55 60 70 35 Q115 35 130 85Z"/>
-            <path d="M205 90 Q245 60 230 35 Q185 35 170 85Z"/>
-          </g>
-        </svg>
-      </div>
-      <div class="product-info">
-        <h3>Ice Butterfly Crown</h3>
-        <p>An icy blue crown with crystal butterfly wings and frosted details.</p>
-        <div class="product-bottom">
-          <span class="price">€7.50</span>
-          <button class="view-button" onclick="openProduct(1)">View Design</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 300 260">
-          <path d="M150 25 L195 90 L255 75 L220 140 L245 205 L150 180 L55 205 L80 140 L45 75 L105 90Z" fill="#6f4d9e" stroke="#4d3479" stroke-width="5"/>
-          <path d="M150 25 L150 180" stroke="#bda4ed" stroke-width="8"/>
-          <path d="M55 205 Q150 230 245 205" fill="none" stroke="#bda4ed" stroke-width="12"/>
-          <circle cx="150" cy="120" r="34" fill="#d9c5ff" stroke="#b49ae4" stroke-width="5"/>
-          <circle cx="150" cy="120" r="20" fill="#fff2b7"/>
-          <path d="M150 88 L159 109 L182 112 L165 128 L170 150 L150 139 L130 150 L135 128 L118 112 L141 109Z" fill="#f6dcff"/>
-          <g fill="#fff4c7">
-            <circle cx="90" cy="145" r="6"/>
-            <circle cx="210" cy="145" r="6"/>
-            <circle cx="110" cy="185" r="5"/>
-            <circle cx="190" cy="185" r="5"/>
-          </g>
-        </svg>
-      </div>
-      <div class="product-info">
-        <h3>Moonlit Phoenix Crown</h3>
-        <p>A deep violet moon crown with dramatic midnight phoenix feathers.</p>
-        <div class="product-bottom">
-          <span class="price">€8.20</span>
-          <button class="view-button" onclick="openProduct(2)">View Design</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 300 260">
-          <path d="M150 30 L190 85 L250 70 L215 130 L235 210 L150 180 L65 210 L85 130 L50 70 L110 85Z" fill="#9ed5a8" stroke="#5e9f77" stroke-width="5"/>
-          <path d="M150 30 V180" stroke="#d9f5d7" stroke-width="9"/>
-          <path d="M70 205 Q150 230 230 205" fill="none" stroke="#d4f0cf" stroke-width="12"/>
-          <circle cx="150" cy="115" r="34" fill="#e6f6ca" stroke="#8fbd82" stroke-width="5"/>
-          <path d="M150 84 L160 105 L184 108 L166 125 L171 148 L150 136 L129 148 L134 125 L116 108 L140 105Z" fill="#fff5c7"/>
-          <g fill="#f8b8d5" stroke="#9c6a94" stroke-width="3">
-            <circle cx="92" cy="135" r="10"/>
-            <circle cx="208" cy="135" r="10"/>
-            <circle cx="108" cy="175" r="8"/>
-            <circle cx="192" cy="175" r="8"/>
-          </g>
-        </svg>
-      </div>
-      <div class="product-info">
-        <h3>Emerald Garden Crown</h3>
-        <p>A botanical crown covered in leaves, flowers and tiny garden gems.</p>
-        <div class="product-bottom">
-          <span class="price">€7.90</span>
-          <button class="view-button" onclick="openProduct(3)">View Design</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 300 260">
-          <path d="M150 25 L190 95 L255 70 L215 145 L240 215 L150 180 L60 215 L85 145 L45 70 L110 95Z" fill="#e8c57e" stroke="#b58b43" stroke-width="5"/>
-          <path d="M150 25 V180" stroke="#fff1ba" stroke-width="9"/>
-          <path d="M70 207 Q150 230 230 207" fill="none" stroke="#f8e2a5" stroke-width="12"/>
-          <circle cx="150" cy="120" r="34" fill="#f9e5a9" stroke="#c59b4c" stroke-width="5"/>
-          <path d="M150 88 L160 108 L184 111 L166 128 L171 150 L150 138 L129 150 L134 128 L116 111 L140 108Z" fill="#fff8dd"/>
-          <g fill="#fff0ba">
-            <circle cx="90" cy="145" r="7"/>
-            <circle cx="210" cy="145" r="7"/>
-            <circle cx="110" cy="180" r="6"/>
-            <circle cx="190" cy="180" r="6"/>
-          </g>
-        </svg>
-      </div>
-      <div class="product-info">
-        <h3>Golden Dynasty Crown</h3>
-        <p>A warm golden crown with elegant palace-inspired symmetrical details.</p>
-        <div class="product-bottom">
-          <span class="price">€8.90</span>
-          <button class="view-button" onclick="openProduct(4)">View Design</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 300 260">
-          <path d="M150 35 L188 95 L250 80 L220 145 L240 205 L150 180 L60 205 L80 145 L50 80 L112 95Z" fill="#e8edf5" stroke="#aab9ce" stroke-width="5"/>
-          <path d="M150 35 V180" stroke="#fff" stroke-width="9"/>
-          <path d="M70 205 Q150 230 230 205" fill="none" stroke="#f8fbff" stroke-width="12"/>
-          <circle cx="150" cy="120" r="34" fill="#fff" stroke="#aab9ce" stroke-width="5"/>
-          <path d="M150 88 L160 108 L184 111 L166 128 L171 150 L150 138 L129 150 L134 128 L116 111 L140 108Z" fill="#c9d6e9"/>
-          <g fill="#fff">
-            <circle cx="90" cy="145" r="7"/>
-            <circle cx="210" cy="145" r="7"/>
-            <circle cx="110" cy="180" r="6"/>
-            <circle cx="190" cy="180" r="6"/>
-          </g>
-        </svg>
-      </div>
-      <div class="product-info">
-        <h3>Swan Princess Crown</h3>
-        <p>A soft silver-white crown inspired by swan feathers and ballet costumes.</p>
-        <div class="product-bottom">
-          <span class="price">€7.70</span>
-          <button class="view-button" onclick="openProduct(5)">View Design</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 300 260">
-          <path d="M150 25 L190 90 L250 75 L215 140 L235 210 L150 180 L65 210 L85 140 L50 75 L110 90Z" fill="#c7b0ed" stroke="#9479c5" stroke-width="5"/>
-          <path d="M150 25 V180" stroke="#eee1ff" stroke-width="9"/>
-          <path d="M70 205 Q150 230 230 205" fill="none" stroke="#e8d8ff" stroke-width="12"/>
-          <circle cx="150" cy="120" r="34" fill="#eadfff" stroke="#aa92d4" stroke-width="5"/>
-          <path d="M150 88 L160 108 L184 111 L166 128 L171 150 L150 138 L129 150 L134 128 L116 111 L140 108Z" fill="#fff4b9"/>
-          <g fill="#f5d3ff" stroke="#9479c5" stroke-width="2">
-            <path d="M95 135 Q55 110 70 80 Q110 90 120 130Z"/>
-            <path d="M205 135 Q245 110 230 80 Q190 90 180 130Z"/>
-          </g>
-        </svg>
-      </div>
-      <div class="product-info">
-        <h3>Lavender Fairy Crown</h3>
-        <p>A delicate lavender fairy crown with soft wings and floating petals.</p>
-        <div class="product-bottom">
-          <span class="price">€7.30</span>
-          <button class="view-button" onclick="openProduct(6)">View Design</button>
-        </div>
-      </div>
-    </article>
-
-    <article class="product-card">
-      <div class="product-image">
-        <svg viewBox="0 0 300 260">
-          <path d="M150 25 L195 90 L260 65 L220 140 L245 215 L150 180 L55 215 L80 140 L40 65 L105 90Z" fill="#d99bbd" stroke="#a96c9b" stroke-width="5"/>
-          <path d="M150 25 V180" stroke="#f8d9ef" stroke-width="9"/>
-          <path d="M70 205 Q150 230 230 205" fill="none" stroke="#f4c6df" stroke-width="12"/>
-          <circle cx="150" cy="120" r="34" fill="#f0b6d5" stroke="#bd78aa" stroke-width="5"/>
-          <path d="M150 88 L160 108 L184 111 L166 128 L171 150 L150 138 L129 150 L134 128 L116 111 L140 108Z" fill="#fff3ba"/>
-          <g fill="#fff0c8">
-            <circle cx="90" cy="145" r="7"/>
-            <circle cx="210" cy="145" r="7"/>
-            <circle cx="110" cy="180" r="6"/>
-            <circle cx="190" cy="180" r="6"/>
-          </g>
-          <g fill="#a98be0">
-            <circle cx="75" cy="95" r="5"/>
-            <circle cx="225" cy="95" r="5"/>
-            <circle cx="100" cy="55" r="4"/>
-            <circle cx="200" cy="55" r="4"/>
-          </g>
-        </svg>
-      </div>
-      <div class="product-info">
-        <h3>Rose Galaxy Crown</h3>
-        <p>A rose-pink cosmic crown with stars, petals and a dreamy galaxy center.</p>
-        <div class="product-bottom">
-          <span class="price">€8.50</span>
-          <button class="view-button" onclick="openProduct(7)">View Design</button>
-        </div>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-<section class="section" id="process">
-  <div class="section-heading">
-    <div class="eyebrow">From flat paper to fantasy</div>
-    <h2>How it works</h2>
-    <p>Each digital product is designed to become a real handmade object.</p>
-  </div>
-
-  <div class="process">
-    <div class="process-card">
-      <div class="process-number">1</div>
-      <h3>Download</h3>
-      <p>Receive your printable PDF pattern after purchase.</p>
-    </div>
-
-    <div class="process-card">
-      <div class="process-number">2</div>
-      <h3>Print</h3>
-      <p>Print the pattern on thicker paper or cardstock.</p>
-    </div>
-
-    <div class="process-card">
-      <div class="process-number">3</div>
-      <h3>Cut & Fold</h3>
-      <p>Follow the cutting lines, folding lines and numbered tabs.</p>
-    </div>
-
-    <div class="process-card">
-      <div class="process-number">4</div>
-      <h3>Build</h3>
-      <p>Glue the pieces together and reveal your fantasy crown.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="about">
-  <div class="about-box">
-    <h2>Make something impossible from paper.</h2>
-    <p>
-      Dream Crown Atelier creates original printable paper-craft designs
-      for people who love miniature worlds, fantasy fashion, princess rooms,
-      fairy-tale objects and beautiful handmade decorations.
-      Every collection is designed to feel like a tiny piece of another world.
-    </p>
-  </div>
-</section>
-
-<footer>
-  © 2026 Dream Crown Atelier · Printable fantasy paper art
-</footer>
-
-<div class="modal" id="productModal">
-  <div class="modal-box">
-    <button class="close-button" onclick="closeProduct()">×</button>
-
-    <div class="modal-content">
-      <div class="modal-product-image" id="modalImage"></div>
-
-      <h2 id="modalTitle"></h2>
-      <p id="modalDescription"></p>
-
-      <div class="steps">
-        <div class="step">
-          <strong>Step 1</strong>
-          Print the pattern on cardstock.
-        </div>
-
-        <div class="step">
-          <strong>Step 2</strong>
-          Cut along the solid lines.
-        </div>
-
-        <div class="step">
-          <strong>Step 3</strong>
-          Fold along the dashed lines.
-        </div>
-
-        <div class="step">
-          <strong>Step 4</strong>
-          Glue the main structure.
-        </div>
-
-        <div class="step">
-          <strong>Step 5</strong>
-          Add the decorative layers.
-        </div>
-
-        <div class="step">
-          <strong>Step 6</strong>
-          Display your finished fantasy piece.
-        </div>
-      </div>
-
-      <div class="modal-actions">
-        <div class="price" id="modalPrice"></div>
-        <button class="primary-button" onclick="addToCart()">
-          Add to Cart
-        </button>
-      </div>
-
-      <div class="notice">
-        Important: this website currently demonstrates the product gallery
-        and shopping flow. Before selling publicly, replace the demo checkout
-        with a real payment provider and upload the actual printable PDF files.
-      </div>
-    </div>
-  </div>
 </div>
 
+
+<div class="stats">
+
+  <div class="stat">
+    <div class="stat-top">
+      <span class="stat-label">今日完成</span>
+      <div class="stat-icon">✅</div>
+    </div>
+    <div class="stat-number" id="statCompleted">0</div>
+    <div class="stat-label">件任务</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-top">
+      <span class="stat-label">连续打卡</span>
+      <div class="stat-icon">🔥</div>
+    </div>
+    <div class="stat-number" id="statStreak">0</div>
+    <div class="stat-label">天</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-top">
+      <span class="stat-label">本月打卡</span>
+      <div class="stat-icon">🌷</div>
+    </div>
+    <div class="stat-number" id="statMonth">0</div>
+    <div class="stat-label">次</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-top">
+      <span class="stat-label">最佳月份</span>
+      <div class="stat-icon">🏆</div>
+    </div>
+    <div class="stat-number" id="statBest">0</div>
+    <div class="stat-label">次打卡</div>
+  </div>
+
+</div>
+
+
+<div class="grid-2">
+
+  <div class="card">
+
+    <div class="section-title">
+      <h3>📋 今天的时间线</h3>
+      <button class="link-btn" onclick="showPage('planner')">
+        + 添加任务
+      </button>
+    </div>
+
+    <div class="timeline" id="todayTimeline"></div>
+
+  </div>
+
+
+  <div>
+
+    <div class="card">
+
+      <div class="section-title">
+        <h3>⏰ 现在</h3>
+      </div>
+
+      <div class="now-box">
+
+        <div class="now-label" id="nowLabel">
+          当前没有进行中的任务
+        </div>
+
+        <div class="now-title" id="currentTask">
+          可以休息一下 🌷
+        </div>
+
+        <div class="countdown" id="countdown">
+          --:--
+        </div>
+
+        <div class="small-muted" id="nextTaskText">
+          等待下一个任务
+        </div>
+
+      </div>
+
+      <div class="streak-box">
+
+        <div>
+          <div class="small-muted">你的连续记录</div>
+          <strong style="font-size:22px" id="streakText">
+            0 天
+          </strong>
+        </div>
+
+        <div class="fire">🔥</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <!-- =========================================================
+       我的计划
+  ========================================================== -->
+
+  <section class="page" id="page-planner">
+
+```
+<div class="card" style="margin-bottom:20px">
+
+  <div class="section-title">
+    <h3>➕ 添加一个新任务</h3>
+  </div>
+
+  <form id="taskForm">
+
+    <div class="form-grid">
+
+      <div class="field">
+        <label>任务名称</label>
+        <input id="taskTitle" required placeholder="例如：学习英语">
+      </div>
+
+      <div class="field">
+        <label>日期</label>
+        <input id="taskDate" type="date" required>
+      </div>
+
+      <div class="field">
+        <label>开始时间</label>
+        <input id="taskStart" type="time" required>
+      </div>
+
+      <div class="field">
+        <label>结束时间</label>
+        <input id="taskEnd" type="time" required>
+      </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+      <div class="field">
+        <label>分类</label>
+        <select id="taskCategory">
+          <option>学习</option>
+          <option>工作</option>
+          <option>运动</option>
+          <option>生活</option>
+          <option>休息</option>
+          <option>其他</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>提前提醒</label>
+        <select id="taskReminder">
+          <option value="0">不提醒</option>
+          <option value="5">提前 5 分钟</option>
+          <option value="10">提前 10 分钟</option>
+          <option value="15">提前 15 分钟</option>
+          <option value="30">提前 30 分钟</option>
+        </select>
+      </div>
+
+      <div class="field" style="grid-column:span 2">
+        <label>备注</label>
+        <input id="taskNotes" placeholder="例如：完成数学第三章">
+      </div>
+
+    </div>
+
+    <button class="primary-btn" type="submit">
+      ✨ 加入我的计划
+    </button>
+
+  </form>
+
+</div>
+
+
+<div class="card">
+
+  <div class="section-title">
+    <h3>📚 我的任务</h3>
+    <span class="small-muted" id="taskCount"></span>
+  </div>
+
+  <div class="task-list" id="allTasks"></div>
+
+</div>
+```
+
+  </section>
+
+  <!-- =========================================================
+       每日打卡
+  ========================================================== -->
+
+  <section class="page" id="page-checkin">
+
+```
+<div class="card" style="margin-bottom:20px">
+
+  <div class="section-title">
+    <div>
+      <h3>🌱 每日习惯</h3>
+      <div class="small-muted" style="margin-top:5px">
+        每完成一次，就离理想中的自己更近一点。
+      </div>
+    </div>
+  </div>
+
+  <div class="habit-grid" id="habitGrid"></div>
+
+</div>
+```
+
+  </section>
+
+  <!-- =========================================================
+       日历
+  ========================================================== -->
+
+  <section class="page" id="page-calendar">
+
+```
+<div class="card">
+
+  <div class="calendar-header">
+
+    <h3 id="calendarTitle">2026年9月</h3>
+
+    <div class="calendar-buttons">
+      <button class="calendar-btn" id="prevMonth">‹</button>
+      <button class="calendar-btn" id="todayMonth">今</button>
+      <button class="calendar-btn" id="nextMonth">›</button>
+    </div>
+
+  </div>
+
+  <div class="calendar-grid" id="calendarGrid"></div>
+
+</div>
+```
+
+  </section>
+
+  <!-- =========================================================
+       小组
+  ========================================================== -->
+
+  <section class="page" id="page-groups">
+
+```
+<div class="card" style="margin-bottom:20px">
+
+  <div class="section-title">
+
+    <div>
+      <h3>👯 打卡小组</h3>
+      <div class="small-muted" style="margin-top:5px">
+        和其他人一起坚持，会更有仪式感。
+      </div>
+    </div>
+
+    <button class="primary-btn" onclick="createGroup()">
+      + 创建小组
+    </button>
+
+  </div>
+
+</div>
+
+
+<div class="group-grid" id="groupGrid"></div>
+```
+
+  </section>
+
+  <!-- =========================================================
+       排行
+  ========================================================== -->
+
+  <section class="page" id="page-ranking">
+
+```
+<div class="card">
+
+  <div class="section-title">
+
+    <div>
+      <h3>🏆 本周排行榜</h3>
+      <div class="small-muted" style="margin-top:5px">
+        根据本周完成任务和打卡次数计算。
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ranking-list" id="rankingList"></div>
+
+</div>
+```
+
+  </section>
+
+  <!-- =========================================================
+       我的
+  ========================================================== -->
+
+  <section class="page" id="page-profile">
+
+```
+<div class="card profile-card">
+
+  <div class="big-avatar" id="bigAvatar">M</div>
+
+  <div>
+    <h2 id="profileName">Mia</h2>
+    <p class="small-muted" style="margin-top:7px">
+      每天一点点，慢慢变成自己喜欢的样子。
+    </p>
+
+    <div style="margin-top:17px">
+
+      <button class="secondary-btn" onclick="changeName()">
+        ✏️ 修改昵称
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="card" style="margin-top:20px">
+
+  <div class="section-title">
+    <h3>🏅 我的成就</h3>
+  </div>
+
+  <div class="badges">
+
+    <div class="badge">
+      <div class="badge-icon">🌱</div>
+      <strong>初次打卡</strong>
+      <br>
+      <small>完成第一次</small>
+    </div>
+
+    <div class="badge">
+      <div class="badge-icon">🔥</div>
+      <strong>坚持 3 天</strong>
+      <br>
+      <small>连续完成</small>
+    </div>
+
+    <div class="badge">
+      <div class="badge-icon">🌸</div>
+      <strong>七日花开</strong>
+      <br>
+      <small>坚持一周</small>
+    </div>
+
+    <div class="badge">
+      <div class="badge-icon">👑</div>
+      <strong>小小冠军</strong>
+      <br>
+      <small>完成 30 次</small>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="card" style="margin-top:20px">
+
+  <div class="section-title">
+    <h3>💡 关于 DayBloom</h3>
+  </div>
+
+  <p class="small-muted" style="line-height:1.8">
+    DayBloom 是一个帮助你规划一天、记录习惯、
+    参与打卡和观察成长的小工具。
+    <br><br>
+    当前版本使用浏览器本地存储数据。
+    如果之后加入真正的多人账户、实时小组和全球排行榜，
+    可以再接入数据库和登录系统。
+  </p>
+
+</div>
+```
+
+  </section>
+
+</main>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
-const products = [
-  {
-    title: "Dreamy Phoenix Crown",
-    price: "€6.90",
-    description: "A pink, violet and blue fantasy crown with rising phoenix wings. The finished design has a soft fairytale silhouette and layered decorative details.",
-    image: document.querySelectorAll(".product-image")[0].innerHTML
+
+/* =========================================================
+   DayBloom 数据
+========================================================= */
+
+const STORAGE_KEY = "daybloom-v1";
+
+const defaultData = {
+
+  profile:{
+    name:"Mia"
   },
-  {
-    title: "Ice Butterfly Crown",
-    price: "€7.50",
-    description: "An icy blue crown with crystal butterfly wings, frosted details and a delicate winter-princess atmosphere.",
-    image: document.querySelectorAll(".product-image")[1].innerHTML
-  },
-  {
-    title: "Moonlit Phoenix Crown",
-    price: "€8.20",
-    description: "A dramatic midnight crown inspired by moonlight, deep violet velvet and elegant phoenix feathers.",
-    image: document.querySelectorAll(".product-image")[2].innerHTML
-  },
-  {
-    title: "Emerald Garden Crown",
-    price: "€7.90",
-    description: "A botanical crown covered in leaves, flowers and tiny garden gems. It is designed to feel like a secret enchanted garden.",
-    image: document.querySelectorAll(".product-image")[3].innerHTML
-  },
-  {
-    title: "Golden Dynasty Crown",
-    price: "€8.90",
-    description: "A warm golden crown with elegant palace-inspired symmetry, soft cream details and a royal fairytale feeling.",
-    image: document.querySelectorAll(".product-image")[4].innerHTML
-  },
-  {
-    title: "Swan Princess Crown",
-    price: "€7.70",
-    description: "A silver-white crown inspired by swan feathers, ballet costumes and graceful winter princesses.",
-    image: document.querySelectorAll(".product-image")[5].innerHTML
-  },
-  {
-    title: "Lavender Fairy Crown",
-    price: "€7.30",
-    description: "A delicate lavender fairy crown with soft wings, floating petals and a dreamy woodland atmosphere.",
-    image: document.querySelectorAll(".product-image")[6].innerHTML
-  },
-  {
-    title: "Rose Galaxy Crown",
-    price: "€8.50",
-    description: "A rose-pink cosmic crown with stars, petals and a dreamy galaxy center for a magical celestial look.",
-    image: document.querySelectorAll(".product-image")[7].innerHTML
+
+  tasks:[
+    {
+      id:1,
+      title:"起床 & 整理房间",
+      date:new Date().toISOString().slice(0,10),
+      start:"07:30",
+      end:"08:00",
+      category:"生活",
+      reminder:0,
+      notes:"",
+      done:false
+    },
+    {
+      id:2,
+      title:"学习 / 工作",
+      date:new Date().toISOString().slice(0,10),
+      start:"09:00",
+      end:"11:00",
+      category:"学习",
+      reminder:10,
+      notes:"专注完成今天最重要的事情",
+      done:false
+    },
+    {
+      id:3,
+      title:"午饭 & 休息",
+      date:new Date().toISOString().slice(0,10),
+      start:"12:00",
+      end:"13:00",
+      category:"休息",
+      reminder:5,
+      notes:"",
+      done:false
+    },
+    {
+      id:4,
+      title:"运动 30 分钟",
+      date:new Date().toISOString().slice(0,10),
+      start:"18:00",
+      end:"18:30",
+      category:"运动",
+      reminder:10,
+      notes:"",
+      done:false
+    }
+  ],
+
+  habits:[
+    {
+      id:1,
+      name:"喝水",
+      icon:"💧",
+      description:"今天喝够 8 杯水",
+      streak:0
+    },
+    {
+      id:2,
+      name:"阅读",
+      icon:"📖",
+      description:"每天阅读 20 分钟",
+      streak:0
+    },
+    {
+      id:3,
+      name:"运动",
+      icon:"🏃",
+      description:"至少运动 30 分钟",
+      streak:0
+    },
+    {
+      id:4,
+      name:"早睡",
+      icon:"🌙",
+      description:"23:30 前准备睡觉",
+      streak:0
+    },
+    {
+      id:5,
+      name:"学习",
+      icon:"🎓",
+      description:"完成今天的学习目标",
+      streak:0
+    },
+    {
+      id:6,
+      name:"护肤",
+      icon:"🧴",
+      description:"完成早晚护肤",
+      streak:0
+    }
+  ],
+
+  habitChecks:{},
+
+  groups:[
+    {
+      id:1,
+      name:"早起挑战 21 天",
+      icon:"🌅",
+      members:128,
+      description:"每天早起，开启更有精神的一天。"
+    },
+    {
+      id:2,
+      name:"Study With Me",
+      icon:"📚",
+      members:356,
+      description:"一起学习，一起完成今日计划。"
+    },
+    {
+      id:3,
+      name:"30 天运动打卡",
+      icon:"🏃",
+      members:219,
+      description:"每天动一动，让身体慢慢变好。"
+    },
+    {
+      id:4,
+      name:"早睡早起俱乐部",
+      icon:"🌙",
+      members:94,
+      description:"一起养成规律作息。"
+    },
+    {
+      id:5,
+      name:"女孩成长小组",
+      icon:"🌸",
+      members:531,
+      description:"记录每一个变好的小瞬间。"
+    },
+    {
+      id:6,
+      name:"Daily Productivity",
+      icon:"✨",
+      members:287,
+      description:"每天完成重要的事情。"
+    }
+  ],
+
+  joinedGroups:[],
+
+  customGroups:[],
+
+  notified:[]
+
+};
+
+
+let data = loadData();
+
+let calendarDate = new Date();
+
+
+/* =========================================================
+   数据读取
+========================================================= */
+
+function loadData(){
+
+  try{
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if(saved){
+
+      const parsed = JSON.parse(saved);
+
+      return {
+        ...defaultData,
+        ...parsed
+      };
+
+    }
+
+  }catch(e){
+
+    console.log("读取本地数据失败",e);
+
   }
-];
 
-let selectedProduct = null;
-let cart = [];
-
-function openProduct(index) {
-  selectedProduct = products[index];
-
-  document.getElementById("modalImage").innerHTML = selectedProduct.image;
-  document.getElementById("modalTitle").textContent = selectedProduct.title;
-  document.getElementById("modalDescription").textContent = selectedProduct.description;
-  document.getElementById("modalPrice").textContent = selectedProduct.price;
-
-  document.getElementById("productModal").classList.add("active");
-  document.body.style.overflow = "hidden";
+  return JSON.parse(JSON.stringify(defaultData));
 }
 
-function closeProduct() {
-  document.getElementById("productModal").classList.remove("active");
-  document.body.style.overflow = "";
-}
 
-function addToCart() {
-  if (!selectedProduct) return;
+function saveData(){
 
-  cart.push(selectedProduct);
-  document.getElementById("cartCount").textContent = cart.length;
-
-  alert(
-    selectedProduct.title +
-    " was added to your cart.\n\n" +
-    "Demo mode: connect a real payment provider before selling."
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify(data)
   );
 
-  closeProduct();
 }
 
-function showCart() {
-  if (cart.length === 0) {
-    alert("Your cart is empty.");
-    return;
-  }
 
-  const items = cart
-    .map(item => "• " + item.title + " — " + item.price)
-    .join("\n");
+/* =========================================================
+   日期工具
+========================================================= */
 
-  alert(
-    "Your cart:\n\n" +
-    items +
-    "\n\nDemo checkout only.\n" +
-    "Later you can connect Stripe, PayPal or Gumroad."
-  );
+function getToday(){
+
+  const d = new Date();
+
+  return d.getFullYear()
+    + "-"
+    + String(d.getMonth()+1).padStart(2,"0")
+    + "-"
+    + String(d.getDate()).padStart(2,"0");
+
 }
 
-document.getElementById("productModal").addEventListener("click", function(event) {
-  if (event.target === this) {
-    closeProduct();
-  }
+
+function formatDate(date){
+
+  const d = new Date(date);
+
+  return d.getFullYear()
+    + "年"
+    + (d.getMonth()+1)
+    + "月"
+    + d.getDate()
+    + "日";
+
+}
+
+
+function formatDateCN(dateString){
+
+  const parts = dateString.split("-");
+
+  return `${parts[1]}月${parts[2]}日`;
+
+}
+
+
+function getMonthKey(date){
+
+  return date.slice(0,7);
+
+}
+
+
+/* =========================================================
+   HTML 安全
+========================================================= */
+
+function escapeHTML(str){
+
+  return String(str || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   Toast
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+  const toast = document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(()=>{
+
+    toast.classList.remove("show");
+
+  },2600);
+
+}
+
+
+/* =========================================================
+   页面导航
+========================================================= */
+
+const pageTitles = {
+
+  today:"今日",
+
+  planner:"我的计划",
+
+  checkin:"每日打卡",
+
+  calendar:"我的日历",
+
+  groups:"打卡小组",
+
+  ranking:"排行榜",
+
+  profile:"我的"
+
+};
+
+
+document.querySelectorAll(".nav-btn").forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    showPage(btn.dataset.page);
+
+  });
+
 });
+
+
+function showPage(page){
+
+  document.querySelectorAll(".nav-btn").forEach(btn=>{
+
+    btn.classList.toggle(
+      "active",
+      btn.dataset.page === page
+    );
+
+  });
+
+
+  document.querySelectorAll(".page").forEach(section=>{
+
+    section.classList.remove("active");
+
+  });
+
+
+  const target = document.getElementById("page-"+page);
+
+  if(target){
+
+    target.classList.add("active");
+
+  }
+
+
+  document.getElementById("pageTitle").textContent =
+    pageTitles[page] || "DayBloom";
+
+
+  if(page === "today") renderToday();
+
+  if(page === "planner") renderTasks();
+
+  if(page === "checkin") renderHabits();
+
+  if(page === "calendar") renderCalendar();
+
+  if(page === "groups") renderGroups();
+
+  if(page === "ranking") renderRanking();
+
+  if(page === "profile") renderProfile();
+
+}
+
+
+/* =========================================================
+   顶部日期
+========================================================= */
+
+function renderTopDate(){
+
+  const now = new Date();
+
+  const days = [
+    "星期日",
+    "星期一",
+    "星期二",
+    "星期三",
+    "星期四",
+    "星期五",
+    "星期六"
+  ];
+
+  document.getElementById("dateText").textContent =
+    `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日 · ${days[now.getDay()]}`;
+
+}
+
+
+/* =========================================================
+   欢迎语
+========================================================= */
+
+function getGreeting(){
+
+  const hour = new Date().getHours();
+
+  if(hour < 6) return "夜深了";
+
+  if(hour < 12) return "早上好";
+
+  if(hour < 18) return "下午好";
+
+  return "晚上好";
+
+}
+
+
+function renderProfile(){
+
+  const name = data.profile.name || "Mia";
+
+  document.getElementById("sideName").textContent = name;
+
+  document.getElementById("sideAvatar").textContent =
+    name.charAt(0).toUpperCase();
+
+  document.getElementById("profileName").textContent = name;
+
+  document.getElementById("bigAvatar").textContent =
+    name.charAt(0).toUpperCase();
+
+}
+
+
+function renderWelcome(){
+
+  const name = data.profile.name || "Mia";
+
+  document.getElementById("welcomeText").textContent =
+    `${getGreeting()}，${name} 🌷`;
+
+}
+
+
+/* =========================================================
+   统计数据
+========================================================= */
+
+function getTodayTasks(){
+
+  return data.tasks
+    .filter(t=>t.date === getToday())
+    .sort((a,b)=>a.start.localeCompare(b.start));
+
+}
+
+
+function getCompletedToday(){
+
+  return getTodayTasks()
+    .filter(t=>t.done)
+    .length;
+
+}
+
+
+function getCurrentStreak(){
+
+  let streak = 0;
+
+  const d = new Date();
+
+  for(let i=0;i<365;i++){
+
+    const date =
+      d.getFullYear()
+      + "-"
+      + String(d.getMonth()+1).padStart(2,"0")
+      + "-"
+      + String(d.getDate()).padStart(2,"0");
+
+    const checks = data.habitChecks[date] || [];
+
+    const completedTasks =
+      data.tasks.some(
+        t=>t.date === date && t.done
+      );
+
+    if(checks.length > 0 || completedTasks){
+
+      streak++;
+
+    }else{
+
+      if(i === 0){
+
+        d.setDate(d.getDate()-1);
+        continue;
+
+      }
+
+      break;
+
+    }
+
+    d.setDate(d.getDate()-1);
+
+  }
+
+  return streak;
+
+}
+
+
+function getMonthlyCheckins(){
+
+  const prefix = getToday().slice(0,7);
+
+  let count = 0;
+
+  Object.keys(data.habitChecks).forEach(date=>{
+
+    if(date.startsWith(prefix)){
+
+      count += data.habitChecks[date].length;
+
+    }
+
+  });
+
+  data.tasks.forEach(task=>{
+
+    if(
+      task.date.startsWith(prefix)
+      && task.done
+    ){
+
+      count++;
+
+    }
+
+  });
+
+  return count;
+
+}
+
+
+function getBestMonth(){
+
+  const months = {};
+
+  Object.keys(data.habitChecks).forEach(date=>{
+
+    const month = date.slice(0,7);
+
+    months[month] =
+      (months[month] || 0)
+      + data.habitChecks[date].length;
+
+  });
+
+
+  data.tasks.forEach(task=>{
+
+    if(task.done){
+
+      const month = task.date.slice(0,7);
+
+      months[month] =
+        (months[month] || 0) + 1;
+
+    }
+
+  });
+
+
+  const values = Object.values(months);
+
+  return values.length
+    ? Math.max(...values)
+    : 0;
+
+}
+
+
+/* =========================================================
+   今日页面
+========================================================= */
+
+function renderToday(){
+
+  renderWelcome();
+
+  renderTopDate();
+
+  const tasks = getTodayTasks();
+
+  const completed =
+    tasks.filter(t=>t.done).length;
+
+  const percent =
+    tasks.length
+      ? Math.round(completed/tasks.length*100)
+      : 0;
+
+
+  document.getElementById("statCompleted").textContent =
+    completed + "/" + tasks.length;
+
+  const streak = getCurrentStreak();
+
+  document.getElementById("statStreak").textContent =
+    streak;
+
+  document.getElementById("statMonth").textContent =
+    getMonthlyCheckins();
+
+  document.getElementById("statBest").textContent =
+    getBestMonth();
+
+
+  document.getElementById("progressPercent").textContent =
+    percent + "%";
+
+
+  document.getElementById("progressRing").style.background =
+    `conic-gradient(#ff7eb6 ${percent*3.6}deg,#fff ${percent*3.6}deg)`;
+
+
+  document.getElementById("streakText").textContent =
+    streak + " 天";
+
+
+  renderTodayTimeline();
+
+  updateCurrentTask();
+
+}
+
+
+function renderTodayTimeline(){
+
+  const container =
+    document.getElementById("todayTimeline");
+
+  const tasks = getTodayTasks();
+
+
+  if(!tasks.length){
+
+    container.innerHTML = `
+      <div style="text-align:center;padding:35px;color:#a198a3">
+        🌷 今天还没有计划<br>
+        <button class="secondary-btn"
+          style="margin-top:15px"
+          onclick="showPage('planner')">
+          添加第一个任务
+        </button>
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = tasks.map(task=>{
+
+    return `
+      <div class="timeline-item">
+
+        <div class="time">
+          ${escapeHTML(task.start)}
+        </div>
+
+        <div class="line"></div>
+
+        <div class="task-box ${task.done ? "done" : ""}">
+
+          <button
+            class="complete-btn ${task.done ? "checked" : ""}"
+            onclick="toggleTask(${task.id})">
+            ✓
+          </button>
+
+          <div class="task-title">
+            ${escapeHTML(task.title)}
+            <span class="category">
+              ${escapeHTML(task.category)}
+            </span>
+          </div>
+
+          <div class="task-meta">
+            ${escapeHTML(task.start)}
+            –
+            ${escapeHTML(task.end)}
+            ${task.notes ? " · "+escapeHTML(task.notes) : ""}
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+  }).join("");
+
+}
+
+
+/* =========================================================
+   当前任务 & 倒计时
+========================================================= */
+
+function timeToMinutes(time){
+
+  const [h,m] = time.split(":").map(Number);
+
+  return h*60+m;
+
+}
+
+
+function updateCurrentTask(){
+
+  const tasks = getTodayTasks();
+
+  const now = new Date();
+
+  const currentMinutes =
+    now.getHours()*60 + now.getMinutes();
+
+  let current = null;
+
+  let next = null;
+
+
+  tasks.forEach(task=>{
+
+    const start = timeToMinutes(task.start);
+
+    const end = timeToMinutes(task.end);
+
+
+    if(
+      currentMinutes >= start
+      && currentMinutes < end
+      && !task.done
+    ){
+
+      current = task;
+
+    }
+
+
+    if(
+      start > currentMinutes
+      && !task.done
+    ){
+
+      if(!next || start < timeToMinutes(next.start)){
+
+        next = task;
+
+      }
+
+    }
+
+  });
+
+
+  const title =
+    document.getElementById("currentTask");
+
+  const label =
+    document.getElementById("nowLabel");
+
+  const countdown =
+    document.getElementById("countdown");
+
+  const nextText =
+    document.getElementById("nextTaskText");
+
+
+  if(current){
+
+    label.textContent = "正在进行";
+
+    title.textContent = current.title;
+
+    const end = timeToMinutes(current.end);
+
+    const remain =
+      end-currentMinutes;
+
+    const seconds =
+      60-now.getSeconds();
+
+    countdown.textContent =
+      String(Math.max(0,Math.floor(remain/60))).padStart(2,"0")
+      + ":"
+      + String(seconds === 60 ? 0 : seconds).padStart(2,"0");
+
+    nextText.textContent =
+      `预计 ${current.end} 完成`;
+
+  }else{
+
+    label.textContent = "当前没有进行中的任务";
+
+    title.textContent =
+      next ? `下一个：${next.title}` : "可以休息一下 🌷";
+
+    if(next){
+
+      const start =
+        timeToMinutes(next.start);
+
+      const diff =
+        start-currentMinutes;
+
+      countdown.textContent =
+        String(Math.floor(diff/60)).padStart(2,"0")
+        + ":"
+        + String(diff%60).padStart(2,"0");
+
+      nextText.textContent =
+        `${next.start} 开始`;
+
+    }else{
+
+      countdown.textContent = "--:--";
+
+      nextText.textContent =
+        "今天没有更多任务";
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   添加任务
+========================================================= */
+
+document.getElementById("taskDate").value =
+  getToday();
+
+
+document.getElementById("taskForm")
+.addEventListener("submit",function(e){
+
+  e.preventDefault();
+
+
+  const task = {
+
+    id:Date.now(),
+
+    title:document.getElementById("taskTitle").value.trim(),
+
+    date:document.getElementById("taskDate").value,
+
+    start:document.getElementById("taskStart").value,
+
+    end:document.getElementById("taskEnd").value,
+
+    category:document.getElementById("taskCategory").value,
+
+    reminder:Number(
+      document.getElementById("taskReminder").value
+    ),
+
+    notes:document.getElementById("taskNotes").value.trim(),
+
+    done:false
+
+  };
+
+
+  if(
+    !task.title
+    || !task.date
+    || !task.start
+    || !task.end
+  ){
+
+    showToast("请把任务信息填写完整 🌷");
+
+    return;
+
+  }
+
+
+  if(
+    timeToMinutes(task.end)
+    <= timeToMinutes(task.start)
+  ){
+
+    showToast("结束时间需要晚于开始时间");
+
+    return;
+
+  }
+
+
+  data.tasks.push(task);
+
+  saveData();
+
+  this.reset();
+
+  document.getElementById("taskDate").value =
+    getToday();
+
+  renderTasks();
+
+  renderToday();
+
+  showToast("任务已经加入你的计划 ✨");
+
+});
+
+
+/* =========================================================
+   任务列表
+========================================================= */
+
+function renderTasks(){
+
+  const container =
+    document.getElementById("allTasks");
+
+  const tasks = [...data.tasks]
+    .sort((a,b)=>{
+
+      if(a.date !== b.date){
+
+        return a.date.localeCompare(b.date);
+
+      }
+
+      return a.start.localeCompare(b.start);
+
+    });
+
+
+  document.getElementById("taskCount").textContent =
+    `${tasks.length} 个任务`;
+
+
+  if(!tasks.length){
+
+    container.innerHTML = `
+      <div style="text-align:center;padding:40px;color:#999">
+        还没有任务 🌸
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  container.innerHTML = tasks.map(task=>{
+
+    return `
+
+      <div class="list-task">
+
+        <button
+          class="complete-btn ${task.done ? "checked" : ""}"
+          onclick="toggleTask(${task.id})">
+          ✓
+        </button>
+
+        <div class="list-task-main">
+
+          <div class="list-task-title"
+            style="${task.done ? "text-decoration:line-through;color:#aaa" : ""}">
+            ${escapeHTML(task.title)}
+          </div>
+
+          <div class="list-task-info">
+            ${formatDateCN(task.date)}
+            ·
+            ${escapeHTML(task.start)}
+            –
+            ${escapeHTML(task.end)}
+            ·
+            ${escapeHTML(task.category)}
+          </div>
+
+        </div>
+
+        <button
+          class="delete-btn"
+          onclick="deleteTask(${task.id})">
+          🗑
+        </button>
+
+      </div>
+
+    `;
+
+  }).join("");
+
+}
+
+
+function toggleTask(id){
+
+  const task =
+    data.tasks.find(t=>t.id===id);
+
+  if(!task) return;
+
+  task.done = !task.done;
+
+  saveData();
+
+  renderTasks();
+
+  renderToday();
+
+  renderCalendar();
+
+  showToast(
+    task.done
+      ? "完成啦！🌸"
+      : "已经取消完成"
+  );
+
+}
+
+
+function deleteTask(id){
+
+  const task =
+    data.tasks.find(t=>t.id===id);
+
+  if(!task) return;
+
+  if(!confirm(`确定要删除「${task.title}」吗？`)){
+
+    return;
+
+  }
+
+  data.tasks =
+    data.tasks.filter(t=>t.id!==id);
+
+  saveData();
+
+  renderTasks();
+
+  renderToday();
+
+  renderCalendar();
+
+  showToast("任务已删除");
+
+}
+
+
+/* =========================================================
+   习惯打卡
+========================================================= */
+
+function isHabitChecked(habitId){
+
+  const today = getToday();
+
+  const checks =
+    data.habitChecks[today] || [];
+
+  return checks.includes(habitId);
+
+}
+
+
+function renderHabits(){
+
+  const container =
+    document.getElementById("habitGrid");
+
+  container.innerHTML =
+    data.habits.map(habit=>{
+
+      const checked =
+        isHabitChecked(habit.id);
+
+      return `
+
+        <div class="habit">
+
+          <div class="habit-icon">
+            ${habit.icon}
+          </div>
+
+          <h4>
+            ${escapeHTML(habit.name)}
+          </h4>
+
+          <p>
+            ${escapeHTML(habit.description)}
+          </p>
+
+          <div class="habit-bottom">
+
+            <span class="habit-streak">
+              🔥 ${getHabitStreak(habit.id)} 天
+            </span>
+
+            <button
+              class="${checked ? "secondary-btn" : "primary-btn"}"
+              onclick="toggleHabit(${habit.id})">
+
+              ${checked ? "✓ 已完成" : "打卡"}
+
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+function toggleHabit(id){
+
+  const today = getToday();
+
+  if(!data.habitChecks[today]){
+
+    data.habitChecks[today] = [];
+
+  }
+
+
+  const checks =
+    data.habitChecks[today];
+
+  const index =
+    checks.indexOf(id);
+
+
+  if(index >= 0){
+
+    checks.splice(index,1);
+
+    showToast("取消了今天的打卡");
+
+  }else{
+
+    checks.push(id);
+
+    showToast("打卡成功！继续保持 🌸");
+
+  }
+
+
+  saveData();
+
+  renderHabits();
+
+  renderToday();
+
+  renderCalendar();
+
+}
+
+
+function getHabitStreak(habitId){
+
+  let streak = 0;
+
+  const d = new Date();
+
+  for(let i=0;i<365;i++){
+
+    const date =
+      d.getFullYear()
+      + "-"
+      + String(d.getMonth()+1).padStart(2,"0")
+      + "-"
+      + String(d.getDate()).padStart(2,"0");
+
+    const checks =
+      data.habitChecks[date] || [];
+
+
+    if(checks.includes(habitId)){
+
+      streak++;
+
+    }else{
+
+      if(i === 0){
+
+        d.setDate(d.getDate()-1);
+
+        continue;
+
+      }
+
+      break;
+
+    }
+
+    d.setDate(d.getDate()-1);
+
+  }
+
+  return streak;
+
+}
+
+
+/* =========================================================
+   日历
+========================================================= */
+
+function renderCalendar(){
+
+  const year =
+    calendarDate.getFullYear();
+
+  const month =
+    calendarDate.getMonth();
+
+
+  document.getElementById("calendarTitle").textContent =
+    `${year}年${month+1}月`;
+
+
+  const grid =
+    document.getElementById("calendarGrid");
+
+
+  const weekdays =
+    ["一","二","三","四","五","六","日"];
+
+
+  let html =
+    weekdays.map(day=>
+      `<div class="weekday">周${day}</div>`
+    ).join("");
+
+
+  const firstDay =
+    new Date(year,month,1);
+
+  let start =
+    firstDay.getDay();
+
+  start = start === 0 ? 6 : start-1;
+
+
+  const daysInMonth =
+    new Date(year,month+1,0).getDate();
+
+
+  const prevDays =
+    new Date(year,month,0).getDate();
+
+
+  for(let i=start-1;i>=0;i--){
+
+    const day =
+      prevDays-i;
+
+    html += `
+      <div class="calendar-day other">
+        <div class="day-number">${day}</div>
+      </div>
+    `;
+
+  }
+
+
+  for(let day=1;day<=daysInMonth;day++){
+
+    const date =
+      year
+      + "-"
+      + String(month+1).padStart(2,"0")
+      + "-"
+      + String(day).padStart(2,"0");
+
+
+    const tasks =
+      data.tasks.filter(t=>t.date===date);
+
+    const doneTasks =
+      tasks.filter(t=>t.done).length;
+
+    const habits =
+      data.habitChecks[date] || [];
+
+
+    const isToday =
+      date === getToday();
+
+
+    let dots = "";
+
+    for(let i=0;i<Math.min(tasks.length,4);i++){
+
+      dots += `<span class="dot"></span>`;
+
+    }
+
+    for(let i=0;i<Math.min(habits.length,4);i++){
+
+      dots += `<span class="dot green"></span>`;
+
+    }
+
+
+    html += `
+
+      <div class="calendar-day ${isToday ? "today" : ""}">
+
+        <div class="day-number">${day}</div>
+
+        <div class="day-dots">
+          ${dots}
+        </div>
+
+        ${
+          doneTasks || habits.length
+          ? `<div style="font-size:9px;color:#a094a1;margin-top:6px">
+              ${doneTasks ? doneTasks+"项完成" : ""}
+              ${habits.length ? " · "+habits.length+"次打卡" : ""}
+             </div>`
+          : ""
+        }
+
+      </div>
+
+    `;
+
+  }
+
+
+  const totalCells =
+    start + daysInMonth;
+
+  const remaining =
+    totalCells % 7 === 0
+      ? 0
+      : 7-(totalCells%7);
+
+
+  for(let i=1;i<=remaining;i++){
+
+    html += `
+      <div class="calendar-day other">
+        <div class="day-number">${i}</div>
+      </div>
+    `;
+
+  }
+
+
+  grid.innerHTML = html;
+
+}
+
+
+document.getElementById("prevMonth")
+.addEventListener("click",()=>{
+
+  calendarDate.setMonth(
+    calendarDate.getMonth()-1
+  );
+
+  renderCalendar();
+
+});
+
+
+document.getElementById("nextMonth")
+.addEventListener("click",()=>{
+
+  calendarDate.setMonth(
+    calendarDate.getMonth()+1
+  );
+
+  renderCalendar();
+
+});
+
+
+document.getElementById("todayMonth")
+.addEventListener("click",()=>{
+
+  calendarDate = new Date();
+
+  renderCalendar();
+
+});
+
+
+/* =========================================================
+   小组
+========================================================= */
+
+function renderGroups(){
+
+  const container =
+    document.getElementById("groupGrid");
+
+
+  const groups = [
+    ...data.groups,
+    ...data.customGroups
+  ];
+
+
+  container.innerHTML =
+    groups.map(group=>{
+
+      const joined =
+        data.joinedGroups.includes(group.id);
+
+
+      return `
+
+        <div class="group-card">
+
+          <div class="group-cover">
+            ${group.icon}
+          </div>
+
+          <h4>
+            ${escapeHTML(group.name)}
+          </h4>
+
+          <p>
+            ${escapeHTML(group.description)}
+          </p>
+
+          <div class="group-footer">
+
+            <span class="member-count">
+              👥 ${group.members} 人
+            </span>
+
+            <button
+              class="${joined ? "secondary-btn" : "primary-btn"}"
+              onclick="toggleGroup(${group.id})">
+
+              ${joined ? "✓ 已加入" : "加入小组"}
+
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+function toggleGroup(id){
+
+  const index =
+    data.joinedGroups.indexOf(id);
+
+
+  if(index >= 0){
+
+    data.joinedGroups.splice(index,1);
+
+    showToast("已退出小组");
+
+  }else{
+
+    data.joinedGroups.push(id);
+
+    showToast("欢迎加入这个小组 👯");
+
+  }
+
+
+  saveData();
+
+  renderGroups();
+
+  renderRanking();
+
+}
+
+
+function createGroup(){
+
+  const name =
+    prompt("给你的新小组取一个名字：");
+
+  if(!name || !name.trim()) return;
+
+
+  const group = {
+
+    id:"custom-"+Date.now(),
+
+    name:name.trim(),
+
+    icon:"🌸",
+
+    members:1,
+
+    description:"这是我创建的 DayBloom 打卡小组。"
+
+  };
+
+
+  data.customGroups.push(group);
+
+  data.joinedGroups.push(group.id);
+
+  saveData();
+
+  renderGroups();
+
+  showToast("小组创建成功！🌸");
+
+}
+
+
+/* =========================================================
+   排行榜
+========================================================= */
+
+function getMyScore(){
+
+  let score = 0;
+
+  data.tasks.forEach(task=>{
+
+    if(task.done){
+
+      score += 10;
+
+    }
+
+  });
+
+
+  Object.values(data.habitChecks)
+  .forEach(checks=>{
+
+    score += checks.length * 5;
+
+  });
+
+
+  return score;
+
+}
+
+
+function renderRanking(){
+
+  const container =
+    document.getElementById("rankingList");
+
+
+  const names = [
+
+    {
+      name:"Luna",
+      score:420,
+      avatar:"L"
+    },
+
+    {
+      name:"Sophie",
+      score:365,
+      avatar:"S"
+    },
+
+    {
+      name:"Emma",
+      score:318,
+      avatar:"E"
+    },
+
+    {
+      name:data.profile.name,
+      score:getMyScore(),
+      avatar:data.profile.name.charAt(0).toUpperCase(),
+      me:true
+    },
+
+    {
+      name:"Mia",
+      score:210,
+      avatar:"M"
+    },
+
+    {
+      name:"Nora",
+      score:185,
+      avatar:"N"
+    }
+
+  ];
+
+
+  names.sort((a,b)=>b.score-a.score);
+
+
+  container.innerHTML =
+    names.map((user,index)=>{
+
+      return `
+
+        <div class="rank-row ${user.me ? "me" : ""}">
+
+          <div class="rank-num">
+            ${index+1}
+          </div>
+
+          <div class="rank-avatar">
+            ${escapeHTML(user.avatar)}
+          </div>
+
+          <div class="rank-name">
+            ${escapeHTML(user.name)}
+            ${user.me ? " ✨" : ""}
+          </div>
+
+          <div class="rank-score">
+            ${user.score} 分
+          </div>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+/* =========================================================
+   修改昵称
+========================================================= */
+
+function changeName(){
+
+  const newName =
+    prompt(
+      "请输入你的昵称：",
+      data.profile.name
+    );
+
+
+  if(!newName || !newName.trim()){
+
+    return;
+
+  }
+
+
+  data.profile.name =
+    newName.trim().slice(0,16);
+
+  saveData();
+
+  renderProfile();
+
+  renderWelcome();
+
+  renderRanking();
+
+  showToast("昵称修改成功 💗");
+
+}
+
+
+/* =========================================================
+   浏览器提醒
+========================================================= */
+
+document.getElementById("notificationBtn")
+.addEventListener("click",async()=>{
+
+  if(!("Notification" in window)){
+
+    showToast("你的浏览器不支持通知");
+
+    return;
+
+  }
+
+
+  if(Notification.permission === "granted"){
+
+    showToast("提醒已经开启 🔔");
+
+    return;
+
+  }
+
+
+  try{
+
+    const permission =
+      await Notification.requestPermission();
+
+    if(permission === "granted"){
+
+      showToast("提醒开启成功 🔔");
+
+      new Notification("DayBloom",{
+        body:"之后有任务时，我会提醒你 🌸"
+      });
+
+    }else{
+
+      showToast("你没有开启浏览器通知");
+
+    }
+
+  }catch(e){
+
+    showToast("通知权限暂时不可用");
+
+  }
+
+});
+
+
+/* =========================================================
+   任务提醒
+========================================================= */
+
+function checkReminders(){
+
+  const today = getToday();
+
+  const now = new Date();
+
+  const currentMinutes =
+    now.getHours()*60
+    +now.getMinutes();
+
+
+  data.tasks
+    .filter(task=>task.date===today)
+    .forEach(task=>{
+
+      if(!task.reminder) return;
+
+      const start =
+        timeToMinutes(task.start);
+
+      const reminderTime =
+        start-task.reminder;
+
+
+      if(currentMinutes === reminderTime){
+
+        const notificationKey =
+          `${today}-${task.id}-${task.reminder}`;
+
+
+        if(
+          data.notified.includes(notificationKey)
+        ){
+
+          return;
+
+        }
+
+
+        data.notified.push(notificationKey);
+
+        saveData();
+
+
+        showToast(
+          `⏰ ${task.reminder} 分钟后：${task.title}`
+        );
+
+
+        if(
+          "Notification" in window
+          && Notification.permission === "granted"
+        ){
+
+          new Notification("DayBloom 提醒 🌸",{
+            body:
+              `${task.reminder} 分钟后开始：${task.title}`
+          });
+
+        }
+
+      }
+
+    });
+
+}
+
+
+/* =========================================================
+   自动刷新
+========================================================= */
+
+setInterval(()=>{
+
+  renderTopDate();
+
+  updateCurrentTask();
+
+  checkReminders();
+
+},1000);
+
+
+/* =========================================================
+   初始化
+========================================================= */
+
+function init(){
+
+  renderTopDate();
+
+  renderProfile();
+
+  renderWelcome();
+
+  renderToday();
+
+  renderTasks();
+
+  renderHabits();
+
+  renderCalendar();
+
+  renderGroups();
+
+  renderRanking();
+
+}
+
+
+init();
+
 </script>
 
 </body>
