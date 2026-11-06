@@ -16,7 +16,7 @@
             --card-bg: #FFFFFF;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.5; padding-bottom: 2rem; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; padding-bottom: 2rem; }
         
         .page { display: none; }
         .page.active { display: block; }
@@ -42,10 +42,21 @@
             background: linear-gradient(rgba(10,25,47,0.85), rgba(10,25,47,0.85)), url('https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=1200&q=80') center/cover;
             color: white;
             text-align: center;
-            padding: 3.5rem 1rem;
+            padding: 4rem 1rem 3rem;
         }
-        .hero h1 { font-size: 2.2rem; color: var(--gold); margin-bottom: 0.8rem; }
-        .hero p { font-size: 1.05rem; max-width: 700px; margin: 0 auto 1.5rem; color: #E2E8F0; line-height: 1.6; }
+        .hero h1 { font-size: 2.2rem; color: var(--gold); margin-bottom: 1rem; }
+        .hero-text-block {
+            max-width: 800px;
+            margin: 0 auto 1.8rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-left: 4px solid var(--gold);
+            padding: 1.2rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            text-align: left;
+        }
+        .hero-text-block p { font-size: 1rem; color: #E2E8F0; line-height: 1.7; margin-bottom: 0.8rem; }
+        .hero-text-block p:last-child { margin-bottom: 0; }
+        
         .btn-group { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
         .btn { padding: 0.7rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold; transition: 0.3s; cursor: pointer; display: inline-block; border: none; text-align: center; }
         .btn-primary { background: var(--primary); color: white; }
@@ -75,9 +86,15 @@
         .city-info h3 { color: var(--secondary); margin-bottom: 0.4rem; font-size: 1.1rem; }
         .city-info p { color: #666; font-size: 0.85rem; margin-bottom: 0.8rem; }
 
-        .schedule-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); font-size: 0.9rem; }
-        .schedule-table th, .schedule-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #E2E8F0; }
-        .schedule-table th { background: var(--secondary); color: white; font-weight: 600; }
+        .schedule-box {
+            background: white;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+        }
+        .schedule-box p { font-size: 1rem; color: #444; margin-bottom: 1rem; line-height: 1.7; }
+        .schedule-box p:last-child { margin-bottom: 0; }
 
         .detail-hero { background: var(--secondary); color: white; padding: 2.5rem 1rem; text-align: center; border-bottom: 4px solid var(--gold); }
         .detail-hero h1 { font-size: 2rem; color: var(--gold); margin-bottom: 0.4rem; }
@@ -90,12 +107,6 @@
         .feature-box ul { list-style: none; padding: 0; font-size: 0.88rem; color: #555; }
         .feature-box ul li { margin-bottom: 0.5rem; line-height: 1.4; }
 
-        .interest-card { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 2px dashed var(--gold); border-radius: 12px; padding: 2rem; text-align: center; margin-top: 2rem; }
-        .interest-card h3 { color: var(--secondary); margin-bottom: 0.6rem; font-size: 1.3rem; }
-        .interest-card p { color: #4B5563; font-size: 0.95rem; margin-bottom: 1rem; }
-        .email-link { display: inline-block; background: var(--secondary); color: var(--gold); padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; transition: 0.2s; font-size: 1rem; }
-        .email-link:hover { background: #1E293B; transform: scale(1.03); }
-
         .form-container { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 3px 15px rgba(0,0,0,0.06); max-width: 750px; margin: 0 auto; }
         .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
         .form-group { display: flex; flex-direction: column; }
@@ -104,11 +115,24 @@
         .form-group input, .form-group select { padding: 0.6rem; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.9rem; outline: none; }
         .form-group input:focus, .form-group select:focus { border-color: var(--primary); }
 
+        .contact-footer-box {
+            background: var(--secondary);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            border-top: 4px solid var(--gold);
+        }
+        .contact-footer-box h3 { color: var(--gold); font-size: 1.3rem; margin-bottom: 1rem; }
+        .contact-methods { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; font-size: 0.95rem; }
+        .contact-item { background: rgba(255,255,255,0.08); border: 1px solid rgba(212,175,55,0.4); padding: 0.8rem 1.2rem; border-radius: 8px; }
+
         .payment-card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 650px; margin: 2rem auto; border-top: 5px solid var(--gold); }
         .bank-details { background: #F1F5F9; border-left: 4px solid var(--secondary); padding: 1.2rem; border-radius: 6px; margin: 1.2rem 0; font-family: monospace; font-size: 0.9rem; }
         .bank-row { display: flex; justify-content: space-between; margin-bottom: 0.6rem; border-bottom: 1px dashed #CBD5E1; padding-bottom: 0.3rem; }
 
-        footer { background: var(--secondary); color: #94A3B8; text-align: center; padding: 1.5rem; margin-top: 3rem; font-size: 0.85rem; }
+        footer { background: #071120; color: #94A3B8; text-align: center; padding: 1.5rem; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -118,7 +142,7 @@
         <nav>
             <a onclick="showPage('home')" id="nav-home">首页</a>
             <a onclick="scrollToSection('outcomes')" id="nav-outcomes">班级规则</a>
-            <a onclick="scrollToSection('schedule')" id="nav-schedule">作息体验</a>
+            <a onclick="scrollToSection('schedule')" id="nav-schedule">作息概括</a>
             <a onclick="scrollToSection('cities')" id="nav-cities">营地城市</a>
             <a onclick="scrollToSection('checkout')" id="nav-signup" style="color: var(--gold); font-weight: bold;">在线报名</a>
             <select class="lang-select" onchange="changeLanguage(this.value)">
@@ -132,8 +156,13 @@
     <!-- 首页 -->
     <div id="page-home" class="page active">
         <section class="hero">
-            <h1 id="hero-title">Panda Camp 🎋 沉浸式中文夏令营</h1>
-            <p id="hero-desc">我们目前专注于全托管的中文沉浸式教学！让孩子在 7 天内建立华语自信。未来，我们将陆续拓展更多亚洲语言（日/韩等）游学营，敬请期待！</p>
+            <h1 id="hero-title">7天全托管 · 中文沉浸式游学夏令营</h1>
+            
+            <div class="hero-text-block">
+                <p id="hero-intro-1">欢迎来到 Panda Camp 🎋！我们目前专注于提供全托管、高品质的中文沉浸式教学夏令营，让孩子在一周内快速建立开口自信并掌握实用华语。</p>
+                <p id="hero-intro-2">作为多元语言体验项目，未来我们还将逐步推出日语、韩语等更多亚洲语言的游学营！如果您对此感兴趣、产生共鸣，或在报名中有任何疑问，欢迎随时与我们联系。</p>
+            </div>
+
             <div class="btn-group">
                 <a onclick="scrollToSection('outcomes')" class="btn btn-primary" id="btn-class">查看班级与成果</a>
                 <a onclick="scrollToSection('cities')" class="btn btn-outline" id="btn-dest">选择德国城市 (850€/周)</a>
@@ -171,20 +200,12 @@
         </section>
 
         <section class="section-container" id="schedule">
-            <h2 class="section-title" id="title-schedule">📅 典型作息简述（以前两天为例）</h2>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th id="th-time">时间</th>
-                        <th id="th-morning">上午 (Morning)</th>
-                        <th id="th-afternoon">下午 (Afternoon)</th>
-                        <th id="th-evening">晚间特色活动 (Evening Activity)</th>
-                    </tr>
-                </thead>
-                <tbody id="schedule-body">
-                    <!-- 动态填充 -->
-                </tbody>
-            </table>
+            <h2 class="section-title" id="title-schedule">📅 每日作息安排概括</h2>
+            <div class="schedule-box">
+                <p id="sched-text-1">📖 <strong>上午（Morning）：</strong>全沉浸式华语课堂，涵盖基础与进阶词汇听说演练、实景对话以及情景互动。</p>
+                <p id="sched-text-2">⚽ <strong>下午（Afternoon）：</strong>丰富多元的户外体育运动，包含球类竞技、Tabata 体能训练、攀岩与水上体验。</p>
+                <p id="sched-text-3">🌙 <strong>晚间（Evening Activity）：</strong>精彩主题文化活动，涵盖水墨书法体验、星空露天电影院配音秀、手工包饺子及结业狂欢晚会。</p>
+            </div>
         </section>
 
         <section class="section-container" id="cities">
@@ -217,13 +238,6 @@
                         <button class="btn btn-outline" style="width:100%; font-size:0.8rem; padding: 0.4rem;" id="btn-btn-frankfurt">查看详情（景点/美食/住宿）➔</button>
                     </div>
                 </div>
-            </div>
-
-            <!-- 共鸣与兴趣反馈卡片 -->
-            <div class="interest-card">
-                <h3 id="interest-title">💡 对未来的亚洲语言营感兴趣或有任何疑问？</h3>
-                <p id="interest-desc">无论您是对日/韩等其他亚洲语言营有兴趣、产生共鸣，还是遇到问题需要咨询或联系我们，都随时欢迎给我们发邮件！</p>
-                <a href="mailto:nianbulaji@gmail.com" class="email-link">✉️ nianbulaji@gmail.com</a>
             </div>
         </section>
 
@@ -283,6 +297,19 @@
                 </form>
             </div>
         </section>
+
+        <!-- 最底部的客服与联系方式板块 -->
+        <div class="section-container">
+            <div class="contact-footer-box">
+                <h3 id="contact-section-title">📞 官方客服与联系方式</h3>
+                <p id="contact-section-desc">如有问题或对未来的亚洲语言营感兴趣，欢迎随时通过以下方式与我们联系：</p>
+                <div class="contact-methods">
+                    <div class="contact-item">📞 <strong>客服电话：</strong> +49 15752205066</div>
+                    <div class="contact-item">💬 <strong>WhatsApp：</strong> +49 15752205066</div>
+                    <div class="contact-item">✉️ <strong>电子邮箱：</strong> nianbulaji@gmail.com</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- 柏林营地详情 -->
@@ -399,7 +426,7 @@
                     <!-- 动态翻译 -->
                 </div>
 
-                <h3 style="color: var(--secondary); margin-top: 1.2rem; margin-bottom: 0.6rem; font-size:1rem;" id="pay-contact-title">📞 商家客服与联系电话</h3>
+                <h3 style="color: var(--secondary); margin-top: 1.2rem; margin-bottom: 0.6rem; font-size:1rem;" id="pay-contact-title">📞 商家客服与联系方式</h3>
                 <div style="background: #F8F9FA; padding: 0.8rem; border-radius: 6px; font-size: 0.85rem;" id="contact-box-details">
                     <!-- 动态翻译 -->
                 </div>
@@ -421,11 +448,12 @@
                 navLogo: "🐼 Panda Camp 🎋",
                 navHome: "首页",
                 navOutcomes: "班级规则",
-                navSchedule: "作息体验",
+                navSchedule: "作息概括",
                 navCities: "营地城市",
                 navSignup: "在线报名",
-                heroTitle: "Panda Camp 🎋 沉浸式中文夏令营",
-                heroDesc: "我们目前专注于全托管的中文沉浸式教学！让孩子在 7 天内建立华语自信。未来，我们将陆续拓展更多亚洲语言（日/韩等）游学营，敬请期待！",
+                heroTitle: "7天全托管 · 中文沉浸式游学夏令营",
+                heroIntro1: "欢迎来到 Panda Camp 🎋！我们目前专注于提供全托管、高品质的中文沉浸式教学夏令营，让孩子在一周内快速建立开口自信并掌握实用华语。",
+                heroIntro2: "作为多元语言体验项目，未来我们还将逐步推出日语、韩语等更多亚洲语言的游学营！如果您对此感兴趣、产生共鸣，或在报名中有任何疑问，欢迎随时与我们联系。",
                 btnClass: "查看班级与成果",
                 btnDest: "选择德国城市 (850€/周)",
                 titleOutcomes: "🎓 班级设置与规则",
@@ -440,15 +468,10 @@
                 rulesTitle: "⚖️ 20人满班 / 18人成班与退款规则",
                 rulesList: `<li><strong>班级人数：</strong>仅设初学与中级两个班，每班上限 <strong>20 人</strong>。</li>
                            <li><strong>退款保障：</strong>最少 <strong>18 人</strong> 开班。若未达开班人数，全额退还已付费用。</li>`,
-                titleSchedule: "📅 典型作息简述（以前两天为例）",
-                thTime: "时间",
-                thMorning: "上午 (Morning)",
-                thAfternoon: "下午 (Afternoon)",
-                thEvening: "晚间特色活动 (Evening Activity)",
-                scheduleRows: [
-                    ["Day 1", "华语开营、水平测评与分班", "破冰拓展与球类运动", "营地篝火音乐晚会 & 制定班规"],
-                    ["Day 2", "沉浸式中文基础/进阶课堂", "户外运动与体育竞技", "水墨书法与竹子国画手作体验"]
-                ],
+                titleSchedule: "📅 每日作息安排概括",
+                schedText1: "📖 <strong>上午（Morning）：</strong>全沉浸式华语课堂，涵盖基础与进阶词汇听说演练、实景对话以及情景互动。",
+                schedText2: "⚽ <strong>下午（Afternoon）：</strong>丰富多元的户外体育运动，包含球类竞技、Tabata 体能训练、攀岩与水上体验。",
+                schedText3: "🌙 <strong>晚间（Evening Activity）：</strong>精彩主题文化活动，涵盖水墨书法体验、星空露天电影院配音秀、手工包饺子及结业狂欢晚会。",
                 titleCities: "🇩🇪 选择营地（点击查看周边吃喝住与设施）",
                 cardBerlinTitle: "柏林营地 (Berlin Camp)",
                 cityBerlinDesc: "首都艺术与科技营地，含室内游泳池与博物馆岛游学。",
@@ -457,8 +480,8 @@
                 cityMunichDesc: "巴伐利亚自然运动营地，靠近阿尔卑斯山，含 Tabata 体能训练。",
                 cardFrankfurtTitle: "法兰克福营地 (Frankfurt Camp)",
                 cityFrankfurtDesc: "莱茵河水上运动营地，含皮划艇体验与奥运水上项目。",
-                interestTitle: "💡 对未来的亚洲语言营感兴趣或有问题？",
-                interestDesc: "无论您是对未来的日/韩等亚洲语言游学营产生共鸣、感兴趣，还是在报名使用中有任何疑问或遇到问题，都可以随时给我们发邮件沟通：",
+                contactSectionTitle: "📞 官方客服与联系方式",
+                contactSectionDesc: "如有问题或对未来的亚洲语言营感兴趣，欢迎随时通过以下方式与我们联系：",
                 titleForm: "✍️ 夏令营在线报名",
                 lblStudentName: "学员姓名",
                 phStudentName: "请输入孩子姓名",
@@ -481,7 +504,7 @@
                 phAddress: "街道、门牌号、城市、邮编",
                 btnSubmit: "👉 提交报名（前往付款）",
                 
-                // 城市详情页 (柏林)
+                // 柏林
                 berlinDTitle: "🏛️ 柏林营地 (Berlin Camp) 详情",
                 berlinDSub: "首都艺术文化与游泳训练营地",
                 berlinDB1: "费用: 850 € / 周",
@@ -499,7 +522,7 @@
                 btnApplyBerlin: "报名柏林营地 (850€)",
                 btnBackHome: "返回首页",
 
-                // 城市详情页 (慕尼黑)
+                // 慕尼黑
                 munichDTitle: "⛰️ 慕尼黑营地 (München Camp) 详情",
                 munichDSub: "巴伐利亚自然探险与 Tabata 体能营地",
                 munichDB1: "费用: 850 € / 周",
@@ -516,7 +539,7 @@
                                <li><strong>运动设施：</strong>Tabata 爆发力训练室、户外攀岩墙、少林武术练功场。</li>`,
                 btnApplyMunich: "报名慕尼黑营地 (850€)",
 
-                // 城市详情页 (法兰克福)
+                // 法兰克福
                 frankfurtDTitle: "🌊 法兰克福营地 (Frankfurt Camp) 详情",
                 frankfurtDSub: "莱茵-美因河畔水上运动营地",
                 frankfurtDB1: "费用: 850 € / 周",
@@ -545,10 +568,10 @@
                                  <div class="bank-row"><span>IBAN:</span><strong>DE89 1007 0000 0123 4567 89</strong></div>
                                  <div class="bank-row"><span>BIC/SWIFT:</span><strong>DEUTDEDDBER</strong></div>
                                  <div class="bank-row"><span>付款附言:</span><strong id="summary-ref" style="color: var(--primary);">PANDA-2026-8892</strong></div>`,
-                payContactTitle: "📞 商家客服与咨询邮箱",
-                contactBoxDetails: `<p><strong>客服与技术支持邮箱：</strong> nianbulaji@gmail.com</p>
-                                    <p><strong>客服电话：</strong> +49 (0) 30 1234 5678</p>
-                                    <p><strong>WhatsApp / 微信：</strong> +49 176 8888 9999 (PandaCampDE)</p>`,
+                payContactTitle: "📞 商家客服与联系方式",
+                contactBoxDetails: `<p><strong>客服电话：</strong> +49 15752205066</p>
+                                    <p><strong>WhatsApp：</strong> +49 15752205066</p>
+                                    <p><strong>电子邮箱：</strong> nianbulaji@gmail.com</p>`,
                 btnBack: "返回夏令营首页",
                 footerText: "© 2026 Panda Camp 🎋 全托管华语夏令营. All Rights Reserved."
             },
@@ -559,8 +582,9 @@
                 navSchedule: "Schedule",
                 navCities: "Locations",
                 navSignup: "Register Now",
-                heroTitle: "Panda Camp 🎋 Chinese Immersion Camp",
-                heroDesc: "We currently focus on 100% all-inclusive Chinese immersion camps! Building language confidence in 7 days. More Asian language camps (Japanese, Korean, etc.) coming soon!",
+                heroTitle: "7-Day All-Inclusive Chinese Immersion Camp",
+                heroIntro1: "Welcome to Panda Camp 🎋! We currently specialize in top-quality, all-inclusive Chinese immersion camps to help children quickly build confidence in speaking Chinese.",
+                heroIntro2: "As a multi-language platform, we will also gradually launch camps for more Asian languages like Japanese and Korean in the future! If you're interested or have questions, feel free to contact us anytime.",
                 btnClass: "View Classes",
                 btnDest: "Select City (850€/wk)",
                 titleOutcomes: "🎓 Classes & Rules",
@@ -575,15 +599,10 @@
                 rulesTitle: "⚖️ 20 Max / 18 Min Refund Policy",
                 rulesList: `<li><strong>Two Levels:</strong> Beginner & Intermediate, max <strong>20 students/class</strong>.</li>
                            <li><strong>Refund:</strong> Min <strong>18 students required</strong>. 100% refund if cancelled.</li>`,
-                titleSchedule: "📅 Typical Schedule (First 2 Days)",
-                thTime: "Day",
-                thMorning: "Morning",
-                thAfternoon: "Afternoon",
-                thEvening: "Evening Special Activity",
-                scheduleRows: [
-                    ["Day 1", "Chinese Orientation & Testing", "Ice-breaking & Ball Sports", "Campfire Party & Class Rules"],
-                    ["Day 2", "Chinese Study (Basics/Advanced)", "Outdoor Sports & Athletics", "Calligraphy & Bamboo Painting"]
-                ],
+                titleSchedule: "📅 Daily Schedule Overview",
+                schedText1: "📖 <strong>Morning:</strong> Immersion Chinese classes covering vocabulary, practical dialogues, and scenario interactions.",
+                schedText2: "⚽ <strong>Afternoon:</strong> Outdoor sports including ball games, Tabata training, climbing, and water sports.",
+                schedText3: "🌙 <strong>Evening Activity:</strong> Cultural highlights like ink calligraphy, open-air movie voice acting, dumpling making & gala party.",
                 titleCities: "🇩🇪 Select Camp (Click for Attractions/Food/Hotels)",
                 cardBerlinTitle: "Berlin Camp",
                 cityBerlinDesc: "Capital art & tech camp with indoor pool & Museum Island tour.",
@@ -592,8 +611,8 @@
                 cityMunichDesc: "Bavarian sports camp with outdoor parks & Tabata gym.",
                 cardFrankfurtTitle: "Frankfurt Camp",
                 cityFrankfurtDesc: "Rhine river camp with kayaks & water sports.",
-                interestTitle: "💡 Interested in Future Asian Language Camps or Have Questions?",
-                interestDesc: "Whether you share interest in future Japanese/Korean language camps, or have any questions/issues during registration, feel free to email us:",
+                contactSectionTitle: "📞 Official Customer Support & Contact",
+                contactSectionDesc: "If you have questions or share interest in future Asian language camps, contact us anytime via:",
                 titleForm: "✍️ Online Registration",
                 lblStudentName: "Student Name",
                 phStudentName: "Child's name",
@@ -676,10 +695,10 @@
                                  <div class="bank-row"><span>IBAN:</span><strong>DE89 1007 0000 0123 4567 89</strong></div>
                                  <div class="bank-row"><span>BIC/SWIFT:</span><strong>DEUTDEDDBER</strong></div>
                                  <div class="bank-row"><span>Reference:</span><strong id="summary-ref" style="color: var(--primary);">PANDA-2026-8892</strong></div>`,
-                payContactTitle: "📞 Customer Support & Email",
-                contactBoxDetails: `<p><strong>Support Email:</strong> nianbulaji@gmail.com</p>
-                                    <p><strong>Hotline:</strong> +49 (0) 30 1234 5678</p>
-                                    <p><strong>WhatsApp / WeChat:</strong> +49 176 8888 9999 (PandaCampDE)</p>`,
+                payContactTitle: "📞 Support Contact",
+                contactBoxDetails: `<p><strong>Phone Hotline:</strong> +49 15752205066</p>
+                                    <p><strong>WhatsApp:</strong> +49 15752205066</p>
+                                    <p><strong>Email:</strong> nianbulaji@gmail.com</p>`,
                 btnBack: "Back to Home Page",
                 footerText: "© 2026 Panda Camp 🎋 All-Inclusive Mandarin Camp. All Rights Reserved."
             },
@@ -690,8 +709,9 @@
                 navSchedule: "Ablauf",
                 navCities: "Standorte",
                 navSignup: "Anmeldung",
-                heroTitle: "Panda Camp 🎋 Chinesisch Sommercamp",
-                heroDesc: "Wir konzentrieren uns derzeit voll auf Chinesisch-Sprachcamps! Weitere asiatische Sprachen (Japanisch, Koreanisch etc.) folgen in Kürze!",
+                heroTitle: "7 Tage All-Inclusive Chinesisch Sommercamp",
+                heroIntro1: "Willkommen bei Panda Camp 🎋! Wir bieten hochwertige Chinesisch-Sprachcamps für Kinder an, um innerhalb einer Woche Selbstvertrauen beim Sprechen aufzubauen.",
+                heroIntro2: "Als Multilinguales Projekt werden wir in Zukunft auch Camps für weitere asiatische Sprachen (Japanisch, Koreanisch etc.) anbieten! Kontaktieren Sie uns gerne bei Fragen.",
                 btnClass: "Klassenübersicht",
                 btnDest: "Standort wählen (850€)",
                 titleOutcomes: "🎓 Klassen & Regeln",
@@ -706,15 +726,10 @@
                 rulesTitle: "⚖️ 20 Max / 18 Min & Rückerstattung",
                 rulesList: `<li><strong>2 Stufen:</strong> Max. <strong>20 Schüler pro Klasse</strong>.</li>
                            <li><strong>Garantie:</strong> Mind. <strong>18 Schüler erforderlich</strong>. 100% Rückerstattung bei Absage.</li>`,
-                titleSchedule: "📅 Beispiel-Tagesablauf (Erste 2 Tage)",
-                thTime: "Tag",
-                thMorning: "Vormittag",
-                thAfternoon: "Nachmittag",
-                thEvening: "Abendprogramm",
-                scheduleRows: [
-                    ["Tag 1", "Einstufung & Chinesisch-Auftakt", "Kennenlern-Sport & Ballsport", "Lagerfeuer-Party & Camp-Regeln"],
-                    ["Tag 2", "Chinesisch-Unterricht (Grundlagen)", "Outdoor-Sport & Fitness", "Kalligrafie & Bambusmalerei"]
-                ],
+                titleSchedule: "📅 Tagesablauf Übersicht",
+                schedText1: "📖 <strong>Vormittag:</strong> Chinesisch-Unterricht mit Wortschatz, Dialogtraining und interaktiven Übungen.",
+                schedText2: "⚽ <strong>Nachmittag:</strong> Outdoor-Sportarten wie Ballsport, Tabata-Fitness, Klettern und Wassersport.",
+                schedText3: "🌙 <strong>Abendprogramm:</strong> Kultur-Highlights wie Kalligrafie, Freilichtkino-Synchronsprechen, Jiaozi-Kochen & Gala-Abend.",
                 titleCities: "🇩🇪 Standort wählen (Klicken für Details)",
                 cardBerlinTitle: "Camp Berlin",
                 cityBerlinDesc: "Hauptstadt-Camp mit Hallenbad & Museumsinsel.",
@@ -723,8 +738,8 @@
                 cityMunichDesc: "Bayerisches Outdoor-Camp mit Tabata & Alpenblick.",
                 cardFrankfurtTitle: "Camp Frankfurt",
                 cityFrankfurtDesc: "Rhein-Camp mit Wassersport & Kajak.",
-                interestTitle: "💡 Interesse an zukünftigen asiatischen Sprachcamps oder Fragen?",
-                interestDesc: "Egal ob Sie Interesse an zukünftigen Japanisch-/Koreanisch-Camps haben oder Fragen bei der Anmeldung auftreten – schreiben Sie uns jederzeit gerne:",
+                contactSectionTitle: "📞 Kundenservice & Kontakt",
+                contactSectionDesc: "Bei Fragen oder Interesse an künftigen asiatischen Sprachcamps erreichen Sie uns unter:",
                 titleForm: "✍️ Camp Anmeldung",
                 lblStudentName: "Name des Kindes",
                 phStudentName: "Name des Kindes",
@@ -807,10 +822,10 @@
                                  <div class="bank-row"><span>IBAN:</span><strong>DE89 1007 0000 0123 4567 89</strong></div>
                                  <div class="bank-row"><span>BIC/SWIFT:</span><strong>DEUTDEDDBER</strong></div>
                                  <div class="bank-row"><span>Verwendungszweck:</span><strong id="summary-ref" style="color: var(--primary);">PANDA-2026-8892</strong></div>`,
-                payContactTitle: "📞 Support & Kontakt-E-Mail",
-                contactBoxDetails: `<p><strong>Support E-Mail:</strong> nianbulaji@gmail.com</p>
-                                    <p><strong>Hotline:</strong> +49 (0) 30 1234 5678</p>
-                                    <p><strong>WhatsApp / WeChat:</strong> +49 176 8888 9999 (PandaCampDE)</p>`,
+                payContactTitle: "📞 Kundenservice & Kontakt",
+                contactBoxDetails: `<p><strong>Telefon Hotline:</strong> +49 15752205066</p>
+                                    <p><strong>WhatsApp:</strong> +49 15752205066</p>
+                                    <p><strong>E-Mail:</strong> nianbulaji@gmail.com</p>`,
                 btnBack: "Zurück zur Startseite",
                 footerText: "© 2026 Panda Camp 🎋 All-Inclusive Sommercamp. Alle Rechte vorbehalten."
             }
@@ -844,16 +859,6 @@
             }, 100);
         }
 
-        function renderSchedule(rows) {
-            const tbody = document.getElementById('schedule-body');
-            tbody.innerHTML = '';
-            rows.forEach(r => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td><strong>${r[0]}</strong></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td>`;
-                tbody.appendChild(tr);
-            });
-        }
-
         function changeLanguage(lang) {
             currentLang = lang;
             const t = translations[lang];
@@ -866,7 +871,8 @@
             document.getElementById('nav-signup').innerText = t.navSignup;
 
             document.getElementById('hero-title').innerText = t.heroTitle;
-            document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.getElementById('hero-intro-1').innerText = t.heroIntro1;
+            document.getElementById('hero-intro-2').innerText = t.heroIntro2;
             document.getElementById('btn-class').innerText = t.btnClass;
             document.getElementById('btn-dest').innerText = t.btnDest;
 
@@ -882,11 +888,9 @@
             document.getElementById('rules-list').innerHTML = t.rulesList;
 
             document.getElementById('title-schedule').innerText = t.titleSchedule;
-            document.getElementById('th-time').innerText = t.thTime;
-            document.getElementById('th-morning').innerText = t.thMorning;
-            document.getElementById('th-afternoon').innerText = t.thAfternoon;
-            document.getElementById('th-evening').innerText = t.thEvening;
-            renderSchedule(t.scheduleRows);
+            document.getElementById('sched-text-1').innerHTML = t.schedText1;
+            document.getElementById('sched-text-2').innerHTML = t.schedText2;
+            document.getElementById('sched-text-3').innerHTML = t.schedText3;
 
             document.getElementById('title-cities').innerText = t.titleCities;
             document.getElementById('card-berlin-title').innerText = t.cardBerlinTitle;
@@ -899,8 +903,8 @@
             document.getElementById('city-frankfurt-desc').innerText = t.cityFrankfurtDesc;
             document.getElementById('btn-btn-frankfurt').innerText = t.btnDetailText;
 
-            document.getElementById('interest-title').innerText = t.interestTitle;
-            document.getElementById('interest-desc').innerText = t.interestDesc;
+            document.getElementById('contact-section-title').innerText = t.contactSectionTitle;
+            document.getElementById('contact-section-desc').innerText = t.contactSectionDesc;
 
             document.getElementById('title-form').innerText = t.titleForm;
             document.getElementById('lbl-student-name').innerText = t.lblStudentName;
