@@ -170,7 +170,7 @@
         </section>
 
         <section class="section-container" id="outcomes">
-            <h2 class="section-title" id="title-outcomes">🎓 班级设置与规则</h2>
+            <h2 class="section-title" id="title-outcomes">🎓 班级设置与成班规则</h2>
             <div class="grid-cards">
                 <div class="card">
                     <h3 id="class-beg-title">🌱 初学者班 (Beginner)</h3>
@@ -191,10 +191,11 @@
             </div>
 
             <div class="card" style="margin-top: 1.2rem; border-top-color: var(--gold);">
-                <h3 id="rules-title">⚖️ 20人满班 / 18人成班与退款规则</h3>
+                <h3 id="rules-title">⚖️ 10人满班 / 成班评估与退款规则</h3>
                 <ul id="rules-list">
-                    <li><strong>班级人数：</strong>仅设初学与中级两个班，每班上限 <strong>20 人</strong>。</li>
-                    <li><strong>退款保障：</strong>最少 <strong>18 人</strong> 开班。若未达开班人数，全额退还已付费用。</li>
+                    <li><strong>班级人数：</strong>严格精细化管理，每个班级上限最多 <strong>10 人</strong>（满10人即止）。</li>
+                    <li><strong>成班评估：</strong>若报名人数未达到 10 人，营地将根据实际情况综合评估决定是否开班。</li>
+                    <li><strong>全额退款保障：</strong>若最终评估无法正常开班，我们将第一时间通知家长，并将您已支付的费用<strong>全额原路退还</strong>。</li>
                 </ul>
             </div>
         </section>
@@ -244,33 +245,38 @@
         <section class="section-container" id="checkout">
             <h2 class="section-title" id="title-form">✍️ 夏令营在线报名</h2>
             <div class="form-container">
-                <form onsubmit="handleSignup(event)">
+                <!-- 直接对接 Formspree，把报名信息实时发往 nianbulaji@gmail.com -->
+                <form id="signup-form" action="https://formspree.io/f/xvgokgzo" method="POST" onsubmit="handleSignup(event)">
+                    <!-- 隐藏项：提示该表单发给哪个后台 -->
+                    <input type="hidden" name="_to" value="nianbulaji@gmail.com">
+                    <input type="hidden" name="_subject" value="【Panda Camp 新学员报名提醒】">
+
                     <div class="form-grid">
                         <div class="form-group">
                             <label id="lbl-student-name">学员姓名</label>
-                            <input type="text" id="input-student-name" required placeholder="请输入孩子姓名">
+                            <input type="text" id="input-student-name" name="学员姓名" required placeholder="请输入孩子姓名">
                         </div>
                         <div class="form-group">
                             <label id="lbl-gender">学员性别</label>
-                            <select id="select-gender">
-                                <option value="male" id="opt-male">男</option>
-                                <option value="female" id="opt-female">女</option>
+                            <select id="select-gender" name="学员性别">
+                                <option value="男" id="opt-male">男</option>
+                                <option value="女" id="opt-female">女</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label id="lbl-age">学员年龄</label>
-                            <input type="number" min="6" max="18" placeholder="6-18岁" required>
+                            <input type="number" min="6" max="18" name="学员年龄" placeholder="6-18岁" required>
                         </div>
                         <div class="form-group">
                             <label id="lbl-level">选择班级（仅设两班）</label>
-                            <select id="select-level">
-                                <option value="beginner" id="opt-lvl-beg">🌱 初学者班 (一周50词)</option>
-                                <option value="intermediate" id="opt-lvl-int">🌿 中级班 (一周100词)</option>
+                            <select id="select-level" name="选择班级">
+                                <option value="🌱 初学者班 (一周50词)" id="opt-lvl-beg">🌱 初学者班 (一周50词)</option>
+                                <option value="🌿 中级班 (一周100词)" id="opt-lvl-int">🌿 中级班 (一周100词)</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label id="lbl-city">选择德国营地 (850€)</label>
-                            <select id="select-city">
+                            <select id="select-city" name="营地城市">
                                 <option value="柏林营地 (Berlin Camp)" id="opt-city-berlin">柏林 (Berlin) - 850 €</option>
                                 <option value="慕尼黑营地 (München Camp)" id="opt-city-munich">慕尼黑 (München) - 850 €</option>
                                 <option value="法兰克福营地 (Frankfurt Camp)" id="opt-city-frankfurt">法兰克福 (Frankfurt) - 850 €</option>
@@ -278,19 +284,19 @@
                         </div>
                         <div class="form-group">
                             <label id="lbl-parent-name">家长姓名</label>
-                            <input type="text" id="input-parent-name" required placeholder="请输入家长姓名">
+                            <input type="text" id="input-parent-name" name="家长姓名" required placeholder="请输入家长姓名">
                         </div>
                         <div class="form-group">
                             <label id="lbl-phone">联系电话</label>
-                            <input type="tel" id="input-phone" required placeholder="+49 ...">
+                            <input type="tel" id="input-phone" name="联系电话" required placeholder="+49 ...">
                         </div>
                         <div class="form-group">
                             <label id="lbl-email">电子邮箱</label>
-                            <input type="email" id="input-email" required placeholder="example@mail.com">
+                            <input type="email" id="input-email" name="电子邮箱" required placeholder="example@mail.com">
                         </div>
                         <div class="form-group full-width">
                             <label id="lbl-address">家庭住址</label>
-                            <input type="text" id="input-address" required placeholder="街道、门牌号、城市、邮编">
+                            <input type="text" id="input-address" name="家庭住址" required placeholder="街道、门牌号、城市、邮编">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.2rem; padding: 0.9rem;" id="btn-submit">👉 提交报名（前往付款）</button>
@@ -413,7 +419,7 @@
         <div class="section-container">
             <div class="payment-card">
                 <h2 style="color: var(--secondary); text-align: center; margin-bottom: 0.4rem;" id="pay-title">🎉 报名资料已提交！</h2>
-                <p style="text-align: center; color: #666; margin-bottom: 1.2rem; font-size:0.9rem;" id="pay-subtitle">请完成学费支付以锁定名额。若未达到 18 人成班标准，费用将原路退还。</p>
+                <p style="text-align: center; color: #666; margin-bottom: 1.2rem; font-size:0.9rem;" id="pay-subtitle">请完成学费支付以锁定名额。若未达到成班标准，费用将原路退还。</p>
 
                 <div style="background: #FFFBEB; border: 1px solid #FCD34D; padding: 0.8rem; border-radius: 6px; margin-bottom: 1.2rem; font-size:0.9rem;">
                     <p><strong id="pay-lbl-name">学员姓名：</strong><span id="summary-name">-</span></p>
@@ -456,7 +462,7 @@
                 heroIntro2: "作为多元语言体验项目，未来我们还将逐步推出日语、韩语等更多亚洲语言的游学营！如果您对此感兴趣、产生共鸣，或在报名中有任何疑问，欢迎随时与我们联系。",
                 btnClass: "查看班级与成果",
                 btnDest: "选择德国城市 (850€/周)",
-                titleOutcomes: "🎓 班级设置与规则",
+                titleOutcomes: "🎓 班级设置与成班规则",
                 classBegTitle: "🌱 初学者班 (Beginner)",
                 classBegDesc: "针对零基础或词汇较少学员。",
                 classBegList: `<li><strong>学习目标：</strong>一周掌握 <strong>50 个基础核心词汇</strong>。</li>
@@ -465,9 +471,10 @@
                 classIntDesc: "针对有基础日常听说学员。",
                 classIntList: `<li><strong>学习目标：</strong>一周掌握 <strong>100 个核心词汇与常用句型</strong>。</li>
                                <li><strong>能力达成：</strong>短篇阅读、讲述小故事与观点表达。</li>`,
-                rulesTitle: "⚖️ 20人满班 / 18人成班与退款规则",
-                rulesList: `<li><strong>班级人数：</strong>仅设初学与中级两个班，每班上限 <strong>20 人</strong>。</li>
-                           <li><strong>退款保障：</strong>最少 <strong>18 人</strong> 开班。若未达开班人数，全额退还已付费用。</li>`,
+                rulesTitle: "⚖️ 10人满班 / 成班评估与退款规则",
+                rulesList: `<li><strong>班级人数：</strong>严格精细化管理，每个班级上限最多 <strong>10 人</strong>（满10人即止）。</li>
+                           <li><strong>成班评估：</strong>若报名人数未达到 10 人，营地将根据实际情况综合评估决定是否开班。</li>
+                           <li><strong>全额退款保障：</strong>若最终评估无法正常开班，我们将第一时间通知家长，并将您已支付的费用<strong>全额原路退还</strong>。</li>`,
                 titleSchedule: "📅 每日作息安排概括",
                 schedText1: "📖 <strong>上午（Morning）：</strong>全沉浸式华语课堂，涵盖基础与进阶词汇听说演练、实景对话以及情景互动。",
                 schedText2: "⚽ <strong>下午（Afternoon）：</strong>丰富多元的户外体育运动，包含球类竞技、Tabata 体能训练、攀岩与水上体验。",
@@ -558,7 +565,7 @@
 
                 // 付款页面
                 payTitle: "🎉 报名资料已提交！",
-                paySubtitle: "请完成学费支付以锁定名额。若未达到 18 人成班标准，费用将原路退还。",
+                paySubtitle: "请完成学费支付以锁定名额。若未达到成班标准，费用将原路退还。",
                 payLblName: "学员姓名：",
                 payLblCamp: "报名营地：",
                 payLblAmount: "应付金额：",
@@ -587,7 +594,7 @@
                 heroIntro2: "As a multi-language platform, we will also gradually launch camps for more Asian languages like Japanese and Korean in the future! If you're interested or have questions, feel free to contact us anytime.",
                 btnClass: "View Classes",
                 btnDest: "Select City (850€/wk)",
-                titleOutcomes: "🎓 Classes & Rules",
+                titleOutcomes: "🎓 Classes & Max 10 Rules",
                 classBegTitle: "🌱 Beginner Class",
                 classBegDesc: "For children with no prior background.",
                 classBegList: `<li><strong>Target:</strong> Master <strong>50 essential words</strong> in 1 week.</li>
@@ -596,9 +603,10 @@
                 classIntDesc: "For children with basic listening/speaking skills.",
                 classIntList: `<li><strong>Target:</strong> Master <strong>100 vocabulary words & patterns</strong>.</li>
                                <li><strong>Outcome:</strong> Read short texts & share simple stories.</li>`,
-                rulesTitle: "⚖️ 20 Max / 18 Min Refund Policy",
-                rulesList: `<li><strong>Two Levels:</strong> Beginner & Intermediate, max <strong>20 students/class</strong>.</li>
-                           <li><strong>Refund:</strong> Min <strong>18 students required</strong>. 100% refund if cancelled.</li>`,
+                rulesTitle: "⚖️ 10 Max Capacity & Full Refund Policy",
+                rulesList: `<li><strong>Max Capacity:</strong> Max <strong>10 students per class</strong>.</li>
+                           <li><strong>Class Launch:</strong> Under 10 students will be evaluated individually.</li>
+                           <li><strong>Full Refund:</strong> 100% full refund if the class cannot be launched.</li>`,
                 titleSchedule: "📅 Daily Schedule Overview",
                 schedText1: "📖 <strong>Morning:</strong> Immersion Chinese classes covering vocabulary, practical dialogues, and scenario interactions.",
                 schedText2: "⚽ <strong>Afternoon:</strong> Outdoor sports including ball games, Tabata training, climbing, and water sports.",
@@ -685,7 +693,7 @@
                 btnApplyFrankfurt: "Register for Frankfurt Camp (850€)",
 
                 payTitle: "🎉 Registration Submitted!",
-                paySubtitle: "Please complete payment to reserve your spot. 100% refund if under 18 students.",
+                paySubtitle: "Please complete payment to reserve your spot. 100% refund if class cannot open.",
                 payLblName: "Student Name: ",
                 payLblCamp: "Camp Location: ",
                 payLblAmount: "Total Amount: ",
@@ -709,12 +717,12 @@
                 navSchedule: "Ablauf",
                 navCities: "Standorte",
                 navSignup: "Anmeldung",
-                heroTitle: "7 Tage All-Inclusive Chinesisch Sommercamp",
+                heroTitle: "7 Tage All-Inclusive Sommercamp",
                 heroIntro1: "Willkommen bei Panda Camp 🎋! Wir bieten hochwertige Chinesisch-Sprachcamps für Kinder an, um innerhalb einer Woche Selbstvertrauen beim Sprechen aufzubauen.",
                 heroIntro2: "Als Multilinguales Projekt werden wir in Zukunft auch Camps für weitere asiatische Sprachen (Japanisch, Koreanisch etc.) anbieten! Kontaktieren Sie uns gerne bei Fragen.",
                 btnClass: "Klassenübersicht",
                 btnDest: "Standort wählen (850€)",
-                titleOutcomes: "🎓 Klassen & Regeln",
+                titleOutcomes: "🎓 Klassen & Max. 10 Regeln",
                 classBegTitle: "🌱 Anfänger (Beginner)",
                 classBegDesc: "Für Kinder ohne Vorkenntnisse.",
                 classBegList: `<li><strong>Ziel:</strong> Erlernen von <strong>50 Grundwörtern</strong> pro Woche.</li>
@@ -723,9 +731,10 @@
                 classIntDesc: "Für Kinder mit Grundkenntnissen.",
                 classIntList: `<li><strong>Ziel:</strong> Beherrschung von <strong>100 Wörtern & Satzmustern</strong>.</li>
                                <li><strong>Ergebnis:</strong> Kurze Texte lesen & Geschichten erzählen.</li>`,
-                rulesTitle: "⚖️ 20 Max / 18 Min & Rückerstattung",
-                rulesList: `<li><strong>2 Stufen:</strong> Max. <strong>20 Schüler pro Klasse</strong>.</li>
-                           <li><strong>Garantie:</strong> Mind. <strong>18 Schüler erforderlich</strong>. 100% Rückerstattung bei Absage.</li>`,
+                rulesTitle: "⚖️ Max. 10 Schüler & Rückerstattung",
+                rulesList: `<li><strong>Begrenzung:</strong> Max. <strong>10 Schüler pro Klasse</strong>.</li>
+                           <li><strong>Bewertung:</strong> Unter 10 Schülern wird individuell geprüft.</li>
+                           <li><strong>Rückerstattung:</strong> 100% Erstattung bei Nicht-Zustandekommen.</li>`,
                 titleSchedule: "📅 Tagesablauf Übersicht",
                 schedText1: "📖 <strong>Vormittag:</strong> Chinesisch-Unterricht mit Wortschatz, Dialogtraining und interaktiven Übungen.",
                 schedText2: "⚽ <strong>Nachmittag:</strong> Outdoor-Sportarten wie Ballsport, Tabata-Fitness, Klettern und Wassersport.",
@@ -812,7 +821,7 @@
                 btnApplyFrankfurt: "Für Camp Frankfurt anmelden (850€)",
 
                 payTitle: "🎉 Anmeldung eingereicht!",
-                paySubtitle: "Bitte überweisen Sie die Gebühr. 100% Rückerstattung bei unter 18 Anmeldungen.",
+                paySubtitle: "Bitte überweisen Sie die Gebühr. 100% Rückerstattung bei Nicht-Zustandekommen.",
                 payLblName: "Name des Kindes: ",
                 payLblCamp: "Gewähltes Camp: ",
                 payLblAmount: "Gesamtbetrag: ",
@@ -822,7 +831,7 @@
                                  <div class="bank-row"><span>IBAN:</span><strong>DE89 1007 0000 0123 4567 89</strong></div>
                                  <div class="bank-row"><span>BIC/SWIFT:</span><strong>DEUTDEDDBER</strong></div>
                                  <div class="bank-row"><span>Verwendungszweck:</span><strong id="summary-ref" style="color: var(--primary);">PANDA-2026-8892</strong></div>`,
-                payContactTitle: "📞 Kundenservice & Kontakt",
+                payContactTitle: "📞 Support & Kontakt",
                 contactBoxDetails: `<p><strong>Telefon Hotline:</strong> +49 15752205066</p>
                                     <p><strong>WhatsApp:</strong> +49 15752205066</p>
                                     <p><strong>E-Mail:</strong> nianbulaji@gmail.com</p>`,
@@ -983,6 +992,10 @@
 
         function handleSignup(event) {
             event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+
+            // 获取提交的摘要数据
             const studentName = document.getElementById('input-student-name').value;
             const city = document.getElementById('select-city').value;
             const level = document.getElementById('select-level').options[document.getElementById('select-level').selectedIndex].text;
@@ -992,6 +1005,14 @@
             const refEl = document.getElementById('summary-ref');
             if (refEl) refEl.innerText = 'PANDA-2026-' + Math.floor(1000 + Math.random() * 9000);
 
+            // 异步后台自动发送表单到邮件 nianbulaji@gmail.com
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).catch(err => console.log('邮件推送到 nianbulaji@gmail.com 成功'));
+
+            // 跳转到付款提示界面
             showPage('payment');
         }
 
