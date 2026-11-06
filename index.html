@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>华语沉浸式托管夏令营 - 德国营地</title>
+    <title>Panda Camp 🎋 德国华语全沉浸夏令营</title>
     <style>
         :root {
-            --primary: #C8102E;
+            --primary: #2E7D32;
+            --primary-dark: #1B5E20;
+            --accent: #81C784;
             --secondary: #0A192F;
-            --gold: #D4AF37;
-            --bg-light: #F8F9FA;
-            --text-dark: #2B2D42;
+            --gold: #FFB300;
+            --bg-light: #F4F8F4;
+            --text-dark: #2C3E50;
             --card-bg: #FFFFFF;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; padding-bottom: 3rem; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.5; padding-bottom: 2rem; }
         
         .page { display: none; }
         .page.active { display: block; }
@@ -22,94 +24,96 @@
         header {
             background: var(--secondary);
             color: white;
-            padding: 1rem 5%;
+            padding: 0.8rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
-        .logo { font-size: 1.4rem; font-weight: bold; color: var(--gold); cursor: pointer; }
-        nav a { color: white; text-decoration: none; margin-left: 1.5rem; font-size: 0.95rem; cursor: pointer; transition: 0.2s; }
+        .logo { font-size: 1.4rem; font-weight: bold; color: var(--gold); cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        nav a { color: white; text-decoration: none; margin-left: 1.2rem; font-size: 0.9rem; cursor: pointer; transition: 0.2s; }
         nav a:hover { color: var(--gold); }
-        .lang-select { background: #1E293B; color: white; border: 1px solid var(--gold); padding: 5px 10px; border-radius: 4px; margin-left: 1.5rem; cursor: pointer; }
+        .lang-select { background: #1E293B; color: white; border: 1px solid var(--gold); padding: 4px 8px; border-radius: 4px; margin-left: 1rem; cursor: pointer; }
 
         .hero {
-            background: linear-gradient(rgba(10,25,47,0.85), rgba(10,25,47,0.85)), url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80') center/cover;
+            background: linear-gradient(rgba(10,25,47,0.85), rgba(10,25,47,0.85)), url('https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=1200&q=80') center/cover;
             color: white;
             text-align: center;
-            padding: 5rem 1rem;
+            padding: 3.5rem 1rem;
         }
-        .hero h1 { font-size: 2.3rem; color: var(--gold); margin-bottom: 1rem; }
-        .hero p { font-size: 1.05rem; max-width: 750px; margin: 0 auto 2rem; color: #E2E8F0; }
+        .hero h1 { font-size: 2.2rem; color: var(--gold); margin-bottom: 0.8rem; }
+        .hero p { font-size: 1rem; max-width: 650px; margin: 0 auto 1.5rem; color: #E2E8F0; }
         .btn-group { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-        .btn { padding: 0.8rem 1.8rem; border-radius: 30px; text-decoration: none; font-weight: bold; transition: 0.3s; cursor: pointer; display: inline-block; border: none; text-align: center; }
+        .btn { padding: 0.7rem 1.5rem; border-radius: 25px; text-decoration: none; font-weight: bold; transition: 0.3s; cursor: pointer; display: inline-block; border: none; text-align: center; }
         .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: #A00C24; }
+        .btn-primary:hover { background: var(--primary-dark); }
         .btn-gold { background: var(--gold); color: var(--secondary); }
-        .btn-gold:hover { background: #B89628; }
+        .btn-gold:hover { background: #FFA000; }
         .btn-outline { border: 2px solid var(--gold); color: var(--gold); background: transparent; }
         .btn-outline:hover { background: var(--gold); color: var(--secondary); }
 
-        .section-container { max-width: 1100px; margin: 3rem auto; padding: 0 1.5rem; }
-        .section-title { text-align: center; font-size: 1.8rem; color: var(--secondary); margin-bottom: 2rem; }
+        .section-container { max-width: 1000px; margin: 2.5rem auto; padding: 0 1.2rem; }
+        .section-title { text-align: center; font-size: 1.6rem; color: var(--secondary); margin-bottom: 1.5rem; }
 
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .card { background: var(--card-bg); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-top: 4px solid var(--primary); }
-        .card h3 { color: var(--secondary); margin-bottom: 0.8rem; font-size: 1.2rem; }
-        .card p, .card ul { color: #555; font-size: 0.95rem; }
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+        .card { background: var(--card-bg); padding: 1.5rem; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); }
+        .card h3 { color: var(--secondary); margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .card p, .card ul { color: #555; font-size: 0.9rem; }
         .card ul { list-style: none; padding: 0; }
-        .card ul li { margin-bottom: 0.5rem; padding-left: 1.2rem; position: relative; }
-        .card ul li::before { content: "✔"; position: absolute; left: 0; color: var(--primary); }
+        .card ul li { margin-bottom: 0.4rem; padding-left: 1.2rem; position: relative; }
+        .card ul li::before { content: "🎋"; position: absolute; left: 0; font-size: 0.8rem; }
 
-        .city-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .city-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: 0.3s; position: relative; border: 1px solid #E2E8F0; cursor: pointer; }
-        .city-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
-        .city-card img { width: 100%; height: 190px; object-fit: cover; }
-        .city-price-tag { position: absolute; top: 12px; right: 12px; background: var(--primary); color: white; padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-        .city-info { padding: 1.5rem; }
-        .city-info h3 { color: var(--secondary); margin-bottom: 0.5rem; }
-        .city-info p { color: #666; font-size: 0.9rem; margin-bottom: 1rem; }
+        .city-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+        .city-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 12px rgba(0,0,0,0.08); transition: 0.3s; position: relative; border: 1px solid #E2E8F0; cursor: pointer; }
+        .city-card:hover { transform: translateY(-4px); box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+        .city-card img { width: 100%; height: 160px; object-fit: cover; }
+        .city-price-tag { position: absolute; top: 10px; right: 10px; background: var(--primary); color: white; padding: 4px 12px; border-radius: 15px; font-weight: bold; font-size: 0.95rem; }
+        .city-info { padding: 1.2rem; }
+        .city-info h3 { color: var(--secondary); margin-bottom: 0.4rem; font-size: 1.1rem; }
+        .city-info p { color: #666; font-size: 0.85rem; margin-bottom: 0.8rem; }
 
-        .schedule-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .schedule-table th, .schedule-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #E2E8F0; font-size: 0.95rem; }
+        .schedule-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05); font-size: 0.88rem; }
+        .schedule-table th, .schedule-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #E2E8F0; }
         .schedule-table th { background: var(--secondary); color: white; font-weight: 600; }
 
-        .detail-hero { background: var(--secondary); color: white; padding: 3rem 1.5rem; text-align: center; border-bottom: 4px solid var(--gold); }
-        .detail-hero h1 { font-size: 2.2rem; color: var(--gold); margin-bottom: 0.5rem; }
-        .detail-badge-group { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-        .detail-badge { background: rgba(255,255,255,0.1); border: 1px solid var(--gold); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; color: #FFF; }
+        .detail-hero { background: var(--secondary); color: white; padding: 2.5rem 1rem; text-align: center; border-bottom: 4px solid var(--gold); }
+        .detail-hero h1 { font-size: 2rem; color: var(--gold); margin-bottom: 0.4rem; }
+        .detail-badge-group { display: flex; justify-content: center; gap: 0.8rem; margin-top: 0.8rem; flex-wrap: wrap; }
+        .detail-badge { background: rgba(255,255,255,0.1); border: 1px solid var(--gold); padding: 4px 12px; border-radius: 15px; font-size: 0.85rem; color: #FFF; }
         
-        .feature-box { background: white; border-radius: 12px; padding: 1.8rem; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .feature-box h3 { color: var(--secondary); font-size: 1.25rem; margin-bottom: 1rem; border-left: 4px solid var(--primary); padding-left: 0.8rem; }
-        .activity-pill { display: inline-block; background: #F1F5F9; color: var(--secondary); font-size: 0.85rem; padding: 4px 10px; border-radius: 6px; margin: 0 5px 8px 0; font-weight: bold; }
+        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+        .feature-box { background: white; border-radius: 10px; padding: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .feature-box h3 { color: var(--secondary); font-size: 1.05rem; margin-bottom: 0.8rem; border-left: 4px solid var(--primary); padding-left: 0.6rem; }
+        .feature-box ul { list-style: none; padding: 0; font-size: 0.88rem; color: #555; }
+        .feature-box ul li { margin-bottom: 0.5rem; line-height: 1.4; }
 
-        .form-container { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 800px; margin: 0 auto; }
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+        .form-container { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 3px 15px rgba(0,0,0,0.06); max-width: 750px; margin: 0 auto; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
         .form-group { display: flex; flex-direction: column; }
         .form-group.full-width { grid-column: 1 / -1; }
-        .form-group label { font-size: 0.9rem; font-weight: bold; margin-bottom: 0.4rem; color: var(--secondary); }
-        .form-group input, .form-group select { padding: 0.7rem; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.95rem; outline: none; }
+        .form-group label { font-size: 0.85rem; font-weight: bold; margin-bottom: 0.3rem; color: var(--secondary); }
+        .form-group input, .form-group select { padding: 0.6rem; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 0.9rem; outline: none; }
         .form-group input:focus, .form-group select:focus { border-color: var(--primary); }
 
-        .payment-card { background: white; border-radius: 12px; padding: 2.5rem; box-shadow: 0 4px 25px rgba(0,0,0,0.1); max-width: 700px; margin: 2rem auto; border-top: 6px solid var(--gold); }
-        .bank-details { background: #F1F5F9; border-left: 4px solid var(--secondary); padding: 1.5rem; border-radius: 6px; margin: 1.5rem 0; font-family: monospace; font-size: 1rem; }
-        .bank-row { display: flex; justify-content: space-between; margin-bottom: 0.8rem; border-bottom: 1px dashed #CBD5E1; padding-bottom: 0.4rem; }
+        .payment-card { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); max-width: 650px; margin: 2rem auto; border-top: 5px solid var(--gold); }
+        .bank-details { background: #F1F5F9; border-left: 4px solid var(--secondary); padding: 1.2rem; border-radius: 6px; margin: 1.2rem 0; font-family: monospace; font-size: 0.9rem; }
+        .bank-row { display: flex; justify-content: space-between; margin-bottom: 0.6rem; border-bottom: 1px dashed #CBD5E1; padding-bottom: 0.3rem; }
 
-        footer { background: var(--secondary); color: #94A3B8; text-align: center; padding: 2rem; margin-top: 4rem; font-size: 0.9rem; }
+        footer { background: var(--secondary); color: #94A3B8; text-align: center; padding: 1.5rem; margin-top: 3rem; font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo" onclick="showPage('home')" id="nav-logo">🐼 华语奇航夏令营 (德国)</div>
+        <div class="logo" onclick="showPage('home')" id="nav-logo">🐼 Panda Camp 🎋</div>
         <nav>
             <a onclick="showPage('home')" id="nav-home">首页</a>
-            <a onclick="scrollToSection('outcomes')" id="nav-outcomes">班级设置</a>
-            <a onclick="scrollToSection('schedule')" id="nav-schedule">每日日程</a>
-            <a onclick="scrollToSection('cities')" id="nav-cities">营地路线选择</a>
+            <a onclick="scrollToSection('outcomes')" id="nav-outcomes">班级规则</a>
+            <a onclick="scrollToSection('schedule')" id="nav-schedule">7天作息</a>
+            <a onclick="scrollToSection('cities')" id="nav-cities">营地城市</a>
             <a onclick="scrollToSection('checkout')" id="nav-signup" style="color: var(--gold); font-weight: bold;">在线报名</a>
             <select class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="zh">中文</option>
@@ -122,111 +126,111 @@
     <div id="page-home" class="page active">
         <section class="hero">
             <h1 id="hero-title">7天全托管 · 中文沉浸式游学夏令营</h1>
-            <p id="hero-desc">Day 1 送来、Day 7 接回！食宿全包、全程导师陪同。上午华语沉浸学习，下午精彩户外运动，晚间丰富文化体验。</p>
+            <p id="hero-desc">Day 1 送来、Day 7 接回！食宿全包、全程陪护。上午学华语，下午全运动，晚间丰富文化活动。</p>
             <div class="btn-group">
-                <a onclick="scrollToSection('outcomes')" class="btn btn-primary" id="btn-class">查看班级设置</a>
-                <a onclick="scrollToSection('cities')" class="btn btn-outline" id="btn-dest">探索德国营地城市 (850€/周)</a>
+                <a onclick="scrollToSection('outcomes')" class="btn btn-primary" id="btn-class">查看班级与成果</a>
+                <a onclick="scrollToSection('cities')" class="btn btn-outline" id="btn-dest">选择德国城市 (850€/周)</a>
             </div>
         </section>
 
         <section class="section-container" id="outcomes">
-            <h2 class="section-title" id="title-outcomes">🎓 班级设置与成班规则</h2>
+            <h2 class="section-title" id="title-outcomes">🎓 班级设置与规则</h2>
             <div class="grid-cards">
                 <div class="card">
                     <h3 id="class-beg-title">🌱 初学者班 (Beginner)</h3>
-                    <p id="class-beg-desc">适合无华语基础或零散词汇的孩子。</p>
-                    <ul style="margin-top: 0.8rem;" id="class-beg-list">
-                        <li><strong>核心目标：</strong>掌握最基本的 <strong>50 个常用汉字与核心词汇</strong>。</li>
-                        <li><strong>教学方向：</strong>建立日常开口自信与基础对话能力。</li>
+                    <p id="class-beg-desc">针对零基础或词汇较少学员。</p>
+                    <ul style="margin-top: 0.6rem;" id="class-beg-list">
+                        <li><strong>学习目标：</strong>一周掌握 <strong>50 个基础核心词汇</strong>。</li>
+                        <li><strong>能力达成：</strong>学会自我介绍、日常问候与简单表达。</li>
                     </ul>
                 </div>
                 <div class="card">
                     <h3 id="class-int-title">🌿 中级班 (Intermediate)</h3>
-                    <p id="class-int-desc">适合具备基础听说的学员。</p>
-                    <ul style="margin-top: 0.8rem;" id="class-int-list">
-                        <li><strong>核心目标：</strong>掌握并运用 <strong>100 个拓展词汇与高频句式</strong>。</li>
-                        <li><strong>教学方向：</strong>提升阅读流畅度与短篇表达表达能力。</li>
+                    <p id="class-int-desc">针对有基础日常听说学员。</p>
+                    <ul style="margin-top: 0.6rem;" id="class-int-list">
+                        <li><strong>学习目标：</strong>一周掌握 <strong>100 个核心词汇与常用句型</strong>。</li>
+                        <li><strong>能力达成：</strong>短篇阅读、讲述小故事与观点表达。</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="card" style="margin-top: 1.5rem; border-top-color: var(--gold);">
+            <div class="card" style="margin-top: 1.2rem; border-top-color: var(--gold);">
                 <h3 id="rules-title">⚖️ 20人满班 / 18人成班与退款规则</h3>
                 <ul id="rules-list">
-                    <li><strong>双班精细化管理：</strong>仅设【初学者班】与【中级班】，每班严格上限 <strong>20 人</strong>。</li>
-                    <li><strong>成班与退款保障：</strong>最少需 <strong>18 人</strong> 成班。若未达开班人数，我们将提前通知并<strong>全额退还全额费用</strong>。</li>
+                    <li><strong>班级人数：</strong>仅设初学与中级两个班，每班上限 <strong>20 人</strong>。</li>
+                    <li><strong>退款保障：</strong>最少 <strong>18 人</strong> 开班。若未达开班人数，全额退还已付费用。</li>
                 </ul>
             </div>
         </section>
 
         <section class="section-container" id="schedule">
-            <h2 class="section-title" id="title-schedule">📅 7天概括行程与晚间活动安排</h2>
+            <h2 class="section-title" id="title-schedule">📅 7天概括行程与晚间活动</h2>
             <table class="schedule-table">
                 <thead>
                     <tr>
                         <th id="th-time">时间</th>
-                        <th id="th-morning">上午 (Morning)</th>
-                        <th id="th-afternoon">下午 (Afternoon)</th>
-                        <th id="th-evening">晚间深度活动 (Evening Special)</th>
+                        <th id="th-morning">上午</th>
+                        <th id="th-afternoon">下午</th>
+                        <th id="th-evening">晚间特色活动</th>
                     </tr>
                 </thead>
                 <tbody id="schedule-body">
                     <tr>
                         <td><strong>Day 1</strong></td>
-                        <td>破冰分班与沉浸学习</td>
-                        <td>营地运动探险</td>
-                        <td>星空下营地篝火音乐会 & 欢迎派对与制订营地誓言</td>
+                        <td>报到分班</td>
+                        <td>破冰运动</td>
+                        <td>营地篝火派对 & 制定班规</td>
                     </tr>
                     <tr>
                         <td><strong>Day 2</strong></td>
-                        <td>华语主题课堂</td>
-                        <td>户外体育专项</td>
-                        <td>中华墨韵书画夜：笔墨体验与创意团扇绘制</td>
+                        <td>华语基础</td>
+                        <td>球类运动</td>
+                        <td>水墨书法与竹子国画体验</td>
                     </tr>
                     <tr>
                         <td><strong>Day 3</strong></td>
-                        <td>情景对话演练</td>
-                        <td>户外攀岩拓展</td>
-                        <td>露天星空华语电影院 & 电影角色配音挑战赛</td>
+                        <td>情景对话</td>
+                        <td>攀岩拓展</td>
+                        <td>露天星空电影院 & 配音秀</td>
                     </tr>
                     <tr>
                         <td><strong>Day 4</strong></td>
-                        <td>中华文化阅读</td>
-                        <td>中华少林武术</td>
-                        <td>舌尖上的中华：手工包饺子体验与传统点心品鉴</td>
+                        <td>文化阅读</td>
+                        <td>少林功夫</td>
+                        <td>中华美食制作（手工包饺子）</td>
                     </tr>
                     <tr>
                         <td><strong>Day 5</strong></td>
-                        <td>演讲与口语秀</td>
-                        <td>水上运动项目</td>
-                        <td>国潮戏剧之夜：京剧脸谱DIY与剧本小短剧游园会</td>
+                        <td>口语演讲</td>
+                        <td>游泳体能</td>
+                        <td>京剧脸谱 DIY 与小戏剧演练</td>
                     </tr>
                     <tr>
                         <td><strong>Day 6</strong></td>
-                        <td>成果汇演彩排</td>
-                        <td>营地城市探索</td>
-                        <td>夏令营狂欢化装舞会 & 荣誉勋章颁发盛典</td>
+                        <td>汇演彩排</td>
+                        <td>城市游学</td>
+                        <td>狂欢晚会与颁发荣誉勋章</td>
                     </tr>
                     <tr>
                         <td><strong>Day 7</strong></td>
-                        <td>结业典礼与汇报展示</td>
-                        <td>家长接回离营</td>
-                        <td>温暖返程</td>
+                        <td>结业汇报</td>
+                        <td>家长接回</td>
+                        <td>返程离营</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
         <section class="section-container" id="cities">
-            <h2 class="section-title" id="title-cities">🇩🇪 点击选择德国营地城市 (查看详细设施与好玩项目)</h2>
+            <h2 class="section-title" id="title-cities">🇩🇪 选择营地（点击查看周边吃喝住与设施）</h2>
             <div class="city-grid">
                 <div class="city-card" onclick="showCampDetail('berlin')">
                     <div class="city-price-tag">850 € / 周</div>
                     <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=600&q=80" alt="Berlin">
                     <div class="city-info">
                         <h3>柏林营地 (Berlin Camp)</h3>
-                        <p id="city-berlin-desc">首都艺术与历史科技营地，周边涵盖博物馆岛，设施包含大型室内专业竞技泳池。</p>
-                        <button class="btn btn-outline" style="width:100%; font-size:0.85rem; padding: 0.4rem;">点击查看柏林营地详情 ➔</button>
+                        <p id="city-berlin-desc">首都艺术与科技营地，含室内游泳池与博物馆岛游学。</p>
+                        <button class="btn btn-outline" style="width:100%; font-size:0.8rem; padding: 0.4rem;">查看详情（景点/美食/住宿）➔</button>
                     </div>
                 </div>
                 <div class="city-card" onclick="showCampDetail('munich')">
@@ -234,8 +238,8 @@
                     <img src="https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=600&q=80" alt="Munich">
                     <div class="city-info">
                         <h3>慕尼黑营地 (München Camp)</h3>
-                        <p id="city-munich-desc">巴伐利亚自然运动营地，靠近阿尔卑斯山脉，配备专业 Tabata 体能中心与户外探险公园。</p>
-                        <button class="btn btn-outline" style="width:100%; font-size:0.85rem; padding: 0.4rem;">点击查看慕尼黑营地详情 ➔</button>
+                        <p id="city-munich-desc">巴伐利亚自然运动营地，靠近阿尔卑斯山，含 Tabata 体能训练。</p>
+                        <button class="btn btn-outline" style="width:100%; font-size:0.8rem; padding: 0.4rem;">查看详情（景点/美食/住宿）➔</button>
                     </div>
                 </div>
                 <div class="city-card" onclick="showCampDetail('frankfurt')">
@@ -243,15 +247,15 @@
                     <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&w=600&q=80" alt="Frankfurt">
                     <div class="city-info">
                         <h3>法兰克福营地 (Frankfurt Camp)</h3>
-                        <p id="city-frankfurt-desc">莱茵河畔国际竞技营地，包含水上奥林匹克中心与专业皮划艇和全套 Tabata 训练设施。</p>
-                        <button class="btn btn-outline" style="width:100%; font-size:0.85rem; padding: 0.4rem;">点击查看法兰克福营地详情 ➔</button>
+                        <p id="city-frankfurt-desc">莱茵河水上运动营地，含皮划艇体验与奥运水上项目。</p>
+                        <button class="btn btn-outline" style="width:100%; font-size:0.8rem; padding: 0.4rem;">查看详情（景点/美食/住宿）➔</button>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="section-container" id="checkout">
-            <h2 class="section-title" id="title-form">✍️ 夏令营在线报名表单</h2>
+            <h2 class="section-title" id="title-form">✍️ 夏令营在线报名</h2>
             <div class="form-container">
                 <form onsubmit="handleSignup(event)">
                     <div class="form-grid">
@@ -271,14 +275,14 @@
                             <input type="number" min="6" max="18" placeholder="6-18岁" required>
                         </div>
                         <div class="form-group">
-                            <label id="lbl-level">华语班级选择（仅设两班）</label>
+                            <label id="lbl-level">选择班级（仅设两班）</label>
                             <select id="select-level">
-                                <option value="beginner" id="opt-lvl-beg">🌱 初学者班 (一周学50词)</option>
-                                <option value="intermediate" id="opt-lvl-int">🌿 中级班 (一周学100词)</option>
+                                <option value="beginner" id="opt-lvl-beg">🌱 初学者班 (一周50词)</option>
+                                <option value="intermediate" id="opt-lvl-int">🌿 中级班 (一周100词)</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label id="lbl-city">选择德国营地城市 (850€)</label>
+                            <label id="lbl-city">选择德国营地 (850€)</label>
                             <select id="select-city">
                                 <option value="柏林营地 (Berlin Camp)">柏林 (Berlin) - 850 €</option>
                                 <option value="慕尼黑营地 (München Camp)">慕尼黑 (München) - 850 €</option>
@@ -286,7 +290,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label id="lbl-parent-name">家长/联系人姓名</label>
+                            <label id="lbl-parent-name">家长姓名</label>
                             <input type="text" id="input-parent-name" required placeholder="请输入家长姓名">
                         </div>
                         <div class="form-group">
@@ -302,159 +306,168 @@
                             <input type="text" id="input-address" required placeholder="街道、门牌号、城市、邮编">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.5rem; padding: 1rem; font-size: 1.1rem;" id="btn-submit">👉 确认并提交报名（前往付款）</button>
+                    <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.2rem; padding: 0.9rem;" id="btn-submit">👉 提交报名（前往付款）</button>
                 </form>
             </div>
         </section>
     </div>
 
-    <!-- 城市营地详情页: 柏林 -->
+    <!-- 柏林营地详情 -->
     <div id="page-camp-berlin" class="page">
         <div class="detail-hero">
-            <h1>🏛️ 柏林营地 (Berlin Camp) 深度探索</h1>
-            <p>融合人文历史、现代科技与顶级体育设施的综合性托管营地</p>
+            <h1>🏛️ 柏林营地 (Berlin Camp) 详情</h1>
+            <p>首都艺术文化与游泳训练营地</p>
             <div class="detail-badge-group">
                 <span class="detail-badge">费用: 850 € / 周</span>
-                <span class="detail-badge">位置: 柏林森林体育园区</span>
-                <span class="detail-badge">全程导师陪同</span>
+                <span class="detail-badge">位置: 柏林 Grunewald 体育园区</span>
             </div>
         </div>
         <div class="section-container">
-            <div class="feature-box">
-                <h3>🎪 营地周边好玩与游学景点</h3>
-                <p style="margin-bottom:0.8rem;">营地坐落于柏林生态体育园区，交通便利，结合城市文化与自然风貌：</p>
-                <div>
-                    <span class="activity-pill">🏛️ 博物馆岛 (Museumsinsel) 华语定向寻宝</span>
-                    <span class="activity-pill">🌳 蒂尔加滕公园 (Tiergarten) 户外徒步</span>
-                    <span class="activity-pill">🔬 德国科技博物馆 科学探索</span>
-                    <span class="activity-pill">🏰 查理检查站与柏林墙遗址公园</span>
+            <div class="detail-grid">
+                <div class="feature-box">
+                    <h3>🎡 周边好玩景点</h3>
+                    <ul>
+                        <li><strong>博物馆岛 (Museumsinsel)：</strong>中文讲解游学与艺术打卡。</li>
+                        <li><strong>柏林动物园：</strong>探访大熊猫馆。</li>
+                        <li><strong>德国科技博物馆：</strong>互动科学体验。</li>
+                    </ul>
                 </div>
-            </div>
-            <div class="feature-box">
-                <h3>🏊 专享体育与体能训练设施</h3>
-                <p style="margin-bottom:0.8rem;">营地拥有德国一流的封闭式体育场馆，下午安排丰富多元的体能运动：</p>
-                <div>
-                    <span class="activity-pill">🏊 25米室内恒温标准化游泳馆（配专业救生员）</span>
-                    <span class="activity-pill">🔥 青少年 Tabata 爆发力与体能训练</span>
-                    <span class="activity-pill">⚽ 室内外木地板篮球场与标准草坪足球场</span>
-                    <span class="activity-pill">🧗 10米室内安全防护攀岩墙</span>
+                <div class="feature-box">
+                    <h3>🍜 附近美食</h3>
+                    <ul>
+                        <li><strong>营地营养餐：</strong>提供德式有机餐与中华美食。</li>
+                        <li><strong>周边特色：</strong>柏林特色咖喱香肠 (Currywurst) & 正宗中餐面馆。</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3>🏨 酒店与设施</h3>
+                    <ul>
+                        <li><strong>星级住宿：</strong>全封闭 2 人/4 人独立卫浴酒店公寓。</li>
+                        <li><strong>运动设施：</strong>室内标准化游泳馆、Tabata 训练室、草坪足球场。</li>
+                    </ul>
                 </div>
             </div>
             <div style="display:flex; gap:1rem; justify-content:center; margin-top:2rem;">
-                <button onclick="selectCityAndGoForm('柏林营地 (Berlin Camp)')" class="btn btn-gold">直接报名柏林营地 (850€)</button>
-                <button onclick="showPage('home')" class="btn btn-outline">返回主页</button>
+                <button onclick="selectCityAndGoForm('柏林营地 (Berlin Camp)')" class="btn btn-gold">报名柏林营地 (850€)</button>
+                <button onclick="showPage('home')" class="btn btn-outline">返回首页</button>
             </div>
         </div>
     </div>
 
-    <!-- 城市营地详情页: 慕尼黑 -->
+    <!-- 慕尼黑营地详情 -->
     <div id="page-camp-munich" class="page">
         <div class="detail-hero">
-            <h1>⛰️ 慕尼黑营地 (München Camp) 深度探索</h1>
-            <p>依托阿尔卑斯山麓自然的巴伐利亚探险与高强度体能营地</p>
+            <h1>⛰️ 慕尼黑营地 (München Camp) 详情</h1>
+            <p>巴伐利亚自然探险与 Tabata 体能营地</p>
             <div class="detail-badge-group">
                 <span class="detail-badge">费用: 850 € / 周</span>
                 <span class="detail-badge">位置: 慕尼黑奥林匹克公园旁</span>
-                <span class="detail-badge">全封闭安全管理</span>
             </div>
         </div>
         <div class="section-container">
-            <div class="feature-box">
-                <h3>🌲 营地周边好玩与游学景点</h3>
-                <p style="margin-bottom:0.8rem;">背靠阿尔卑斯山脉，拥有极佳的自然环境与浓厚的体育文化氛围：</p>
-                <div>
-                    <span class="activity-pill">🏰 新天鹅堡与山麓自然风景考察</span>
-                    <span class="activity-pill">🏟️ 慕尼黑奥林匹克公园探险</span>
-                    <span class="activity-pill">🏎️ BMW 宝马世界科技体验中心</span>
-                    <span class="activity-pill">🍃 英国花园 (Englischer Garten) 草坪团建</span>
+            <div class="detail-grid">
+                <div class="feature-box">
+                    <h3>🌲 周边好玩景点</h3>
+                    <ul>
+                        <li><strong>奥林匹克公园：</strong>登塔俯瞰慕尼黑全景。</li>
+                        <li><strong>宝马世界 (BMW Welt)：</strong>汽车科技体验。</li>
+                        <li><strong>阿尔卑斯山麓：</strong>自然森林户外徒步。</li>
+                    </ul>
                 </div>
-            </div>
-            <div class="feature-box">
-                <h3>🏋️ 体育竞技与体能打卡</h3>
-                <p style="margin-bottom:0.8rem;">聚焦青少年体能与户外运动，下午体验专业体能项目：</p>
-                <div>
-                    <span class="activity-pill">🏋️ 青少年科学 Tabata 心肺与体能循环训练</span>
-                    <span class="activity-pill">🏊 奥林匹克标准水上运动中心与游泳潜水体验</span>
-                    <span class="activity-pill">🥋 中华少林武术与户外太极练功场</span>
-                    <span class="activity-pill">🏹 户外山地自行车与弓箭体验</span>
+                <div class="feature-box">
+                    <h3>🥨 附近美食</h3>
+                    <ul>
+                        <li><strong>巴伐利亚特色：</strong>德式烤猪肘配手工扭结饼 (Brezel)。</li>
+                        <li><strong>营地膳食：</strong>中西结合健康运动餐。</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3>🏨 酒店与设施</h3>
+                    <ul>
+                        <li><strong>星级住宿：</strong>公园旁全封闭青年度假酒店。</li>
+                        <li><strong>运动设施：</strong>Tabata 爆发力训练室、户外攀岩墙、少林武术练功场。</li>
+                    </ul>
                 </div>
             </div>
             <div style="display:flex; gap:1rem; justify-content:center; margin-top:2rem;">
-                <button onclick="selectCityAndGoForm('慕尼黑营地 (München Camp)')" class="btn btn-gold">直接报名慕尼黑营地 (850€)</button>
-                <button onclick="showPage('home')" class="btn btn-outline">返回主页</button>
+                <button onclick="selectCityAndGoForm('慕尼黑营地 (München Camp)')" class="btn btn-gold">报名慕尼黑营地 (850€)</button>
+                <button onclick="showPage('home')" class="btn btn-outline">返回首页</button>
             </div>
         </div>
     </div>
 
-    <!-- 城市营地详情页: 法兰克福 -->
+    <!-- 法兰克福营地详情 -->
     <div id="page-camp-frankfurt" class="page">
         <div class="detail-hero">
-            <h1>🌊 法兰克福营地 (Frankfurt Camp) 深度探索</h1>
-            <p>莱茵河畔国际水上运动与国际青少年社交营地</p>
+            <h1>🌊 法兰克福营地 (Frankfurt Camp) 详情</h1>
+            <p>莱茵-美因河畔水上运动营地</p>
             <div class="detail-badge-group">
                 <span class="detail-badge">费用: 850 € / 周</span>
-                <span class="detail-badge">位置: 莱茵-美因水上运动基地</span>
-                <span class="detail-badge">导师24小时陪护</span>
+                <span class="detail-badge">位置: 美因河畔水上竞技基地</span>
             </div>
         </div>
         <div class="section-container">
-            <div class="feature-box">
-                <h3>🚤 营地周边好玩与游学景点</h3>
-                <p style="margin-bottom:0.8rem;">金融与文化交汇中心，周边拥有丰富的国际化游学与水上资源：</p>
-                <div>
-                    <span class="activity-pill">⛵ 美因河畔华语文化游船</span>
-                    <span class="activity-pill">🏛️ 歌德故居与德国电影博物馆游学</span>
-                    <span class="activity-pill">🌆 罗马广场 (Römerberg) 历史老街寻宝</span>
-                    <span class="activity-pill">🌳 棕榈园 (Palmengarten) 热带植物探险</span>
+            <div class="detail-grid">
+                <div class="feature-box">
+                    <h3>⛵ 周边好玩景点</h3>
+                    <ul>
+                        <li><strong>罗马广场：</strong>哥特式建筑群游学。</li>
+                        <li><strong>美因河游船：</strong>水上欣赏法兰克福天际线。</li>
+                        <li><strong>棕榈园 (Palmengarten)：</strong>热带植物探险。</li>
+                    </ul>
                 </div>
-            </div>
-            <div class="feature-box">
-                <h3>🚣 特色水上运动与 Tabata 体能</h3>
-                <p style="margin-bottom:0.8rem;">以水上运动为特色的专业基地，下午运动精彩刺激：</p>
-                <div>
-                    <span class="activity-pill">🚣 莱茵河水域皮划艇与划艇体验</span>
-                    <span class="activity-pill">🏊 专业室内冲浪与竞技游泳体验场</span>
-                    <span class="activity-pill">⚡ 高效 Tabata 燃脂体能拓展</span>
-                    <span class="activity-pill">🎾 室内网球场与羽毛球对抗赛</span>
+                <div class="feature-box">
+                    <h3>🍏 附近美食</h3>
+                    <ul>
+                        <li><strong>法兰克福特色：</strong>绿色蔬菜酱 (Grüne Soße) 伴餐。</li>
+                        <li><strong>营地膳食：</strong>高蛋白运动减脂/增肌营养餐。</li>
+                    </ul>
+                </div>
+                <div class="feature-box">
+                    <h3>🏨 酒店与设施</h3>
+                    <ul>
+                        <li><strong>星级住宿：</strong>水岸度假酒店，24小时安全监控。</li>
+                        <li><strong>运动设施：</strong>美因河皮划艇基地、室内竞技泳池、室内网球场。</li>
+                    </ul>
                 </div>
             </div>
             <div style="display:flex; gap:1rem; justify-content:center; margin-top:2rem;">
-                <button onclick="selectCityAndGoForm('法兰克福营地 (Frankfurt Camp)')" class="btn btn-gold">直接报名法兰克福营地 (850€)</button>
-                <button onclick="showPage('home')" class="btn btn-outline">返回主页</button>
+                <button onclick="selectCityAndGoForm('法兰克福营地 (Frankfurt Camp)')" class="btn btn-gold">报名法兰克福营地 (850€)</button>
+                <button onclick="showPage('home')" class="btn btn-outline">返回首页</button>
             </div>
         </div>
     </div>
 
-    <!-- 页面 2: 付款与商家信息页面 -->
+    <!-- 付款页面 -->
     <div id="page-payment" class="page">
         <div class="section-container">
             <div class="payment-card">
-                <h2 style="color: var(--secondary); text-align: center; margin-bottom: 0.5rem;" id="pay-title">🎉 报名资料已成功提交！</h2>
-                <p style="text-align: center; color: #666; margin-bottom: 1.5rem;" id="pay-subtitle">请完成学费支付以锁定名额。若开营前未达到 18 人成班标准，费用将原路全额退还。</p>
+                <h2 style="color: var(--secondary); text-align: center; margin-bottom: 0.4rem;" id="pay-title">🎉 报名资料已提交！</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 1.2rem; font-size:0.9rem;" id="pay-subtitle">请完成学费支付以锁定名额。若未达到 18 人成班标准，费用将原路退还。</p>
 
-                <div style="background: #FFFBEB; border: 1px solid #FCD34D; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                <div style="background: #FFFBEB; border: 1px solid #FCD34D; padding: 0.8rem; border-radius: 6px; margin-bottom: 1.2rem; font-size:0.9rem;">
                     <p><strong>学员姓名：</strong><span id="summary-name">-</span></p>
-                    <p><strong>选择班级与营地：</strong><span id="summary-camp">-</span></p>
-                    <p><strong>应付金额：</strong><span style="color: var(--primary); font-size: 1.4rem; font-weight: bold;">850.00 €</span></p>
+                    <p><strong>报名营地：</strong><span id="summary-camp">-</span></p>
+                    <p><strong>应付金额：</strong><span style="color: var(--primary); font-size: 1.3rem; font-weight: bold;">850.00 €</span></p>
                 </div>
 
-                <h3 style="color: var(--secondary); margin-bottom: 0.8rem;" id="pay-bank-title">🏦 官方收款银行账户信息 (Bank Transfer)</h3>
+                <h3 style="color: var(--secondary); margin-bottom: 0.6rem; font-size:1rem;" id="pay-bank-title">🏦 收款银行账户信息 (Bank Transfer)</h3>
                 <div class="bank-details">
-                    <div class="bank-row"><span>收款账户 (Beneficiary):</span><strong>Mandarin Odyssey GmbH</strong></div>
-                    <div class="bank-row"><span>开户银行 (Bank Name):</span><strong>Deutsche Bank AG (Berlin Branch)</strong></div>
+                    <div class="bank-row"><span>收款账户:</span><strong>Panda Camp GmbH</strong></div>
+                    <div class="bank-row"><span>开户银行:</span><strong>Deutsche Bank AG</strong></div>
                     <div class="bank-row"><span>IBAN:</span><strong>DE89 1007 0000 0123 4567 89</strong></div>
-                    <div class="bank-row"><span>BIC / SWIFT:</span><strong>DEUTDEDDBER</strong></div>
-                    <div class="bank-row"><span>付款附言 (Reference):</span><strong id="summary-ref" style="color: var(--primary);">CAMP-2026-8892</strong></div>
+                    <div class="bank-row"><span>BIC/SWIFT:</span><strong>DEUTDEDDBER</strong></div>
+                    <div class="bank-row"><span>付款附言:</span><strong id="summary-ref" style="color: var(--primary);">PANDA-2026-8892</strong></div>
                 </div>
 
-                <h3 style="color: var(--secondary); margin-top: 1.5rem; margin-bottom: 0.8rem;" id="pay-contact-title">📞 商家客服与咨询电话</h3>
-                <div style="background: #F8F9FA; padding: 1rem; border-radius: 8px; font-size: 0.95rem;">
-                    <p><strong>德国客服专线：</strong> +49 (0) 30 1234 5678</p>
-                    <p><strong>咨询 WhatsApp / 微信：</strong> +49 176 8888 9999 (微信号: MandarinCampDE)</p>
-                    <p><strong>官方电子邮箱：</strong> pay@mandarinodyssey-camp.de</p>
+                <h3 style="color: var(--secondary); margin-top: 1.2rem; margin-bottom: 0.6rem; font-size:1rem;" id="pay-contact-title">📞 商家客服与联系电话</h3>
+                <div style="background: #F8F9FA; padding: 0.8rem; border-radius: 6px; font-size: 0.85rem;">
+                    <p><strong>客服电话：</strong> +49 (0) 30 1234 5678</p>
+                    <p><strong>WhatsApp / 微信：</strong> +49 176 8888 9999 (PandaCampDE)</p>
+                    <p><strong>电子邮箱：</strong> info@pandacamp.de</p>
                 </div>
 
-                <div style="text-align: center; margin-top: 2rem;">
+                <div style="text-align: center; margin-top: 1.5rem;">
                     <button onclick="showPage('home')" class="btn btn-primary" id="btn-back">返回夏令营首页</button>
                 </div>
             </div>
@@ -462,177 +475,177 @@
     </div>
 
     <footer>
-        <p>© 2026 华语奇航全托管夏令营 Mandarin Odyssey Camp. All Rights Reserved.</p>
+        <p>© 2026 Panda Camp 🎋 全托管华语夏令营. All Rights Reserved.</p>
     </footer>
 
     <script>
         const translations = {
             zh: {
-                navLogo: "🐼 华语奇航夏令营 (德国)",
+                navLogo: "🐼 Panda Camp 🎋",
                 navHome: "首页",
-                navOutcomes: "班级设置",
-                navSchedule: "每日日程",
-                navCities: "营地路线选择",
+                navOutcomes: "班级规则",
+                navSchedule: "7天作息",
+                navCities: "营地城市",
                 navSignup: "在线报名",
                 heroTitle: "7天全托管 · 中文沉浸式游学夏令营",
-                heroDesc: "Day 1 送来、Day 7 接回！食宿全包、全程导师陪同。上午华语沉浸学习，下午精彩户外运动，晚间丰富文化体验。",
-                btnClass: "查看班级设置",
-                btnDest: "探索德国营地城市 (850€/周)",
-                titleOutcomes: "🎓 班级设置与成班规则",
+                heroDesc: "Day 1 送来、Day 7 接回！食宿全包、全程陪护。上午学华语，下午全运动，晚间丰富文化活动。",
+                btnClass: "查看班级与成果",
+                btnDest: "选择德国城市 (850€/周)",
+                titleOutcomes: "🎓 班级设置与规则",
                 classBegTitle: "🌱 初学者班 (Beginner)",
-                classBegDesc: "适合无华语基础或零散词汇的孩子。",
-                classBegList: `<li><strong>核心目标：</strong>掌握最基本的 <strong>50 个常用汉字与核心词汇</strong>。</li>
-                               <li><strong>教学方向：</strong>建立日常开口自信与基础对话能力。</li>`,
+                classBegDesc: "针对零基础或词汇较少学员。",
+                classBegList: `<li><strong>学习目标：</strong>一周掌握 <strong>50 个基础核心词汇</strong>。</li>
+                               <li><strong>能力达成：</strong>学会自我介绍、日常问候与简单表达。</li>`,
                 classIntTitle: "🌿 中级班 (Intermediate)",
-                classIntDesc: "适合具备基础听说的学员。",
-                classIntList: `<li><strong>核心目标：</strong>掌握并运用 <strong>100 个拓展词汇与高频句式</strong>。</li>
-                               <li><strong>教学方向：</strong>提升阅读流畅度与短篇表达能力。</li>`,
+                classIntDesc: "针对有基础日常听说学员。",
+                classIntList: `<li><strong>学习目标：</strong>一周掌握 <strong>100 个核心词汇与常用句型</strong>。</li>
+                               <li><strong>能力达成：</strong>短篇阅读、讲述小故事与观点表达。</li>`,
                 rulesTitle: "⚖️ 20人满班 / 18人成班与退款规则",
-                rulesList: `<li><strong>双班精细化管理：</strong>仅设【初学者班】与【中级班】，每班严格上限 <strong>20 人</strong>。</li>
-                           <li><strong>成班与退款保障：</strong>最少需 <strong>18 人</strong> 成班。若未达开班人数，我们将提前通知并<strong>全额退还已支付费用</strong>。</li>`,
-                titleSchedule: "📅 7天概括行程与晚间活动安排",
+                rulesList: `<li><strong>班级人数：</strong>仅设初学与中级两个班，每班上限 <strong>20 人</strong>。</li>
+                           <li><strong>退款保障：</strong>最少 <strong>18 人</strong> 开班。若未达开班人数，全额退还已付费用。</li>`,
+                titleSchedule: "📅 7天概括行程与晚间活动",
                 thTime: "时间",
-                thMorning: "上午 (Morning)",
-                thAfternoon: "下午 (Afternoon)",
-                thEvening: "晚间深度活动 (Evening Special)",
-                titleCities: "🇩🇪 点击选择德国营地城市 (查看详细设施与好玩项目)",
-                cityBerlinDesc: "首都艺术与历史科技营地，周边涵盖博物馆岛，设施包含大型室内专业竞技泳池。",
-                cityMunichDesc: "巴伐利亚自然运动营地，靠近阿尔卑斯山脉，配备专业 Tabata 体能中心与户外探险公园。",
-                cityFrankfurtDesc: "莱茵河畔国际竞技营地，包含水上奥林匹克中心与专业皮划艇和全套 Tabata 训练设施。",
-                titleForm: "✍️ 夏令营在线报名表单",
+                thMorning: "上午",
+                thAfternoon: "下午",
+                thEvening: "晚间特色活动",
+                titleCities: "🇩🇪 选择营地（点击查看周边吃喝住与设施）",
+                cityBerlinDesc: "首都艺术与科技营地，含室内游泳池与博物馆岛游学。",
+                cityMunichDesc: "巴伐利亚自然运动营地，靠近阿尔卑斯山，含 Tabata 体能训练。",
+                cityFrankfurtDesc: "莱茵河水上运动营地，含皮划艇体验与奥运水上项目。",
+                titleForm: "✍️ 夏令营在线报名",
                 lblStudentName: "学员姓名",
                 phStudentName: "请输入孩子姓名",
                 lblGender: "学员性别",
                 optMale: "男",
                 optFemale: "女",
                 lblAge: "学员年龄",
-                lblLevel: "华语班级选择（仅设两班）",
-                optLvlBeg: "🌱 初学者班 (一周学50词)",
-                optLvlInt: "🌿 中级班 (一周学100词)",
-                lblCity: "选择德国营地城市 (850€)",
-                lblParentName: "家长/联系人姓名",
+                lblLevel: "选择班级（仅设两班）",
+                optLvlBeg: "🌱 初学者班 (一周50词)",
+                optLvlInt: "🌿 中级班 (一周100词)",
+                lblCity: "选择德国营地 (850€)",
+                lblParentName: "家长姓名",
                 phParentName: "请输入家长姓名",
                 lblPhone: "联系电话",
                 lblEmail: "电子邮箱",
                 lblAddress: "家庭住址",
                 phAddress: "街道、门牌号、城市、邮编",
-                btnSubmit: "👉 确认并提交报名（前往付款）",
-                payTitle: "🎉 报名资料已成功提交！",
-                paySubtitle: "请完成学费支付以锁定名额。若开营前未达到 18 人成班标准，费用将原路全额退还。",
-                payBankTitle: "🏦 官方收款银行账户信息 (Bank Transfer)",
-                payContactTitle: "📞 商家客服与咨询电话",
+                btnSubmit: "👉 提交报名（前往付款）",
+                payTitle: "🎉 报名资料已提交！",
+                paySubtitle: "请完成学费支付以锁定名额。若未达到 18 人成班标准，费用将原路退还。",
+                payBankTitle: "🏦 收款银行账户信息 (Bank Transfer)",
+                payContactTitle: "📞 商家客服与联系电话",
                 btnBack: "返回夏令营首页"
             },
             en: {
-                navLogo: "🐼 Mandarin Odyssey Camp (Germany)",
+                navLogo: "🐼 Panda Camp 🎋",
                 navHome: "Home",
                 navOutcomes: "Classes",
                 navSchedule: "Schedule",
                 navCities: "Locations",
                 navSignup: "Register Now",
                 heroTitle: "7-Day All-Inclusive Mandarin Camp",
-                heroDesc: "Drop off Day 1, pick up Day 7! Morning Mandarin immersion, afternoon sports, rich evening cultural activities.",
-                btnClass: "View Class Setup",
-                btnDest: "Explore German Cities (850€/wk)",
-                titleOutcomes: "🎓 Class Setup & Grouping Rules",
+                heroDesc: "Drop off Day 1, pick up Day 7! Morning Chinese, afternoon sports, rich evening activities.",
+                btnClass: "View Classes",
+                btnDest: "Select City (850€/wk)",
+                titleOutcomes: "🎓 Classes & Rules",
                 classBegTitle: "🌱 Beginner Class",
-                classBegDesc: "For children with no prior Chinese background.",
-                classBegList: `<li><strong>Key Goal:</strong> Master <strong>50 essential core Chinese words</strong>.</li>
-                               <li><strong>Focus:</strong> Build speaking confidence & fundamental conversational skills.</li>`,
+                classBegDesc: "For children with no prior background.",
+                classBegList: `<li><strong>Target:</strong> Master <strong>50 essential words</strong> in 1 week.</li>
+                               <li><strong>Outcome:</strong> Basic greetings and self-introduction.</li>`,
                 classIntTitle: "🌿 Intermediate Class",
-                classIntDesc: "For students with basic listening and speaking skills.",
-                classIntList: `<li><strong>Key Goal:</strong> Master <strong>100 vocabulary words & patterns</strong>.</li>
-                               <li><strong>Focus:</strong> Improve reading fluency & short presentation skills.</li>`,
+                classIntDesc: "For children with basic listening/speaking skills.",
+                classIntList: `<li><strong>Target:</strong> Master <strong>100 vocabulary words & patterns</strong>.</li>
+                               <li><strong>Outcome:</strong> Read short texts & share simple stories.</li>`,
                 rulesTitle: "⚖️ 20 Max / 18 Min Refund Policy",
-                rulesList: `<li><strong>Two Level Setup:</strong> Strictly Beginner & Intermediate, max <strong>20 students/class</strong>.</li>
-                           <li><strong>Refund Guarantee:</strong> Min <strong>18 students required</strong>. 100% full refund if unformed.</li>`,
-                titleSchedule: "📅 7-Day Overview & Evening Highlights",
+                rulesList: `<li><strong>Two Levels:</strong> Beginner & Intermediate, max <strong>20 students/class</strong>.</li>
+                           <li><strong>Refund:</strong> Min <strong>18 students required</strong>. 100% refund if cancelled.</li>`,
+                titleSchedule: "📅 7-Day Schedule",
                 thTime: "Day",
                 thMorning: "Morning",
                 thAfternoon: "Afternoon",
-                thEvening: "Evening Special Activities",
-                titleCities: "🇩🇪 Select German Camp (Click for Details & Facilities)",
-                cityBerlinDesc: "Capital camp near Museum Island with indoor professional pool & museum tours.",
-                cityMunichDesc: "Bavarian sports camp near Alps with outdoor parks & professional Tabata gym.",
-                cityFrankfurtDesc: "Rhine river camp featuring Olympic water center, kayaking & Tabata sports.",
-                titleForm: "✍️ Camp Registration Form",
+                thEvening: "Evening Activities",
+                titleCities: "🇩🇪 Select Camp (Click for Attractions/Food/Hotels)",
+                cityBerlinDesc: "Capital camp near Museum Island with indoor pool.",
+                cityMunichDesc: "Bavarian sports camp with outdoor parks & Tabata gym.",
+                cityFrankfurtDesc: "Rhine river camp with kayaks & water sports.",
+                titleForm: "✍️ Online Registration",
                 lblStudentName: "Student Name",
                 phStudentName: "Child's name",
                 lblGender: "Gender",
                 optMale: "Male",
                 optFemale: "Female",
                 lblAge: "Age",
-                lblLevel: "Class Selection (Only 2 Levels)",
+                lblLevel: "Class Level",
                 optLvlBeg: "🌱 Beginner (50 Words/Wk)",
                 optLvlInt: "🌿 Intermediate (100 Words/Wk)",
-                lblCity: "Select German City (850€)",
-                lblParentName: "Parent/Guardian Name",
+                lblCity: "Select City (850€)",
+                lblParentName: "Parent Name",
                 phParentName: "Parent's full name",
                 lblPhone: "Phone Number",
                 lblEmail: "Email Address",
                 lblAddress: "Home Address",
                 phAddress: "Street, Number, City, Zip",
-                btnSubmit: "👉 Confirm & Proceed to Payment",
-                payTitle: "🎉 Registration Submitted Successfully!",
-                paySubtitle: "Please complete transfer to confirm registration. 100% full refund guaranteed if under 18 students.",
-                payBankTitle: "🏦 Official Bank Transfer Details",
-                payContactTitle: "📞 Merchant Contact & Support",
+                btnSubmit: "👉 Submit & Proceed to Payment",
+                payTitle: "🎉 Registration Submitted!",
+                paySubtitle: "Please complete transfer to reserve your spot. 100% refund if under 18 students.",
+                payBankTitle: "🏦 Bank Transfer Details",
+                payContactTitle: "📞 Customer Support",
                 btnBack: "Back to Home Page"
             },
             de: {
-                navLogo: "🐼 Chinesisch Camp (Deutschland)",
+                navLogo: "🐼 Panda Camp 🎋",
                 navHome: "Startseite",
                 navOutcomes: "Klassen",
-                navSchedule: "Tagesablauf",
+                navSchedule: "Ablauf",
                 navCities: "Standorte",
                 navSignup: "Anmeldung",
                 heroTitle: "7 Tage All-Inclusive Chinesisch Sommercamp",
-                heroDesc: "Bringen an Tag 1, Abholen an Tag 7! Vormittags Chinesisch, nachmittags Outdoor-Sport, abends Kultur-Highlights.",
+                heroDesc: "Bringen an Tag 1, Abholen an Tag 7! Vormittags Lernen, nachmittags Sport, abends Kultur.",
                 btnClass: "Klassenübersicht",
-                btnDest: "Standorte entdecken (850€/Woche)",
-                titleOutcomes: "🎓 Klassenstruktur & Gruppenregeln",
-                classBegTitle: "🌱 Anfänger-Klasse (Beginner)",
+                btnDest: "Standort wählen (850€)",
+                titleOutcomes: "🎓 Klassen & Regeln",
+                classBegTitle: "🌱 Anfänger (Beginner)",
                 classBegDesc: "Für Kinder ohne Vorkenntnisse.",
-                classBegList: `<li><strong>Kernziel:</strong> Erlernen von <strong>50 grundlegenden Chinesisch-Wörtern</strong>.</li>
-                               <li><strong>Fokus:</strong> Aufbau von Sprachselbstvertrauen & alltäglichen Dialogen.</li>`,
+                classBegList: `<li><strong>Ziel:</strong> Erlernen von <strong>50 Grundwörtern</strong> pro Woche.</li>
+                               <li><strong>Ergebnis:</strong> Einfache Begrüßungen & Vorstellung.</li>`,
                 classIntTitle: "🌿 Mittelstufe (Intermediate)",
-                classIntDesc: "Für Schüler mit Grundkenntnissen.",
-                classIntList: `<li><strong>Kernziel:</strong> Beherrschung von <strong>100 Kernwörtern & Satzstrukturen</strong>.</li>
-                               <li><strong>Fokus:</strong> Verbesserung von Lesefluss & Ausdrucksvermögen.</li>`,
+                classIntDesc: "Für Kinder mit Grundkenntnissen.",
+                classIntList: `<li><strong>Ziel:</strong> Beherrschung von <strong>100 Wörtern & Satzmustern</strong>.</li>
+                               <li><strong>Ergebnis:</strong> Kurze Texte lesen & Geschichten erzählen.</li>`,
                 rulesTitle: "⚖️ 20 Max / 18 Min & Rückerstattung",
-                rulesList: `<li><strong>Zwei Klassenstufen:</strong> Ausschließlich Anfänger & Mittelstufe, max. <strong>20 Schüler/Klasse</strong>.</li>
-                           <li><strong>Garantie:</strong> Mindestens <strong>18 Schüler erforderlich</strong>. 100% Rückerstattung bei Absage.</li>`,
-                titleSchedule: "📅 7-Tage-Ablauf & Abendprogramm",
+                rulesList: `<li><strong>2 Stufen:</strong> Max. <strong>20 Schüler pro Klasse</strong>.</li>
+                           <li><strong>Garantie:</strong> Mind. <strong>18 Schüler erforderlich</strong>. 100% Rückerstattung bei Absage.</li>`,
+                titleSchedule: "📅 7-Tage-Ablauf",
                 thTime: "Tag",
                 thMorning: "Vormittag",
                 thAfternoon: "Nachmittag",
-                thEvening: "Abendliche Spezialaktivitäten",
-                titleCities: "🇩🇪 Wählen Sie einen Standort (Klicken für Details)",
-                cityBerlinDesc: "Hauptstadt-Camp mit Museumsinsel, Hallenbad & Kultur-Workshops.",
-                cityMunichDesc: "Bayerisches Outdoor-Camp nahe den Alpen mit Tabata & Sportparks.",
-                cityFrankfurtDesc: "Rhein-Camp mit olympischem Wassersportzentrum, Kajak & Tabata.",
-                titleForm: "✍️ Camp Anmeldeformular",
+                thEvening: "Abendprogramm",
+                titleCities: "🇩🇪 Standort wählen (Klicken für Details)",
+                cityBerlinDesc: "Hauptstadt-Camp mit Hallenbad & Museumsinsel.",
+                cityMunichDesc: "Bayerisches Outdoor-Camp mit Tabata & Alpenblick.",
+                cityFrankfurtDesc: "Rhein-Camp mit Wassersport & Kajak.",
+                titleForm: "✍️ Camp Anmeldung",
                 lblStudentName: "Name des Kindes",
-                phStudentName: "Vollständiger Name des Kindes",
+                phStudentName: "Name des Kindes",
                 lblGender: "Geschlecht",
                 optMale: "Männlich",
                 optFemale: "Weiblich",
                 lblAge: "Alter",
-                lblLevel: "Klassenauswahl (Nur 2 Stufen)",
+                lblLevel: "Klassenauswahl",
                 optLvlBeg: "🌱 Anfänger (50 Wörter/Woche)",
                 optLvlInt: "🌿 Mittelstufe (100 Wörter/Woche)",
                 lblCity: "Stadt wählen (850€)",
                 lblParentName: "Name der Eltern",
-                phParentName: "Vollständiger Name der Eltern",
+                phParentName: "Name der Eltern",
                 lblPhone: "Telefonnummer",
                 lblEmail: "E-Mail-Adresse",
                 lblAddress: "Wohnadresse",
                 phAddress: "Straße, Hausnummer, PLZ, Ort",
                 btnSubmit: "👉 Bestätigen & Zur Zahlung",
-                payTitle: "🎉 Anmeldung erfolgreich eingereicht!",
+                payTitle: "🎉 Anmeldung eingereicht!",
                 paySubtitle: "Bitte überweisen Sie die Gebühr. 100% Rückerstattung bei unter 18 Anmeldungen.",
-                payBankTitle: "🏦 Bankverbindung für Überweisung",
-                payContactTitle: "📞 Kontakt & Support",
+                payBankTitle: "🏦 Bankverbindung",
+                payContactTitle: "📞 Support",
                 btnBack: "Zurück zur Startseite"
             }
         };
@@ -737,7 +750,7 @@
 
             document.getElementById('summary-name').innerText = studentName;
             document.getElementById('summary-camp').innerText = `${city} (${level})`;
-            document.getElementById('summary-ref').innerText = 'CAMP-2026-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('summary-ref').innerText = 'PANDA-2026-' + Math.floor(1000 + Math.random() * 9000);
 
             showPage('payment');
         }
