@@ -3,187 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panda Camp 🎋 德国竹林雨林沉浸式全包夏令营</title>
+    <title>Panda Camp 🎋 德国神秘竹林雨林沉浸式全包夏令营</title>
     <style>
         :root {
-            --primary: #1B4D2E;
-            --primary-dark: #12351F;
-            --accent: #A3E635;
-            --secondary: #0F2A1D;
-            --gold: #D4AF37;
-            --gold-light: #FBF6E2;
-            --bg-light: #F2F7F4;
-            --text-dark: #1A2E22;
+            --primary: #0E3820;
+            --primary-dark: #072112;
+            --accent: #86EFAC;
+            --secondary: #0A1E14;
+            --gold: #F1C40F;
+            --gold-light: #FDF9E2;
+            --bg-light: #F0F6F2;
+            --text-dark: #12281D;
             --card-bg: #FFFFFF;
-            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
-        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.7; padding-bottom: 3rem; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.8; padding-bottom: 3rem; }
         
         .page { display: none; opacity: 0; transition: opacity 0.4s ease; }
         .page.active { display: block; opacity: 1; }
 
         /* 顶部导航 */
         header {
-            background: rgba(15, 42, 29, 0.92);
-            backdrop-filter: blur(12px);
+            background: rgba(10, 30, 20, 0.94);
+            backdrop-filter: blur(16px);
             color: white;
-            padding: 0.9rem 5%;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+            border-bottom: 1px solid rgba(241, 196, 15, 0.3);
         }
-        .logo { font-size: 1.35rem; font-weight: bold; color: var(--gold); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: var(--transition); }
-        .logo:hover { transform: scale(1.02); }
-        nav a { color: #E2E8F0; text-decoration: none; margin-left: 1.5rem; font-size: 0.92rem; cursor: pointer; transition: var(--transition); font-weight: 500; }
-        nav a:hover { color: var(--gold); }
-        .lang-select { background: #1B4D2E; color: white; border: 1px solid var(--gold); padding: 5px 10px; border-radius: 6px; margin-left: 1.2rem; cursor: pointer; font-size: 0.85rem; outline: none; }
+        /* 左上角升级后壮观大气的 LOGO */
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: 900; 
+            color: var(--gold); 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            transition: var(--transition);
+            text-shadow: 0 2px 8px rgba(241, 196, 15, 0.4);
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #FFF 30%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo:hover { transform: scale(1.04); filter: brightness(1.2); }
+        
+        nav a { color: #E2E8F0; text-decoration: none; margin-left: 1.6rem; font-size: 0.95rem; cursor: pointer; transition: var(--transition); font-weight: 600; }
+        nav a:hover { color: var(--gold); text-shadow: 0 0 10px rgba(241, 196, 15, 0.5); }
+        .lang-select { background: #0E3820; color: white; border: 1px solid var(--gold); padding: 6px 12px; border-radius: 8px; margin-left: 1.2rem; cursor: pointer; font-size: 0.88rem; outline: none; font-weight: bold; }
 
-        /* Hero 区域 - 替换为高级竹林/热带雨林背景 */
+        /* Hero 区域 - 替换为流油质感、神秘深邃的热带雨林竹子背景 */
         .hero {
-            background: linear-gradient(135deg, rgba(15,42,29,0.82) 0%, rgba(27,77,46,0.78) 100%), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1600&q=80') center/cover;
+            background: linear-gradient(135deg, rgba(7,33,18,0.75) 0%, rgba(14,56,32,0.82) 100%), url('https://images.unsplash.com/photo-1511497584788-876761197069?auto=format&fit=crop&w=1800&q=85') center/cover;
             color: white;
             text-align: center;
-            padding: 5.5rem 1.5rem 4.5rem;
+            padding: 6rem 1.5rem 5rem;
             position: relative;
             overflow: hidden;
-            box-shadow: inset 0 -20px 30px rgba(0,0,0,0.2);
+            box-shadow: inset 0 -30px 50px rgba(0,0,0,0.4);
         }
-        .hero h1 { font-size: 2.7rem; color: var(--gold); margin-bottom: 1.2rem; font-weight: 800; letter-spacing: -0.5px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .hero h1 { font-size: 3rem; color: var(--gold); margin-bottom: 1.2rem; font-weight: 900; letter-spacing: -0.5px; text-shadow: 0 3px 12px rgba(0,0,0,0.6); }
         .hero-text-block {
-            max-width: 840px;
-            margin: 0 auto 2.2rem;
-            background: rgba(15, 42, 29, 0.55);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            max-width: 860px;
+            margin: 0 auto 2.5rem;
+            background: rgba(10, 30, 20, 0.65);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(241, 196, 15, 0.35);
             border-left: 6px solid var(--gold);
-            padding: 1.6rem 2rem;
-            border-radius: 0 14px 14px 0;
+            padding: 1.8rem 2.2rem;
+            border-radius: 0 16px 16px 0;
             text-align: left;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.35);
         }
-        .hero-text-block p { font-size: 1.05rem; color: #F1F8F4; line-height: 1.8; margin-bottom: 0.8rem; }
+        .hero-text-block p { font-size: 1.1rem; color: #F0FDF4; line-height: 1.9; margin-bottom: 0.9rem; }
         .hero-text-block p:last-child { margin-bottom: 0; }
         
         .btn-group { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
-        .btn { padding: 0.8rem 2rem; border-radius: 30px; text-decoration: none; font-weight: bold; transition: var(--transition); cursor: pointer; display: inline-block; border: none; text-align: center; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .btn-primary { background: var(--primary); color: white; border: 1px solid rgba(255,255,255,0.2); }
-        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(27,77,46,0.4); }
-        .btn-gold { background: var(--gold); color: var(--secondary); font-weight: 800; }
-        .btn-gold:hover { background: #E6C547; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,175,55,0.3); }
-        .btn-outline { border: 2px solid var(--gold); color: var(--gold); background: rgba(15,42,29,0.3); backdrop-filter: blur(4px); }
-        .btn-outline:hover { background: var(--gold); color: var(--secondary); transform: translateY(-2px); }
+        .btn { padding: 0.9rem 2.2rem; border-radius: 35px; text-decoration: none; font-weight: bold; transition: var(--transition); cursor: pointer; display: inline-block; border: none; text-align: center; font-size: 1rem; box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .btn-primary { background: var(--primary); color: white; border: 1px solid rgba(255,255,255,0.25); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(14,56,32,0.5); }
+        .btn-gold { background: var(--gold); color: var(--secondary); font-weight: 900; }
+        .btn-gold:hover { background: #F39C12; color: white; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(241,196,15,0.4); }
+        .btn-outline { border: 2px solid var(--gold); color: var(--gold); background: rgba(10,30,20,0.4); backdrop-filter: blur(6px); }
+        .btn-outline:hover { background: var(--gold); color: var(--secondary); transform: translateY(-3px); }
 
         /* 内容板块 */
-        .section-container { max-width: 1050px; margin: 3.5rem auto; padding: 0 1.5rem; }
-        .section-title { text-align: center; font-size: 1.8rem; color: var(--secondary); margin-bottom: 2rem; font-weight: 700; position: relative; }
-        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--gold); margin: 0.6rem auto 0; border-radius: 2px; }
+        .section-container { max-width: 1080px; margin: 4rem auto; padding: 0 1.5rem; }
+        .section-title { text-align: center; font-size: 2rem; color: var(--secondary); margin-bottom: 2.2rem; font-weight: 800; position: relative; }
+        .section-title::after { content: ''; display: block; width: 70px; height: 3.5px; background: var(--gold); margin: 0.6rem auto 0; border-radius: 3px; }
 
-        /* 全包特性亮点横幅 - 雨林森系风格 */
+        /* 全包特性亮点横幅 */
         .all-inclusive-banner {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.2rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
         .ai-badge {
             background: #FFFFFF;
-            border: 1px solid #D1E7DD;
-            padding: 1.3rem;
-            border-radius: 14px;
+            border: 1px solid #C6E6D1;
+            padding: 1.4rem;
+            border-radius: 16px;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(27, 77, 46, 0.05);
-            border-bottom: 5px solid var(--primary);
+            box-shadow: 0 8px 25px rgba(14, 56, 32, 0.06);
+            border-bottom: 6px solid var(--primary);
             transition: var(--transition);
         }
-        .ai-badge:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(27, 77, 46, 0.1); }
-        .ai-badge h4 { color: var(--secondary); font-size: 1.1rem; margin-bottom: 0.4rem; font-weight: 700; }
-        .ai-badge p { color: #526E5D; font-size: 0.88rem; }
+        .ai-badge:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(14, 56, 32, 0.12); }
+        .ai-badge h4 { color: var(--secondary); font-size: 1.15rem; margin-bottom: 0.4rem; font-weight: 800; }
+        .ai-badge p { color: #3E5C4A; font-size: 0.9rem; }
 
         /* 卡片网格 */
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .card { background: var(--card-bg); padding: 2rem; border-radius: 16px; box-shadow: 0 6px 25px rgba(27,77,46,0.06); border-top: 5px solid var(--primary); transition: var(--transition); border: 1px solid #E2EFE6; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(27,77,46,0.12); }
-        .card h3 { color: var(--secondary); margin-bottom: 0.8rem; font-size: 1.2rem; font-weight: 700; }
-        .card p, .card ul { color: #3A5344; font-size: 0.95rem; }
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.8rem; }
+        .card { background: var(--card-bg); padding: 2.2rem; border-radius: 18px; box-shadow: 0 8px 30px rgba(14,56,32,0.07); border-top: 6px solid var(--primary); transition: var(--transition); border: 1px solid #D4EADB; }
+        .card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(14,56,32,0.14); }
+        .card h3 { color: var(--secondary); margin-bottom: 0.9rem; font-size: 1.25rem; font-weight: 800; }
+        .card p, .card ul { color: #2C4A3A; font-size: 0.98rem; }
         .card ul { list-style: none; padding: 0; }
-        .card ul li { margin-bottom: 0.6rem; padding-left: 1.4rem; position: relative; }
-        .card ul li::before { content: "🎋"; position: absolute; left: 0; font-size: 0.85rem; }
+        .card ul li { margin-bottom: 0.7rem; padding-left: 1.5rem; position: relative; }
+        .card ul li::before { content: "🎋"; position: absolute; left: 0; font-size: 0.9rem; }
 
         /* 城市网格卡片 */
-        .city-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .city-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 25px rgba(27,77,46,0.08); transition: var(--transition); position: relative; border: 1px solid #D1E7DD; cursor: pointer; }
-        .city-card:hover { transform: translateY(-6px); box-shadow: 0 12px 35px rgba(27,77,46,0.16); }
-        .city-card img { width: 100%; height: 190px; object-fit: cover; transition: var(--transition); }
-        .city-card:hover img { transform: scale(1.03); }
-        .city-price-tag { position: absolute; top: 14px; right: 14px; background: var(--primary); color: white; padding: 5px 14px; border-radius: 20px; font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .city-info { padding: 1.5rem; }
-        .city-info h3 { color: var(--secondary); margin-bottom: 0.5rem; font-size: 1.2rem; font-weight: 700; }
-        .city-info p { color: #526E5D; font-size: 0.9rem; margin-bottom: 1rem; }
+        .city-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.8rem; }
+        .city-card { background: white; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 30px rgba(14,56,32,0.09); transition: var(--transition); position: relative; border: 1px solid #C6E6D1; cursor: pointer; }
+        .city-card:hover { transform: translateY(-7px); box-shadow: 0 16px 45px rgba(14,56,32,0.18); }
+        .city-card img { width: 100%; height: 200px; object-fit: cover; transition: var(--transition); }
+        .city-card:hover img { transform: scale(1.04); }
+        .city-price-tag { position: absolute; top: 15px; right: 15px; background: var(--primary); color: white; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.25); border: 1px solid rgba(241,196,15,0.4); }
+        .city-info { padding: 1.6rem; }
+        .city-info h3 { color: var(--secondary); margin-bottom: 0.5rem; font-size: 1.25rem; font-weight: 800; }
+        .city-info p { color: #3E5C4A; font-size: 0.92rem; margin-bottom: 1.2rem; }
 
         /* 作息概括卡片 */
         .schedule-box {
             background: white;
-            border-radius: 16px;
-            padding: 2.2rem;
-            box-shadow: 0 6px 25px rgba(27,77,46,0.06);
-            border-left: 6px solid var(--primary);
-            border: 1px solid #D1E7DD;
+            border-radius: 18px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 30px rgba(14,56,32,0.07);
+            border-left: 7px solid var(--primary);
+            border: 1px solid #C6E6D1;
         }
-        .schedule-box p { font-size: 1.05rem; color: #2C4436; margin-bottom: 1.2rem; line-height: 1.8; }
+        .schedule-box p { font-size: 1.1rem; color: #1E3B2B; margin-bottom: 1.4rem; line-height: 1.9; }
         .schedule-box p:last-child { margin-bottom: 0; }
 
-        /* 详情页 Hero - 沉浸式自然风 */
-        .detail-hero { background: linear-gradient(135deg, rgba(15,42,29,0.92) 0%, rgba(27,77,46,0.88) 100%), url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=80') center/cover; color: white; padding: 4rem 1.5rem; text-align: center; border-bottom: 4px solid var(--gold); }
-        .detail-hero h1 { font-size: 2.2rem; color: var(--gold); margin-bottom: 0.5rem; font-weight: 800; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .detail-badge-group { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-        .detail-badge { background: rgba(15,42,29,0.6); backdrop-filter: blur(6px); border: 1px solid var(--gold); padding: 6px 16px; border-radius: 20px; font-size: 0.9rem; color: #FFF; font-weight: 500; }
+        /* 详情页 Hero - 沉浸式流油神秘竹林背景 */
+        .detail-hero { background: linear-gradient(135deg, rgba(7,33,18,0.85) 0%, rgba(14,56,32,0.8) 100%), url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=85') center/cover; color: white; padding: 4.5rem 1.5rem; text-align: center; border-bottom: 5px solid var(--gold); }
+        .detail-hero h1 { font-size: 2.4rem; color: var(--gold); margin-bottom: 0.6rem; font-weight: 900; text-shadow: 0 3px 8px rgba(0,0,0,0.5); }
+        .detail-badge-group { display: flex; justify-content: center; gap: 1rem; margin-top: 1.2rem; flex-wrap: wrap; }
+        .detail-badge { background: rgba(10,30,20,0.7); backdrop-filter: blur(8px); border: 1px solid var(--gold); padding: 7px 18px; border-radius: 20px; font-size: 0.92rem; color: #FFF; font-weight: 600; }
         
-        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .feature-box { background: white; border-radius: 14px; padding: 1.6rem; box-shadow: 0 4px 15px rgba(27,77,46,0.05); border: 1px solid #D1E7DD; }
-        .feature-box h3 { color: var(--secondary); font-size: 1.15rem; margin-bottom: 1rem; border-left: 4px solid var(--primary); padding-left: 0.8rem; font-weight: 700; }
-        .feature-box ul { list-style: none; padding: 0; font-size: 0.92rem; color: #3A5344; }
-        .feature-box ul li { margin-bottom: 0.6rem; line-height: 1.5; position: relative; padding-left: 1.2rem; }
-        .feature-box ul li::before { content: "🎋"; position: absolute; left: 0; font-size: 0.75rem; }
+        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 1.8rem; margin-top: 2.2rem; }
+        .feature-box { background: white; border-radius: 16px; padding: 1.8rem; box-shadow: 0 6px 20px rgba(14,56,32,0.06); border: 1px solid #C6E6D1; }
+        .feature-box h3 { color: var(--secondary); font-size: 1.2rem; margin-bottom: 1.1rem; border-left: 5px solid var(--primary); padding-left: 0.9rem; font-weight: 800; }
+        .feature-box ul { list-style: none; padding: 0; font-size: 0.95rem; color: #2C4A3A; }
+        .feature-box ul li { margin-bottom: 0.7rem; line-height: 1.6; position: relative; padding-left: 1.3rem; }
+        .feature-box ul li::before { content: "🎋"; position: absolute; left: 0; font-size: 0.8rem; }
 
         /* 表单样式 */
-        .form-container { background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 8px 30px rgba(27,77,46,0.08); max-width: 800px; margin: 0 auto; border: 1px solid #D1E7DD; }
-        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+        .form-container { background: white; padding: 3rem; border-radius: 18px; box-shadow: 0 10px 35px rgba(14,56,32,0.09); max-width: 820px; margin: 0 auto; border: 1px solid #C6E6D1; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.4rem; }
         .form-group { display: flex; flex-direction: column; }
         .form-group.full-width { grid-column: 1 / -1; }
-        .form-group label { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--secondary); }
-        .form-group input, .form-group select { padding: 0.8rem 1rem; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 0.95rem; outline: none; transition: var(--transition); background: #F8FBF9; }
-        .form-group input:focus, .form-group select:focus { border-color: var(--primary); background: #FFFFFF; box-shadow: 0 0 0 3px rgba(27,77,46,0.15); }
+        .form-group label { font-size: 0.92rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--secondary); }
+        .form-group input, .form-group select { padding: 0.9rem 1.1rem; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 0.98rem; outline: none; transition: var(--transition); background: #F6FAFA; }
+        .form-group input:focus, .form-group select:focus { border-color: var(--primary); background: #FFFFFF; box-shadow: 0 0 0 3px rgba(14,56,32,0.18); }
 
-        /* 客服底部卡片 - 沉浸森系护眼高级蓝绿渐变 */
+        /* 客服底部卡片 - 极其神秘且高级的森系深绿渐变 */
         .contact-footer-box {
-            background: linear-gradient(135deg, #0F2A1D 0%, #163827 100%);
+            background: linear-gradient(135deg, #072112 0%, #0E3820 100%);
             color: white;
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin-top: 3.5rem;
+            border-radius: 18px;
+            padding: 3rem;
+            margin-top: 4rem;
             text-align: center;
-            border-top: 5px solid var(--gold);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-top: 6px solid var(--gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
-        .contact-footer-box h3 { color: var(--gold); font-size: 1.4rem; margin-bottom: 0.8rem; font-weight: 700; }
-        .contact-footer-box p { color: #D1E7DD; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        .contact-methods { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.98rem; }
-        .contact-item { background: rgba(255,255,255,0.08); border: 1px solid rgba(212,175,55,0.35); padding: 0.9rem 1.4rem; border-radius: 10px; transition: var(--transition); }
-        .contact-item:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+        .contact-footer-box h3 { color: var(--gold); font-size: 1.5rem; margin-bottom: 0.9rem; font-weight: 800; text-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+        .contact-footer-box p { color: #C6E6D1; font-size: 1rem; margin-bottom: 1.8rem; }
+        .contact-methods { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; font-size: 1rem; }
+        .contact-item { background: rgba(255,255,255,0.08); border: 1px solid rgba(241,196,15,0.4); padding: 1rem 1.6rem; border-radius: 12px; transition: var(--transition); }
+        .contact-item:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
         /* 付款页面 */
-        .payment-card { background: white; border-radius: 16px; padding: 2.5rem; box-shadow: 0 10px 35px rgba(27,77,46,0.08); max-width: 680px; margin: 2rem auto; border-top: 6px solid var(--gold); border: 1px solid #D1E7DD; }
-        .bank-details { background: #F4F9F6; border-left: 5px solid var(--primary); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; font-family: monospace; font-size: 0.95rem; }
-        .bank-row { display: flex; justify-content: space-between; margin-bottom: 0.8rem; border-bottom: 1px dashed #CBD5E1; padding-bottom: 0.5rem; }
+        .payment-card { background: white; border-radius: 18px; padding: 3rem; box-shadow: 0 12px 40px rgba(14,56,32,0.1); max-width: 700px; margin: 2rem auto; border-top: 7px solid var(--gold); border: 1px solid #C6E6D1; }
+        .bank-details { background: #F0F6F2; border-left: 6px solid var(--primary); padding: 1.6rem; border-radius: 10px; margin: 1.6rem 0; font-family: monospace; font-size: 0.98rem; }
+        .bank-row { display: flex; justify-content: space-between; margin-bottom: 0.9rem; border-bottom: 1px dashed #CBD5E1; padding-bottom: 0.6rem; }
         .bank-row:last-child { border-bottom: none; margin-bottom: 0; }
 
-        footer { background: #0A1D13; color: #7A9E88; text-align: center; padding: 1.8rem; font-size: 0.88rem; }
+        footer { background: #05140B; color: #69947D; text-align: center; padding: 2rem; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -207,15 +223,15 @@
     <!-- 首页 -->
     <div id="page-home" class="page active">
         <section class="hero">
-            <h1 id="hero-title">🎋 7天全托管 · 食べ喝住全包 · 熊猫竹林森系夏令营</h1>
+            <h1 id="hero-title">🎋 7天全托管 · 食べ喝住全包 · 神秘竹林雨林夏令营</h1>
             
             <div class="hero-text-block">
-                <p id="hero-intro-1">欢迎来到 Panda Camp 🎋！置身于舒缓疗愈的竹林雨林环境中，我们专注于提供全托管、高品质的中文沉浸式教学夏令营。<strong>吃喝全包、星级住宿全包、学费全含</strong>，让孩子在一周内快速建立开口自信并掌握实用华语。</p>
+                <p id="hero-intro-1">欢迎来到 Panda Camp 🎋！置身于流油光泽、神秘治愈的雨林竹海环抱之中，我们专注于提供全托管、高品质的中文沉浸式教学夏令营。<strong>吃喝全包、星级住宿全包、学费全含</strong>，让孩子在一周内快速建立开口自信并掌握实用华语。</p>
                 <p id="hero-intro-2">作为多元语言体验项目，未来我们还将逐步推出日语、韩语等更多亚洲语言的游学营！如果您对此感兴趣、产生共鸣，或在报名中有任何疑问，欢迎随时与我们联系。</p>
             </div>
 
             <!-- 全包亮点展示栏 -->
-            <div class="all-inclusive-banner" style="max-width: 840px; margin: 0 auto 2rem;">
+            <div class="all-inclusive-banner" style="max-width: 860px; margin: 0 auto 2.5rem;">
                 <div class="ai-badge">
                     <h4 id="badge-1-title">🏨 住宿全包</h4>
                     <p id="badge-1-desc">森系星级安全营地与舒适公寓</p>
@@ -232,7 +248,7 @@
 
             <div class="btn-group">
                 <a onclick="scrollToSection('outcomes')" class="btn btn-primary" id="btn-class">查看班级与规则</a>
-                <a onclick="scrollToSection('cities')" class="btn btn-outline" id="btn-dest">选择德国竹林营地 (850€/周·全包)</a>
+                <a onclick="scrollToSection('cities')" class="btn btn-outline" id="btn-dest">选择德国神秘竹林营地 (850€/周·全包)</a>
             </div>
         </section>
 
@@ -242,7 +258,7 @@
                 <div class="card">
                     <h3 id="class-beg-title">🌱 初学者班 (Beginner)</h3>
                     <p id="class-beg-desc">针对零基础或词汇较少学员。</p>
-                    <ul style="margin-top: 0.8rem;" id="class-beg-list">
+                    <ul style="margin-top: 0.9rem;" id="class-beg-list">
                         <li><strong>学习目标：</strong>一周掌握 <strong>50 个基础核心词汇</strong>。</li>
                         <li><strong>能力达成：</strong>学会自我介绍、日常问候与简单表达。</li>
                     </ul>
@@ -250,14 +266,14 @@
                 <div class="card">
                     <h3 id="class-int-title">🌿 中级班 (Intermediate)</h3>
                     <p id="class-int-desc">针对有基础日常听说学员。</p>
-                    <ul style="margin-top: 0.8rem;" id="class-int-list">
+                    <ul style="margin-top: 0.9rem;" id="class-int-list">
                         <li><strong>学习目标：</strong>一周掌握 <strong>100 个核心词汇与常用句型</strong>。</li>
                         <li><strong>能力达成：</strong>短篇阅读、讲述小故事与观点表达。</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="card" style="margin-top: 1.5rem; border-top-color: var(--gold);">
+            <div class="card" style="margin-top: 1.8rem; border-top-color: var(--gold);">
                 <h3 id="rules-title">⚖️ 10人成班标准与退款规则</h3>
                 <ul id="rules-list">
                     <li><strong>班级限额：</strong>精品小班制，每班严格满额 <strong>10 人</strong>即止。</li>
@@ -269,31 +285,31 @@
         <section class="section-container" id="schedule">
             <h2 class="section-title" id="title-schedule">📅 每日作息安排概括</h2>
             <div class="schedule-box">
-                <p id="sched-text-1">📖 <strong>上午（Morning）：</strong>竹林环绕中的全沉浸式华语课堂，涵盖基础与进阶词汇听说演练、实景对话以及情景互动。</p>
+                <p id="sched-text-1">📖 <strong>上午（Morning）：</strong>神秘竹林环绕中的全沉浸式华语课堂，涵盖基础与进阶词汇听说演练、实景对话以及情景互动。</p>
                 <p id="sched-text-2">⚽ <strong>下午（Afternoon）：</strong>丰富多元的户外森系体育运动，包含球类竞技、Tabata 体能训练、攀岩与水上体验。</p>
                 <p id="sched-text-3">🌙 <strong>晚间（Evening Activity）：</strong>精彩主题文化活动，涵盖水墨书法体验、星空露天电影院配音秀、手工包饺子及结业狂欢晚会。</p>
             </div>
         </section>
 
         <section class="section-container" id="cities">
-            <h2 class="section-title" id="title-cities">🇩🇪 选择熊猫竹林营地（点击查看周边吃喝住与设施）</h2>
+            <h2 class="section-title" id="title-cities">🇩🇪 选择神秘竹林雨林营地（点击查看周边吃喝住与设施）</h2>
             <div class="city-grid">
                 <div class="city-card" onclick="showCampDetail('berlin')">
                     <div class="city-price-tag">850 € / 全包</div>
                     <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=600&q=80" alt="Berlin">
                     <div class="city-info">
-                        <h3 id="card-berlin-title">柏林熊猫营地 (Berlin Camp)</h3>
-                        <p id="city-berlin-desc">首都艺术与竹林科技营地，含室内游泳池与博物馆岛游学（吃住全包）。</p>
-                        <button class="btn btn-outline" style="width:100%; font-size:0.85rem; padding: 0.5rem; border-color: var(--primary); color: var(--primary); background: transparent;" id="btn-btn-berlin">查看详情（吃喝住设施）➔</button>
+                        <h3 id="card-berlin-title">柏林神秘竹林营地 (Berlin Camp)</h3>
+                        <p id="city-berlin-desc">首都艺术与竹林雨林营地，含室内游泳池与博物馆岛游学（吃住全包）。</p>
+                        <button class="btn btn-outline" style="width:100%; font-size:0.88rem; padding: 0.55rem; border-color: var(--primary); color: var(--primary); background: transparent;" id="btn-btn-berlin">查看详情（吃喝住设施）➔</button>
                     </div>
                 </div>
                 <div class="city-card" onclick="showCampDetail('munich')">
                     <div class="city-price-tag">850 € / 全包</div>
                     <img src="https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=600&q=80" alt="Munich">
                     <div class="city-info">
-                        <h3 id="card-munich-title">慕尼黑竹林营地 (München Camp)</h3>
-                        <p id="city-munich-desc">巴伐利亚自然运动营地，靠近阿尔卑斯山竹林区，含 Tabata 体能训练（吃住全包）。</p>
-                        <button class="btn btn-outline" style="width:100%; font-size:0.85rem; padding: 0.5rem; border-color: var(--primary); color: var(--primary); background: transparent;" id="btn-btn-munich">查看详情（吃喝住设施）➔</button>
+                        <h3 id="card-munich-title">慕尼黑雨林竹海营地 (München Camp)</h3>
+                        <p id="city-munich-desc">巴伐利亚自然运动营地，靠近阿尔卑斯山神秘竹海，含 Tabata 体能训练（吃住全包）。</p>
+                        <button class="btn btn-outline" style="width:100%; font-size:0.88rem; padding: 0.55rem; border-color: var(--primary); color: var(--primary); background: transparent;" id="btn-btn-munich">查看详情（吃喝住设施）➔</button>
                     </div>
                 </div>
                 <div class="city-card" onclick="showCampDetail('frankfurt')">
@@ -301,15 +317,15 @@
                     <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&w=600&q=80" alt="Frankfurt">
                     <div class="city-info">
                         <h3 id="card-frankfurt-title">法兰克福竹林营地 (Frankfurt Camp)</h3>
-                        <p id="city-frankfurt-desc">莱茵河水上运动与森系营地，含皮划艇体验与奥运水上项目（吃住全包）。</p>
-                        <button class="btn btn-outline" style="width:100%; font-size:0.85rem; padding: 0.5rem; border-color: var(--primary); color: var(--primary); background: transparent;" id="btn-btn-frankfurt">查看详情（吃喝住设施）➔</button>
+                        <p id="city-frankfurt-desc">莱茵河水上运动与热带雨林竹海营地，含皮划艇体验与奥运水上项目（吃住全包）。</p>
+                        <button class="btn btn-outline" style="width:100%; font-size:0.88rem; padding: 0.55rem; border-color: var(--primary); color: var(--primary); background: transparent;" id="btn-btn-frankfurt">查看详情（吃喝住设施）➔</button>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="section-container" id="checkout">
-            <h2 class="section-title" id="title-form">✍️ 夏令营在线报名（竹林雨林·吃喝住宿全包）</h2>
+            <h2 class="section-title" id="title-form">✍️ 夏令营在线报名（神秘竹林雨林·吃喝住宿全包）</h2>
             <div class="form-container">
                 <!-- 直接对接 Formspree，把报名信息实时发往 nianbulaji@gmail.com -->
                 <form id="signup-form" action="https://formspree.io/f/xvgokgzo" method="POST" onsubmit="handleSignup(event)">
@@ -342,8 +358,8 @@
                         <div class="form-group">
                             <label id="lbl-city">选择德国营地 (850€ 全包)</label>
                             <select id="select-city" name="营地城市">
-                                <option value="柏林熊猫营地 (Berlin Camp)" id="opt-city-berlin">柏林熊猫营地 - 850 € (吃住全包)</option>
-                                <option value="慕尼黑竹林营地 (München Camp)" id="opt-city-munich">慕尼黑竹林营地 - 850 € (吃住全包)</option>
+                                <option value="柏林神秘竹林营地 (Berlin Camp)" id="opt-city-berlin">柏林神秘竹林营地 - 850 € (吃住全包)</option>
+                                <option value="慕尼黑雨林竹海营地 (München Camp)" id="opt-city-munich">慕尼黑雨林竹海营地 - 850 € (吃住全包)</option>
                                 <option value="法兰克福竹林营地 (Frankfurt Camp)" id="opt-city-frankfurt">法兰克福竹林营地 - 850 € (吃住全包)</option>
                             </select>
                         </div>
@@ -364,7 +380,7 @@
                             <input type="text" id="input-address" name="家庭住址" required placeholder="街道、门牌号、城市、邮编">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.5rem; padding: 1rem; font-size: 1.05rem;" id="btn-submit">👉 提交报名（前往付款并即时发送邮件通知）</button>
+                    <button type="submit" class="btn btn-gold" style="width: 100%; margin-top: 1.8rem; padding: 1.1rem; font-size: 1.1rem;" id="btn-submit">👉 提交报名（前往付款并即时发送邮件通知）</button>
                 </form>
             </div>
         </section>
@@ -386,11 +402,11 @@
     <!-- 柏林营地详情 -->
     <div id="page-camp-berlin" class="page">
         <div class="detail-hero">
-            <h1 id="berlin-d-title">🏛️ 柏林熊猫营地 (Berlin Camp) 详情</h1>
-            <p id="berlin-d-sub">首都艺术文化与游泳训练营地（竹林森系·吃住全包）</p>
+            <h1 id="berlin-d-title">🏛️ 柏林神秘竹林营地 (Berlin Camp) 详情</h1>
+            <p id="berlin-d-sub">首都艺术文化与游泳训练营地（神秘竹林森系·吃住全包）</p>
             <div class="detail-badge-group">
                 <span class="detail-badge" id="berlin-d-b1">费用: 850 € / 全包</span>
-                <span class="detail-badge" id="berlin-d-b2">位置: 柏林 Grunewald 竹林体育园区</span>
+                <span class="detail-badge" id="berlin-d-b2">位置: 柏林 Grunewald 神秘竹林体育园区</span>
             </div>
         </div>
         <div class="section-container">
@@ -408,8 +424,8 @@
                     <ul id="berlin-f3-list"></ul>
                 </div>
             </div>
-            <div style="display:flex; gap:1rem; justify-content:center; margin-top:2.5rem;">
-                <button onclick="selectCityAndGoForm('柏林熊猫营地 (Berlin Camp)')" class="btn btn-gold" id="btn-apply-berlin">报名柏林营地 (850€ 全包)</button>
+            <div style="display:flex; gap:1rem; justify-content:center; margin-top:3rem;">
+                <button onclick="selectCityAndGoForm('柏林神秘竹林营地 (Berlin Camp)')" class="btn btn-gold" id="btn-apply-berlin">报名柏林营地 (850€ 全包)</button>
                 <button onclick="showPage('home')" class="btn btn-outline" style="border-color: var(--secondary); color: var(--secondary); background: transparent;" id="btn-back-berlin">返回首页</button>
             </div>
         </div>
@@ -418,11 +434,11 @@
     <!-- 慕尼黑营地详情 -->
     <div id="page-camp-munich" class="page">
         <div class="detail-hero">
-            <h1 id="munich-d-title">⛰️ 慕尼黑竹林营地 (München Camp) 详情</h1>
-            <p id="munich-d-sub">巴伐利亚自然探险与 Tabata 体能营地（竹林森系·吃住全包）</p>
+            <h1 id="munich-d-title">⛰️ 慕尼黑雨林竹海营地 (München Camp) 详情</h1>
+            <p id="munich-d-sub">巴伐利亚自然探险与 Tabata 体能营地（神秘竹林森系·吃住全包）</p>
             <div class="detail-badge-group">
                 <span class="detail-badge" id="munich-d-b1">费用: 850 € / 全包</span>
-                <span class="detail-badge" id="munich-d-b2">位置: 慕尼黑奥林匹克竹林公园旁</span>
+                <span class="detail-badge" id="munich-d-b2">位置: 慕尼黑奥林匹克神秘竹海公园旁</span>
             </div>
         </div>
         <div class="section-container">
@@ -440,8 +456,8 @@
                     <ul id="munich-f3-list"></ul>
                 </div>
             </div>
-            <div style="display:flex; gap:1rem; justify-content:center; margin-top:2.5rem;">
-                <button onclick="selectCityAndGoForm('慕尼黑竹林营地 (München Camp)')" class="btn btn-gold" id="btn-apply-munich">报名慕尼黑营地 (850€ 全包)</button>
+            <div style="display:flex; gap:1rem; justify-content:center; margin-top:3rem;">
+                <button onclick="selectCityAndGoForm('慕尼黑雨林竹海营地 (München Camp)')" class="btn btn-gold" id="btn-apply-munich">报名慕尼黑营地 (850€ 全包)</button>
                 <button onclick="showPage('home')" class="btn btn-outline" style="border-color: var(--secondary); color: var(--secondary); background: transparent;" id="btn-back-munich">返回首页</button>
             </div>
         </div>
@@ -451,10 +467,10 @@
     <div id="page-camp-frankfurt" class="page">
         <div class="detail-hero">
             <h1 id="frankfurt-d-title">🌊 法兰克福竹林营地 (Frankfurt Camp) 详情</h1>
-            <p id="frankfurt-d-sub">莱茵-美因河畔水上运动营地（竹林森系·吃住全包）</p>
+            <p id="frankfurt-d-sub">莱茵-美因河畔水上运动营地（神秘竹林森系·吃住全包）</p>
             <div class="detail-badge-group">
                 <span class="detail-badge" id="frankfurt-d-b1">费用: 850 € / 全包</span>
-                <span class="detail-badge" id="frankfurt-d-b2">位置: 美因河畔竹林水上竞技基地</span>
+                <span class="detail-badge" id="frankfurt-d-b2">位置: 美因河畔流油竹海竞技基地</span>
             </div>
         </div>
         <div class="section-container">
@@ -472,7 +488,7 @@
                     <ul id="frankfurt-f3-list"></ul>
                 </div>
             </div>
-            <div style="display:flex; gap:1rem; justify-content:center; margin-top:2.5rem;">
+            <div style="display:flex; gap:1rem; justify-content:center; margin-top:3rem;">
                 <button onclick="selectCityAndGoForm('法兰克福竹林营地 (Frankfurt Camp)')" class="btn btn-gold" id="btn-apply-frankfurt">报名法兰克福营地 (850€ 全包)</button>
                 <button onclick="showPage('home')" class="btn btn-outline" style="border-color: var(--secondary); color: var(--secondary); background: transparent;" id="btn-back-frankfurt">返回首页</button>
             </div>
@@ -483,26 +499,26 @@
     <div id="page-payment" class="page">
         <div class="section-container">
             <div class="payment-card">
-                <h2 style="color: var(--secondary); text-align: center; margin-bottom: 0.5rem;" id="pay-title">🎉 报名资料已提交！邮件已实时发往 nianbulaji@gmail.com！</h2>
-                <p style="text-align: center; color: #526E5D; margin-bottom: 1.5rem; font-size:0.95rem;" id="pay-subtitle">请完成学费支付以锁定全包名额。采用 10人成班标准，未达到10人成班标准时将按实际情况评估是否开班，如若不开班则费用将原路退还。</p>
+                <h2 style="color: var(--secondary); text-align: center; margin-bottom: 0.6rem;" id="pay-title">🎉 报名资料已提交！邮件已实时发往 nianbulaji@gmail.com！</h2>
+                <p style="text-align: center; color: #3E5C4A; margin-bottom: 1.6rem; font-size:0.98rem;" id="pay-subtitle">请完成学费支付以锁定全包名额。采用 10人成班标准，未达到10人成班标准时将按实际情况评估是否开班，如若不开班则费用将原路退还。</p>
 
-                <div style="background: #F4F9F6; border: 1px solid #D1E7DD; padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem; font-size:0.95rem;">
+                <div style="background: #F0F6F2; border: 1px solid #C6E6D1; padding: 1.2rem; border-radius: 12px; margin-bottom: 1.6rem; font-size:0.98rem;">
                     <p><strong id="pay-lbl-name">学员姓名：</strong><span id="summary-name">-</span></p>
                     <p><strong id="pay-lbl-camp">报名营地：</strong><span id="summary-camp">-</span></p>
-                    <p><strong id="pay-lbl-amount">应付金额（竹林吃住全包）：</strong><span style="color: var(--primary); font-size: 1.4rem; font-weight: bold;">850.00 €</span></p>
+                    <p><strong id="pay-lbl-amount">应付金额（神秘竹林吃住全包）：</strong><span style="color: var(--primary); font-size: 1.5rem; font-weight: bold;">850.00 €</span></p>
                 </div>
 
-                <h3 style="color: var(--secondary); margin-bottom: 0.8rem; font-size:1.05rem;" id="pay-bank-title">🏦 收款银行账户信息 (Bank Transfer)</h3>
+                <h3 style="color: var(--secondary); margin-bottom: 0.9rem; font-size:1.1rem;" id="pay-bank-title">🏦 收款银行账户信息 (Bank Transfer)</h3>
                 <div class="bank-details" id="bank-box-details">
                     <!-- 动态翻译 -->
                 </div>
 
-                <h3 style="color: var(--secondary); margin-top: 1.5rem; margin-bottom: 0.8rem; font-size:1.05rem;" id="pay-contact-title">📞 商家客服与联系方式</h3>
-                <div style="background: #F4F9F6; padding: 1rem; border-radius: 8px; font-size: 0.9rem;" id="contact-box-details">
+                <h3 style="color: var(--secondary); margin-top: 1.8rem; margin-bottom: 0.9rem; font-size:1.1rem;" id="pay-contact-title">📞 商家客服与联系方式</h3>
+                <div style="background: #F0F6F2; padding: 1.2rem; border-radius: 10px; font-size: 0.92rem;" id="contact-box-details">
                     <!-- 动态翻译 -->
                 </div>
 
-                <div style="text-align: center; margin-top: 2rem;">
+                <div style="text-align: center; margin-top: 2.2rem;">
                     <button onclick="showPage('home')" class="btn btn-primary" id="btn-back">返回夏令营首页</button>
                 </div>
             </div>
@@ -510,7 +526,7 @@
     </div>
 
     <footer>
-        <p id="footer-text">© 2026 Panda Camp 🎋 熊猫竹林热带雨林沉浸式夏令营. All Rights Reserved.</p>
+        <p id="footer-text">© 2026 Panda Camp 🎋 神秘竹林雨林沉浸式夏令营. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -522,8 +538,8 @@
                 navSchedule: "作息概括",
                 navCities: "营地城市",
                 navSignup: "在线报名",
-                heroTitle: "🎋 7天全托管 · 食べ喝住全包 · 熊猫竹林森系夏令营",
-                heroIntro1: "欢迎来到 Panda Camp 🎋！置身于舒缓疗愈的竹林雨林环境中，我们专注于提供全托管、高品质的中文沉浸式教学夏令营。吃喝全包、星级住宿全包、学费全含，让孩子在一周内快速建立开口自信并掌握实用华语。",
+                heroTitle: "🎋 7天全托管 · 食べ喝住全包 · 神秘竹林雨林夏令营",
+                heroIntro1: "欢迎来到 Panda Camp 🎋！置身于流油光泽、神秘治愈的雨林竹海环抱之中，我们专注于提供全托管、高品质的中文沉浸式教学夏令营。吃喝全包、星级住宿全包、学费全含，让孩子在一周内快速建立开口自信并掌握实用华语。",
                 heroIntro2: "作为多元语言体验项目，未来我们还将逐步推出日语、韩语等更多亚洲语言的游学营！如果您对此感兴趣、产生共鸣，或在报名中有任何疑问，欢迎随时与我们联系。",
                 badge1Title: "🏨 住宿全包",
                 badge1Desc: "森系星级安全营地与舒适公寓",
@@ -532,7 +548,7 @@
                 badge3Title: "🛡️ 全托管理",
                 badge3Desc: "专业师资 24 小时贴心陪伴照顾",
                 btnClass: "查看班级与规则",
-                btnDest: "选择德国竹林营地 (850€/周·全包)",
+                btnDest: "选择德国神秘竹林营地 (850€/周·全包)",
                 titleOutcomes: "🎓 班级设置与成班规则",
                 classBegTitle: "🌱 初学者班 (Beginner)",
                 classBegDesc: "针对零基础或词汇较少学员。",
@@ -546,20 +562,20 @@
                 rulesList: `<li><strong>班级限额：</strong>精品小班制，每班严格满额 <strong>10 人</strong>即止。</li>
                            <li><strong>成班标准与退款说明：</strong>以 <strong>10人成班标准</strong> 执行。未达到10人成班标准时，将按实际情况评估是否开班，若不开班则费用将原路退还。</li>`,
                 titleSchedule: "📅 每日作息安排概括",
-                schedText1: "📖 <strong>上午（Morning）：</strong>竹林环绕中的全沉浸式华语课堂，涵盖基础与进阶词汇听说演练、实景对话以及情景互动。",
+                schedText1: "📖 <strong>上午（Morning）：</strong>神秘竹林环绕中的全沉浸式华语课堂，涵盖基础与进阶词汇听说演练、实景对话以及情景互动。",
                 schedText2: "⚽ <strong>下午（Afternoon）：</strong>丰富多元的户外森系体育运动，包含球类竞技、Tabata 体能训练、攀岩与水上体验。",
                 schedText3: "🌙 <strong>晚间（Evening Activity）：</strong>精彩主题文化活动，涵盖水墨书法体验、星空露天电影院配音秀、手工包饺子及结业狂欢晚会。",
-                titleCities: "🇩🇪 选择熊猫竹林营地（点击查看周边吃喝住与设施）",
-                cardBerlinTitle: "柏林熊猫营地 (Berlin Camp)",
-                cityBerlinDesc: "首都艺术与竹林科技营地，含室内游泳池与博物馆岛游学（吃住全包）。",
+                titleCities: "🇩🇪 选择神秘竹林雨林营地（点击查看周边吃喝住与设施）",
+                cardBerlinTitle: "柏林神秘竹林营地 (Berlin Camp)",
+                cityBerlinDesc: "首都艺术与竹林雨林营地，含室内游泳池与博物馆岛游学（吃住全包）。",
                 btnDetailText: "查看详情（吃喝住设施）➔",
-                cardMunichTitle: "慕尼黑竹林营地 (München Camp)",
-                cityMunichDesc: "巴伐利亚自然运动营地，靠近阿尔卑斯山竹林区，含 Tabata 体能训练（吃住全包）。",
+                cardMunichTitle: "慕尼黑雨林竹海营地 (München Camp)",
+                cityMunichDesc: "巴伐利亚自然运动营地，靠近阿尔卑斯山神秘竹海，含 Tabata 体能训练（吃住全包）。",
                 cardFrankfurtTitle: "法兰克福竹林营地 (Frankfurt Camp)",
-                cityFrankfurtDesc: "莱茵河水上运动与森系营地，含皮划艇体验与奥运水上项目（吃住全包）。",
+                cityFrankfurtDesc: "莱茵河水上运动与热带雨林竹海营地，含皮划艇体验与奥运水上项目（吃住全包）。",
                 contactSectionTitle: "📞 官方客服与联系方式",
                 contactSectionDesc: "如有问题或对未来的亚洲语言营感兴趣，欢迎随时通过以下方式与我们联系：",
-                titleForm: "✍️ 夏令营在线报名（竹林雨林·吃喝住宿全包）",
+                titleForm: "✍️ 夏令营在线报名（神秘竹林雨林·吃喝住宿全包）",
                 lblStudentName: "学员姓名",
                 phStudentName: "请输入孩子姓名",
                 lblGender: "学员性别",
@@ -570,8 +586,8 @@
                 optLvlBeg: "🌱 初学者班 (一周50词)",
                 optLvlInt: "🌿 中级班 (一周100词)",
                 lblCity: "选择德国营地 (850€ 全包)",
-                optCityBerlin: "柏林熊猫营地 - 850 € (吃住全包)",
-                optCityMunich: "慕尼黑竹林营地 - 850 € (吃住全包)",
+                optCityBerlin: "柏林神秘竹林营地 - 850 € (吃住全包)",
+                optCityMunich: "慕尼黑雨林竹海营地 - 850 € (吃住全包)",
                 optCityFrankfurt: "法兰克福竹林营地 - 850 € (吃住全包)",
                 lblParentName: "家长姓名",
                 phParentName: "请输入家长姓名",
@@ -581,10 +597,10 @@
                 phAddress: "街道、门牌号、城市、邮编",
                 btnSubmit: "👉 提交报名（前往付款并即时发送邮件通知）",
                 
-                berlinDTitle: "🏛️ 柏林熊猫营地 (Berlin Camp) 详情",
-                berlinDSub: "首都艺术文化与游泳训练营地（竹林森系·吃住全包）",
+                berlinDTitle: "🏛️ 柏林神秘竹林营地 (Berlin Camp) 详情",
+                berlinDSub: "首都艺术文化与游泳训练营地（神秘竹林森系·吃住全包）",
                 berlinDB1: "费用: 850 € / 全包",
-                berlinDB2: "位置: 柏林 Grunewald 竹林体育园区",
+                berlinDB2: "位置: 柏林 Grunewald 神秘竹林体育园区",
                 berlinF1Title: "🎡 周边好玩景点",
                 berlinF1List: `<li><strong>博物馆岛 (Museumsinsel)：</strong>中文讲解游学与艺术打卡。</li>
                                <li><strong>柏林动物园：</strong>探访大熊猫馆。</li>
@@ -593,15 +609,15 @@
                 berlinF2List: `<li><strong>全天膳食：</strong>德式有机营养餐与特色中式美馔。</li>
                                <li><strong>茶歇点心：</strong>无限供应新鲜水果与健康饮品。</li>`,
                 berlinF3Title: "🏨 住宿与全包设施",
-                berlinF3List: `<li><strong>星级住宿：</strong>全封闭 2 人/4 人独立卫浴竹林度假酒店公寓。</li>
+                berlinF3List: `<li><strong>星级住宿：</strong>全封闭 2 人/4 人独立卫浴神秘竹林度假酒店公寓。</li>
                                <li><strong>运动设施：</strong>室内标准化游泳馆、Tabata 训练室、草坪足球场。</li>`,
                 btnApplyBerlin: "报名柏林营地 (850€ 全包)",
                 btnBackHome: "返回首页",
 
-                munichDTitle: "⛰️ 慕尼黑竹林营地 (München Camp) 详情",
-                munichDSub: "巴伐利亚自然探险与 Tabata 体能营地（竹林森系·吃住全包）",
+                munichDTitle: "⛰️ 慕尼黑雨林竹海营地 (München Camp) 详情",
+                munichDSub: "巴伐利亚自然探险与 Tabata 体能营地（神秘竹林森系·吃住全包）",
                 munichDB1: "费用: 850 € / 全包",
-                munichDB2: "位置: 慕尼黑奥林匹克竹林公园旁",
+                munichDB2: "位置: 慕尼黑奥林匹克神秘竹海公园旁",
                 munichF1Title: "🌲 周边好玩景点",
                 munichF1List: `<li><strong>奥林匹克公园：</strong>登塔俯瞰慕尼黑全景。</li>
                                <li><strong>宝马世界 (BMW Welt)：</strong>汽车科技体验。</li>
@@ -610,14 +626,14 @@
                 munichF2List: `<li><strong>巴伐利亚特色：</strong>德式健康运动营养膳食与手工点心。</li>
                                <li><strong>营地膳食：</strong>中西结合营养师定制每日三餐。</li>`,
                 munichF3Title: "🏨 住宿与全包设施",
-                munichF3List: `<li><strong>星级住宿：</strong>竹林公园旁全封闭青年度假酒店（24小时老师陪护）。</li>
+                munichF3List: `<li><strong>星级住宿：</strong>神秘竹林公园旁全封闭青年度假酒店（24小时老师陪护）。</li>
                                <li><strong>运动设施：</strong>Tabata 爆发力训练室、户外攀岩墙、少林武术练功场。</li>`,
                 btnApplyMunich: "报名慕尼黑营地 (850€ 全包)",
 
                 frankfurtDTitle: "🌊 法兰克福竹林营地 (Frankfurt Camp) 详情",
-                frankfurtDSub: "莱茵-美因河畔水上运动营地（竹林森系·吃住全包）",
+                frankfurtDSub: "莱茵-美因河畔水上运动营地（神秘竹林森系·吃住全包）",
                 frankfurtDB1: "费用: 850 € / 全包",
-                frankfurtDB2: "位置: 美因河畔竹林水上竞技基地",
+                frankfurtDB2: "位置: 美因河畔流油竹海竞技基地",
                 frankfurtF1Title: "⛵ 周边好玩景点",
                 frankfurtF1List: `<li><strong>罗马广场：</strong>哥特式建筑群游学。</li>
                                   <li><strong>美因河游船：</strong>水上欣赏法兰克福天际线。</li>
@@ -626,7 +642,7 @@
                 frankfurtF2List: `<li><strong>营地特色：</strong>高蛋白运动营养餐、丰富有机蔬菜与应季水果。</li>
                                   <li><strong>餐饮保障：</strong>严格把关食品安全，满足各类营养需求。</li>`,
                 frankfurtF3Title: "🏨 住宿与全包设施",
-                frankfurtF3List: `<li><strong>星级住宿：</strong>美因河畔竹林度假酒店（双人/四人标准间，独立卫浴）。</li>
+                frankfurtF3List: `<li><strong>星级住宿：</strong>美因河畔神秘竹林度假酒店（双人/四人标准间，独立卫浴）。</li>
                                   <li><strong>运动设施：</strong>美因河皮划艇基地、室内竞技泳池、室内网球场。</li>`,
                 btnApplyFrankfurt: "报名法兰克福营地 (850€ 全包)",
 
@@ -634,7 +650,7 @@
                 paySubtitle: "请完成学费支付以锁定全包名额。采用 10人成班标准，未达到10人成班标准时将按实际情况评估是否开班，如若不开班则费用将原路退还。",
                 payLblName: "学员姓名：",
                 payLblCamp: "报名营地：",
-                payLblAmount: "应付金额（竹林吃住全包）：",
+                payLblAmount: "应付金额（神秘竹林吃住全包）：",
                 payBankTitle: "🏦 收款银行账户信息 (Bank Transfer)",
                 bankBoxDetails: `<div class="bank-row"><span>收款账户:</span><strong>Panda Camp GmbH</strong></div>
                                  <div class="bank-row"><span>开户银行:</span><strong>Deutsche Bank AG</strong></div>
@@ -646,7 +662,7 @@
                                     <p><strong>WhatsApp：</strong> +49 15752205066</p>
                                     <p><strong>电子邮箱：</strong> nianbulaji@gmail.com</p>`,
                 btnBack: "返回夏令营首页",
-                footerText: "© 2026 Panda Camp 🎋 熊猫竹林热带雨林沉浸式夏令营. All Rights Reserved."
+                footerText: "© 2026 Panda Camp 🎋 神秘竹林雨林沉浸式夏令营. All Rights Reserved."
             },
             en: {
                 navLogo: "🐼 Panda Camp 🎋",
@@ -655,11 +671,11 @@
                 navSchedule: "Schedule",
                 navCities: "Locations",
                 navSignup: "Register Now",
-                heroTitle: "🎋 7-Day All-Inclusive Bamboo Forest & Rainforest Camp",
-                heroIntro1: "Welcome to Panda Camp 🎋! Immersed in a soothing bamboo and rainforest environment, we provide top-quality all-inclusive Chinese immersion camps. Accommodation, organic meals, and classes are 100% included!",
+                heroTitle: "🎋 7-Day All-Inclusive Mystic Bamboo & Rainforest Camp",
+                heroIntro1: "Welcome to Panda Camp 🎋! Immersed in a mystical, lush bamboo rainforest, we provide top-quality all-inclusive Chinese immersion camps. Accommodation, organic meals, and classes are 100% included!",
                 heroIntro2: "As a multi-language platform, we will also gradually launch camps for more Asian languages like Japanese and Korean in the future! If you're interested or have questions, feel free to contact us anytime.",
                 badge1Title: "🏨 All-Inclusive Stay",
-                badge1Desc: "Forest resort & secure apartments",
+                badge1Desc: "Mystic forest resort & apartments",
                 badge2Title: "🍲 All-Inclusive Meals",
                 badge2Desc: "Organic meals & healthy snacks",
                 badge3Title: "🛡️ Full-Time Care",
@@ -679,20 +695,20 @@
                 rulesList: `<li><strong>Capacity:</strong> Strict limit of max <strong>10 students per class</strong>.</li>
                            <li><strong>Launch Policy:</strong> Based on 10-student standard. Evaluated per conditions; full refund if cancelled.</li>`,
                 titleSchedule: "📅 Daily Schedule Overview",
-                schedText1: "📖 <strong>Morning:</strong> Immersive Chinese classes surrounded by bamboo forests, covering vocabulary, dialogues, and interactions.",
+                schedText1: "📖 <strong>Morning:</strong> Immersive Chinese classes surrounded by mystic bamboo forests, covering vocabulary, dialogues, and interactions.",
                 schedText2: "⚽ <strong>Afternoon:</strong> Outdoor forest sports including ball games, Tabata training, climbing, and water sports.",
                 schedText3: "🌙 <strong>Evening Activity:</strong> Cultural highlights like ink calligraphy, open-air movie voice acting, dumpling making & gala party.",
-                titleCities: "🇩🇪 Select Panda Bamboo Camp (Click for Details)",
-                cardBerlinTitle: "Berlin Panda Camp",
-                cityBerlinDesc: "Capital art & bamboo tech camp with indoor pool & Museum Island tour (All-Inclusive).",
+                titleCities: "🇩🇪 Select Mystic Bamboo Camp (Click for Details)",
+                cardBerlinTitle: "Berlin Mystic Bamboo Camp",
+                cityBerlinDesc: "Capital art & bamboo rainforest camp with indoor pool & Museum Island tour (All-Inclusive).",
                 btnDetailText: "View Details (All-Inc Facilities) ➔",
-                cardMunichTitle: "Munich Bamboo Camp",
+                cardMunichTitle: "Munich Rainforest Bamboo Camp",
                 cityMunichDesc: "Bavarian nature sports camp near alpine bamboo forests with Tabata gym (All-Inclusive).",
                 cardFrankfurtTitle: "Frankfurt Bamboo Camp",
-                cityFrankfurtDesc: "Rhine river bamboo forest camp with kayaks & water sports (All-Inclusive).",
+                cityFrankfurtDesc: "Rhine river mystic bamboo forest camp with kayaks & water sports (All-Inclusive).",
                 contactSectionTitle: "📞 Official Customer Support & Contact",
                 contactSectionDesc: "If you have questions or share interest in future Asian language camps, contact us anytime via:",
-                titleForm: "✍️ Online Registration (Bamboo Forest All-Inclusive)",
+                titleForm: "✍️ Online Registration (Mystic Bamboo Rainforest All-Inclusive)",
                 lblStudentName: "Student Name",
                 phStudentName: "Child's name",
                 lblGender: "Gender",
@@ -703,8 +719,8 @@
                 optLvlBeg: "🌱 Beginner (50 Words/Wk)",
                 optLvlInt: "🌿 Intermediate (100 Words/Wk)",
                 lblCity: "Select Camp (850€ All-Inc)",
-                optCityBerlin: "Berlin Panda Camp - 850 € (All-Inc)",
-                optCityMunich: "Munich Bamboo Camp - 850 € (All-Inc)",
+                optCityBerlin: "Berlin Mystic Bamboo Camp - 850 € (All-Inc)",
+                optCityMunich: "Munich Rainforest Bamboo Camp - 850 € (All-Inc)",
                 optCityFrankfurt: "Frankfurt Bamboo Camp - 850 € (All-Inc)",
                 lblParentName: "Parent Name",
                 phParentName: "Parent's full name",
@@ -714,10 +730,10 @@
                 phAddress: "Street, Number, City, Zip",
                 btnSubmit: "👉 Submit & Proceed to Payment & Send Email",
 
-                berlinDTitle: "🏛️ Berlin Panda Camp Details",
-                berlinDSub: "Capital Art, Culture & Swimming Camp (Bamboo Forest All-Inclusive)",
+                berlinDTitle: "🏛️ Berlin Mystic Bamboo Camp Details",
+                berlinDSub: "Capital Art, Culture & Swimming Camp (Mystic Bamboo All-Inclusive)",
                 berlinDB1: "Fee: 850 € / All-Inclusive",
-                berlinDB2: "Location: Berlin Grunewald Bamboo Sports Park",
+                berlinDB2: "Location: Berlin Grunewald Mystic Bamboo Sports Park",
                 berlinF1Title: "🎡 Nearby Attractions",
                 berlinF1List: `<li><strong>Museum Island:</strong> Chinese guided tour & art check-in.</li>
                                <li><strong>Berlin Zoo:</strong> Visit Giant Panda Garden.</li>
@@ -726,15 +742,15 @@
                 berlinF2List: `<li><strong>Daily Meals:</strong> Organic German food & authentic Chinese cuisine.</li>
                                <li><strong>Refreshments:</strong> Fresh fruits and healthy drinks available all day.</li>`,
                 berlinF3Title: "🏨 Accommodation & Facilities",
-                berlinF3List: `<li><strong>Accommodation:</strong> 2-4 person bamboo resort apartment with private bath.</li>
+                berlinF3List: `<li><strong>Accommodation:</strong> 2-4 person mystic bamboo resort apartment with private bath.</li>
                                <li><strong>Sports Facilities:</strong> Indoor standard pool, Tabata room, football pitch.</li>`,
                 btnApplyBerlin: "Register for Berlin Camp (850€ All-Inc)",
                 btnBackHome: "Back to Home Page",
 
-                munichDTitle: "⛰️ Munich Bamboo Camp Details",
-                munichDSub: "Bavarian Nature & Tabata Fitness Camp (Bamboo Forest All-Inclusive)",
+                munichDTitle: "⛰️ Munich Rainforest Bamboo Camp Details",
+                munichDSub: "Bavarian Nature & Tabata Fitness Camp (Mystic Bamboo All-Inclusive)",
                 munichDB1: "Fee: 850 € / All-Inclusive",
-                munichDB2: "Location: Near Munich Olympic Bamboo Park",
+                munichDB2: "Location: Near Munich Olympic Mystic Bamboo Park",
                 munichF1Title: "🌲 Nearby Attractions",
                 munichF1List: `<li><strong>Olympic Park:</strong> Tower panoramic view of Munich.</li>
                                <li><strong>BMW Welt:</strong> Automobile technology experience.</li>
@@ -743,14 +759,14 @@
                 munichF2List: `<li><strong>Bavarian Special:</strong> Healthy sports meals & fresh pretzels.</li>
                                <li><strong>Camp Dining:</strong> East-meets-West nutritionist-designed menus.</li>`,
                 munichF3Title: "🏨 Accommodation & Facilities",
-                munichF3List: `<li><strong>Accommodation:</strong> Bamboo resort hotel next to park with 24/7 care.</li>
+                munichF3List: `<li><strong>Accommodation:</strong> Mystic bamboo resort hotel next to park with 24/7 care.</li>
                                <li><strong>Sports Facilities:</strong> Tabata gym, outdoor climbing wall, Kung Fu yard.</li>`,
                 btnApplyMunich: "Register for Munich Camp (850€ All-Inc)",
 
                 frankfurtDTitle: "🌊 Frankfurt Bamboo Camp Details",
-                frankfurtDSub: "Rhine-Main River Water Sports Camp (Bamboo Forest All-Inclusive)",
+                frankfurtDSub: "Rhine-Main River Water Sports Camp (Mystic Bamboo All-Inclusive)",
                 frankfurtDB1: "Fee: 850 € / All-Inclusive",
-                frankfurtDB2: "Location: Main River Bamboo Water Base",
+                frankfurtDB2: "Location: Main River Mystic Bamboo Water Base",
                 frankfurtF1Title: "⛵ Nearby Attractions",
                 frankfurtF1List: `<li><strong>Römerberg:</strong> Gothic architectural tour.</li>
                                   <li><strong>Main River Cruise:</strong> Frankfurt skyline view.</li>
@@ -759,7 +775,7 @@
                 frankfurtF2List: `<li><strong>Camp Dining:</strong> High-protein sport meals, organic vegetables & fruits.</li>
                                   <li><strong>Food Safety:</strong> Strict quality control meeting all nutritional needs.</li>`,
                 frankfurtF3Title: "🏨 Accommodation & Facilities",
-                frankfurtF3List: `<li><strong>Accommodation:</strong> Waterfront bamboo resort hotel with 24/7 security.</li>
+                frankfurtF3List: `<li><strong>Accommodation:</strong> Waterfront mystic bamboo resort hotel with 24/7 security.</li>
                                   <li><strong>Sports Facilities:</strong> Kayak base, indoor Olympic pool, tennis courts.</li>`,
                 btnApplyFrankfurt: "Register for Frankfurt Camp (850€ All-Inc)",
 
@@ -779,7 +795,7 @@
                                     <p><strong>WhatsApp:</strong> +49 15752205066</p>
                                     <p><strong>Email:</strong> nianbulaji@gmail.com</p>`,
                 btnBack: "Back to Home Page",
-                footerText: "© 2026 Panda Camp 🎋 Bamboo & Rainforest Camp. All Rights Reserved."
+                footerText: "© 2026 Panda Camp 🎋 Mystic Bamboo & Rainforest Camp. All Rights Reserved."
             },
             de: {
                 navLogo: "🐼 Panda Camp 🎋",
@@ -788,17 +804,17 @@
                 navSchedule: "Ablauf",
                 navCities: "Standorte",
                 navSignup: "Anmeldung",
-                heroTitle: "🎋 7 Tage All-Inclusive Bambus- & Regenwald-Sommercamp",
-                heroIntro1: "Willkommen im Panda Camp 🎋! Eingebettet in eine beruhigende Bambus- und Regenwaldumgebung bieten wir hochwertigen, voll versorgten Chinesisch-Sprachurlaub. Unterkunft, Bio-Mahlzeiten und Unterricht sind komplett inklusive!",
+                heroTitle: "🎋 7 Tage All-Inclusive Mystisches Bambus- & Regenwaldcamp",
+                heroIntro1: "Willkommen im Panda Camp 🎋! Eingebettet in eine mystische, sattgrüne Bambus- und Regenwaldumgebung bieten wir hochwertigen, voll versorgten Chinesisch-Sprachurlaub. Unterkunft, Bio-Mahlzeiten und Unterricht sind komplett inklusive!",
                 heroIntro2: "Als multilinguale Plattform bieten wir künftig auch Camps für weitere asiatische Sprachen an! Kontaktieren Sie uns bei Fragen jederzeit gerne.",
                 badge1Title: "🏨 Unterkunft inkl.",
-                badge1Desc: "Bambus-Resorts & sichere Apartments",
+                badge1Desc: "Mystische Resorts & Apartments",
                 badge2Title: "🍲 Verpflegung inkl.",
                 badge2Desc: "Vollpension & Bio-Mahlzeiten",
                 badge3Title: "🛡️ Rundum-Betreuung",
                 badge3Desc: "Professionelles Team 24/7 vor Ort",
                 btnClass: "Klassenübersicht",
-                btnDest: "Bambus-Camp wählen (850€ All-Inc)",
+                btnDest: "Mystisches Bambus-Camp wählen (850€ All-Inc)",
                 titleOutcomes: "🎓 Klassen & 10-Schüler-Standard",
                 classBegTitle: "🌱 Anfänger (Beginner)",
                 classBegDesc: "Für Kinder ohne Vorkenntnisse.",
@@ -812,20 +828,20 @@
                 rulesList: `<li><strong>Limit:</strong> Strenges Limit von max. <strong>10 Schülern pro Klasse</strong>.</li>
                            <li><strong>Standard:</strong> Basierend auf dem 10-Schüler-Standard. Unter 10 wird nach Lage entschieden, bei Absage wird die Gebühr erstattet.</li>`,
                 titleSchedule: "📅 Tagesablauf Übersicht",
-                schedText1: "📖 <strong>Vormittag:</strong> Chinesisch-Unterricht inmitten von Bambuswäldern mit Vokabeln, Dialogen und interaktiven Übungen.",
+                schedText1: "📖 <strong>Vormittag:</strong> Chinesisch-Unterricht inmitten mystischer Bambuswälder mit Vokabeln, Dialogen und interaktiven Übungen.",
                 schedText2: "⚽ <strong>Nachmittag:</strong> Outdoor-Waldsportarten wie Ballsport, Tabata-Fitness, Klettern und Wassersport.",
                 schedText3: "🌙 <strong>Abendprogramm:</strong> Kultur-Highlights wie Kalligrafie, Freilichtkino-Synchronsprechen, Jiaozi-Kochen & Gala-Abend.",
-                titleCities: "🇩🇪 Panda-Bambus-Camp wählen (Klicken für Details)",
-                cardBerlinTitle: "Camp Berlin Panda",
+                titleCities: "🇩🇪 Mystisches Bambus-Camp wählen (Klicken für Details)",
+                cardBerlinTitle: "Camp Berlin Mystischer Bambus",
                 cityBerlinDesc: "Hauptstadt-Bambus-Camp mit Hallenbad & Museumsinsel (Alles inklusive).",
                 btnDetailText: "Details anzeigen (Verpflegung & Hotel) ➔",
-                cardMunichTitle: "Camp München Bambus",
+                cardMunichTitle: "Camp München Regenwald-Bambus",
                 cityMunichDesc: "Bayerisches Natur-Camp am Alpen-Bambuswald mit Tabata (Alles inklusive).",
-                cardFrankfurtTitle: "Camp Frankfurt Bambus",
+                cardFrankfurtTitle: "Camp Frankfurt Mystischer Bambus",
                 cityFrankfurtDesc: "Rhein-Bambus-Camp mit Wassersport & Kajak (Alles inklusive).",
                 contactSectionTitle: "📞 Kundenservice & Kontakt",
                 contactSectionDesc: "Bei Fragen oder Interesse an künftigen asiatischen Sprachcamps erreichen Sie uns unter:",
-                titleForm: "✍️ Camp Anmeldung (Bambuswald All-Inclusive)",
+                titleForm: "✍️ Camp Anmeldung (Mystischer Bambuswald All-Inclusive)",
                 lblStudentName: "Name des Kindes",
                 phStudentName: "Name des Kindes",
                 lblGender: "Geschlecht",
@@ -836,9 +852,9 @@
                 optLvlBeg: "🌱 Anfänger (50 Wörter/Woche)",
                 optLvlInt: "🌿 Mittelstufe (100 Wörter/Woche)",
                 lblCity: "Camp wählen (850€ All-Inc)",
-                optCityBerlin: "Berlin Panda Camp - 850 € (All-Inc)",
-                optCityMunich: "München Bambus Camp - 850 € (All-Inc)",
-                optCityFrankfurt: "Frankfurt Bambus Camp - 850 € (All-Inc)",
+                optCityBerlin: "Berlin Mystischer Bambus - 850 € (All-Inc)",
+                optCityMunich: "München Regenwald-Bambus - 850 € (All-Inc)",
+                optCityFrankfurt: "Frankfurt Bambus - 850 € (All-Inc)",
                 lblParentName: "Name der Eltern",
                 phParentName: "Name der Eltern",
                 lblPhone: "Telefonnummer",
@@ -847,10 +863,10 @@
                 phAddress: "Straße, Hausnummer, PLZ, Ort",
                 btnSubmit: "👉 Bestätigen & Zur Zahlung (E-Mail an nianbulaji)",
 
-                berlinDTitle: "🏛️ Camp Berlin Panda Details",
-                berlinDSub: "Hauptstadt-Camp für Kultur & Schwimmen (Bambus-All-Inclusive)",
+                berlinDTitle: "🏛️ Camp Berlin Mystischer Bambus Details",
+                berlinDSub: "Hauptstadt-Camp für Kultur & Schwimmen (Mystischer Bambus-All-Inclusive)",
                 berlinDB1: "Gebühr: 850 € / All-Inclusive",
-                berlinDB2: "Ort: Berlin Grunewald Bambus-Sportpark",
+                berlinDB2: "Ort: Berlin Grunewald Mystischer Bambus-Sportpark",
                 berlinF1Title: "🎡 Sehenswürdigkeiten",
                 berlinF1List: `<li><strong>Museumsinsel:</strong> Chinesische Führung.</li>
                                <li><strong>Zoo Berlin:</strong> Großer Panda-Garten.</li>
@@ -864,10 +880,10 @@
                 btnApplyBerlin: "Für Camp Berlin anmelden (850€ All-Inc)",
                 btnBackHome: "Zurück zur Startseite",
 
-                munichDTitle: "⛰️ Camp München Bambus Details",
-                munichDSub: "Bayerisches Natur- & Tabata-Camp (Bambus-All-Inclusive)",
+                munichDTitle: "⛰️ Camp München Regenwald-Bambus Details",
+                munichDSub: "Bayerisches Natur- & Tabata-Camp (Mystischer Bambus-All-Inclusive)",
                 munichDB1: "Gebühr: 850 € / All-Inclusive",
-                munichDB2: "Ort: Am Olympiapark Bambuswald München",
+                munichDB2: "Ort: Am Olympiapark Mystischer Bambuswald München",
                 munichF1Title: "🌲 Sehenswürdigkeiten",
                 munichF1List: `<li><strong>Olympiapark:</strong> Aussichtsturm über München.</li>
                                <li><strong>BMW Welt:</strong> Automobil-Technologie.</li>
@@ -876,12 +892,12 @@
                 munichF2List: `<li><strong>Bayerisch:</strong> Gesunde Sportler-Vollpension & frische Brezeln.</li>
                                <li><strong>Menü:</strong> Von Ernährungsberatern erstellte Ost-West-Mahlzeiten.</li>`,
                 munichF3Title: "🏨 Unterkunft & Ausstattung",
-                munichF3List: `<li><strong>Unterkunft:</strong> Bambus-Resort-Hotel am Park mit 24/7 Betreuung.</li>
+                munichF3List: `<li><strong>Unterkunft:</strong> Mystisches Bambus-Resort am Park mit 24/7 Betreuung.</li>
                                <li><strong>Sportanlagen:</strong> Tabata-Gym, Kletterwand, Kung-Fu Platz.</li>`,
                 btnApplyMunich: "Für Camp München anmelden (850€ All-Inc)",
 
                 frankfurtDTitle: "🌊 Camp Frankfurt Bambus Details",
-                frankfurtDSub: "Wassersport-Camp am Rhein-Main (Bambus-All-Inclusive)",
+                frankfurtDSub: "Wassersport-Camp am Rhein-Main (Mystischer Bambus-All-Inclusive)",
                 frankfurtDB1: "Gebühr: 850 € / All-Inclusive",
                 frankfurtDB2: "Ort: Wassersportzentrum Main-Bambus",
                 frankfurtF1Title: "⛵ Sehenswürdigkeiten",
@@ -912,7 +928,7 @@
                                     <p><strong>WhatsApp:</strong> +49 15752205066</p>
                                     <p><strong>E-Mail:</strong> nianbulaji@gmail.com</p>`,
                 btnBack: "Zurück zur Startseite",
-                footerText: "© 2026 Panda Camp 🎋 Bambus- & Regenwald-Sommercamp. Alle Rechte vorbehalten."
+                footerText: "© 2026 Panda Camp 🎋 Mystisches Bambus- & Regenwaldcamp. Alle Rechte vorbehalten."
             }
         };
 
