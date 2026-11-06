@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panda Camp 🎋 德国华语全沉浸夏令营</title>
+    <title>Panda Camp 🎋 德国华语沉浸夏令营</title>
     <style>
         :root {
             --primary: #2E7D32;
@@ -123,6 +123,7 @@
         </nav>
     </header>
 
+    <!-- 首页 -->
     <div id="page-home" class="page active">
         <section class="hero">
             <h1 id="hero-title">7天全托管 · 中文沉浸式游学夏令营</h1>
@@ -175,48 +176,7 @@
                     </tr>
                 </thead>
                 <tbody id="schedule-body">
-                    <tr>
-                        <td><strong>Day 1</strong></td>
-                        <td>报到分班</td>
-                        <td>破冰运动</td>
-                        <td>营地篝火派对 & 制定班规</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Day 2</strong></td>
-                        <td>华语基础</td>
-                        <td>球类运动</td>
-                        <td>水墨书法与竹子国画体验</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Day 3</strong></td>
-                        <td>情景对话</td>
-                        <td>攀岩拓展</td>
-                        <td>露天星空电影院 & 配音秀</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Day 4</strong></td>
-                        <td>文化阅读</td>
-                        <td>少林功夫</td>
-                        <td>中华美食制作（手工包饺子）</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Day 5</strong></td>
-                        <td>口语演讲</td>
-                        <td>游泳体能</td>
-                        <td>京剧脸谱 DIY 与小戏剧演练</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Day 6</strong></td>
-                        <td>汇演彩排</td>
-                        <td>城市游学</td>
-                        <td>狂欢晚会与颁发荣誉勋章</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Day 7</strong></td>
-                        <td>结业汇报</td>
-                        <td>家长接回</td>
-                        <td>返程离营</td>
-                    </tr>
+                    <!-- 动态翻译填充 -->
                 </tbody>
             </table>
         </section>
@@ -228,27 +188,27 @@
                     <div class="city-price-tag">850 € / 周</div>
                     <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?auto=format&fit=crop&w=600&q=80" alt="Berlin">
                     <div class="city-info">
-                        <h3>柏林营地 (Berlin Camp)</h3>
+                        <h3 id="card-berlin-title">柏林营地 (Berlin Camp)</h3>
                         <p id="city-berlin-desc">首都艺术与科技营地，含室内游泳池与博物馆岛游学。</p>
-                        <button class="btn btn-outline" style="width:100%; font-size:0.8rem; padding: 0.4rem;">查看详情（景点/美食/住宿）➔</button>
+                        <button class="btn btn-outline" style="width:100%; font-size:0.8rem; padding: 0.4rem;" id="btn-btn-berlin">查看详情（景点/美食/住宿）➔</button>
                     </div>
                 </div>
                 <div class="city-card" onclick="showCampDetail('munich')">
                     <div class="city-price-tag">850 € / 周</div>
                     <img src="https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=600&q=80" alt="Munich">
                     <div class="city-info">
-                        <h3>慕尼黑营地 (München Camp)</h3>
+                        <h3 id="card-munich-title">慕尼黑营地 (München Camp)</h3>
                         <p id="city-munich-desc">巴伐利亚自然运动营地，靠近阿尔卑斯山，含 Tabata 体能训练。</p>
-                        <button class="btn btn-outline" style="width:100%; font-size:0.8rem; padding: 0.4rem;">查看详情（景点/美食/住宿）➔</button>
+                        <button class="btn btn-outline" style="width:100%; font-size:0.8rem; padding: 0.4rem;" id="btn-btn-munich">查看详情（景点/美食/住宿）➔</button>
                     </div>
                 </div>
                 <div class="city-card" onclick="showCampDetail('frankfurt')">
                     <div class="city-price-tag">850 € / 周</div>
                     <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&w=600&q=80" alt="Frankfurt">
                     <div class="city-info">
-                        <h3>法兰克福营地 (Frankfurt Camp)</h3>
+                        <h3 id="card-frankfurt-title">法兰克福营地 (Frankfurt Camp)</h3>
                         <p id="city-frankfurt-desc">莱茵河水上运动营地，含皮划艇体验与奥运水上项目。</p>
-                        <button class="btn btn-outline" style="width:100%; font-size:0.8rem; padding: 0.4rem;">查看详情（景点/美食/住宿）➔</button>
+                        <button class="btn btn-outline" style="width:100%; font-size:0.8rem; padding: 0.4rem;" id="btn-btn-frankfurt">查看详情（景点/美食/住宿）➔</button>
                     </div>
                 </div>
             </div>
@@ -284,9 +244,9 @@
                         <div class="form-group">
                             <label id="lbl-city">选择德国营地 (850€)</label>
                             <select id="select-city">
-                                <option value="柏林营地 (Berlin Camp)">柏林 (Berlin) - 850 €</option>
-                                <option value="慕尼黑营地 (München Camp)">慕尼黑 (München) - 850 €</option>
-                                <option value="法兰克福营地 (Frankfurt Camp)">法兰克福 (Frankfurt) - 850 €</option>
+                                <option value="柏林营地 (Berlin Camp)" id="opt-city-berlin">柏林 (Berlin) - 850 €</option>
+                                <option value="慕尼黑营地 (München Camp)" id="opt-city-munich">慕尼黑 (München) - 850 €</option>
+                                <option value="法兰克福营地 (Frankfurt Camp)" id="opt-city-frankfurt">法兰克福 (Frankfurt) - 850 €</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -315,41 +275,31 @@
     <!-- 柏林营地详情 -->
     <div id="page-camp-berlin" class="page">
         <div class="detail-hero">
-            <h1>🏛️ 柏林营地 (Berlin Camp) 详情</h1>
-            <p>首都艺术文化与游泳训练营地</p>
+            <h1 id="berlin-d-title">🏛️ 柏林营地 (Berlin Camp) 详情</h1>
+            <p id="berlin-d-sub">首都艺术文化与游泳训练营地</p>
             <div class="detail-badge-group">
-                <span class="detail-badge">费用: 850 € / 周</span>
-                <span class="detail-badge">位置: 柏林 Grunewald 体育园区</span>
+                <span class="detail-badge" id="berlin-d-b1">费用: 850 € / 周</span>
+                <span class="detail-badge" id="berlin-d-b2">位置: 柏林 Grunewald 体育园区</span>
             </div>
         </div>
         <div class="section-container">
             <div class="detail-grid">
                 <div class="feature-box">
-                    <h3>🎡 周边好玩景点</h3>
-                    <ul>
-                        <li><strong>博物馆岛 (Museumsinsel)：</strong>中文讲解游学与艺术打卡。</li>
-                        <li><strong>柏林动物园：</strong>探访大熊猫馆。</li>
-                        <li><strong>德国科技博物馆：</strong>互动科学体验。</li>
-                    </ul>
+                    <h3 id="berlin-f1-title">🎡 周边好玩景点</h3>
+                    <ul id="berlin-f1-list"></ul>
                 </div>
                 <div class="feature-box">
-                    <h3>🍜 附近美食</h3>
-                    <ul>
-                        <li><strong>营地营养餐：</strong>提供德式有机餐与中华美食。</li>
-                        <li><strong>周边特色：</strong>柏林特色咖喱香肠 (Currywurst) & 正宗中餐面馆。</li>
-                    </ul>
+                    <h3 id="berlin-f2-title">🍜 附近美食</h3>
+                    <ul id="berlin-f2-list"></ul>
                 </div>
                 <div class="feature-box">
-                    <h3>🏨 酒店与设施</h3>
-                    <ul>
-                        <li><strong>星级住宿：</strong>全封闭 2 人/4 人独立卫浴酒店公寓。</li>
-                        <li><strong>运动设施：</strong>室内标准化游泳馆、Tabata 训练室、草坪足球场。</li>
-                    </ul>
+                    <h3 id="berlin-f3-title">🏨 酒店与设施</h3>
+                    <ul id="berlin-f3-list"></ul>
                 </div>
             </div>
             <div style="display:flex; gap:1rem; justify-content:center; margin-top:2rem;">
-                <button onclick="selectCityAndGoForm('柏林营地 (Berlin Camp)')" class="btn btn-gold">报名柏林营地 (850€)</button>
-                <button onclick="showPage('home')" class="btn btn-outline">返回首页</button>
+                <button onclick="selectCityAndGoForm('柏林营地 (Berlin Camp)')" class="btn btn-gold" id="btn-apply-berlin">报名柏林营地 (850€)</button>
+                <button onclick="showPage('home')" class="btn btn-outline" id="btn-back-berlin">返回首页</button>
             </div>
         </div>
     </div>
@@ -357,41 +307,31 @@
     <!-- 慕尼黑营地详情 -->
     <div id="page-camp-munich" class="page">
         <div class="detail-hero">
-            <h1>⛰️ 慕尼黑营地 (München Camp) 详情</h1>
-            <p>巴伐利亚自然探险与 Tabata 体能营地</p>
+            <h1 id="munich-d-title">⛰️ 慕尼黑营地 (München Camp) 详情</h1>
+            <p id="munich-d-sub">巴伐利亚自然探险与 Tabata 体能营地</p>
             <div class="detail-badge-group">
-                <span class="detail-badge">费用: 850 € / 周</span>
-                <span class="detail-badge">位置: 慕尼黑奥林匹克公园旁</span>
+                <span class="detail-badge" id="munich-d-b1">费用: 850 € / 周</span>
+                <span class="detail-badge" id="munich-d-b2">位置: 慕尼黑奥林匹克公园旁</span>
             </div>
         </div>
         <div class="section-container">
             <div class="detail-grid">
                 <div class="feature-box">
-                    <h3>🌲 周边好玩景点</h3>
-                    <ul>
-                        <li><strong>奥林匹克公园：</strong>登塔俯瞰慕尼黑全景。</li>
-                        <li><strong>宝马世界 (BMW Welt)：</strong>汽车科技体验。</li>
-                        <li><strong>阿尔卑斯山麓：</strong>自然森林户外徒步。</li>
-                    </ul>
+                    <h3 id="munich-f1-title">🌲 周边好玩景点</h3>
+                    <ul id="munich-f1-list"></ul>
                 </div>
                 <div class="feature-box">
-                    <h3>🥨 附近美食</h3>
-                    <ul>
-                        <li><strong>巴伐利亚特色：</strong>德式烤猪肘配手工扭结饼 (Brezel)。</li>
-                        <li><strong>营地膳食：</strong>中西结合健康运动餐。</li>
-                    </ul>
+                    <h3 id="munich-f2-title">🥨 附近美食</h3>
+                    <ul id="munich-f2-list"></ul>
                 </div>
                 <div class="feature-box">
-                    <h3>🏨 酒店与设施</h3>
-                    <ul>
-                        <li><strong>星级住宿：</strong>公园旁全封闭青年度假酒店。</li>
-                        <li><strong>运动设施：</strong>Tabata 爆发力训练室、户外攀岩墙、少林武术练功场。</li>
-                    </ul>
+                    <h3 id="munich-f3-title">🏨 酒店与设施</h3>
+                    <ul id="munich-f3-list"></ul>
                 </div>
             </div>
             <div style="display:flex; gap:1rem; justify-content:center; margin-top:2rem;">
-                <button onclick="selectCityAndGoForm('慕尼黑营地 (München Camp)')" class="btn btn-gold">报名慕尼黑营地 (850€)</button>
-                <button onclick="showPage('home')" class="btn btn-outline">返回首页</button>
+                <button onclick="selectCityAndGoForm('慕尼黑营地 (München Camp)')" class="btn btn-gold" id="btn-apply-munich">报名慕尼黑营地 (850€)</button>
+                <button onclick="showPage('home')" class="btn btn-outline" id="btn-back-munich">返回首页</button>
             </div>
         </div>
     </div>
@@ -399,41 +339,31 @@
     <!-- 法兰克福营地详情 -->
     <div id="page-camp-frankfurt" class="page">
         <div class="detail-hero">
-            <h1>🌊 法兰克福营地 (Frankfurt Camp) 详情</h1>
-            <p>莱茵-美因河畔水上运动营地</p>
+            <h1 id="frankfurt-d-title">🌊 法兰克福营地 (Frankfurt Camp) 详情</h1>
+            <p id="frankfurt-d-sub">莱茵-美因河畔水上运动营地</p>
             <div class="detail-badge-group">
-                <span class="detail-badge">费用: 850 € / 周</span>
-                <span class="detail-badge">位置: 美因河畔水上竞技基地</span>
+                <span class="detail-badge" id="frankfurt-d-b1">费用: 850 € / 周</span>
+                <span class="detail-badge" id="frankfurt-d-b2">位置: 美因河畔水上竞技基地</span>
             </div>
         </div>
         <div class="section-container">
             <div class="detail-grid">
                 <div class="feature-box">
-                    <h3>⛵ 周边好玩景点</h3>
-                    <ul>
-                        <li><strong>罗马广场：</strong>哥特式建筑群游学。</li>
-                        <li><strong>美因河游船：</strong>水上欣赏法兰克福天际线。</li>
-                        <li><strong>棕榈园 (Palmengarten)：</strong>热带植物探险。</li>
-                    </ul>
+                    <h3 id="frankfurt-f1-title">⛵ 周边好玩景点</h3>
+                    <ul id="frankfurt-f1-list"></ul>
                 </div>
                 <div class="feature-box">
-                    <h3>🍏 附近美食</h3>
-                    <ul>
-                        <li><strong>法兰克福特色：</strong>绿色蔬菜酱 (Grüne Soße) 伴餐。</li>
-                        <li><strong>营地膳食：</strong>高蛋白运动减脂/增肌营养餐。</li>
-                    </ul>
+                    <h3 id="frankfurt-f2-title">🍏 附近美食</h3>
+                    <ul id="frankfurt-f2-list"></ul>
                 </div>
                 <div class="feature-box">
-                    <h3>🏨 酒店与设施</h3>
-                    <ul>
-                        <li><strong>星级住宿：</strong>水岸度假酒店，24小时安全监控。</li>
-                        <li><strong>运动设施：</strong>美因河皮划艇基地、室内竞技泳池、室内网球场。</li>
-                    </ul>
+                    <h3 id="frankfurt-f3-title">🏨 酒店与设施</h3>
+                    <ul id="frankfurt-f3-list"></ul>
                 </div>
             </div>
             <div style="display:flex; gap:1rem; justify-content:center; margin-top:2rem;">
-                <button onclick="selectCityAndGoForm('法兰克福营地 (Frankfurt Camp)')" class="btn btn-gold">报名法兰克福营地 (850€)</button>
-                <button onclick="showPage('home')" class="btn btn-outline">返回首页</button>
+                <button onclick="selectCityAndGoForm('法兰克福营地 (Frankfurt Camp)')" class="btn btn-gold" id="btn-apply-frankfurt">报名法兰克福营地 (850€)</button>
+                <button onclick="showPage('home')" class="btn btn-outline" id="btn-back-frankfurt">返回首页</button>
             </div>
         </div>
     </div>
@@ -446,25 +376,19 @@
                 <p style="text-align: center; color: #666; margin-bottom: 1.2rem; font-size:0.9rem;" id="pay-subtitle">请完成学费支付以锁定名额。若未达到 18 人成班标准，费用将原路退还。</p>
 
                 <div style="background: #FFFBEB; border: 1px solid #FCD34D; padding: 0.8rem; border-radius: 6px; margin-bottom: 1.2rem; font-size:0.9rem;">
-                    <p><strong>学员姓名：</strong><span id="summary-name">-</span></p>
-                    <p><strong>报名营地：</strong><span id="summary-camp">-</span></p>
-                    <p><strong>应付金额：</strong><span style="color: var(--primary); font-size: 1.3rem; font-weight: bold;">850.00 €</span></p>
+                    <p><strong id="pay-lbl-name">学员姓名：</strong><span id="summary-name">-</span></p>
+                    <p><strong id="pay-lbl-camp">报名营地：</strong><span id="summary-camp">-</span></p>
+                    <p><strong id="pay-lbl-amount">应付金额：</strong><span style="color: var(--primary); font-size: 1.3rem; font-weight: bold;">850.00 €</span></p>
                 </div>
 
                 <h3 style="color: var(--secondary); margin-bottom: 0.6rem; font-size:1rem;" id="pay-bank-title">🏦 收款银行账户信息 (Bank Transfer)</h3>
-                <div class="bank-details">
-                    <div class="bank-row"><span>收款账户:</span><strong>Panda Camp GmbH</strong></div>
-                    <div class="bank-row"><span>开户银行:</span><strong>Deutsche Bank AG</strong></div>
-                    <div class="bank-row"><span>IBAN:</span><strong>DE89 1007 0000 0123 4567 89</strong></div>
-                    <div class="bank-row"><span>BIC/SWIFT:</span><strong>DEUTDEDDBER</strong></div>
-                    <div class="bank-row"><span>付款附言:</span><strong id="summary-ref" style="color: var(--primary);">PANDA-2026-8892</strong></div>
+                <div class="bank-details" id="bank-box-details">
+                    <!-- 动态翻译银行信息 -->
                 </div>
 
                 <h3 style="color: var(--secondary); margin-top: 1.2rem; margin-bottom: 0.6rem; font-size:1rem;" id="pay-contact-title">📞 商家客服与联系电话</h3>
-                <div style="background: #F8F9FA; padding: 0.8rem; border-radius: 6px; font-size: 0.85rem;">
-                    <p><strong>客服电话：</strong> +49 (0) 30 1234 5678</p>
-                    <p><strong>WhatsApp / 微信：</strong> +49 176 8888 9999 (PandaCampDE)</p>
-                    <p><strong>电子邮箱：</strong> info@pandacamp.de</p>
+                <div style="background: #F8F9FA; padding: 0.8rem; border-radius: 6px; font-size: 0.85rem;" id="contact-box-details">
+                    <!-- 动态翻译客服信息 -->
                 </div>
 
                 <div style="text-align: center; margin-top: 1.5rem;">
@@ -475,7 +399,7 @@
     </div>
 
     <footer>
-        <p>© 2026 Panda Camp 🎋 全托管华语夏令营. All Rights Reserved.</p>
+        <p id="footer-text>© 2026 Panda Camp 🎋 全托管华语夏令营. All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -508,9 +432,22 @@
                 thMorning: "上午",
                 thAfternoon: "下午",
                 thEvening: "晚间特色活动",
+                scheduleRows: [
+                    ["Day 1", "报到分班", "破冰运动", "营地篝火派对 & 制定班规"],
+                    ["Day 2", "华语基础", "球类运动", "水墨书法与竹子国画体验"],
+                    ["Day 3", "情景对话", "攀岩拓展", "露天星空电影院 & 配音秀"],
+                    ["Day 4", "文化阅读", "少林功夫", "中华美食制作（手工包饺子）"],
+                    ["Day 5", "口语演讲", "游泳体能", "京剧脸谱 DIY 与小戏剧演练"],
+                    ["Day 6", "汇演彩排", "城市游学", "狂欢晚会与颁发荣誉勋章"],
+                    ["Day 7", "结业汇报", "家长接回", "返程离营"]
+                ],
                 titleCities: "🇩🇪 选择营地（点击查看周边吃喝住与设施）",
+                cardBerlinTitle: "柏林营地 (Berlin Camp)",
                 cityBerlinDesc: "首都艺术与科技营地，含室内游泳池与博物馆岛游学。",
+                btnDetailText: "查看详情（景点/美食/住宿）➔",
+                cardMunichTitle: "慕尼黑营地 (München Camp)",
                 cityMunichDesc: "巴伐利亚自然运动营地，靠近阿尔卑斯山，含 Tabata 体能训练。",
+                cardFrankfurtTitle: "法兰克福营地 (Frankfurt Camp)",
                 cityFrankfurtDesc: "莱茵河水上运动营地，含皮划艇体验与奥运水上项目。",
                 titleForm: "✍️ 夏令营在线报名",
                 lblStudentName: "学员姓名",
@@ -523,6 +460,9 @@
                 optLvlBeg: "🌱 初学者班 (一周50词)",
                 optLvlInt: "🌿 中级班 (一周100词)",
                 lblCity: "选择德国营地 (850€)",
+                optCityBerlin: "柏林 (Berlin) - 850 €",
+                optCityMunich: "慕尼黑 (München) - 850 €",
+                optCityFrankfurt: "法兰克福 (Frankfurt) - 850 €",
                 lblParentName: "家长姓名",
                 phParentName: "请输入家长姓名",
                 lblPhone: "联系电话",
@@ -530,11 +470,77 @@
                 lblAddress: "家庭住址",
                 phAddress: "街道、门牌号、城市、邮编",
                 btnSubmit: "👉 提交报名（前往付款）",
+                
+                // 城市详情页 (柏林)
+                berlinDTitle: "🏛️ 柏林营地 (Berlin Camp) 详情",
+                berlinDSub: "首都艺术文化与游泳训练营地",
+                berlinDB1: "费用: 850 € / 周",
+                berlinDB2: "位置: 柏林 Grunewald 体育园区",
+                berlinF1Title: "🎡 周边好玩景点",
+                berlinF1List: `<li><strong>博物馆岛 (Museumsinsel)：</strong>中文讲解游学与艺术打卡。</li>
+                               <li><strong>柏林动物园：</strong>探访大熊猫馆。</li>
+                               <li><strong>德国科技博物馆：</strong>互动科学体验。</li>`,
+                berlinF2Title: "🍜 附近美食",
+                berlinF2List: `<li><strong>营地营养餐：</strong>提供德式有机餐与中华美食。</li>
+                               <li><strong>周边特色：</strong>柏林特色咖喱香肠 (Currywurst) & 正宗中餐面馆。</li>`,
+                berlinF3Title: "🏨 酒店与设施",
+                berlinF3List: `<li><strong>星级住宿：</strong>全封闭 2 人/4 人独立卫浴酒店公寓。</li>
+                               <li><strong>运动设施：</strong>室内标准化游泳馆、Tabata 训练室、草坪足球场。</li>`,
+                btnApplyBerlin: "报名柏林营地 (850€)",
+                btnBackHome: "返回首页",
+
+                // 城市详情页 (慕尼黑)
+                munichDTitle: "⛰️ 慕尼黑营地 (München Camp) 详情",
+                munichDSub: "巴伐利亚自然探险与 Tabata 体能营地",
+                munichDB1: "费用: 850 € / 周",
+                munichDB2: "位置: 慕尼黑奥林匹克公园旁",
+                munichF1Title: "🌲 周边好玩景点",
+                munichF1List: `<li><strong>奥林匹克公园：</strong>登塔俯瞰慕尼黑全景。</li>
+                               <li><strong>宝马世界 (BMW Welt)：</strong>汽车科技体验。</li>
+                               <li><strong>阿尔卑斯山麓：</strong>自然森林户外徒步。</li>`,
+                munichF2Title: "🥨 附近美食",
+                munichF2List: `<li><strong>巴伐利亚特色：</strong>德式烤猪肘配手工扭结饼 (Brezel)。</li>
+                               <li><strong>营地膳食：</strong>中西结合健康运动餐。</li>`,
+                munichF3Title: "🏨 酒店与设施",
+                munichF3List: `<li><strong>星级住宿：</strong>公园旁全封闭青年度假酒店。</li>
+                               <li><strong>运动设施：</strong>Tabata 爆发力训练室、户外攀岩墙、少林武术练功场。</li>`,
+                btnApplyMunich: "报名慕尼黑营地 (850€)",
+
+                // 城市详情页 (法兰克福)
+                frankfurtDTitle: "🌊 法兰克福营地 (Frankfurt Camp) 详情",
+                frankfurtDSub: "莱茵-美因河畔水上运动营地",
+                frankfurtDB1: "费用: 850 € / 周",
+                frankfurtDB2: "位置: 美因河畔水上竞技基地",
+                frankfurtF1Title: "⛵ 周边好玩景点",
+                frankfurtF1List: `<li><strong>罗马广场：</strong>哥特式建筑群游学。</li>
+                                  <li><strong>美因河游船：</strong>水上欣赏法兰克福天际线。</li>
+                                  <li><strong>棕榈园 (Palmengarten)：</strong>热带植物探险。</li>`,
+                frankfurtF2Title: "🍏 附近美食",
+                frankfurtF2List: `<li><strong>法兰克福特色：</strong>绿色蔬菜酱 (Grüne Soße) 伴餐。</li>
+                                  <li><strong>营地膳食：</strong>高蛋白运动减脂/增肌营养餐。</li>`,
+                frankfurtF3Title: "🏨 酒店与设施",
+                frankfurtF3List: `<li><strong>星级住宿：</strong>水岸度假酒店，24小时安全监控。</li>
+                                  <li><strong>运动设施：</strong>美因河皮划艇基地、室内竞技泳池、室内网球场。</li>`,
+                btnApplyFrankfurt: "报名法兰克福营地 (850€)",
+
+                // 付款页面
                 payTitle: "🎉 报名资料已提交！",
                 paySubtitle: "请完成学费支付以锁定名额。若未达到 18 人成班标准，费用将原路退还。",
+                payLblName: "学员姓名：",
+                payLblCamp: "报名营地：",
+                payLblAmount: "应付金额：",
                 payBankTitle: "🏦 收款银行账户信息 (Bank Transfer)",
+                bankBoxDetails: `<div class="bank-row"><span>收款账户:</span><strong>Panda Camp GmbH</strong></div>
+                                 <div class="bank-row"><span>开户银行:</span><strong>Deutsche Bank AG</strong></div>
+                                 <div class="bank-row"><span>IBAN:</span><strong>DE89 1007 0000 0123 4567 89</strong></div>
+                                 <div class="bank-row"><span>BIC/SWIFT:</span><strong>DEUTDEDDBER</strong></div>
+                                 <div class="bank-row"><span>付款附言:</span><strong id="summary-ref" style="color: var(--primary);">PANDA-2026-8892</strong></div>`,
                 payContactTitle: "📞 商家客服与联系电话",
-                btnBack: "返回夏令营首页"
+                contactBoxDetails: `<p><strong>客服电话：</strong> +49 (0) 30 1234 5678</p>
+                                    <p><strong>WhatsApp / 微信：</strong> +49 176 8888 9999 (PandaCampDE)</p>
+                                    <p><strong>电子邮箱：</strong> info@pandacamp.de</p>`,
+                btnBack: "返回夏令营首页",
+                footerText: "© 2026 Panda Camp 🎋 全托管华语夏令营. All Rights Reserved."
             },
             en: {
                 navLogo: "🐼 Panda Camp 🎋",
@@ -559,14 +565,27 @@
                 rulesTitle: "⚖️ 20 Max / 18 Min Refund Policy",
                 rulesList: `<li><strong>Two Levels:</strong> Beginner & Intermediate, max <strong>20 students/class</strong>.</li>
                            <li><strong>Refund:</strong> Min <strong>18 students required</strong>. 100% refund if cancelled.</li>`,
-                titleSchedule: "📅 7-Day Schedule",
+                titleSchedule: "📅 7-Day Schedule Overview",
                 thTime: "Day",
                 thMorning: "Morning",
                 thAfternoon: "Afternoon",
                 thEvening: "Evening Activities",
+                scheduleRows: [
+                    ["Day 1", "Arrival & Placement", "Ice-breaking Sports", "Campfire Party & Camp Rules"],
+                    ["Day 2", "Mandarin Basics", "Ball Sports", "Ink Calligraphy & Bamboo Painting"],
+                    ["Day 3", "Situational Dialogues", "Climbing Session", "Outdoor Movie Night & Voice Acting"],
+                    ["Day 4", "Cultural Reading", "Shaolin Kung Fu", "Chinese Cooking (Handmade Dumplings)"],
+                    ["Day 5", "Public Speaking", "Swimming Fitness", "Peking Opera Mask DIY & Short Drama"],
+                    ["Day 6", "Rehearsal Show", "City Exploration", "Gala Party & Badge Awarding"],
+                    ["Day 7", "Graduation Ceremony", "Parent Pickup", "Departure"]
+                ],
                 titleCities: "🇩🇪 Select Camp (Click for Attractions/Food/Hotels)",
-                cityBerlinDesc: "Capital camp near Museum Island with indoor pool.",
+                cardBerlinTitle: "Berlin Camp",
+                cityBerlinDesc: "Capital art & tech camp with indoor pool & Museum Island tour.",
+                btnDetailText: "View Details (Attractions/Food/Hotels) ➔",
+                cardMunichTitle: "Munich Camp (München)",
                 cityMunichDesc: "Bavarian sports camp with outdoor parks & Tabata gym.",
+                cardFrankfurtTitle: "Frankfurt Camp",
                 cityFrankfurtDesc: "Rhine river camp with kayaks & water sports.",
                 titleForm: "✍️ Online Registration",
                 lblStudentName: "Student Name",
@@ -579,6 +598,9 @@
                 optLvlBeg: "🌱 Beginner (50 Words/Wk)",
                 optLvlInt: "🌿 Intermediate (100 Words/Wk)",
                 lblCity: "Select City (850€)",
+                optCityBerlin: "Berlin - 850 €",
+                optCityMunich: "Munich - 850 €",
+                optCityFrankfurt: "Frankfurt - 850 €",
                 lblParentName: "Parent Name",
                 phParentName: "Parent's full name",
                 lblPhone: "Phone Number",
@@ -586,11 +608,73 @@
                 lblAddress: "Home Address",
                 phAddress: "Street, Number, City, Zip",
                 btnSubmit: "👉 Submit & Proceed to Payment",
+
+                berlinDTitle: "🏛️ Berlin Camp Details",
+                berlinDSub: "Capital Art, Culture & Swimming Camp",
+                berlinDB1: "Fee: 850 € / Week",
+                berlinDB2: "Location: Berlin Grunewald Sports Park",
+                berlinF1Title: "🎡 Nearby Attractions",
+                berlinF1List: `<li><strong>Museum Island:</strong> Chinese guided tour & art check-in.</li>
+                               <li><strong>Berlin Zoo:</strong> Visit Giant Panda Garden.</li>
+                               <li><strong>German Museum of Technology:</strong> Interactive science.</li>`,
+                berlinF2Title: "🍜 Nearby Food",
+                berlinF2List: `<li><strong>Camp Meals:</strong> German organic meals & Chinese cuisine.</li>
+                               <li><strong>Local Eats:</strong> Currywurst & authentic Chinese noodles.</li>`,
+                berlinF3Title: "🏨 Hotel & Facilities",
+                berlinF3List: `<li><strong>Accommodation:</strong> 2-4 person hotel apartment with private bath.</li>
+                               <li><strong>Sports Facilities:</strong> Indoor standard pool, Tabata room, football pitch.</li>`,
+                btnApplyBerlin: "Register for Berlin Camp (850€)",
+                btnBackHome: "Back to Home Page",
+
+                munichDTitle: "⛰️ Munich Camp (München) Details",
+                munichDSub: "Bavarian Nature & Tabata Fitness Camp",
+                munichDB1: "Fee: 850 € / Week",
+                munichDB2: "Location: Near Munich Olympic Park",
+                munichF1Title: "🌲 Nearby Attractions",
+                munichF1List: `<li><strong>Olympic Park:</strong> Tower panoramic view of Munich.</li>
+                               <li><strong>BMW Welt:</strong> Automobile technology experience.</li>
+                               <li><strong>Alpine Foothills:</strong> Nature forest outdoor hiking.</li>`,
+                munichF2Title: "🥨 Nearby Food",
+                munichF2List: `<li><strong>Bavarian Special:</strong> Roasted pork knuckle & Brezel.</li>
+                               <li><strong>Camp Meals:</strong> Healthy East-meets-West sports meals.</li>`,
+                munichF3Title: "🏨 Hotel & Facilities",
+                munichF3List: `<li><strong>Accommodation:</strong> Youth resort hotel next to park.</li>
+                               <li><strong>Sports Facilities:</strong> Tabata gym, outdoor climbing wall, Kung Fu yard.</li>`,
+                btnApplyMunich: "Register for Munich Camp (850€)",
+
+                frankfurtDTitle: "🌊 Frankfurt Camp Details",
+                frankfurtDSub: "Rhine-Main River Water Sports Camp",
+                frankfurtDB1: "Fee: 850 € / Week",
+                frankfurtDB2: "Location: Main River Water Base",
+                frankfurtF1Title: "⛵ Nearby Attractions",
+                frankfurtF1List: `<li><strong>Römerberg:</strong> Gothic architectural tour.</li>
+                                  <li><strong>Main River Cruise:</strong> Frankfurt skyline view.</li>
+                                  <li><strong>Palmengarten:</strong> Tropical botanical adventure.</li>`,
+                frankfurtF2Title: "🍏 Nearby Food",
+                frankfurtF2List: `<li><strong>Frankfurt Special:</strong> Green Sauce (Grüne Soße) meals.</li>
+                                  <li><strong>Camp Meals:</strong> High-protein sports nutrition.</li>`,
+                frankfurtF3Title: "🏨 Hotel & Facilities",
+                frankfurtF3List: `<li><strong>Accommodation:</strong> Waterfront resort hotel with 24/7 security.</li>
+                                  <li><strong>Sports Facilities:</strong> Kayak base, indoor Olympic pool, tennis courts.</li>`,
+                btnApplyFrankfurt: "Register for Frankfurt Camp (850€)",
+
                 payTitle: "🎉 Registration Submitted!",
-                paySubtitle: "Please complete transfer to reserve your spot. 100% refund if under 18 students.",
-                payBankTitle: "🏦 Bank Transfer Details",
-                payContactTitle: "📞 Customer Support",
-                btnBack: "Back to Home Page"
+                paySubtitle: "Please complete payment to reserve your spot. 100% refund if under 18 students.",
+                payLblName: "Student Name: ",
+                payLblCamp: "Camp Location: ",
+                payLblAmount: "Total Amount: ",
+                payBankTitle: "🏦 Bank Transfer Account Details",
+                bankBoxDetails: `<div class="bank-row"><span>Beneficiary:</span><strong>Panda Camp GmbH</strong></div>
+                                 <div class="bank-row"><span>Bank Name:</span><strong>Deutsche Bank AG</strong></div>
+                                 <div class="bank-row"><span>IBAN:</span><strong>DE89 1007 0000 0123 4567 89</strong></div>
+                                 <div class="bank-row"><span>BIC/SWIFT:</span><strong>DEUTDEDDBER</strong></div>
+                                 <div class="bank-row"><span>Reference:</span><strong id="summary-ref" style="color: var(--primary);">PANDA-2026-8892</strong></div>`,
+                payContactTitle: "📞 Customer Support & Contact",
+                contactBoxDetails: `<p><strong>Support Hotline:</strong> +49 (0) 30 1234 5678</p>
+                                    <p><strong>WhatsApp / WeChat:</strong> +49 176 8888 9999 (PandaCampDE)</p>
+                                    <p><strong>Email:</strong> info@pandacamp.de</p>`,
+                btnBack: "Back to Home Page",
+                footerText: "© 2026 Panda Camp 🎋 All-Inclusive Mandarin Camp. All Rights Reserved."
             },
             de: {
                 navLogo: "🐼 Panda Camp 🎋",
@@ -615,14 +699,27 @@
                 rulesTitle: "⚖️ 20 Max / 18 Min & Rückerstattung",
                 rulesList: `<li><strong>2 Stufen:</strong> Max. <strong>20 Schüler pro Klasse</strong>.</li>
                            <li><strong>Garantie:</strong> Mind. <strong>18 Schüler erforderlich</strong>. 100% Rückerstattung bei Absage.</li>`,
-                titleSchedule: "📅 7-Tage-Ablauf",
+                titleSchedule: "📅 7-Tage-Ablaufübersicht",
                 thTime: "Tag",
                 thMorning: "Vormittag",
                 thAfternoon: "Nachmittag",
                 thEvening: "Abendprogramm",
+                scheduleRows: [
+                    ["Tag 1", "Ankunft & Einstufung", "Kennenlern-Sport", "Lagerfeuer-Party & Camp-Regeln"],
+                    ["Tag 2", "Chinesisch Grundlagen", "Ballsportarten", "Tusche-Kalligrafie & Bambusmalerei"],
+                    ["Tag 3", "Dialog-Training", "Klettern", "Open-Air-Kino & Synchronsprechen"],
+                    ["Tag 4", "Kulturlesung", "Shaolin Kung-Fu", "Kochen (Jiaozi selbst machen)"],
+                    ["Tag 5", "Präsentation", "Schwimm-Fitness", "Peking-Oper Masken DIY & Theater"],
+                    ["Tag 6", "Generalprobe", "Stadt-Erkundung", "Abschlussfest & Urkunden"],
+                    ["Tag 7", "Abschlussfeier", "Abholung Eltern", "Abreise"]
+                ],
                 titleCities: "🇩🇪 Standort wählen (Klicken für Details)",
+                cardBerlinTitle: "Camp Berlin",
                 cityBerlinDesc: "Hauptstadt-Camp mit Hallenbad & Museumsinsel.",
+                btnDetailText: "Details anzeigen (Sehenswürdigkeiten/Essen/Hotel) ➔",
+                cardMunichTitle: "Camp München",
                 cityMunichDesc: "Bayerisches Outdoor-Camp mit Tabata & Alpenblick.",
+                cardFrankfurtTitle: "Camp Frankfurt",
                 cityFrankfurtDesc: "Rhein-Camp mit Wassersport & Kajak.",
                 titleForm: "✍️ Camp Anmeldung",
                 lblStudentName: "Name des Kindes",
@@ -635,6 +732,9 @@
                 optLvlBeg: "🌱 Anfänger (50 Wörter/Woche)",
                 optLvlInt: "🌿 Mittelstufe (100 Wörter/Woche)",
                 lblCity: "Stadt wählen (850€)",
+                optCityBerlin: "Berlin - 850 €",
+                optCityMunich: "München - 850 €",
+                optCityFrankfurt: "Frankfurt - 850 €",
                 lblParentName: "Name der Eltern",
                 phParentName: "Name der Eltern",
                 lblPhone: "Telefonnummer",
@@ -642,11 +742,73 @@
                 lblAddress: "Wohnadresse",
                 phAddress: "Straße, Hausnummer, PLZ, Ort",
                 btnSubmit: "👉 Bestätigen & Zur Zahlung",
+
+                berlinDTitle: "🏛️ Camp Berlin Details",
+                berlinDSub: "Hauptstadt-Camp für Kultur & Schwimmen",
+                berlinDB1: "Gebühr: 850 € / Woche",
+                berlinDB2: "Ort: Berlin Grunewald Sportpark",
+                berlinF1Title: "🎡 Sehenswürdigkeiten",
+                berlinF1List: `<li><strong>Museumsinsel:</strong> Chinesische Führung.</li>
+                               <li><strong>Zoo Berlin:</strong> Großer Panda-Garten.</li>
+                               <li><strong>Deutsches Technikmuseum:</strong> Interaktive Wissenschaft.</li>`,
+                berlinF2Title: "🍜 Essen & Kulinarik",
+                berlinF2List: `<li><strong>Camp-Verpflegung:</strong> Bio-Kost & chinesische Spezialitäten.</li>
+                               <li><strong>Lokales Highlights:</strong> Berliner Currywurst & Nudelbar.</li>`,
+                berlinF3Title: "🏨 Hotel & Ausstattung",
+                berlinF3List: `<li><strong>Unterkunft:</strong> 2-4 Bett Apartment-Hotel mit Bad.</li>
+                               <li><strong>Sportanlagen:</strong> Hallenbad, Tabata-Raum, Fußballplatz.</li>`,
+                btnApplyBerlin: "Für Camp Berlin anmelden (850€)",
+                btnBackHome: "Zurück zur Startseite",
+
+                munichDTitle: "⛰️ Camp München Details",
+                munichDSub: "Bayerisches Natur- & Tabata-Camp",
+                munichDB1: "Gebühr: 850 € / Woche",
+                munichDB2: "Ort: Am Olympiapark München",
+                munichF1Title: "🌲 Sehenswürdigkeiten",
+                munichF1List: `<li><strong>Olympiapark:</strong> Aussichtsturm über München.</li>
+                               <li><strong>BMW Welt:</strong> Automobil-Technologie.</li>
+                               <li><strong>Alpenvorland:</strong> Natur-Wanderungen.</li>`,
+                munichF2Title: "🥨 Essen & Kulinarik",
+                munichF2List: `<li><strong>Bayerisch:</strong> Schweinebraten & frische Brezeln.</li>
+                               <li><strong>Camp-Verpflegung:</strong> Gesunde Sportler-Nahrung.</li>`,
+                munichF3Title: "🏨 Hotel & Ausstattung",
+                munichF3List: `<li><strong>Unterkunft:</strong> Jugend-Resort-Hotel am Park.</li>
+                               <li><strong>Sportanlagen:</strong> Tabata-Gym, Kletterwand, Kung-Fu Platz.</li>`,
+                btnApplyMunich: "Für Camp München anmelden (850€)",
+
+                frankfurtDTitle: "🌊 Camp Frankfurt Details",
+                frankfurtDSub: "Wassersport-Camp am Rhein-Main",
+                frankfurtDB1: "Gebühr: 850 € / Woche",
+                frankfurtDB2: "Ort: Wassersportzentrum Main",
+                frankfurtF1Title: "⛵ Sehenswürdigkeiten",
+                frankfurtF1List: `<li><strong>Römerberg:</strong> Gotische Altstadt-Führung.</li>
+                                  <li><strong>Main-Schifffahrt:</strong> Skyline von Frankfurt.</li>
+                                  <li><strong>Palmengarten:</strong> Tropen-Botanischer Garten.</li>`,
+                frankfurtF2Title: "🍏 Essen & Kulinarik",
+                frankfurtF2List: `<li><strong>Frankfurter Spezialität:</strong> Grüne Soße mit Eiern.</li>
+                                  <li><strong>Camp-Verpflegung:</strong> Eiweißreiche Fitnessküche.</li>`,
+                frankfurtF3Title: "🏨 Hotel & Ausstattung",
+                frankfurtF3List: `<li><strong>Unterkunft:</strong> Waterfront-Resort-Hotel mit 24/7 Schutz.</li>
+                                  <li><strong>Sportanlagen:</strong> Kajak-Basis, Hallenbad, Tennisplätze.</li>`,
+                btnApplyFrankfurt: "Für Camp Frankfurt anmelden (850€)",
+
                 payTitle: "🎉 Anmeldung eingereicht!",
                 paySubtitle: "Bitte überweisen Sie die Gebühr. 100% Rückerstattung bei unter 18 Anmeldungen.",
-                payBankTitle: "🏦 Bankverbindung",
-                payContactTitle: "📞 Support",
-                btnBack: "Zurück zur Startseite"
+                payLblName: "Name des Kindes: ",
+                payLblCamp: "Gewähltes Camp: ",
+                payLblAmount: "Gesamtbetrag: ",
+                payBankTitle: "🏦 Bankverbindung für Überweisung",
+                bankBoxDetails: `<div class="bank-row"><span>Empfänger:</span><strong>Panda Camp GmbH</strong></div>
+                                 <div class="bank-row"><span>Bank:</span><strong>Deutsche Bank AG</strong></div>
+                                 <div class="bank-row"><span>IBAN:</span><strong>DE89 1007 0000 0123 4567 89</strong></div>
+                                 <div class="bank-row"><span>BIC/SWIFT:</span><strong>DEUTDEDDBER</strong></div>
+                                 <div class="bank-row"><span>Verwendungszweck:</span><strong id="summary-ref" style="color: var(--primary);">PANDA-2026-8892</strong></div>`,
+                payContactTitle: "📞 Kundenservice & Kontakt",
+                contactBoxDetails: `<p><strong>Hotline:</strong> +49 (0) 30 1234 5678</p>
+                                    <p><strong>WhatsApp / WeChat:</strong> +49 176 8888 9999 (PandaCampDE)</p>
+                                    <p><strong>E-Mail:</strong> info@pandacamp.de</p>`,
+                btnBack: "Zurück zur Startseite",
+                footerText: "© 2026 Panda Camp 🎋 All-Inclusive Sommercamp. Alle Rechte vorbehalten."
             }
         };
 
@@ -676,6 +838,16 @@
                 const el = document.getElementById(sectionId);
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
             }, 100);
+        }
+
+        function renderSchedule(rows) {
+            const tbody = document.getElementById('schedule-body');
+            tbody.innerHTML = '';
+            rows.forEach(r => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td><strong>${r[0]}</strong></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td>`;
+                tbody.appendChild(tr);
+            });
         }
 
         function changeLanguage(lang) {
@@ -710,11 +882,18 @@
             document.getElementById('th-morning').innerText = t.thMorning;
             document.getElementById('th-afternoon').innerText = t.thAfternoon;
             document.getElementById('th-evening').innerText = t.thEvening;
+            renderSchedule(t.scheduleRows);
 
             document.getElementById('title-cities').innerText = t.titleCities;
+            document.getElementById('card-berlin-title').innerText = t.cardBerlinTitle;
             document.getElementById('city-berlin-desc').innerText = t.cityBerlinDesc;
+            document.getElementById('btn-btn-berlin').innerText = t.btnDetailText;
+            document.getElementById('card-munich-title').innerText = t.cardMunichTitle;
             document.getElementById('city-munich-desc').innerText = t.cityMunichDesc;
+            document.getElementById('btn-btn-munich').innerText = t.btnDetailText;
+            document.getElementById('card-frankfurt-title').innerText = t.cardFrankfurtTitle;
             document.getElementById('city-frankfurt-desc').innerText = t.cityFrankfurtDesc;
+            document.getElementById('btn-btn-frankfurt').innerText = t.btnDetailText;
 
             document.getElementById('title-form').innerText = t.titleForm;
             document.getElementById('lbl-student-name').innerText = t.lblStudentName;
@@ -727,6 +906,9 @@
             document.getElementById('opt-lvl-beg').innerText = t.optLvlBeg;
             document.getElementById('opt-lvl-int').innerText = t.optLvlInt;
             document.getElementById('lbl-city').innerText = t.lblCity;
+            document.getElementById('opt-city-berlin').innerText = t.optCityBerlin;
+            document.getElementById('opt-city-munich').innerText = t.optCityMunich;
+            document.getElementById('opt-city-frankfurt').innerText = t.optCityFrankfurt;
             document.getElementById('lbl-parent-name').innerText = t.lblParentName;
             document.getElementById('input-parent-name').placeholder = t.phParentName;
             document.getElementById('lbl-phone').innerText = t.lblPhone;
@@ -735,11 +917,61 @@
             document.getElementById('input-address').placeholder = t.phAddress;
             document.getElementById('btn-submit').innerText = t.btnSubmit;
 
+            // 柏林页翻译
+            document.getElementById('berlin-d-title').innerText = t.berlinDTitle;
+            document.getElementById('berlin-d-sub').innerText = t.berlinDSub;
+            document.getElementById('berlin-d-b1').innerText = t.berlinDB1;
+            document.getElementById('berlin-d-b2').innerText = t.berlinDB2;
+            document.getElementById('berlin-f1-title').innerText = t.berlinF1Title;
+            document.getElementById('berlin-f1-list').innerHTML = t.berlinF1List;
+            document.getElementById('berlin-f2-title').innerText = t.berlinF2Title;
+            document.getElementById('berlin-f2-list').innerHTML = t.berlinF2List;
+            document.getElementById('berlin-f3-title').innerText = t.berlinF3Title;
+            document.getElementById('berlin-f3-list').innerHTML = t.berlinF3List;
+            document.getElementById('btn-apply-berlin').innerText = t.btnApplyBerlin;
+            document.getElementById('btn-back-berlin').innerText = t.btnBackHome;
+
+            // 慕尼黑页翻译
+            document.getElementById('munich-d-title').innerText = t.munichDTitle;
+            document.getElementById('munich-d-sub').innerText = t.munichDSub;
+            document.getElementById('munich-d-b1').innerText = t.munichDB1;
+            document.getElementById('munich-d-b2').innerText = t.munichDB2;
+            document.getElementById('munich-f1-title').innerText = t.munichF1Title;
+            document.getElementById('munich-f1-list').innerHTML = t.munichF1List;
+            document.getElementById('munich-f2-title').innerText = t.munichF2Title;
+            document.getElementById('munich-f2-list').innerHTML = t.munichF2List;
+            document.getElementById('munich-f3-title').innerText = t.munichF3Title;
+            document.getElementById('munich-f3-list').innerHTML = t.munichF3List;
+            document.getElementById('btn-apply-munich').innerText = t.btnApplyMunich;
+            document.getElementById('btn-back-munich').innerText = t.btnBackHome;
+
+            // 法兰克福页翻译
+            document.getElementById('frankfurt-d-title').innerText = t.frankfurtDTitle;
+            document.getElementById('frankfurt-d-sub').innerText = t.frankfurtDSub;
+            document.getElementById('frankfurt-d-b1').innerText = t.frankfurtDB1;
+            document.getElementById('frankfurt-d-b2').innerText = t.frankfurtDB2;
+            document.getElementById('frankfurt-f1-title').innerText = t.frankfurtF1Title;
+            document.getElementById('frankfurt-f1-list').innerHTML = t.frankfurtF1List;
+            document.getElementById('frankfurt-f2-title').innerText = t.frankfurtF2Title;
+            document.getElementById('frankfurt-f2-list').innerHTML = t.frankfurtF2List;
+            document.getElementById('frankfurt-f3-title').innerText = t.frankfurtF3Title;
+            document.getElementById('frankfurt-f3-list').innerHTML = t.frankfurtF3List;
+            document.getElementById('btn-apply-frankfurt').innerText = t.btnApplyFrankfurt;
+            document.getElementById('btn-back-frankfurt').innerText = t.btnBackHome;
+
+            // 付款页翻译
             document.getElementById('pay-title').innerText = t.payTitle;
             document.getElementById('pay-subtitle').innerText = t.paySubtitle;
+            document.getElementById('pay-lbl-name').innerText = t.payLblName;
+            document.getElementById('pay-lbl-camp').innerText = t.payLblCamp;
+            document.getElementById('pay-lbl-amount').innerText = t.payLblAmount;
             document.getElementById('pay-bank-title').innerText = t.payBankTitle;
+            document.getElementById('bank-box-details').innerHTML = t.bankBoxDetails;
             document.getElementById('pay-contact-title').innerText = t.payContactTitle;
+            document.getElementById('contact-box-details').innerHTML = t.contactBoxDetails;
             document.getElementById('btn-back').innerText = t.btnBack;
+
+            document.getElementById('footer-text').innerText = t.footerText;
         }
 
         function handleSignup(event) {
@@ -750,10 +982,14 @@
 
             document.getElementById('summary-name').innerText = studentName;
             document.getElementById('summary-camp').innerText = `${city} (${level})`;
-            document.getElementById('summary-ref').innerText = 'PANDA-2026-' + Math.floor(1000 + Math.random() * 9000);
+            const refEl = document.getElementById('summary-ref');
+            if (refEl) refEl.innerText = 'PANDA-2026-' + Math.floor(1000 + Math.random() * 9000);
 
             showPage('payment');
         }
+
+        // 初始化默认语言
+        changeLanguage('zh');
     </script>
 </body>
 </html>
